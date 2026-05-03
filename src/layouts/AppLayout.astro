@@ -3,9 +3,13 @@ export interface Props {
   title: string;
   description?: string;
 }
+
+import "@styles/tokens.css";
+import "@styles/global.css";
+
 const { title, description = "PTDT Protocol dApp" } = Astro.props;
 
-const siteBase = Astro.site ?? new URL("https://ptdt.taxi");
+const siteBase  = Astro.site ?? new URL("https://ptdt.taxi");
 const canonical = new URL(Astro.url.pathname, siteBase).href;
 ---
 <!DOCTYPE html>
@@ -18,11 +22,13 @@ const canonical = new URL(Astro.url.pathname, siteBase).href;
     <link rel="canonical" href={canonical} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=IBM+Plex+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/src/styles/tokens.css" />
-    <link rel="stylesheet" href="/src/styles/global.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,700;0,14..32,800;0,14..32,900;1,14..32,900&family=IBM+Plex+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
   </head>
-  <body style="background:#0A0A0F; color:#fff; min-height:100vh;">
+  <body class="app-body">
     <slot />
   </body>
 </html>
+
+<style is:global>
+  .app-body { background: #0A0A0F; color: #fff; min-height: 100vh; }
+</style>
