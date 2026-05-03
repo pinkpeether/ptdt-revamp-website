@@ -2,58 +2,32 @@
 import SectionTag from "@components/ui/SectionTag.astro";
 ---
 <section class="section legacy-section" id="legacy">
-  <div class="container">
-    <div class="legacy-grid">
-      <div class="legacy-copy">
-        <SectionTag color="purple">Our Origin</SectionTag>
-        <h2 class="section-h2" style="margin-top:var(--space-4)">
-          Built on a Mission<br/>of <em>Women's Safety</em>
-        </h2>
-        <p class="section-sub">
-          Long before Web3, this protocol was born from a real-world problem.
-          A women-only transport service founded in the UK in 2019 — focused on
-          safe, verified, dignified mobility for women.
-        </p>
-        <p class="section-sub" style="margin-top:var(--space-4)">
-          PTDT carries that mission on-chain. Every settlement is a vote for a
-          safer, more transparent mobility infrastructure — for everyone.
-        </p>
-        <div style="margin-top:var(--space-8)">
-          <a href="/legacy" class="btn btn-ghost">Read the Origin Story →</a>
-        </div>
-      </div>
-      <div class="legacy-visual">
-        <div class="legacy-stat-card">
-          <span style="font-size:44px">♀</span>
-          <strong>Women-First</strong>
-          <p>Founded as a women-only transport service in the UK, 2019.</p>
-        </div>
-        <div class="legacy-stat-card">
-          <span style="font-size:44px">🇬🇧</span>
-          <strong>UK Registered</strong>
-          <p>Pink Taxi Group Ltd. · Company No. 11920005</p>
-        </div>
-        <div class="legacy-stat-card">
-          <span style="font-size:44px">⛓️</span>
-          <strong>Now On-Chain</strong>
-          <p>Settlement infrastructure for global mobility, powered by BNB Chain.</p>
-        </div>
-      </div>
+  <div class="container legacy-grid">
+    <div class="legacy-copy">
+      <SectionTag color="purple">Our Origin</SectionTag>
+      <h2 class="section-h2 legacy-title">Built on a Mission<br />of <em>Women's Safety</em></h2>
+      <p class="section-sub">Long before Web3, this protocol was born from a real-world problem. A women-only transport service founded in the UK in 2019 — focused on safe, verified, dignified mobility for women.</p>
+      <p class="section-sub legacy-sub-2">PTDT carries that mission on-chain. Every settlement is a vote for a safer, more transparent mobility infrastructure — for everyone.</p>
+      <div class="legacy-btn"><a href="/legacy" class="btn btn-ghost">Read the Origin Story →</a></div>
+    </div>
+    <div class="legacy-visual">
+      <div class="legacy-stat-card"><span>♀</span><div><strong>Women-First</strong><p>Founded as a women-only transport service in the UK, 2019.</p></div></div>
+      <div class="legacy-stat-card"><span>🇬🇧</span><div><strong>UK Registered</strong><p>Pink Taxi Group Ltd. · Company No. 11920005</p></div></div>
+      <div class="legacy-stat-card"><span>⛓️</span><div><strong>Now On-Chain</strong><p>Settlement infrastructure for global mobility, powered by BNB Chain.</p></div></div>
     </div>
   </div>
 </section>
 
 <style>
-  .legacy-section { background: var(--soft); }
-  .legacy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
-  .legacy-visual { display: flex; flex-direction: column; gap: 16px; }
-  .legacy-stat-card {
-    background: #fff; border-radius: var(--radius-2xl);
-    padding: 24px; border: 1px solid var(--line);
-    box-shadow: var(--shadow-sm);
-    display: flex; align-items: flex-start; gap: 16px;
-  }
-  .legacy-stat-card strong { font-size:15px; font-weight:800; color:var(--ink); display:block; margin-bottom:4px; }
-  .legacy-stat-card p { font-size:13px; color:var(--muted); line-height:1.6; }
-  @media (max-width:860px) { .legacy-grid { grid-template-columns:1fr; } }
+.legacy-section { background: var(--soft); }
+.legacy-grid { display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:center; }
+.legacy-title { margin-top:16px; }
+.legacy-sub-2 { margin-top:16px; }
+.legacy-btn { margin-top:32px; }
+.legacy-visual { display:flex; flex-direction:column; gap:16px; }
+.legacy-stat-card { background:#fff; border-radius:24px; padding:24px; border:1px solid var(--line); box-shadow:var(--shadow-sm); display:flex; align-items:flex-start; gap:16px; }
+.legacy-stat-card span { font-size:44px; line-height:1; }
+.legacy-stat-card strong { display:block; font-size:15px; font-weight:800; color:var(--ink); margin-bottom:4px; }
+.legacy-stat-card p { font-size:13px; color:var(--muted); line-height:1.6; }
+@media (max-width: 900px) { .legacy-grid { grid-template-columns:1fr; gap:32px; } }
 </style>
