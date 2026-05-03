@@ -1,0 +1,2298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grok Stake Simulator | AI-Powered PTDT Staking Calculator | Peether</title>
+  <meta name="description" content="AI-powered PTDT staking calculator using Grok. Simulate rewards for Bronze 12%, Silver 15%, Gold 18% APY. 60% burned, 40% to stakers. Real yield on BNB Smart Chain.">
+  <link rel="canonical" href="https://ptdt.taxi/grok-stake-sim.html">
+  <meta name="keywords" content="PTDT staking calculator, Grok AI, crypto staking simulator, DeFi rewards, BNB Chain, Peether PTDT, real yield, deflationary token">
+  <meta name="author" content="Peether PTDT">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Grok Stake Simulator | AI-Powered PTDT Staking Calculator">
+  <meta property="og:description" content="Simulate PTDT staking rewards with Grok AI. Bronze 12%, Silver 15%, Gold 18% APY. Real yield from protocol fees. 60% burned, 40% to stakers.">
+  <meta property="og:image" content="https://ptdt.taxi/stake-sim-preview.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Grok Stake Simulator — AI-Powered PTDT Staking Calculator">
+  <meta property="og:url" content="https://ptdt.taxi/grok-stake-sim.html">
+  <meta property="og:site_name" content="Peether PTDT">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@PTDT_Token">
+  <meta name="twitter:title" content="Grok Stake Simulator | PTDT Staking Calculator">
+  <meta name="twitter:description" content="AI-powered staking simulator. Calculate PTDT rewards: 12-18% APY. Real yield, not inflation.">
+  <meta name="twitter:image" content="https://ptdt.taxi/stake-sim-preview.webp">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 28.8 29.04' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='14.35' cy='14.4' r='12.27' fill='%232ae97b'/%3E%3Ccircle cx='14.35' cy='14.4' r='10.66' fill='%23020202'/%3E%3Cpath d='M15.14,12.47c-.21-.34,2.18-3.91,4.97-4.8-3.22,.47-5.62,2.79-5.76,2.93,0,0-.02,.01-.02,.01,0,0,.01,0,.02-.01,0,0,.01,0,.02,.01h-.02c.64-.63,.45-.1,0,.85-.45-.95-.64-1.48,0-.86-.14-.15-2.55-2.46-5.76-2.93,2.79,.89,5.18,4.46,4.97,4.8-.57,.94-1.12,2.19-1.21,3.55-.03,.14-.05,.26-.05,.36,0,3.18,2.03,5.76,2.03,5.76,0,0,0,0,.02-.01,0,0,.01,.01,.01,.01,0,0,2.03-2.57,2.03-5.76,0-.1-.01-.22-.04-.36-.09-1.36-.63-2.61-1.21-3.55' fill='%23fb0b8c'/%3E%3Cpath d='M15.75,8.26c0,.77-.62,1.39-1.39,1.39s-1.4-.62-1.4-1.39,.63-1.39,1.4-1.39,1.39,.62,1.39,1.39' fill='%23fb068c'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&amp;family=Lexend:wght@300;400;500;600;700&amp;family=Montserrat:wght@400;500;600;700;800;900&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Grok Stake Simulator",
+        "url": "https://ptdt.taxi/grok-stake-sim.html",
+        "applicationCategory": "DeFi",
+        "operatingSystem": "Web Browser",
+        "description": "AI-powered PTDT staking calculator using Grok. Simulate rewards across Bronze, Silver, and Gold tiers on BNB Smart Chain.",
+        "image": "https://ptdt.taxi/stake-sim-preview.webp",
+        "dateModified": "2026-03-22",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Peether PTDT",
+          "url": "https://ptdt.taxi"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Pink Taxi Group Ltd.",
+        "alternateName": "Peether PTDT",
+        "url": "https://ptdt.taxi",
+        "logo": "https://ptdt.taxi/logo.png"
+      }
+    ]
+  </script>
+  <style>
+    :root {
+      --bg-primary: #0a0a0f;
+      --bg-secondary: #111118;
+      --bg-card: #1a1a24;
+      --bg-glass: rgba(15, 15, 22, 0.9);
+      --text-primary: #e8e8f0;
+      --text-secondary: #8888a0;
+      --text-muted: #555568;
+      --pink-primary: #fb0b8c;
+      --pink-light: #ff4da6;
+      --green-success: #10b981;
+      --gold-color: #eab308;
+      --silver-color: #94a3b8;
+      --bronze-color: #cd7f32;
+      --border-color: #2a2a3a;
+      --border-light: rgba(255, 255, 255, 0.06);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+      --shadow-pink: 0 15px 35px rgba(251, 11, 140, 0.4);
+      --gradient-pink: linear-gradient(135deg, #fb0b8c 0%, #ff4da6 50%, #a855f7 100%);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Lexend', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    body.light-mode {
+      --bg-primary: #f4f4f8;
+      --bg-secondary: #ffffff;
+      --bg-card: #ffffff;
+      --bg-glass: rgba(255, 255, 255, 0.86);
+      --text-primary: #1f2937;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --border-color: rgba(17, 24, 39, 0.12);
+      --border-light: rgba(17, 24, 39, 0.08);
+    }
+
+    a {
+      color: inherit;
+    }
+
+    #particleCanvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: var(--bg-primary);
+    }
+
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 4px;
+      background: var(--gradient-pink);
+      z-index: 9999;
+      box-shadow: 0 0 10px rgb(251 11 140 / 0.5);
+      transition: width 0.1s linear;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      right: 16px;
+      top: 16px;
+      z-index: 40;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(10, 10, 15, 0.65);
+      backdrop-filter: blur(12px);
+      color: white;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    body.light-mode .theme-toggle {
+      background: rgba(255, 255, 255, 0.9);
+      color: #111827;
+      border-color: rgba(17, 24, 39, 0.08);
+    }
+
+    .page-nav {
+      background: linear-gradient(135deg, rgba(251, 11, 140, 0.12), rgba(168, 85, 247, 0.12));
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(251, 11, 140, 0.15);
+      border-radius: 16px;
+      padding: 12px 24px;
+      width: 100%;
+      margin: 0 auto 0;
+      max-width: 960px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      align-items: center;
+    }
+
+    .page-nav::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--gradient-pink);
+    }
+
+    .header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--gradient-pink);
+    }
+
+    .nav-row {
+      display: flex;
+      gap: 6px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .nav-divider {
+      width: 80%;
+      max-width: 500px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+      margin: -1px 0;
+    }
+
+    .header-separator {
+      width: calc(100% - 60px);
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+      margin: 12px auto;
+    }
+
+    .nav-link {
+      padding: 8px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-weight: 400;
+      font-size: .82em;
+      font-family: 'Fira Code', monospace;
+      text-transform: uppercase;
+      letter-spacing: .02em;
+      transition: all 0.3s ease;
+      border: 1px solid transparent;
+      white-space: nowrap;
+    }
+
+    .nav-link:hover {
+      background: rgb(251 11 140 / 0.12);
+      color: var(--pink-light);
+      border-color: rgb(251 11 140 / 0.3);
+      text-decoration: none;
+    }
+
+    .nav-link.active {
+      background: var(--gradient-pink);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(251, 11, 140, 0.35);
+    }
+
+    .nav-link.active.verified-tab {
+      background: linear-gradient(135deg, #006d30 0%, #009e44 50%, #007a36 100%);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(0, 158, 68, 0.35);
+    }
+
+    .nav-link.active.staking-tab {
+      background: linear-gradient(135deg, #d97706 0%, #f59e0b 50%, #eab308 100%);
+      color: #000;
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35);
+    }
+
+    .nav-link.active.grok-tab {
+      background: linear-gradient(135deg, #fb0b8c 0%, #a855f7 50%, #6366f1 100%);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(168, 85, 247, 0.45);
+    }
+
+    .nav-sep {
+      width: 1px;
+      height: 18px;
+      background: rgba(255,255,255,0.15);
+      margin: 0 2px;
+    }
+
+    .app-container {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .home-logo-section {
+      text-align: center;
+      padding: 24px 0 16px;
+    }
+
+    .home-logo-link {
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+
+    .home-logo-link:hover {
+      transform: scale(1.05);
+    }
+
+    .home-logo-link img {
+      width: 182px;
+      height: auto;
+    }
+
+    .coin-slogan-section {
+      text-align: center;
+      padding: 24px 0 12px;
+    }
+
+    .coin-wrapper {
+      perspective: 1200px;
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 8px;
+    }
+
+    .coin {
+      position: relative;
+      transform-style: preserve-3d;
+      border-radius: 50%;
+      width: 100%;
+      height: 100%;
+    }
+
+    .coin img {
+      position: relative;
+      z-index: 2;
+      transform: translateZ(14px);
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      backface-visibility: hidden;
+      background: transparent;
+      box-shadow: 0 0 35px rgb(255 210 120 / 0.55), inset 0 0 14px rgb(255 255 255 / 0.3);
+    }
+
+    .coin::before {
+      content: "";
+      position: absolute;
+      inset: 3px;
+      border-radius: 50%;
+      background: linear-gradient(90deg, #7a5a00, #d4af37, #ffeb9c, #d4af37, #7a5a00);
+      transform: translateZ(-14px);
+      filter: blur(1px);
+    }
+
+    .slogan {
+      font-size: clamp(18px, 4.5vw, 24px);
+      white-space: pre;
+      font-family: 'Space Grotesk', sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #334155;
+      line-height: 1;
+    }
+    .slogan .char { display: none; }
+    .slogan .char.visible { display: inline; }
+    .slogan .light { font-weight: 300; color: #cbd5e1; letter-spacing: -.05em; }
+    .slogan .code { font-family: 'Fira Code', monospace; font-weight: 700; color: #EB4491; letter-spacing: -.01em; }
+    .slogan .gray { font-weight: 300; color: #94a3b8; letter-spacing: -.05em; }
+    .slogan .cult { font-weight: 700; color: #002FFF; position: relative; letter-spacing: -.01em; }
+    .slogan .cult::before,
+    .slogan .cult::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      background: #FF2F00;
+      border-radius: 2px;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.8s ease-in-out;
+    }
+    .slogan .cult::before { top: 50%; height: .06em; }
+    .slogan .cult::after { bottom: .05em; height: .12em; }
+    .finished .cult::before,
+    .finished .cult::after { transform: scaleX(1); }
+    .slogan .brackets { font-family: 'Fira Code', monospace; color: #57BF39; font-weight: 700; }
+    .slogan .exclamation { font-weight: 700; color: #FF2F00; }
+    .slogan .cursor {
+      display: inline-block;
+      width: 1.5px;
+      height: 1.1em;
+      background: #cbd5e1;
+      margin-left: 1px;
+      animation: blink 0.72s steps(1) infinite;
+      vertical-align: middle;
+    }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+    body.light-mode .slogan .light { color: #334155; }
+    body.light-mode .slogan .gray { color: #6B7280; }
+    body.light-mode .slogan .cursor { background: #1e293b; }
+
+    .hero-split {
+      background: linear-gradient(135deg, #1a0a2e 0%, #2d0a4e 30%, #1e0838 60%, #0d1a2e 100%);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      margin-bottom: 32px;
+      margin-top: -8px;
+      box-shadow: 0 0 50px rgba(139, 0, 255, 0.25), 0 0 80px rgba(251, 11, 140, 0.1), inset 0 1px 0 rgba(168, 85, 247, 0.2), 0 0 40px rgba(168, 85, 247, 0.15);
+    }
+
+    .hero-split-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+    }
+
+    .hero-split-image {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      overflow: hidden;
+      min-height: 100%;
+    }
+
+    .hero-split-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-split-content {
+      padding: 28px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: linear-gradient(160deg, #1a1a2e 0%, #0d0d1a 40%, #050510 70%, #0a0a1f 100%);
+      border-left: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .hero-split-eyebrow {
+      color: #10b981;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .hero-split-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fb0b8c;
+      margin-bottom: 14px;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-split-desc {
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 0.92rem;
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+
+    .hero-split-badges {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .hero-split-badge {
+      background: rgba(16, 185, 129, 0.12);
+      color: #10b981;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      border: 1px solid rgba(16, 185, 129, 0.25);
+    }
+
+    .hero-split-badge-amber {
+      background: rgba(245, 158, 11, 0.12);
+      color: #f59e0b;
+      border-color: rgba(245, 158, 11, 0.25);
+    }
+
+    .header,
+    .grok-card,
+    .results-container,
+    .result-card,
+    .chart-bar,
+    .contract-box {
+      box-shadow: var(--shadow-md);
+    }
+
+    .header {
+      background: var(--bg-glass);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border-light);
+      border-radius: 24px;
+      padding: 30px 40px 35px;
+      margin-bottom: 30px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 2em;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+      background: var(--gradient-pink);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      color: var(--text-secondary);
+      font-size: 1.05em;
+      margin-bottom: 16px;
+      line-height: 1.6;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hl-green {
+      color: var(--green-success);
+      font-weight: 600;
+    }
+
+    .hl-pink {
+      color: var(--pink-primary);
+      font-weight: 600;
+    }
+
+    .hl-gold {
+      color: var(--gold-color);
+      font-weight: 600;
+    }
+
+    .brand-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 99px;
+      font-size: 0.85em;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      background: rgba(251, 11, 140, 0.1);
+      border: 1px solid rgba(251, 11, 140, 0.3);
+      color: var(--pink-primary);
+      box-shadow: 0 10px 24px rgba(251, 11, 140, 0.12);
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--pink-primary);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.4;
+      }
+    }
+
+    .main-content {
+      flex: 1;
+    }
+
+    .grok-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .grok-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(251, 11, 140, 0.08), transparent 38%);
+      pointer-events: none;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: var(--text-primary);
+      font-size: 0.95em;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 14px 16px;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      color: var(--text-primary);
+      font-size: 1rem;
+      font-family: 'Lexend', sans-serif;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--pink-primary);
+      box-shadow: 0 0 0 3px rgba(251, 11, 140, 0.15);
+    }
+
+    .tier-selector {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .tier-option {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 2px solid var(--border-color);
+      border-radius: 12px;
+      padding: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+    }
+
+    .tier-option:hover {
+      transform: translateY(-4px);
+      border-color: rgba(251, 11, 140, 0.4);
+      box-shadow: 0 14px 28px rgba(15, 23, 42, 0.18);
+    }
+
+    .tier-option.selected {
+      border-color: var(--pink-primary);
+      background: rgba(251, 11, 140, 0.08);
+    }
+
+    .tier-option::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .tier-option:hover::before,
+    .tier-option.selected::before {
+      opacity: 1;
+    }
+
+    .tier-option.bronze::before {
+      background: linear-gradient(145deg, rgba(205, 127, 50, 0.3) 0%, rgba(120, 53, 15, 0.08) 55%, rgba(17, 24, 39, 0) 100%);
+    }
+
+    .tier-option.silver::before {
+      background: linear-gradient(145deg, rgba(226, 232, 240, 0.28) 0%, rgba(148, 163, 184, 0.12) 55%, rgba(17, 24, 39, 0) 100%);
+    }
+
+    .tier-option.gold::before {
+      background: linear-gradient(145deg, rgba(250, 204, 21, 0.3) 0%, rgba(202, 138, 4, 0.12) 55%, rgba(17, 24, 39, 0) 100%);
+    }
+
+    .tier-option.bronze.selected {
+      border-color: var(--bronze-color);
+      background: linear-gradient(160deg, rgba(205, 127, 50, 0.22) 0%, rgba(120, 53, 15, 0.14) 100%);
+      box-shadow: 0 14px 30px rgba(120, 53, 15, 0.2);
+    }
+
+    .tier-option.silver.selected {
+      border-color: var(--silver-color);
+      background: linear-gradient(160deg, rgba(226, 232, 240, 0.24) 0%, rgba(148, 163, 184, 0.14) 100%);
+      box-shadow: 0 14px 30px rgba(100, 116, 139, 0.18);
+    }
+
+    .tier-option.gold.selected {
+      border-color: var(--gold-color);
+      background: linear-gradient(160deg, rgba(250, 204, 21, 0.24) 0%, rgba(202, 138, 4, 0.14) 100%);
+      box-shadow: 0 14px 30px rgba(202, 138, 4, 0.2);
+    }
+
+    .tier-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tier-apy {
+      color: var(--green-success);
+      font-weight: 600;
+      font-size: 1.2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tier-min {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-top: 2px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tier-option.bronze .tier-name { color: #f2c195; }
+    .tier-option.silver .tier-name { color: #f1f5f9; }
+    .tier-option.gold .tier-name { color: #fde68a; }
+    .tier-option.bronze .tier-apy { color: #f7c58c; }
+    .tier-option.silver .tier-apy { color: #e2e8f0; }
+    .tier-option.gold .tier-apy { color: #facc15; }
+
+    body.light-mode .tier-option {
+      background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(248,250,252,0.9));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
+    }
+
+    body.light-mode .tier-option:hover {
+      box-shadow: 0 16px 28px rgba(148, 163, 184, 0.18);
+    }
+
+    body.light-mode .tier-option.bronze.selected {
+      background: linear-gradient(160deg, rgba(251, 191, 36, 0.18) 0%, rgba(205, 127, 50, 0.16) 100%);
+    }
+
+    body.light-mode .tier-option.silver.selected {
+      background: linear-gradient(160deg, rgba(248, 250, 252, 1) 0%, rgba(203, 213, 225, 0.6) 100%);
+    }
+
+    body.light-mode .tier-option.gold.selected {
+      background: linear-gradient(160deg, rgba(254, 240, 138, 0.65) 0%, rgba(250, 204, 21, 0.22) 100%);
+    }
+
+    body.light-mode .tier-option.bronze .tier-name { color: #92400e; }
+    body.light-mode .tier-option.silver .tier-name { color: #334155; }
+    body.light-mode .tier-option.gold .tier-name { color: #a16207; }
+    body.light-mode .tier-option.bronze .tier-apy { color: #b45309; }
+    body.light-mode .tier-option.silver .tier-apy { color: #475569; }
+    body.light-mode .tier-option.gold .tier-apy { color: #ca8a04; }
+
+    .btn-primary,
+    .cta-button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      background: var(--gradient-pink);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 16px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      font-family: 'Lexend', sans-serif;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+    }
+
+    .btn-primary:hover:not(:disabled),
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-pink);
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .loading-spinner {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: white;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .inline-note {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: rgba(251, 11, 140, 0.05);
+      border-radius: 8px;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    .inline-note a {
+      color: var(--pink-primary);
+    }
+
+    .results-container {
+      display: none;
+      margin-top: 24px;
+      padding: 24px;
+      background: var(--bg-primary);
+      border-radius: 14px;
+      border: 1px solid var(--border-color);
+    }
+
+    .results-container.visible {
+      display: block;
+    }
+
+    .results-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      background: var(--gradient-pink);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .result-card {
+      background: var(--bg-card);
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      border: 1px solid var(--border-color);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .result-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(251, 11, 140, 0.06), transparent 45%);
+      pointer-events: none;
+    }
+
+    .result-label {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .result-value {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--green-success);
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .result-unit {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .chart-container {
+      margin: 20px 0;
+    }
+
+    .chart-title {
+      color: var(--text-primary);
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .chart-bar {
+      background: var(--bg-card);
+      border-radius: 10px;
+      padding: 14px;
+      margin-bottom: 10px;
+      border: 1px solid var(--border-color);
+    }
+
+    .chart-bar-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+
+    .chart-bar-label {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .chart-bar-value {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .chart-track {
+      width: 100%;
+      background: var(--bg-secondary);
+      border-radius: 4px;
+    }
+
+    .chart-bar-fill {
+      height: 8px;
+      background: var(--gradient-pink);
+      border-radius: 4px;
+      transition: width 0.6s ease;
+    }
+
+    .distribution-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .distribution-card {
+      padding: 1.5rem;
+      border-radius: 10px;
+      border: 1px solid transparent;
+    }
+
+    .distribution-card.burn {
+      background: rgba(251, 11, 140, 0.1);
+      border-color: rgba(251, 11, 140, 0.3);
+    }
+
+    .distribution-card.stakers {
+      background: rgba(16, 185, 129, 0.1);
+      border-color: rgba(16, 185, 129, 0.3);
+    }
+
+    .distribution-value {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .distribution-card.burn .distribution-value {
+      color: var(--pink-primary);
+    }
+
+    .distribution-card.stakers .distribution-value {
+      color: var(--green-success);
+    }
+
+    .distribution-label {
+      color: var(--text-secondary);
+      margin-top: 0.5rem;
+    }
+
+    .distribution-copy {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+    }
+
+    .risk-note {
+      background: rgba(251, 11, 140, 0.06);
+      border-left: 3px solid var(--pink-primary);
+      padding: 16px 20px;
+      border-radius: 10px;
+      margin-top: 16px;
+    }
+
+    .risk-note-title {
+      color: var(--pink-primary);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .risk-note-content {
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .info-grid {
+      display: grid;
+      gap: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .info-callout {
+      padding: 1rem;
+      background: rgba(251, 11, 140, 0.05);
+      border-radius: 8px;
+      border-left: 4px solid var(--pink-primary);
+    }
+
+    .footer { width: 100%; margin-top: 0px; position: relative; }
+
+    .footer-vignette {
+      background: linear-gradient(to right, rgb(236, 72, 153), rgb(147, 51, 234));
+      border-radius: 12px;
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,.1);
+      padding: 30px 5%;
+      margin: 0 auto;
+      max-width: 1100px;
+      width: 95%;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .footer-container { margin: 0 auto; max-width: 960px; width: 100%; }
+    .footer-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+    .footer-card {
+      background: rgba(255,255,255,.1) !important;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 12px;
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,.1);
+      padding: 15px 20px 28px;
+      transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer-card:hover { background: rgba(255,255,255,.15) !important; transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0,0,0,.2); }
+    .footer-card h3 { font-family: Montserrat, sans-serif; font-weight: 700; font-size: 1.125rem; margin: 0 0 10px; color: white; }
+    .footer-links-list { display: flex; flex-direction: column; gap: 8px; }
+    .footer-links-list a { color: rgba(255,255,255,.9); text-decoration: none; font-size: .975rem; font-weight: 400; transition: all .5s; display: flex; align-items: center; gap: 8px; line-height: 1.5; }
+    .footer-links-list a:hover { color: white; transform: translateX(4px); }
+
+    .social-icons { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 35px;
+      height: 35px;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.4);
+      border-radius: 50%;
+      color: white;
+      text-decoration: none;
+      font-size: 1.2em;
+      transition: all .3s;
+    }
+
+    .social-icon:hover { background: rgba(255,255,255,.4); transform: translateY(-3px) scale(1.1); box-shadow: 0 5px 15px rgba(0,0,0,.3); }
+
+    .downloads-btn {
+      display: block;
+      text-align: center;
+      padding: 8px 16px;
+      background: rgba(255,255,255,.25);
+      border: 1px solid rgba(255,255,255,.4);
+      border-radius: 8px;
+      color: white;
+      text-decoration: none;
+      font-size: .9rem;
+      font-weight: 600;
+      margin-top: 16px;
+      margin-bottom: 12px;
+      transition: all .3s;
+    }
+
+    .downloads-btn:hover { background: rgba(255,255,255,.4); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,.2); }
+    .dev-contact { margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,.3); }
+    .dev-contact p { font-size: .875rem; color: rgba(255,255,255,.9); margin-bottom: 4px; }
+    .dev-contact a { color: white; text-decoration: none; font-weight: 600; }
+    .dev-contact a:hover { text-decoration: underline; }
+    .footer-info { padding-top: 20px !important; margin-top: 0 !important; padding-bottom: 20px; }
+    .footer-info-container { margin: 0 auto; max-width: 1100px; width: 100%; padding: 0 5vw; }
+    .footer-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .company-info { text-align: left; }
+    .contract-verification { text-align: right; }
+    .company-info h4, .contract-verification h4 { color: var(--text-primary); font-weight: 500; margin-bottom: 12px; font-size: 1.1em; }
+    .company-info p, .contract-verification p { color: var(--text-secondary); margin-bottom: 8px; font-size: .95em; }
+    .verification-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 34px; }
+    .badge-v {
+      color: var(--text-secondary);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: .8em;
+      font-weight: 500;
+      border: 1px solid transparent;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
+    }
+    .badge-bsc { background: rgba(16,185,129,.12); border-color: rgba(16,185,129,.24); }
+    .badge-audit { background: rgba(240,185,11,.12); border-color: rgba(240,185,11,.24); }
+    .badge-gov { background: rgba(168,85,247,.12); border-color: rgba(168,85,247,.24); }
+    body.light-mode .badge-bsc { background: rgba(16,185,129,.08); border-color: rgba(16,185,129,.18); color: #166534; }
+    body.light-mode .badge-audit { background: rgba(240,185,11,.10); border-color: rgba(240,185,11,.22); color: #a16207; }
+    body.light-mode .badge-gov { background: rgba(168,85,247,.10); border-color: rgba(168,85,247,.22); color: #7e22ce; }
+    .contract-item { margin-bottom: 20px; }
+    .contract-label { font-size: .85em; color: var(--text-muted); margin-bottom: 8px; }
+    .contract-box { display: flex; align-items: center; gap: 8px; background: var(--bg-card); border: 1px solid var(--border-light); padding: 12px 16px; border-radius: 8px; }
+    .contract-address { flex: 1; font-family: 'Fira Code', monospace; font-size: .85em; color: var(--text-primary); overflow-x: auto; white-space: nowrap; }
+
+    .copy-btn {
+      padding: 8px 10px;
+      background: var(--gradient-pink);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0;
+      width: 36px;
+      height: 36px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .3s;
+      position: relative;
+    }
+
+    .copy-btn::before {
+      content: "";
+      width: 16px;
+      height: 16px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      display: block;
+    }
+
+    .copy-btn:hover { transform: scale(1.08); box-shadow: 0 4px 12px rgba(251,11,140,.4); }
+    .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid var(--border-light); }
+
+    .footer-links-bottom {
+      background: var(--bg-card);
+      padding: 14px 20px;
+      border-radius: 12px;
+      margin-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 2px 6px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .footer-links-bottom a {
+      background: var(--gradient-pink);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: #fff0;
+      background-clip: text;
+      text-decoration: none;
+      font-size: .875em;
+      font-weight: 300;
+      transition: all .3s;
+      position: relative;
+      padding: 2px 6px;
+    }
+
+    .footer-links-bottom a:hover { background: linear-gradient(135deg, #a0aec0 0%, #cbd5e0 100%); -webkit-background-clip: text; -webkit-text-fill-color: #fff0; background-clip: text; }
+    .separator { color: var(--text-muted); font-weight: 300; }
+    .copyright-line { font-weight: 300; margin-top: 20px; margin-bottom: 4px; color: var(--text-secondary); }
+    .women-safety-line { font-weight: 500; font-size: .9em; margin-bottom: 6px; color: var(--purple-primary); }
+    .heart { display: inline-block; animation: heartbeat 2s ease-in-out infinite; }
+    @keyframes heartbeat { 0%, 100% { transform: scale(1) } 10% { transform: scale(1.2) } 20% { transform: scale(1) } 30% { transform: scale(1.15) } 40% { transform: scale(1) } }
+    .footer-version { margin-top: 2px; font-size: .85em; color: var(--text-muted); }
+
+    .status-toast {
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%) translateY(18px);
+      background: rgba(16, 24, 39, 0.95);
+      color: white;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.25s ease;
+      z-index: 60;
+    }
+
+    .status-toast.visible {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .hero-split-grid,
+      .footer-info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-split-content {
+        padding: 24px 20px;
+      }
+
+      .hero-split-image {
+        min-height: 240px;
+      }
+
+      .hero-split-title {
+        font-size: 1.4rem;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .footer-vignette,
+      .footer-info-container {
+        width: 98%;
+        padding-left: 3vw;
+        padding-right: 3vw;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .page-nav {
+        padding: 12px 14px;
+        gap: 6px;
+      }
+
+      .nav-row {
+        gap: 4px;
+        flex-wrap: wrap;
+        width: 100%;
+      }
+
+      .nav-link {
+        padding: 6px 10px;
+        font-size: 0.75em;
+      }
+
+      .nav-sep {
+        display: none;
+      }
+
+      .theme-toggle {
+        top: 10px;
+        right: 10px;
+      }
+
+      .home-logo-link img {
+        width: 156px;
+      }
+
+      .coin-wrapper {
+        width: 96px;
+        height: 96px;
+      }
+
+      .header {
+        padding: 25px 20px;
+      }
+
+      .header h1 {
+        font-size: 1.6em;
+      }
+
+      .container,
+      .grok-card {
+        padding: 20px;
+      }
+
+      .tier-selector,
+      .footer-cards,
+      .distribution-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-vignette {
+        width: 100%;
+        margin: 10px 0;
+        padding: 25px 5vw;
+        border-radius: 8px;
+      }
+
+      .footer-info {
+        padding-top: 20px !important;
+      }
+
+      .footer-info-grid {
+        gap: 25px;
+        text-align: center;
+      }
+
+      .company-info,
+      .contract-verification {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        text-align: center !important;
+      }
+
+      .verification-badges {
+        justify-content: center;
+      }
+
+      .contract-box {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav-row {
+        gap: 6px;
+      }
+
+      .container {
+        padding: 12px;
+      }
+
+      .nav-sep {
+        display: none;
+      }
+
+      .nav-link {
+        padding: 5px 8px;
+        font-size: 0.7em;
+      }
+
+      .header {
+        padding: 20px 16px;
+      }
+
+      .header h1 {
+        font-size: 1.4em;
+      }
+
+      .slogan {
+        font-size: clamp(12px, 3.8vw, 17px);
+        white-space: normal;
+        text-align: center;
+        justify-content: center;
+      }
+
+      .hero-split-content {
+        padding: 20px 16px;
+      }
+
+      .hero-split-title {
+        font-size: 1.2rem;
+      }
+
+      .results-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .chart-bar-header {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .results-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+        /* Navbar parity with buy.html */
+        .page-nav {
+            background: linear-gradient(135deg, rgba(251, 11, 140, 0.12), rgba(168, 85, 247, 0.12));
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(251, 11, 140, 0.15);
+            border-radius: 16px; padding: 12px 24px; margin: 0 auto 0; max-width: 960px;
+            box-shadow: var(--shadow-md); position: relative; overflow: hidden;
+            display: flex; flex-direction: column; gap: 4px; align-items: center;
+        }
+        .page-nav::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gradient-pink); }
+        .nav-row { display: flex; gap: 1px; justify-content: center; align-items: center; }
+        .nav-row:last-child .nav-link {
+            padding: 6px 8px;  /* Slightly tighter than row 1 */
+            font-size: .78em;   /* Slightly smaller font */
+        }
+        .nav-divider { width: 80%; max-width: 500px; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent); margin: -1px 0; }
+        body.light-mode .nav-divider { background: linear-gradient(90deg, transparent, rgba(0,0,0,0.12), transparent); }
+        .nav-link {
+            padding: 8px 12px; border-radius: 8px; text-decoration: none; color: var(--text-secondary);
+            font-weight: 400; font-size: .82em; font-family: 'Fira Code', monospace;
+            text-transform: uppercase; letter-spacing: .02em; transition: all 0.3s ease; border: 1px solid transparent; white-space: nowrap;
+        }
+        .nav-link:hover { background: rgb(251 11 140 / .12); color: var(--pink-light); border-color: rgb(251 11 140 / .3); text-decoration: none; }
+        .nav-link.active { background: var(--gradient-pink); color: #fff; box-shadow: 0 4px 12px rgba(251, 11, 140, 0.35); }
+        .nav-link.active.buy-tab { background: var(--gradient-gold); color: var(--cmc-blue); box-shadow: 0 4px 12px rgba(240, 185, 11, 0.45); font-weight: 600; }
+        .nav-link.active.verified-tab { background: linear-gradient(135deg, #006d30 0%, #009e44 50%, #007a36 100%); color: #fff; box-shadow: 0 4px 12px rgba(0, 158, 68, 0.35); }
+        .nav-link.active.staking-tab { background: linear-gradient(135deg, #d97706 0%, #f59e0b 50%, #eab308 100%); color: #000; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35); }
+        .nav-link.active.grok-tab { background: linear-gradient(135deg, #fb0b8c 0%, #a855f7 50%, #6366f1 100%); color: #fff; box-shadow: 0 4px 12px rgba(168, 85, 247, 0.45); }
+        .nav-link.active.pancake-tab { background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 50%, #67e8f9 100%); color: #000; box-shadow: 0 4px 12px rgba(6, 182, 212, 0.35); }
+        .nav-sep { width: 1px; height: 18px; background: rgba(255,255,255,0.15); margin: 0 2px; }
+        body.light-mode .nav-sep { background: rgba(255,255,255,0.35); }
+
+        /* Light mode: solid pink navbar */
+        [data-theme="light"] .page-nav,
+        body.light-mode .page-nav {
+            background: linear-gradient(to top, #a0065a 0%, #b8076e 25%, #e50a83 55%, #fb0b8c 100%);
+            border-color: rgba(255,255,255,0.15);
+            box-shadow: 0 8px 24px rgba(251, 11, 140, 0.3), 0 4px 12px rgba(0,0,0,0.1);
+        }
+        [data-theme="light"] .page-nav::before,
+        body.light-mode .page-nav::before { background: linear-gradient(90deg, #ff4da6, #fff, #ff4da6); }
+        [data-theme="light"] .nav-divider,
+        body.light-mode .nav-divider { background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); }
+        [data-theme="light"] .nav-link,
+        body.light-mode .nav-link { color: rgba(255,255,255,0.85); }
+        [data-theme="light"] .nav-link:hover,
+        body.light-mode .nav-link:hover { background: rgba(255,255,255,0.15); color: #fff; border-color: rgba(255,255,255,0.3); }
+        [data-theme="light"] .nav-sep,
+        body.light-mode .nav-sep { background: rgba(255,255,255,0.35); }
+        [data-theme="dark"] .nav-divider { background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent); }
+        [data-theme="dark"] .nav-sep { background: rgba(255,255,255,0.15); }
+
+        @media (max-width: 768px) {
+            .page-nav { padding: 12px 14px; margin-top: 0; gap: 6px; }
+            .nav-row { gap: 4px; flex-wrap: wrap; width: 100%; }
+            .nav-link { padding: 6px 10px; font-size: .75em; }
+            .nav-row:last-child .nav-link { padding: 6px 10px; font-size: .75em; }
+            .nav-sep { display: none; }
+        }
+
+        @media (max-width: 480px) {
+            .page-nav { padding: 10px 10px; margin-top: 0; gap: 4px; }
+            .nav-row { gap: 6px; }
+            .nav-link { padding: 5px 8px; font-size: .7em; }
+            .nav-row:last-child .nav-link { padding: 5px 8px; font-size: .7em; }
+        }
+
+        @media print {
+            .page-nav { display: none; }
+        }
+
+
+        /* ============================================
+           DRAWER MODE (PTDT Revamped Home)
+           ============================================ */
+        body.ptdt-drawer-mode #particleCanvas,
+        body.ptdt-drawer-mode .progress-bar,
+        body.ptdt-drawer-mode .home-logo-section,
+        body.ptdt-drawer-mode .page-nav,
+        body.ptdt-drawer-mode .coin-slogan-section,
+        body.ptdt-drawer-mode .footer {
+            display: none !important;
+        }
+
+        body.ptdt-drawer-mode {
+            background: var(--bg-primary);
+            min-height: auto;
+            overflow-x: hidden;
+        }
+
+        html.ptdt-drawer-mode-root {
+            overflow-x: hidden;
+        }
+
+        body.ptdt-drawer-mode .app-container {
+            min-height: 0 !important;
+        }
+
+        body.ptdt-drawer-mode .container {
+            width: 100%;
+            max-width: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        body.ptdt-drawer-mode .theme-toggle {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            z-index: 30;
+        }
+
+        body.ptdt-drawer-mode .hero-split {
+            max-width: none;
+            margin: 0;
+            border: 0;
+            border-radius: 0;
+            background: transparent;
+            box-shadow: none;
+            overflow: visible;
+        }
+
+        body.ptdt-drawer-mode .hero-split-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 0.76fr) minmax(420px, 1.24fr);
+            gap: clamp(20px, 2.6vw, 36px);
+            align-items: stretch;
+            padding: clamp(24px, 4vw, 46px) clamp(24px, 4.6vw, 52px) 28px;
+        }
+
+        body.ptdt-drawer-mode .hero-split-content {
+            order: 1;
+            align-self: center;
+            padding: 0;
+            background: transparent;
+            border-left: 0;
+        }
+
+        body.ptdt-drawer-mode .hero-split-image {
+            order: 2;
+            align-self: start;
+            min-width: 0;
+            height: clamp(320px, 29vw, 405px);
+            min-height: 0;
+            border-radius: 22px;
+            overflow: hidden;
+            background: #111827;
+            box-shadow: 0 22px 60px rgba(16, 16, 24, 0.20);
+        }
+
+        body.ptdt-drawer-mode .hero-split-image img {
+            width: 100%;
+            height: 100%;
+            min-height: 0;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        body.ptdt-drawer-mode .hero-split-eyebrow {
+            display: inline-flex;
+            width: auto;
+            padding: 10px 20px;
+            border-radius: 999px;
+            background: rgba(42, 233, 123, 0.10);
+            border: 1px solid rgba(42, 233, 123, 0.28);
+            color: var(--green-success, #10B981);
+            font-family: Fira Code, monospace;
+            font-size: 12px;
+            letter-spacing: .12em;
+        }
+
+        body.ptdt-drawer-mode .hero-split-title {
+            max-width: 620px;
+            color: var(--pink-primary, #fb0b8c);
+            font-size: clamp(38px, 4.75vw, 64px);
+            line-height: 1.02;
+            font-weight: 800;
+            letter-spacing: -0.045em;
+            margin-bottom: 18px;
+            -webkit-text-fill-color: currentColor;
+            background: none;
+        }
+
+        body.ptdt-drawer-mode .hero-split-desc {
+            max-width: 610px;
+            color: var(--text-secondary);
+            font-size: 16px;
+            line-height: 1.75;
+            margin-bottom: 22px;
+        }
+
+        body.ptdt-drawer-mode .hero-split-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        body.ptdt-drawer-mode .hero-split-badge {
+            margin: 0;
+            padding: 11px 18px;
+            border-radius: 999px;
+            background: var(--bg-glass, var(--bg-card));
+            color: var(--text-primary);
+            border: 1px solid var(--border-light, var(--border-color));
+            box-shadow: var(--shadow-sm, none);
+            font-weight: 700;
+        }
+
+        body.ptdt-drawer-mode .container > :not(.hero-split) {
+            width: calc(100% - clamp(48px, 9.2vw, 104px));
+            max-width: none;
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+
+        @media (max-width: 900px) {
+            body.ptdt-drawer-mode .hero-split-grid {
+                grid-template-columns: 1fr;
+            }
+            body.ptdt-drawer-mode .hero-split-image {
+                order: 1;
+                height: auto;
+                min-height: 260px;
+            }
+            body.ptdt-drawer-mode .hero-split-content { order: 2; }
+            body.ptdt-drawer-mode .hero-split-title { font-size: clamp(32px, 8vw, 44px); }
+        }
+
+        @media (max-width: 560px) {
+            body.ptdt-drawer-mode .hero-split-grid { padding: 20px 16px 24px; }
+            body.ptdt-drawer-mode .container > :not(.hero-split) {
+                width: calc(100% - 32px);
+            }
+            body.ptdt-drawer-mode .hero-split-image { min-height: 200px; }
+            body.ptdt-drawer-mode .hero-split-title { font-size: 31px; }
+            body.ptdt-drawer-mode .hero-split-desc { font-size: 15px; }
+        }
+
+</style>
+
+<script id="ptdt-grok-stake-sim-drawer-mode">
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  if (params.get("drawer") === "1") {
+    document.documentElement.classList.add("ptdt-drawer-mode-root");
+    document.addEventListener("DOMContentLoaded", function(){
+      document.body.classList.add("ptdt-drawer-mode");
+      function getDrawerHeight(){
+        var app = document.querySelector(".app-container");
+        if (app) {
+          var rect = app.getBoundingClientRect();
+          return Math.ceil(rect.bottom + window.scrollY + 24);
+        }
+        return Math.ceil(document.body.getBoundingClientRect().height + 24);
+      }
+
+      function sendHeight(){
+        if (window.parent && window.parent !== window) {
+          window.parent.postMessage({
+            type: "ptdt-drawer-height",
+            height: getDrawerHeight()
+          }, "*");
+        }
+      }
+      window.ptdtSendDrawerHeight = sendHeight;
+      sendHeight();
+      window.addEventListener("load", sendHeight);
+      window.addEventListener("resize", sendHeight);
+      if (window.MutationObserver) {
+        new MutationObserver(sendHeight).observe(document.body, { childList: true, subtree: true, attributes: true });
+      }
+      setTimeout(sendHeight, 300);
+      setTimeout(sendHeight, 1000);
+      setTimeout(sendHeight, 2500);
+    });
+  }
+})();
+</script>
+
+</head>
+<body>
+  <canvas id="particleCanvas"></canvas>
+  <div class="progress-bar" id="progressBar"></div>
+  <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle Day/Night Mode"></button>
+
+  <div class="app-container">
+    <div class="home-logo-section">
+      <a href="https://ptdt.taxi" class="home-logo-link" title="Go to PTDT Homepage">
+        <img src="./ptdt-main-logo.png" alt="PTDT Home">
+      </a>
+    </div>
+
+    <nav class="page-nav">
+        <div class="nav-row">
+        <a href="https://ptdt.taxi/ptdt-docs/mainguide.html" class="nav-link">Main-Guide</a>
+        <span class="nav-sep"></span>
+        <a href="https://ptdt.taxi/ptdt-docs/apidocs.html" class="nav-link">API-Docs</a>
+        <span class="nav-sep"></span>
+        <a href="https://ptdt.taxi/ptdt-docs/dashboard.html" class="nav-link">Dashboard</a>
+        <span class="nav-sep"></span>
+        <a href="https://whitepaper.ptdt.taxi/" class="nav-link">WhitePaper</a>
+        <span class="nav-sep"></span>
+        <a href="https://ptdt.taxi/ptdt-docs/verified.html" class="nav-link verified-tab">Verified ✓</a>
+        <span class="nav-sep"></span>
+        <a href="https://ptdt.taxi/ptdt-docs/rebuttal.html" class="nav-link">Rebuttal</a>
+        <span class="nav-sep"></span>
+        <a href="https://ptdt.taxi/scope.html" class="nav-link">Scope</a>
+        <span class="nav-sep"></span>
+        <a href="https://ptdt.taxi/stake.html" class="nav-link staking-tab">⚡ Staking</a>
+        <span class="nav-sep"></span>
+        <a href="/buy.html" class="nav-link buy-tab">🏛 Buy PTDT</a>
+    </div>
+
+    <!-- DIVIDER -->
+    <div class="nav-divider"></div>
+
+    <!-- SECOND ROW (8 items - now balanced) -->
+    <div class="nav-row">
+        <a href="https://ptdt.taxi/coinranking.html" class="nav-link coinranking-tab">Coinranking</a>
+        <span class="nav-sep"></span>
+        <a href="/gecko.html" class="nav-link gecko-tab">🦎 GeckoTerminal</a>
+        <span class="nav-sep"></span>
+        <a href="/pancakeswap.html" class="nav-link pancake-tab">🥞 PancakeSwap</a>
+        <span class="nav-sep"></span>
+        <a href="/github.html" class="nav-link">▪️ GitHub</a>
+        <span class="nav-sep"></span>
+        <a href="/grokfare.html" class="nav-link grok-tab">🤖 Grok Fare</a>
+        <span class="nav-sep"></span>
+        <a href="https://ptdt.taxi/grok-stake-sim.html" class="nav-link active grok-tab">🧮 Stake Sim</a>
+        <span class="nav-sep"></span>
+        <a href="/ptdt-docs/downloads.html" class="nav-link">📥 Downloads</a>
+    </div>
+  </nav>
+
+    <div class="coin-slogan-section">
+      <div class="coin-wrapper">
+        <div class="coin">
+          <img src="data:image/svg+xml,%3Csvg viewBox='0 0 28.8 29.04' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='14.35' cy='14.4' r='12.27' fill='%232ae97b' stroke='%23d1d3d4' stroke-miterlimit='10' stroke-width='.46'/%3E%3Ccircle cx='14.35' cy='14.4' r='10.66' fill='%23020202'/%3E%3Cpath d='M15.14,12.47c-.21-.34,2.18-3.91,4.97-4.8-3.22,.47-5.62,2.79-5.76,2.93,0,0-.02,.01-.02,.01,0,0,.01,0,.02-.01,0,0,.01,0,.02,.01h-.02c.64-.63,.45-.1,0,.85-.45-.95-.64-1.48,0-.86-.14-.15-2.55-2.46-5.76-2.93,2.79,.89,5.18,4.46,4.97,4.8-.57,.94-1.12,2.19-1.21,3.55-.03,.14-.05,.26-.05,.36,0,3.18,2.03,5.76,2.03,5.76,0,0,0,0,.02-.01,0,0,.01,.01,.01,.01,0,0,2.03-2.57,2.03-5.76,0-.1-.01-.22-.04-.36-.09-1.36-.63-2.61-1.21-3.55' fill='%23fb0b8c'/%3E%3Cpath d='M15.75,8.26c0,.77-.62,1.39-1.39,1.39s-1.4-.62-1.4-1.39,.63-1.39,1.4-1.39,1.39,.62,1.39,1.39' fill='%23fb068c'/%3E%3C/svg%3E" alt="Peether PTDT" draggable="false">
+        </div>
+      </div>
+      <div class="slogan" id="slogan">
+        <span id="part1"></span>
+        <span id="cursor-anchor-mid"></span>
+        <span id="part2"></span>
+        <span id="cursor-anchor-end"><span class="cursor" id="main-cursor"></span></span>
+      </div>
+    </div>
+
+    <div class="container">
+      <section class="hero-split">
+        <div class="hero-split-grid">
+          <div class="hero-split-image">
+            <img src="./stake-sim-preview.webp" alt="Grok Stake Simulator - AI-Powered PTDT Staking Calculator" loading="lazy" decoding="async">
+          </div>
+          <div class="hero-split-content">
+            <p class="hero-split-eyebrow">AI-Powered Tool</p>
+            <h1 class="hero-split-title">Grok Stake Simulator</h1>
+            <p class="hero-split-desc">Simulate your PTDT staking rewards with Grok AI. Real yield from protocol fees: 60% burned, 40% to stakers.</p>
+            <div class="hero-split-badges">
+              <span class="hero-split-badge">🥉 12% APY</span>
+              <span class="hero-split-badge">🥈 15% APY</span>
+              <span class="hero-split-badge hero-split-badge-amber">🥇 18% APY</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <header class="header">
+        <div class="header-separator"></div>
+        <h1>Grok Stake Simulator</h1>
+        <p class="subtitle">
+          AI-powered staking calculator. Simulate your rewards across
+          <span class="hl-green">Bronze</span>,
+          <span class="hl-pink">Silver</span>, and
+          <span class="hl-gold">Gold</span> tiers.
+        </p>
+        <div class="brand-badge">
+          <span class="dot"></span>
+          🧮 POWERED BY GROK AI + PTDT PROTOCOL
+        </div>
+      </header>
+
+      <main class="main-content">
+        <div class="grok-card">
+          <form id="stakeForm">
+            <div class="form-group">
+              <label class="form-label" for="amount">💰 PTDT Amount to Stake</label>
+              <input id="amount" name="amount" type="number" class="form-input" placeholder="Enter PTDT amount (e.g., 100)" min="0" step="0.01" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">🎯 Select Staking Tier</label>
+              <div class="tier-selector" id="tierSelector">
+                <div class="tier-option bronze selected" data-tier="bronze">
+                  <div class="tier-name">Bronze</div>
+                  <div class="tier-apy">12% APY</div>
+                  <div class="tier-min">Min: 10 PTDT</div>
+                  <div class="tier-min">30 Days Lock</div>
+                </div>
+                <div class="tier-option silver" data-tier="silver">
+                  <div class="tier-name">Silver</div>
+                  <div class="tier-apy">15% APY</div>
+                  <div class="tier-min">Min: 100 PTDT</div>
+                  <div class="tier-min">60 Days Lock</div>
+                </div>
+                <div class="tier-option gold" data-tier="gold">
+                  <div class="tier-name">Gold</div>
+                  <div class="tier-apy">18% APY</div>
+                  <div class="tier-min">Min: 500 PTDT</div>
+                  <div class="tier-min">90 Days Lock</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="lockPeriod">🔒 Lock Period (Days)</label>
+              <input id="lockPeriod" name="lockPeriod" type="number" class="form-input" min="30" value="30" required>
+              <small id="lockPeriodHint" style="color: var(--text-muted); display: block; margin-top: 0.5rem;">Minimum: 30 days for Bronze tier</small>
+            </div>
+
+            <button type="submit" class="btn-primary" id="simulateButton">🤖 Simulate with Grok</button>
+
+            <div class="inline-note">
+              <strong style="color: var(--pink-primary);">ℹ️ Note:</strong>
+              This simulator uses mock Grok API responses. Real staking is live at
+              <a href="https://ptdt.taxi/stake.html" target="_blank" rel="noopener noreferrer">ptdt.taxi/stake.html</a>
+            </div>
+          </form>
+
+          <section class="results-container" id="resultsContainer" aria-live="polite">
+            <h3 class="results-title">🤖 Grok AI Analysis Results</h3>
+            <div class="results-grid">
+              <div class="result-card">
+                <div class="result-label">Daily Reward</div>
+                <div class="result-value"><span id="dailyReward">0.0000</span><span class="result-unit"> PTDT</span></div>
+              </div>
+              <div class="result-card">
+                <div class="result-label">Monthly Reward</div>
+                <div class="result-value"><span id="monthlyReward">0.00</span><span class="result-unit"> PTDT</span></div>
+              </div>
+              <div class="result-card">
+                <div class="result-label">Total APY</div>
+                <div class="result-value"><span id="totalApy">0</span><span class="result-unit"> %</span></div>
+              </div>
+              <div class="result-card">
+                <div class="result-label">Staked Amount</div>
+                <div class="result-value" style="color: var(--text-primary);"><span id="stakedAmount">0.00</span><span class="result-unit"> PTDT</span></div>
+              </div>
+            </div>
+
+            <div class="chart-container">
+              <h4 class="chart-title">📈 30-Day Reward Accumulation</h4>
+              <div id="chartBars"></div>
+            </div>
+
+            <div style="margin-top: 2rem;">
+              <h4 class="chart-title">🔥 PTDT Fee Distribution Model</h4>
+              <div class="distribution-grid">
+                <div class="distribution-card burn">
+                  <div class="distribution-value">60%</div>
+                  <div class="distribution-label">Burned Forever</div>
+                  <div class="distribution-copy">Permanent supply reduction</div>
+                </div>
+                <div class="distribution-card stakers">
+                  <div class="distribution-value">40%</div>
+                  <div class="distribution-label">Staker Rewards</div>
+                  <div class="distribution-copy">Real yield, no inflation</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="risk-note">
+              <div class="risk-note-title">🤖 Grok's Analysis</div>
+              <div class="risk-note-content" id="riskNote"></div>
+            </div>
+
+            <div style="margin-top: 2rem; padding: 1.5rem; background: var(--bg-card); border-radius: 12px; text-align: center; border: 1px solid var(--border-light);">
+              <h4 style="color: var(--text-primary); margin-bottom: 1rem; font-size: 1.2rem;">⚡ Ready to Stake for Real?</h4>
+              <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">This simulation shows projected rewards based on current tokenomics. Actual rewards may vary based on protocol fee volume.</p>
+              <a class="cta-button" href="https://ptdt.taxi/stake.html" target="_blank" rel="noopener noreferrer">🚀 Stake Live on PTDT</a>
+            </div>
+          </section>
+        </div>
+
+        <div class="grok-card" style="margin-top: 24px;">
+          <h3 style="font-family: 'Montserrat', sans-serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem;">💡 How PTDT Staking Works</h3>
+          <div class="info-grid">
+            <p><strong style="color: var(--pink-primary);">Real Yield Model:</strong> Staking rewards come from 40% of all protocol transaction fees. The other 60% is burned forever, making PTDT deflationary.</p>
+            <p><strong style="color: var(--pink-primary);">Three Tiers:</strong> Bronze (12% APY, 10 PTDT min), Silver (15% APY, 100 PTDT min), Gold (18% APY, 500 PTDT min). Higher tiers mean longer lock periods and better rewards.</p>
+            <p><strong style="color: var(--pink-primary);">On-Chain Settlement:</strong> PTDT serves as the infrastructure layer for global ride-hailing. Every ride generates fees, creating sustainable, non-inflationary yield for stakers.</p>
+            <p class="info-callout"><strong style="color: var(--pink-primary);">⚠️ Simulation Disclaimer:</strong> This calculator uses mock Grok API responses. Actual staking rewards depend on real-time protocol fee volume. Always DYOR.</p>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-vignette">
+        <div class="footer-container">
+          <div class="footer-cards">
+            <div class="footer-card">
+              <h3>| Quick Links</h3>
+              <div class="footer-links-list">
+                <a href="https://ptdt.taxi" target="_blank" rel="noopener noreferrer">🏠 Main Website</a>
+                <a href="https://dapp.ptdt.taxi" target="_blank" rel="noopener noreferrer">📱 DApp Portal</a>
+                <a href="https://ptdt.taxi/ptdt-docs/mainguide.html">🔗 Integration Guide</a>
+                <a href="https://ptdt.taxi/ptdt-docs/apidocs.html">🔧 API Documentation</a>
+                <a href="https://ptdt.taxi/ptdt-docs/securityresponse.html">🛡 Security Response</a>
+                <a href="https://ptdt.taxi/ptdt-docs/dashboard.html">📊 Live Dashboard</a>
+              </div>
+            </div>
+            <div class="footer-card">
+              <h3>| Resources</h3>
+              <div class="footer-links-list">
+                <a href="https://bscscan.com/token/0x66c6Fc5E7F99272134a52DF9E88D94eD83E89278" target="_blank" rel="noopener noreferrer">📊 BscScan Contract</a>
+                <a href="https://pancakeswap.finance/swap?outputCurrency=0x66c6Fc5E7F99272134a52DF9E88D94eD83E89278" target="_blank" rel="noopener noreferrer">💱 PancakeSwap</a>
+                <a href="https://github.com/pinkpeether/peether-protocol" target="_blank" rel="noopener noreferrer">💻 GitHub Repository</a>
+                <a href="https://dexscreener.com/bsc/0xF3a06E9Dc5d89B2fD8d7d30946c9aeddc5e01E28" target="_blank" rel="noopener noreferrer">📈 DexScreener Chart</a>
+                <a href="https://lime-capitalist-canid-406.mypinata.cloud/ipfs/bafkreibvhgi5mhutt6agzrdjki7gxecpr5cvx26yvdyn6kigyumzm6ghuq" target="_blank" rel="noopener noreferrer">📄 Audit Report</a>
+                <a href="https://blockchair.com/address/0x66c6fc5e7f99272134a52df9e88d94ed83e89278/aml-report.pdf" target="_blank" rel="noopener noreferrer">🌐 Gov Verification</a>
+              </div>
+            </div>
+            <div class="footer-card">
+              <h3>| Connect</h3>
+              <div class="social-icons">
+                <a href="https://t.me/PeetherPTDT" target="_blank" rel="noopener noreferrer" class="social-icon" title="Telegram">✈️</a>
+                <a href="https://x.com/PTDT_Token" target="_blank" rel="noopener noreferrer" class="social-icon" title="X">𝕏</a>
+                <a href="https://discord.gg/ptdt" target="_blank" rel="noopener noreferrer" class="social-icon" title="Discord">💬</a>
+                <a href="https://www.facebook.com/PTDToken" target="_blank" rel="noopener noreferrer" class="social-icon" title="Facebook">📘</a>
+                <a href="https://github.com/pinkpeether" target="_blank" rel="noopener noreferrer" class="social-icon" title="GitHub">💻</a>
+                <a href="https://medium.com/pink-taxi/followers" target="_blank" rel="noopener noreferrer" class="social-icon" title="Medium">📝</a>
+              </div>
+              <a href="https://ptdt.taxi/ptdt-docs/downloads.html" class="downloads-btn">📥 Downloads</a>
+              <div class="dev-contact">
+                <p style="font-weight: 500; margin-bottom: 1px;">Developer Support:</p>
+                <p>📧 <a href="mailto:dev@ptdt.taxi">dev@ptdt.taxi</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-info">
+        <div class="footer-info-container">
+          <div class="footer-info-grid">
+            <div class="company-info">
+              <h4>🏢 Company Information</h4>
+              <p><strong>Pink Taxi Group Ltd.</strong></p>
+              <p>Registered in the United Kingdom</p>
+              <p><strong>Token:</strong> Peether PTDT (Pink Taxi Drive Token)</p>
+              <p><strong>Network:</strong> BNB Smart Chain (BSC)</p>
+              <div class="verification-badges">
+                <span class="badge-v badge-bsc">✔ BSCScan Verified</span>
+                <span class="badge-v badge-audit">✔ Audit 9.2/10</span>
+                <span class="badge-v badge-gov">✔ Gov Verified</span>
+              </div>
+            </div>
+            <div class="contract-verification">
+              <h4>🔐 Contract &amp; Verification</h4>
+              <div class="contract-item">
+                <div class="contract-label">Staking Contract Address:</div>
+                <div class="contract-box">
+                  <span class="contract-address">0xfa6A09A581447255BD916ad98cf852fEFbC72494</span>
+                  <button class="copy-btn" type="button" data-copy="0xfa6A09A581447255BD916ad98cf852fEFbC72494" aria-label="Copy staking contract">📋</button>
+                </div>
+              </div>
+              <div class="contract-item">
+                <div class="contract-label">PTDT Token Contract:</div>
+                <div class="contract-box">
+                  <span class="contract-address">0x66c6Fc5E7F99272134a52DF9E88D94eD83E89278</span>
+                  <button class="copy-btn" type="button" data-copy="0x66c6Fc5E7F99272134a52DF9E88D94eD83E89278" aria-label="Copy token contract">📋</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-bottom">
+            <p class="women-safety-line">Made with <span class="heart">❤️</span> for women's safety</p>
+            <p style="font-weight: 300; color: var(--text-secondary); margin-bottom: 12px;">Building the future of decentralized transportation. Peether PTDT Token is a utility token for the PTDT ecosystem.</p>
+            <div class="footer-links-bottom">
+              <a href="https://ptdt.taxi/" target="_blank" rel="noopener noreferrer">Website</a>
+              <span class="separator">|</span>
+              <a href="https://dapp.ptdt.taxi/" target="_blank" rel="noopener noreferrer">DApp Site</a>
+              <span class="separator">|</span>
+              <a href="https://whitepaper.ptdt.taxi/" target="_blank" rel="noopener noreferrer">White Paper</a>
+              <span class="separator">|</span>
+              <a href="https://ptdt.taxi/ptdt-docs/mainguide.html" target="_blank" rel="noopener noreferrer">Main Guide</a>
+              <span class="separator">|</span>
+              <a href="https://ptdt.taxi/ptdt-docs/dashboard.html" target="_blank" rel="noopener noreferrer">Live Dashboard</a>
+              <span class="separator">|</span>
+              <a href="https://ptdt.taxi/cert.html" target="_blank" rel="noopener noreferrer">Certificate</a>
+              <span class="separator">|</span>
+              <a href="https://ptdt.taxi/privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+              <span class="separator">|</span>
+              <a href="https://ptdt.taxi/terms.html" target="_blank" rel="noopener noreferrer">Terms of Service</a>
+              <span class="separator">|</span>
+              <a href="https://ptdt.taxi/ptdt-docs/rebuttal.html" target="_blank" rel="noopener noreferrer">Rebuttal</a>
+              <span class="separator">|</span>
+              <a href="https://ptdt.taxi/cookies.html" target="_blank" rel="noopener noreferrer">Cookie Policy</a>
+              <span class="separator">|</span>
+              <a href="https://ptdt.taxi/ptdt-docs/verified.html">Verified</a>
+              <span class="separator">|</span>
+              <a href="https://ptdt.taxi/scope.html">Scope</a>
+              <span class="separator">|</span>
+              <a href="stake.html">Staking</a>
+              <span class="separator">|</span>
+              <a href="grokfare.html">Grok Fare</a>
+              <span class="separator">|</span>
+              <a href="/cdn-cgi/l/email-protection#b3d7d6c5f3c3c7d7c79dc7d2cbda">Contact Us</a>
+            </div>
+            <p class="copyright-line">Copyrights © 2026 Peether – PTDT. Pink Taxi Group LTD. UK. All rights reserved.</p>
+            <p class="footer-version">Grok Stake Simulator v1.0 • Last Updated: March 2026</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <div class="status-toast" id="statusToast" role="status" aria-live="polite"></div>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    const TIERS = {
+      bronze: { name: 'Bronze', apy: 12, minStake: 10, lockPeriod: 30 },
+      silver: { name: 'Silver', apy: 15, minStake: 100, lockPeriod: 60 },
+      gold: { name: 'Gold', apy: 18, minStake: 500, lockPeriod: 90 }
+    };
+
+    const refs = {
+      body: document.body,
+      canvas: document.getElementById('particleCanvas'),
+      progressBar: document.getElementById('progressBar'),
+      themeToggle: document.getElementById('themeToggle'),
+      tierSelector: document.getElementById('tierSelector'),
+      stakeForm: document.getElementById('stakeForm'),
+      amount: document.getElementById('amount'),
+      lockPeriod: document.getElementById('lockPeriod'),
+      lockPeriodHint: document.getElementById('lockPeriodHint'),
+      simulateButton: document.getElementById('simulateButton'),
+      resultsContainer: document.getElementById('resultsContainer'),
+      dailyReward: document.getElementById('dailyReward'),
+      monthlyReward: document.getElementById('monthlyReward'),
+      totalApy: document.getElementById('totalApy'),
+      stakedAmount: document.getElementById('stakedAmount'),
+      riskNote: document.getElementById('riskNote'),
+      chartBars: document.getElementById('chartBars'),
+      statusToast: document.getElementById('statusToast')
+    };
+
+    let selectedTier = 'bronze';
+    let toastTimer = null;
+
+    function showToast(message) {
+      refs.statusToast.textContent = message;
+      refs.statusToast.classList.add('visible');
+      window.clearTimeout(toastTimer);
+      toastTimer = window.setTimeout(() => {
+        refs.statusToast.classList.remove('visible');
+      }, 1800);
+    }
+
+    function updateProgressBar() {
+      const scroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      refs.progressBar.style.width = (height > 0 ? (scroll / height) * 100 : 0) + '%';
+    }
+
+    function applyTheme(mode) {
+      const light = mode === 'light';
+      refs.body.classList.toggle('light-mode', light);
+      refs.themeToggle.innerHTML = light
+        ? '<svg viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="5" fill="currentColor"></circle><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></g></svg>'
+        : '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"></path></svg>';
+      refs.canvas.style.background = light ? '#f4f4f8' : '#0a0a0f';
+      try {
+        localStorage.setItem('ptdt-theme', mode);
+      } catch (error) {
+      }
+    }
+
+    function setTier(tier) {
+      selectedTier = tier;
+      const config = TIERS[tier];
+      Array.from(refs.tierSelector.querySelectorAll('.tier-option')).forEach((option) => {
+        option.classList.toggle('selected', option.dataset.tier === tier);
+      });
+      refs.lockPeriod.min = String(config.lockPeriod);
+      if (Number(refs.lockPeriod.value) < config.lockPeriod || !refs.lockPeriod.value) {
+        refs.lockPeriod.value = String(config.lockPeriod);
+      }
+      refs.lockPeriodHint.textContent = `Minimum: ${config.lockPeriod} days for ${config.name} tier`;
+    }
+
+    function generateRiskNote(amount, tier, lockPeriod) {
+      const notes = [
+        `Based on the ${tier.toUpperCase()} tier staking ${amount.toFixed(2)} PTDT for ${lockPeriod} days, your rewards will accumulate from the 40% fee distribution pool. Remember: PTDT uses a deflationary model where 60% of fees are burned, creating long-term value appreciation potential.`,
+        `Your ${amount.toFixed(2)} PTDT stake in ${tier.toUpperCase()} tier is secured by smart contract 0xfa6A09A581447255BD916ad98cf852fEFbC72494 (verified on BscScan). Rewards are paid from real protocol fees, not token inflation.`,
+        `${tier.charAt(0).toUpperCase() + tier.slice(1)} tier analysis: With ${amount.toFixed(2)} PTDT locked for ${lockPeriod} days, you're earning real yield from ride-hailing settlement fees. No inflation means a more sustainable growth model.`
+      ];
+      return notes[Math.floor(Math.random() * notes.length)];
+    }
+
+    function renderResults(amount, tier, lockPeriod) {
+      const tierConfig = TIERS[tier];
+      const dailyReward = (amount * (tierConfig.apy / 365)) / 100;
+      const monthlyReward = dailyReward * 30;
+
+      refs.dailyReward.textContent = dailyReward.toFixed(4);
+      refs.monthlyReward.textContent = monthlyReward.toFixed(2);
+      refs.totalApy.textContent = String(tierConfig.apy);
+      refs.stakedAmount.textContent = amount.toFixed(2);
+      refs.riskNote.textContent = generateRiskNote(amount, tier, lockPeriod);
+
+      const points = [7, 14, 21, 30];
+      refs.chartBars.innerHTML = points.map((day) => {
+        const accumulated = dailyReward * day;
+        const percentage = (accumulated / monthlyReward) * 100;
+        return `
+          <div class="chart-bar">
+            <div class="chart-bar-header">
+              <span class="chart-bar-label">Day ${day}</span>
+              <span class="chart-bar-value">${accumulated.toFixed(2)} PTDT</span>
+            </div>
+            <div class="chart-track">
+              <div class="chart-bar-fill" style="width: ${percentage}%"></div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      refs.resultsContainer.classList.add('visible');
+      refs.resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    async function handleSubmit(event) {
+      event.preventDefault();
+
+      const amount = Number.parseFloat(refs.amount.value);
+      const tierConfig = TIERS[selectedTier];
+      const lockPeriod = Number.parseInt(refs.lockPeriod.value, 10);
+
+      if (Number.isNaN(amount) || amount <= 0) {
+        window.alert('Please enter a valid PTDT amount');
+        return;
+      }
+
+      if (amount < tierConfig.minStake) {
+        window.alert(`Minimum stake for ${tierConfig.name} tier is ${tierConfig.minStake} PTDT`);
+        return;
+      }
+
+      if (Number.isNaN(lockPeriod) || lockPeriod < tierConfig.lockPeriod) {
+        window.alert(`Minimum lock period for ${tierConfig.name} tier is ${tierConfig.lockPeriod} days`);
+        return;
+      }
+
+      refs.simulateButton.disabled = true;
+      refs.simulateButton.innerHTML = '<span class="loading-spinner"></span> Consulting Grok AI...';
+
+      await new Promise((resolve) => window.setTimeout(resolve, 2000));
+
+      renderResults(amount, selectedTier, lockPeriod);
+      refs.simulateButton.disabled = false;
+      refs.simulateButton.textContent = '🤖 Simulate with Grok';
+    }
+
+    async function copyText(text) {
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast('Contract copied');
+      } catch (error) {
+        showToast('Copy failed');
+      }
+    }
+
+    function initParticles() {
+      const canvas = refs.canvas;
+      const ctx = canvas.getContext('2d');
+
+      const resize = () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      };
+
+      resize();
+      window.addEventListener('resize', resize);
+
+      const colors = ['rgba(251, 10, 139, 0.5)', 'rgba(0, 226, 110, 0.5)'];
+      const particles = Array.from({ length: 60 }, () => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 3 + 1,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        vx: Math.random() - 0.5,
+        vy: Math.random() - 0.5
+      }));
+
+      const animate = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach((particle) => {
+          ctx.beginPath();
+          ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+          ctx.fillStyle = particle.color;
+          ctx.fill();
+
+          particle.x += particle.vx;
+          particle.y += particle.vy;
+
+          if (particle.x < 0) {
+            particle.x = canvas.width;
+            particle.vx *= -1;
+          }
+          if (particle.x > canvas.width) {
+            particle.x = 0;
+            particle.vx *= -1;
+          }
+          if (particle.y < 0) {
+            particle.y = canvas.height;
+            particle.vy *= -1;
+          }
+          if (particle.y > canvas.height) {
+            particle.y = 0;
+            particle.vy *= -1;
+          }
+        });
+
+        window.requestAnimationFrame(animate);
+      };
+
+      animate();
+    }
+
+    document.addEventListener('click', (event) => {
+      const tierOption = event.target.closest('.tier-option');
+      if (tierOption) {
+        setTier(tierOption.dataset.tier);
+      }
+
+      const copyButton = event.target.closest('.copy-btn');
+      if (copyButton) {
+        copyText(copyButton.dataset.copy);
+      }
+    });
+
+    refs.themeToggle.addEventListener('click', () => {
+      const nextMode = refs.body.classList.contains('light-mode') ? 'dark' : 'light';
+      applyTheme(nextMode);
+    });
+
+    refs.stakeForm.addEventListener('submit', handleSubmit);
+    window.addEventListener('scroll', updateProgressBar, { passive: true });
+
+    const savedTheme = (() => {
+      try {
+        return localStorage.getItem('ptdt-theme') || 'dark';
+      } catch {
+        return 'dark';
+      }
+    })();
+    applyTheme(savedTheme);
+    initParticles();
+
+    // ================================
+    // SLOGAN TYPING ANIMATION
+    // ================================
+    (function() {
+        var sloganPart1 = [
+            { text: "Trust the ", cls: "light" },
+            { text: "{", cls: "brackets" },
+            { text: " ", cls: "light" },
+            { text: "Code", cls: "code" },
+            { text: " ", cls: "light" },
+            { text: "}", cls: "brackets" },
+            { text: ",", cls: "light" }
+        ];
+        var sloganPart2 = [
+            { text: " ", cls: "light" },
+            { text: "// Not the ", cls: "gray" },
+            { text: "Cult", cls: "cult" },
+            { text: "!", cls: "exclamation" }
+        ];
+        var part1Area = document.getElementById('part1');
+        var part2Area = document.getElementById('part2');
+        var mainCursor = document.getElementById('main-cursor');
+        var anchorMid = document.getElementById('cursor-anchor-mid');
+        var sloganEl = document.getElementById('slogan');
+        var currentDelay = 500;
+
+        function typeSegments(segments, container) {
+            for (var s = 0; s < segments.length; s++) {
+                var seg = segments[s];
+                var span = document.createElement('span');
+                if (seg.cls) span.className = seg.cls;
+                container.appendChild(span);
+                var chars = seg.text.split('');
+                for (var c = 0; c < chars.length; c++) {
+                    var charSpan = document.createElement('span');
+                    charSpan.className = 'char';
+                    charSpan.textContent = chars[c];
+                    span.appendChild(charSpan);
+                    (function(cs, sp, delay) {
+                        setTimeout(function() { cs.classList.add('visible'); sp.appendChild(mainCursor); }, delay);
+                    })(charSpan, span, currentDelay);
+                    currentDelay += (chars[c] === ' ' ? 70 : 100);
+                }
+            }
+        }
+
+        typeSegments(sloganPart1, part1Area);
+        typeSegments(sloganPart2, part2Area);
+
+        var finalDelay = currentDelay;
+        setTimeout(function() {
+            setTimeout(function() {
+                sloganEl.classList.add('finished');
+                setTimeout(function() { anchorMid.appendChild(mainCursor); }, 2000);
+            }, 800);
+        }, finalDelay);
+    })();
+  </script>
+</body>
+</html>

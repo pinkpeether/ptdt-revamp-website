@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@400;500&display=swap');
+
+  *{margin:0;padding:0;box-sizing:border-box}
+
+  :root{
+    --pink:#fb0b8c;
+    --pink-light:#ff4da6;
+    --pink-pale:#fff0f7;
+    --pink-mid:#ffd6ec;
+    --green:#00a747;
+    --green-light:#2ae97b;
+    --green-pale:#f0fff7;
+    --purple:#a855f7;
+    --purple-pale:#f5f0ff;
+    --gray-100:#f8f8fa;
+    --gray-200:#f0f0f4;
+    --gray-300:#e4e4ec;
+    --gray-400:#c8c8d8;
+    --gray-500:#8888a0;
+    --gray-700:#3a3a52;
+    --gray-900:#0f0f1a;
+    --white:#ffffff;
+    --font-display:'Bricolage Grotesque',sans-serif;
+    --font-body:'DM Sans',sans-serif;
+    --font-mono:'DM Mono',monospace;
+  }
+
+  body{font-family:var(--font-body);background:var(--white);color:var(--gray-900);line-height:1.6;overflow-x:hidden;font-size:15px}
+
+  /* NAV */
+  .nav{
+    position:sticky;top:0;z-index:100;
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--gray-300);
+    padding:0 48px;
+    display:flex;align-items:center;justify-content:space-between;
+    height:68px;
+    transition:box-shadow 0.3s;
+  }
+  .nav.scrolled{box-shadow:0 2px 24px rgba(251,11,140,0.08)}
+  .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+  .logo-mark{
+    width:36px;height:36px;border-radius:50%;
+    background:linear-gradient(135deg,#00a747,#2ae97b);
+    display:flex;align-items:center;justify-content:center;
+    position:relative;
+  }
+  .logo-mark::after{
+    content:'';position:absolute;width:14px;height:18px;
+    background:var(--pink);
+    clip-path:polygon(50% 0%,100% 30%,80% 100%,20% 100%,0% 30%);
+  }
+  .logo-text{font-family:var(--font-display);font-weight:800;font-size:18px;letter-spacing:-0.03em;color:var(--gray-900)}
+  .logo-text span{color:var(--pink)}
+  .nav-links{display:flex;align-items:center;gap:8px}
+  .nav-link{padding:8px 14px;border-radius:8px;font-size:14px;font-weight:500;color:var(--gray-700);text-decoration:none;transition:all 0.2s;cursor:pointer}
+  .nav-link:hover{background:var(--gray-100);color:var(--pink)}
+  .nav-link.active{color:var(--pink)}
+  .nav-cta{
+    padding:10px 20px;border-radius:10px;font-size:14px;font-weight:600;
+    background:var(--pink);color:var(--white);border:none;cursor:pointer;
+    transition:all 0.2s;letter-spacing:-0.01em;
+    display:flex;align-items:center;gap:6px;
+  }
+  .nav-cta:hover{background:#e0097e;transform:translateY(-1px);box-shadow:0 8px 20px rgba(251,11,140,0.3)}
+  .nav-cta svg{width:14px;height:14px}
+
+  /* HERO */
+  .hero{
+    padding:100px 48px 80px;
+    max-width:1200px;margin:0 auto;
+    display:grid;grid-template-columns:1fr 480px;gap:80px;align-items:center;
+  }
+  .hero-eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:6px 14px;border-radius:999px;
+    background:var(--green-pale);border:1px solid rgba(0,167,71,0.2);
+    font-size:12px;font-weight:600;color:var(--green);
+    font-family:var(--font-mono);letter-spacing:0.04em;
+    margin-bottom:24px;
+  }
+  .live-dot{width:7px;height:7px;border-radius:50%;background:var(--green-light);animation:pulse-dot 2s infinite}
+  @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.6;transform:scale(1.3)}}
+  .hero-h1{
+    font-family:var(--font-display);
+    font-size:clamp(42px,5vw,64px);
+    font-weight:800;
+    line-height:1.05;
+    letter-spacing:-0.04em;
+    color:var(--gray-900);
+    margin-bottom:20px;
+  }
+  .hero-h1 .accent-pink{color:var(--pink)}
+  .hero-h1 .accent-green{color:var(--green)}
+  .hero-sub{
+    font-size:17px;font-weight:400;color:var(--gray-500);
+    line-height:1.7;max-width:480px;margin-bottom:36px;
+  }
+  .hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+  .btn-primary{
+    padding:14px 28px;border-radius:12px;font-size:15px;font-weight:600;
+    background:var(--pink);color:var(--white);border:none;cursor:pointer;
+    transition:all 0.25s;letter-spacing:-0.01em;
+    display:inline-flex;align-items:center;gap:8px;text-decoration:none;
+  }
+  .btn-primary:hover{background:#e0097e;transform:translateY(-2px);box-shadow:0 12px 32px rgba(251,11,140,0.35)}
+  .btn-secondary{
+    padding:14px 28px;border-radius:12px;font-size:15px;font-weight:500;
+    background:var(--white);color:var(--gray-700);
+    border:1.5px solid var(--gray-300);cursor:pointer;
+    transition:all 0.25s;letter-spacing:-0.01em;
+    display:inline-flex;align-items:center;gap:8px;text-decoration:none;
+  }
+  .btn-secondary:hover{border-color:var(--pink);color:var(--pink);transform:translateY(-2px)}
+  .hero-stats{
+    display:flex;gap:32px;margin-top:40px;padding-top:32px;
+    border-top:1px solid var(--gray-300);
+  }
+  .hero-stat{}
+  .hero-stat-val{
+    font-family:var(--font-display);font-size:24px;font-weight:800;
+    letter-spacing:-0.03em;color:var(--gray-900);line-height:1;margin-bottom:4px;
+  }
+  .hero-stat-val span{color:var(--pink)}
+  .hero-stat-label{font-size:12px;color:var(--gray-500);font-weight:500;letter-spacing:0.02em}
+
+  /* HERO VISUAL */
+  .hero-visual{position:relative}
+  .hero-card{
+    background:var(--white);border-radius:24px;
+    border:1px solid var(--gray-300);
+    box-shadow:0 32px 80px rgba(0,0,0,0.08),0 8px 24px rgba(251,11,140,0.06);
+    overflow:hidden;
+  }
+  .hero-card-top{
+    padding:24px;
+    background:linear-gradient(135deg,#0f0f1a 0%,#1a1030 100%);
+    position:relative;overflow:hidden;
+  }
+  .hero-card-top::before{
+    content:'';position:absolute;top:-40px;right:-40px;
+    width:200px;height:200px;border-radius:50%;
+    background:radial-gradient(circle,rgba(251,11,140,0.25),transparent 70%);
+  }
+  .hero-card-top::after{
+    content:'';position:absolute;bottom:-20px;left:-20px;
+    width:140px;height:140px;border-radius:50%;
+    background:radial-gradient(circle,rgba(0,167,71,0.2),transparent 70%);
+  }
+  .price-tag{font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:4px;letter-spacing:0.05em}
+  .price-val{
+    font-family:var(--font-display);font-size:40px;font-weight:800;
+    color:var(--white);letter-spacing:-0.04em;line-height:1;margin-bottom:4px;
+    position:relative;z-index:1;
+  }
+  .price-change{
+    display:inline-flex;align-items:center;gap:4px;
+    padding:3px 10px;border-radius:999px;
+    background:rgba(42,233,123,0.15);color:var(--green-light);
+    font-size:12px;font-weight:600;font-family:var(--font-mono);
+    position:relative;z-index:1;
+  }
+  .hero-chart{height:64px;display:flex;align-items:flex-end;gap:2px;margin-top:16px;position:relative;z-index:1}
+  .chart-bar{
+    flex:1;border-radius:3px 3px 0 0;
+    background:rgba(251,11,140,0.3);transition:background 0.2s;cursor:pointer;
+  }
+  .chart-bar:hover{background:rgba(251,11,140,0.7)}
+  .chart-bar.active{background:var(--pink)}
+  .hero-card-bottom{padding:20px 24px;display:flex;flex-direction:column;gap:12px}
+  .metric-row{display:flex;justify-content:space-between;align-items:center}
+  .metric-label{font-size:12px;color:var(--gray-500);font-weight:500}
+  .metric-val{font-family:var(--font-mono);font-size:13px;font-weight:500;color:var(--gray-900)}
+  .metric-val.pink{color:var(--pink)}
+  .metric-val.green{color:var(--green)}
+  .burn-bar-wrap{margin-top:4px}
+  .burn-bar-track{height:6px;background:var(--gray-200);border-radius:999px;overflow:hidden}
+  .burn-bar-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--pink),var(--pink-light));width:60%}
+  .stake-bar-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--green),var(--green-light));width:40%}
+  .floating-badge{
+    position:absolute;top:-16px;right:24px;
+    background:var(--white);border:1px solid var(--gray-300);
+    border-radius:12px;padding:10px 14px;
+    box-shadow:0 8px 24px rgba(0,0,0,0.08);
+    display:flex;align-items:center;gap:8px;white-space:nowrap;
+  }
+  .badge-icon{width:28px;height:28px;border-radius:8px;background:var(--green-pale);display:flex;align-items:center;justify-content:center}
+  .badge-icon svg{width:14px;height:14px;stroke:var(--green)}
+  .badge-text{font-size:12px;font-weight:600;color:var(--gray-700)}
+  .badge-sub{font-size:11px;color:var(--gray-500)}
+
+  /* SECTION COMMON */
+  .section{padding:96px 48px}
+  .section-inner{max-width:1200px;margin:0 auto}
+  .section-tag{
+    display:inline-block;padding:5px 14px;border-radius:999px;
+    font-size:11px;font-weight:700;font-family:var(--font-mono);letter-spacing:0.06em;text-transform:uppercase;
+    margin-bottom:16px;
+  }
+  .tag-pink{background:var(--pink-pale);color:var(--pink);border:1px solid var(--pink-mid)}
+  .tag-green{background:var(--green-pale);color:var(--green);border:1px solid rgba(0,167,71,0.2)}
+  .tag-purple{background:var(--purple-pale);color:var(--purple);border:1px solid rgba(168,85,247,0.2)}
+  .tag-gray{background:var(--gray-100);color:var(--gray-500);border:1px solid var(--gray-300)}
+  .section-h2{
+    font-family:var(--font-display);font-size:clamp(32px,4vw,48px);font-weight:800;
+    letter-spacing:-0.04em;line-height:1.1;color:var(--gray-900);margin-bottom:12px;
+  }
+  .section-h2 em{font-style:normal;color:var(--pink)}
+  .section-sub{font-size:16px;color:var(--gray-500);max-width:560px;line-height:1.7;margin-bottom:56px}
+
+  /* FEATURE STRIP */
+  .feature-strip{
+    background:var(--gray-900);padding:64px 48px;
+  }
+  .feature-strip-inner{max-width:1200px;margin:0 auto}
+  .feature-strip h3{
+    font-family:var(--font-display);font-size:13px;font-weight:600;letter-spacing:0.12em;
+    text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:40px;
+  }
+  .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.08)}
+  .feature-item{
+    background:var(--gray-900);padding:36px 32px;
+    transition:background 0.3s;cursor:default;
+  }
+  .feature-item:hover{background:#1a1030}
+  .feature-num{
+    font-family:var(--font-mono);font-size:11px;color:var(--pink);
+    letter-spacing:0.08em;margin-bottom:16px;opacity:0.7;
+  }
+  .feature-icon{
+    width:44px;height:44px;border-radius:12px;margin-bottom:16px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .icon-pink{background:rgba(251,11,140,0.15)}
+  .icon-green{background:rgba(0,167,71,0.15)}
+  .icon-purple{background:rgba(168,85,247,0.15)}
+  .feature-icon svg{width:20px;height:20px}
+  .feature-title{font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--white);letter-spacing:-0.02em;margin-bottom:10px}
+  .feature-desc{font-size:14px;color:rgba(255,255,255,0.45);line-height:1.7}
+
+  /* ABOUT / SPLIT */
+  .split-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+  .about-visual{position:relative}
+  .about-main-card{
+    background:var(--gray-100);border-radius:24px;padding:40px;
+    border:1px solid var(--gray-300);
+  }
+  .about-stat-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+  .about-stat-card{
+    background:var(--white);border-radius:16px;padding:20px;
+    border:1px solid var(--gray-300);
+  }
+  .about-stat-card.pink-accent{border-top:3px solid var(--pink)}
+  .about-stat-card.green-accent{border-top:3px solid var(--green)}
+  .asc-val{font-family:var(--font-display);font-size:28px;font-weight:800;letter-spacing:-0.04em;line-height:1;margin-bottom:4px}
+  .asc-label{font-size:12px;color:var(--gray-500);font-weight:500}
+  .floating-pill{
+    position:absolute;bottom:-20px;right:-20px;
+    background:var(--gray-900);color:var(--white);
+    border-radius:14px;padding:14px 18px;
+    display:flex;align-items:center;gap:10px;
+    box-shadow:0 16px 40px rgba(0,0,0,0.16);
+    border:1px solid rgba(255,255,255,0.08);
+  }
+  .pill-icon{width:32px;height:32px;border-radius:10px;background:rgba(251,11,140,0.2);display:flex;align-items:center;justify-content:center}
+  .pill-icon svg{width:16px;height:16px;stroke:var(--pink)}
+  .pill-val{font-family:var(--font-mono);font-size:13px;font-weight:500}
+  .pill-label{font-size:11px;color:rgba(255,255,255,0.45)}
+  .about-text p{font-size:16px;color:var(--gray-500);line-height:1.8;margin-bottom:20px}
+  .check-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin:32px 0}
+  .check-list li{
+    display:flex;align-items:flex-start;gap:12px;
+    font-size:15px;color:var(--gray-700);
+  }
+  .check-icon{
+    width:20px;height:20px;border-radius:50%;
+    background:var(--green-pale);border:1px solid rgba(0,167,71,0.2);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;
+  }
+  .check-icon svg{width:10px;height:10px;stroke:var(--green)}
+
+  /* TOKENOMICS */
+  .tokenomics-section{background:var(--gray-100)}
+  .token-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:40px}
+  .token-card{
+    background:var(--white);border-radius:20px;padding:28px 24px;
+    border:1px solid var(--gray-300);transition:all 0.3s;
+  }
+  .token-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,0.08);border-color:var(--gray-400)}
+  .token-card.featured{border-color:var(--pink);background:linear-gradient(135deg,var(--pink-pale),var(--white))}
+  .token-card.green-featured{border-color:var(--green);background:linear-gradient(135deg,var(--green-pale),var(--white))}
+  .tc-icon{width:40px;height:40px;border-radius:12px;margin-bottom:16px;display:flex;align-items:center;justify-content:center}
+  .tc-val{font-family:var(--font-display);font-size:28px;font-weight:800;letter-spacing:-0.04em;line-height:1;margin-bottom:4px}
+  .tc-label{font-size:12px;color:var(--gray-500);font-weight:500;margin-bottom:8px}
+  .tc-sub{font-size:12px;line-height:1.5}
+
+  /* FEE SPLIT */
+  .fee-split{
+    background:var(--gray-900);border-radius:24px;padding:40px;
+    display:grid;grid-template-columns:1fr 1fr;gap:0;overflow:hidden;
+  }
+  .fee-half{padding:32px 36px}
+  .fee-half.burn{border-right:1px solid rgba(255,255,255,0.08)}
+  .fee-pct{
+    font-family:var(--font-display);font-size:72px;font-weight:800;
+    letter-spacing:-0.06em;line-height:1;margin-bottom:12px;
+  }
+  .burn .fee-pct{color:var(--pink)}
+  .stake .fee-pct{color:var(--green-light)}
+  .fee-title{font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--white);margin-bottom:8px;letter-spacing:-0.02em}
+  .fee-desc{font-size:13px;color:rgba(255,255,255,0.4);line-height:1.7}
+
+  /* STAKING TIERS */
+  .staking-section{}
+  .tiers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .tier-card{
+    border-radius:20px;padding:32px 28px;border:1px solid var(--gray-300);
+    position:relative;overflow:hidden;transition:all 0.3s;cursor:pointer;
+  }
+  .tier-card::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:4px;
+  }
+  .tier-card.bronze::before{background:linear-gradient(90deg,#cd7f32,#e8a87c)}
+  .tier-card.silver::before{background:linear-gradient(90deg,#94a3b8,#cbd5e1)}
+  .tier-card.gold::before{background:linear-gradient(90deg,var(--pink),var(--pink-light))}
+  .tier-card.gold{border-color:rgba(251,11,140,0.25);background:linear-gradient(135deg,var(--pink-pale),var(--white))}
+  .tier-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,0.1)}
+  .tier-badge{
+    display:inline-flex;padding:4px 12px;border-radius:999px;
+    font-size:11px;font-weight:700;font-family:var(--font-mono);letter-spacing:0.06em;text-transform:uppercase;
+    margin-bottom:20px;
+  }
+  .bronze .tier-badge{background:rgba(205,127,50,0.12);color:#a05c1a}
+  .silver .tier-badge{background:rgba(148,163,184,0.15);color:#64748b}
+  .gold .tier-badge{background:var(--pink-pale);color:var(--pink)}
+  .tier-apy{
+    font-family:var(--font-display);font-size:48px;font-weight:800;
+    letter-spacing:-0.05em;line-height:1;margin-bottom:4px;
+  }
+  .bronze .tier-apy{color:#cd7f32}
+  .silver .tier-apy{color:#64748b}
+  .gold .tier-apy{color:var(--pink)}
+  .tier-apy span{font-size:18px;font-weight:600;letter-spacing:0;opacity:0.6}
+  .tier-min{font-size:13px;color:var(--gray-500);margin-bottom:20px}
+  .tier-lock{
+    display:inline-flex;align-items:center;gap:6px;
+    padding:6px 12px;border-radius:8px;background:var(--gray-100);
+    font-size:12px;font-weight:500;color:var(--gray-700);
+  }
+
+  /* ROADMAP */
+  .roadmap-section{background:var(--gray-100)}
+  .timeline{position:relative;padding-left:32px}
+  .timeline::before{
+    content:'';position:absolute;left:10px;top:8px;bottom:8px;
+    width:2px;background:linear-gradient(to bottom,var(--pink),var(--purple),var(--green));
+    border-radius:999px;
+  }
+  .timeline-item{position:relative;margin-bottom:40px}
+  .timeline-dot{
+    position:absolute;left:-36px;top:6px;
+    width:22px;height:22px;border-radius:50%;border:3px solid var(--white);
+    box-shadow:0 0 0 2px currentColor;
+  }
+  .tl-done .timeline-dot{background:var(--green);color:var(--green)}
+  .tl-active .timeline-dot{background:var(--pink);color:var(--pink)}
+  .tl-next .timeline-dot{background:var(--gray-300);color:var(--gray-400)}
+  .tl-label{
+    font-size:11px;font-weight:700;font-family:var(--font-mono);letter-spacing:0.06em;text-transform:uppercase;
+    margin-bottom:6px;
+  }
+  .tl-done .tl-label{color:var(--green)}
+  .tl-active .tl-label{color:var(--pink)}
+  .tl-next .tl-label{color:var(--gray-500)}
+  .tl-title{font-family:var(--font-display);font-size:17px;font-weight:700;letter-spacing:-0.02em;color:var(--gray-900);margin-bottom:4px}
+  .tl-desc{font-size:14px;color:var(--gray-500);line-height:1.6}
+  .tl-pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+  .tl-pill{
+    font-size:11px;padding:3px 10px;border-radius:999px;font-family:var(--font-mono);
+    background:var(--gray-200);color:var(--gray-700);
+  }
+
+  /* ECOSYSTEM */
+  .ecosystem-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .eco-card{
+    background:var(--white);border:1px solid var(--gray-300);border-radius:16px;
+    padding:24px 20px;text-align:center;transition:all 0.3s;cursor:pointer;
+    text-decoration:none;display:block;
+  }
+  .eco-card:hover{border-color:var(--pink);transform:translateY(-4px);box-shadow:0 12px 32px rgba(251,11,140,0.1)}
+  .eco-icon{
+    width:48px;height:48px;border-radius:14px;margin:0 auto 12px;
+    display:flex;align-items:center;justify-content:center;font-size:22px;
+  }
+  .eco-name{font-family:var(--font-display);font-size:14px;font-weight:700;letter-spacing:-0.01em;color:var(--gray-900);margin-bottom:4px}
+  .eco-sub{font-size:12px;color:var(--gray-500)}
+
+  /* CTA */
+  .cta-section{
+    background:var(--gray-900);
+    padding:96px 48px;text-align:center;position:relative;overflow:hidden;
+  }
+  .cta-section::before{
+    content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    width:600px;height:600px;border-radius:50%;
+    background:radial-gradient(circle,rgba(251,11,140,0.12),transparent 70%);
+    pointer-events:none;
+  }
+  .cta-section::after{
+    content:'';position:absolute;bottom:0;right:0;
+    width:300px;height:300px;border-radius:50%;
+    background:radial-gradient(circle,rgba(0,167,71,0.08),transparent 70%);
+    pointer-events:none;
+  }
+  .cta-inner{position:relative;z-index:1;max-width:640px;margin:0 auto}
+  .cta-h2{
+    font-family:var(--font-display);font-size:clamp(36px,5vw,56px);font-weight:800;
+    letter-spacing:-0.05em;line-height:1.05;color:var(--white);margin-bottom:16px;
+  }
+  .cta-h2 span{color:var(--pink)}
+  .cta-sub{font-size:16px;color:rgba(255,255,255,0.45);line-height:1.7;margin-bottom:40px}
+  .cta-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .cta-primary{
+    padding:16px 32px;border-radius:12px;font-size:15px;font-weight:700;
+    background:var(--pink);color:var(--white);border:none;cursor:pointer;
+    transition:all 0.25s;letter-spacing:-0.01em;
+  }
+  .cta-primary:hover{background:#e0097e;transform:translateY(-2px);box-shadow:0 16px 40px rgba(251,11,140,0.4)}
+  .cta-secondary{
+    padding:16px 32px;border-radius:12px;font-size:15px;font-weight:500;
+    background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.75);
+    border:1.5px solid rgba(255,255,255,0.12);cursor:pointer;transition:all 0.25s;
+  }
+  .cta-secondary:hover{background:rgba(255,255,255,0.14);border-color:rgba(255,255,255,0.25)}
+  .cta-voice{
+    margin-top:32px;display:inline-flex;align-items:center;gap:10px;
+    padding:12px 20px;border-radius:12px;
+    background:rgba(0,167,71,0.1);border:1px solid rgba(0,167,71,0.25);
+  }
+  .voice-dot{width:8px;height:8px;border-radius:50%;background:var(--green-light);animation:pulse-dot 1.5s infinite}
+  .voice-text{font-size:13px;color:rgba(255,255,255,0.6)}
+  .voice-num{font-family:var(--font-mono);font-size:13px;font-weight:600;color:var(--green-light)}
+
+  /* FOOTER */
+  .footer{
+    background:var(--gray-900);border-top:1px solid rgba(255,255,255,0.06);
+    padding:64px 48px 40px;
+  }
+  .footer-inner{max-width:1200px;margin:0 auto}
+  .footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:56px}
+  .footer-brand{}
+  .footer-brand .logo-text{font-size:20px}
+  .footer-tagline{font-size:13px;color:rgba(255,255,255,0.35);line-height:1.7;margin:12px 0 20px;max-width:220px}
+  .footer-socials{display:flex;gap:8px}
+  .social-btn{
+    width:34px;height:34px;border-radius:9px;border:1px solid rgba(255,255,255,0.1);
+    background:rgba(255,255,255,0.04);display:flex;align-items:center;justify-content:center;
+    cursor:pointer;transition:all 0.2s;text-decoration:none;
+  }
+  .social-btn:hover{background:rgba(251,11,140,0.15);border-color:rgba(251,11,140,0.3)}
+  .social-btn svg{width:14px;height:14px;stroke:rgba(255,255,255,0.5)}
+  .footer-col-title{font-family:var(--font-display);font-size:13px;font-weight:700;color:var(--white);letter-spacing:-0.01em;margin-bottom:16px}
+  .footer-links{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .footer-links a{font-size:13px;color:rgba(255,255,255,0.35);text-decoration:none;transition:color 0.2s}
+  .footer-links a:hover{color:rgba(255,255,255,0.7)}
+  .footer-bottom{
+    border-top:1px solid rgba(255,255,255,0.06);padding-top:24px;
+    display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+  }
+  .footer-copy{font-size:12px;color:rgba(255,255,255,0.25)}
+  .footer-badges{display:flex;gap:8px}
+  .footer-badge{
+    padding:4px 12px;border-radius:999px;font-size:11px;font-family:var(--font-mono);font-weight:600;
+  }
+  .fb-audited{background:rgba(0,167,71,0.1);border:1px solid rgba(0,167,71,0.2);color:rgba(42,233,123,0.8)}
+  .fb-verified{background:rgba(251,11,140,0.08);border:1px solid rgba(251,11,140,0.2);color:rgba(255,77,166,0.8)}
+  .fb-uk{background:rgba(168,85,247,0.08);border:1px solid rgba(168,85,247,0.2);color:rgba(168,85,247,0.8)}
+
+  /* MOBILE HINT */
+  @media(max-width:900px){
+    .hero{grid-template-columns:1fr;gap:40px;padding:60px 24px 40px}
+    .hero-visual{display:none}
+    .features-grid{grid-template-columns:1fr}
+    .split-grid{grid-template-columns:1fr;gap:40px}
+    .token-grid{grid-template-columns:1fr 1fr}
+    .tiers-grid{grid-template-columns:1fr}
+    .ecosystem-grid{grid-template-columns:1fr 1fr}
+    .footer-top{grid-template-columns:1fr 1fr}
+    .nav{padding:0 20px}
+    .section{padding:64px 24px}
+    .feature-strip{padding:48px 24px}
+    .cta-section{padding:64px 24px}
+    .footer{padding:48px 24px 32px}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <a class="nav-logo" href="#">
+    <div class="logo-mark"></div>
+    <span class="logo-text">Pee<span>ther</span></span>
+  </a>
+  <div class="nav-links">
+    <a class="nav-link active" href="#">Protocol</a>
+    <a class="nav-link" href="#">Tokenomics</a>
+    <a class="nav-link" href="#">Staking</a>
+    <a class="nav-link" href="#">Explorer</a>
+    <a class="nav-link" href="#">Docs</a>
+  </div>
+  <button class="nav-cta">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    Buy PTDT
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="section" style="padding-bottom:0">
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <span class="live-dot"></span>
+        Live on BNB Smart Chain
+      </div>
+      <h1 class="hero-h1">
+        The settlement<br>
+        layer for <em class="accent-pink">ride&#8209;hailing</em><br>
+        <em class="accent-green">done right.</em>
+      </h1>
+      <p class="hero-sub">
+        Peether PTDT is a deflationary BEP-20 protocol where 60% of every fare fee is burned forever and 40% goes to stakers. Real yield from real rides.
+      </p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="#">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          Buy PTDT
+        </a>
+        <a class="btn-secondary" href="#">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          Read Whitepaper
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-val">$1.47<span>97</span></div>
+          <div class="hero-stat-label">Token Price</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-val">$147<span>K</span></div>
+          <div class="hero-stat-label">Market Cap</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-val">1,012</div>
+          <div class="hero-stat-label">Holders</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-val">9.2<span>/10</span></div>
+          <div class="hero-stat-label">Audit Score</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div style="position:relative;padding-top:24px">
+        <div class="floating-badge">
+          <div class="badge-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          </div>
+          <div>
+            <div class="badge-text">60% Burned</div>
+            <div class="badge-sub" style="font-size:11px;color:#999">Every transaction</div>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-top">
+            <div class="price-tag">PTDT / USDT</div>
+            <div class="price-val">$1.4797</div>
+            <div class="price-change">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="18 15 12 9 6 15"/></svg>
+              +4.2%
+            </div>
+            <div class="hero-chart" id="heroChart"></div>
+          </div>
+          <div class="hero-card-bottom">
+            <div class="metric-row">
+              <span class="metric-label">Total Supply</span>
+              <span class="metric-val">99,994 PTDT</span>
+            </div>
+            <div class="metric-row">
+              <span class="metric-label">Burned Forever</span>
+              <span class="metric-val pink">6 PTDT</span>
+            </div>
+            <div>
+              <div class="metric-row" style="margin-bottom:6px">
+                <span class="metric-label">Fee Split</span>
+                <span class="metric-val">60% burn / 40% stakers</span>
+              </div>
+              <div class="burn-bar-wrap">
+                <div class="burn-bar-track">
+                  <div class="burn-bar-fill"></div>
+                </div>
+              </div>
+            </div>
+            <div class="metric-row">
+              <span class="metric-label">Staking APY</span>
+              <span class="metric-val green">12% – 18%</span>
+            </div>
+            <div class="metric-row" style="margin-top:4px">
+              <span class="metric-label">GeckoTerminal</span>
+              <span class="metric-val" style="color:#a855f7;font-size:11px">Live ●</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE STRIP -->
+<div class="feature-strip">
+  <div class="feature-strip-inner">
+    <h3>Why PTDT is different</h3>
+    <div class="features-grid">
+      <div class="feature-item">
+        <div class="feature-num">01</div>
+        <div class="feature-icon icon-pink">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fb0b8c" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+        </div>
+        <div class="feature-title">Deflationary by Design</div>
+        <div class="feature-desc">60% of every protocol fee is permanently burned. Supply only goes down. Never up. Hard cap of 100,000 PTDT — no mint function exists.</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-num">02</div>
+        <div class="feature-icon icon-green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#00a747" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 12l-4 4-4-4M12 8v8"/></svg>
+        </div>
+        <div class="feature-title">Real Yield from Real Rides</div>
+        <div class="feature-desc">40% of every fare fee goes to stakers. Not inflation. Not token printing. Actual protocol revenue distributed on-chain, automatically.</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-num">03</div>
+        <div class="feature-icon icon-purple">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <div class="feature-title">Settlement API Infrastructure</div>
+        <div class="feature-desc">Any ride-hailing operator anywhere in the world can integrate the PTDT API. Every ride creates protocol revenue. Every fare feeds the burn and staking pool.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT SPLIT -->
+<section class="section">
+  <div class="section-inner">
+    <div class="split-grid">
+      <div class="about-visual">
+        <div class="about-main-card">
+          <div class="section-tag tag-gray" style="margin-bottom:12px">Operating Since 2006</div>
+          <div style="font-family:var(--font-display);font-size:22px;font-weight:800;letter-spacing:-0.03em;color:var(--gray-900);margin-bottom:8px">Pink Taxi Group Ltd</div>
+          <div style="font-size:14px;color:var(--gray-500);line-height:1.7;margin-bottom:24px">UK-registered company. 18+ countries. Women-only ride-hailing with a blockchain settlement layer that the world hasn't seen yet.</div>
+          <div class="about-stat-row">
+            <div class="about-stat-card pink-accent">
+              <div class="asc-val" style="color:var(--pink)">18+</div>
+              <div class="asc-label">Countries Served</div>
+            </div>
+            <div class="about-stat-card green-accent">
+              <div class="asc-val" style="color:var(--green)">20yr</div>
+              <div class="asc-label">Operating History</div>
+            </div>
+            <div class="about-stat-card" style="grid-column:span 2">
+              <div style="font-family:var(--font-mono);font-size:10px;color:var(--gray-500);margin-bottom:6px">TOKEN CONTRACT</div>
+              <div style="font-family:var(--font-mono);font-size:11px;color:var(--gray-700);word-break:break-all">0x66c6Fc5E7F99272134a52DF9E88D94eD83E89278</div>
+            </div>
+          </div>
+        </div>
+        <div class="floating-pill">
+          <div class="pill-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline stroke="#fb0b8c" points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div>
+            <div class="pill-val">9.2 / 10</div>
+            <div class="pill-label">de.fi Audit Score</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-text">
+        <div class="section-tag tag-pink">Our Mission</div>
+        <h2 class="section-h2">The Visa for<br><em>ride-hailing.</em></h2>
+        <p>Visa doesn't compete with Amazon — it processes Amazon's payments. PTDT doesn't compete with Uber. It provides the settlement infrastructure that any ride-hailing operator can plug into.</p>
+        <p>When they do, every fare settled on-chain triggers a 60/40 burn-and-stake split. Automatically. Immutably. Transparently.</p>
+        <ul class="check-list">
+          <li>
+            <div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span>OFAC & OFSI sanctions cleared</span>
+          </li>
+          <li>
+            <div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span>Smart contracts source-verified on BscScan</span>
+          </li>
+          <li>
+            <div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span>LP locked — no rug mechanism possible</span>
+          </li>
+          <li>
+            <div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span>No mint function — total supply only decreases</span>
+          </li>
+        </ul>
+        <a class="btn-primary" href="#" style="width:fit-content">Read the Whitepaper →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOKENOMICS -->
+<section class="section tokenomics-section">
+  <div class="section-inner">
+    <div class="section-tag tag-pink">Tokenomics</div>
+    <h2 class="section-h2">Structurally <em>deflationary.</em></h2>
+    <p class="section-sub">100,000 hard cap. No minting. Every transaction reduces supply. The math only works one way.</p>
+    <div class="token-grid">
+      <div class="token-card featured">
+        <div class="tc-icon" style="background:var(--pink-pale)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fb0b8c" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <div class="tc-val" style="color:var(--pink)">100K</div>
+        <div class="tc-label">Hard Cap Supply</div>
+        <div class="tc-sub" style="color:var(--pink);opacity:0.7">No mint function. Forever.</div>
+      </div>
+      <div class="token-card green-featured">
+        <div class="tc-icon" style="background:var(--green-pale)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00a747" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
+        </div>
+        <div class="tc-val" style="color:var(--green)">60%</div>
+        <div class="tc-label">Burned Per Fee</div>
+        <div class="tc-sub" style="color:var(--green);opacity:0.7">Permanent. Irreversible.</div>
+      </div>
+      <div class="token-card">
+        <div class="tc-icon" style="background:var(--purple-pale)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="tc-val" style="color:var(--purple)">40%</div>
+        <div class="tc-label">Staker Yield</div>
+        <div class="tc-sub" style="color:var(--purple);opacity:0.7">Real revenue. Not inflation.</div>
+      </div>
+      <div class="token-card">
+        <div class="tc-icon" style="background:var(--gray-100)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3a3a52" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+        </div>
+        <div class="tc-val">BEP-20</div>
+        <div class="tc-label">BNB Smart Chain</div>
+        <div class="tc-sub" style="color:var(--gray-500)">Sub-second finality.</div>
+      </div>
+    </div>
+    <div class="fee-split" style="margin-top:24px">
+      <div class="fee-half burn">
+        <div class="fee-pct">60%</div>
+        <div class="fee-title">Permanently Burned</div>
+        <div class="fee-desc">Burns reduce totalSupply() directly on-chain. Irreversible. Verifiable on BscScan in real time. The rarer PTDT becomes, the more each token is worth.</div>
+      </div>
+      <div class="fee-half stake">
+        <div class="fee-pct">40%</div>
+        <div class="fee-title">Distributed to Stakers</div>
+        <div class="fee-desc">Real yield from real protocol fees — not printed from thin air. 12% Bronze · 15% Silver · 18% Gold APY. Every fare you don't take, you're earning from.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STAKING -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-tag tag-green">Staking</div>
+    <h2 class="section-h2">Earn while the<br>protocol <em>burns.</em></h2>
+    <p class="section-sub">Three tiers. Real yield. Lock your PTDT and earn from every settlement the protocol processes — from any operator, anywhere in the world.</p>
+    <div class="tiers-grid">
+      <div class="tier-card bronze">
+        <div class="tier-badge">Bronze</div>
+        <div class="tier-apy">12<span>% APY</span></div>
+        <div class="tier-min">Minimum 10 PTDT</div>
+        <div class="tier-lock">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          30-day lock period
+        </div>
+      </div>
+      <div class="tier-card silver">
+        <div class="tier-badge">Silver</div>
+        <div class="tier-apy">15<span>% APY</span></div>
+        <div class="tier-min">Minimum 100 PTDT</div>
+        <div class="tier-lock">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          60-day lock period
+        </div>
+      </div>
+      <div class="tier-card gold">
+        <div class="tier-badge">Gold ✦</div>
+        <div class="tier-apy">18<span>% APY</span></div>
+        <div class="tier-min">Minimum 500 PTDT</div>
+        <div class="tier-lock" style="background:var(--pink-pale);color:var(--pink)">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fb0b8c" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          90-day lock period
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:32px">
+      <a class="btn-primary" href="#" style="display:inline-flex">Start Staking →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section class="section roadmap-section">
+  <div class="section-inner">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start">
+      <div>
+        <div class="section-tag tag-purple">Roadmap</div>
+        <h2 class="section-h2">Built in public.<br><em>Shipped.</em></h2>
+        <p style="font-size:16px;color:var(--gray-500);line-height:1.7">Every milestone below is verifiable on-chain or in source code. We don't promise. We deploy.</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item tl-done">
+          <div class="timeline-dot"></div>
+          <div class="tl-label">Completed</div>
+          <div class="tl-title">Contracts deployed & audited</div>
+          <div class="tl-desc">Token, staking, fee distributor, LP lock — all source-verified on BscScan. Audit: 9.2/10.</div>
+          <div class="tl-pills"><span class="tl-pill">9.2/10 de.fi</span><span class="tl-pill">OFAC cleared</span><span class="tl-pill">LP locked</span></div>
+        </div>
+        <div class="timeline-item tl-done">
+          <div class="timeline-dot"></div>
+          <div class="tl-label">Completed</div>
+          <div class="tl-title">GeckoTerminal indexed</div>
+          <div class="tl-desc">PTDT/USDT pool officially indexed. Live price, volume, and liquidity data publicly trackable.</div>
+          <div class="tl-pills"><span class="tl-pill">GeckoTerminal live</span><span class="tl-pill">1,012 holders</span></div>
+        </div>
+        <div class="timeline-item tl-done">
+          <div class="timeline-dot"></div>
+          <div class="tl-label">Completed</div>
+          <div class="tl-title">Voice Protocol deployed</div>
+          <div class="tl-desc">AI calling agent live at +1 (917) 962 8784. 24/7 answers on tokenomics, staking, contracts.</div>
+          <div class="tl-pills"><span class="tl-pill">24/7 AI voice</span><span class="tl-pill">Full protocol coverage</span></div>
+        </div>
+        <div class="timeline-item tl-active">
+          <div class="timeline-dot"></div>
+          <div class="tl-label">In Progress</div>
+          <div class="tl-title">CEX listing application</div>
+          <div class="tl-desc">Rebate-model listings in negotiation. CoinGecko full listing pipeline active.</div>
+          <div class="tl-pills"><span class="tl-pill" style="background:rgba(251,11,140,0.08);color:var(--pink)">Active</span></div>
+        </div>
+        <div class="timeline-item tl-next">
+          <div class="timeline-dot"></div>
+          <div class="tl-label">Next</div>
+          <div class="tl-title">Operator API integrations</div>
+          <div class="tl-desc">First regional ride-hailing operator to integrate PTDT settlement — turning the protocol into a live revenue engine.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ECOSYSTEM -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-tag tag-gray">Ecosystem</div>
+    <h2 class="section-h2">Everything you need<br>to <em>verify.</em></h2>
+    <p class="section-sub">Don't trust. Verify. Every claim PTDT makes is independently confirmable from public sources below.</p>
+    <div class="ecosystem-grid">
+      <a class="eco-card" href="#">
+        <div class="eco-icon" style="background:#fff8e1">🥞</div>
+        <div class="eco-name">PancakeSwap</div>
+        <div class="eco-sub">PTDT/USDT live pair</div>
+      </a>
+      <a class="eco-card" href="#">
+        <div class="eco-icon" style="background:#f0fff7">🦎</div>
+        <div class="eco-name">GeckoTerminal</div>
+        <div class="eco-sub">Live pool indexed</div>
+      </a>
+      <a class="eco-card" href="#">
+        <div class="eco-icon" style="background:#f5f0ff">🔍</div>
+        <div class="eco-name">BscScan</div>
+        <div class="eco-sub">Source verified ✓</div>
+      </a>
+      <a class="eco-card" href="#">
+        <div class="eco-icon" style="background:#fff0f7">📄</div>
+        <div class="eco-name">Audit Report</div>
+        <div class="eco-sub">9.2/10 — de.fi</div>
+      </a>
+      <a class="eco-card" href="#">
+        <div class="eco-icon" style="background:#f0f0f4">💻</div>
+        <div class="eco-name">GitHub</div>
+        <div class="eco-sub">Open source repos</div>
+      </a>
+      <a class="eco-card" href="#">
+        <div class="eco-icon" style="background:#e8f5e9">📊</div>
+        <div class="eco-name">DexScreener</div>
+        <div class="eco-sub">Live chart data</div>
+      </a>
+      <a class="eco-card" href="#">
+        <div class="eco-icon" style="background:#f5f0ff">💬</div>
+        <div class="eco-name">Discord</div>
+        <div class="eco-sub">Live bots & community</div>
+      </a>
+      <a class="eco-card" href="#">
+        <div class="eco-icon" style="background:#fff0f7">🔭</div>
+        <div class="eco-name">Explorer</div>
+        <div class="eco-sub">Protocol metrics</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="section-tag tag-pink" style="margin:0 auto 20px">Ground floor</div>
+    <h2 class="cta-h2">$147K market cap.<br><span>Before CEX.</span></h2>
+    <p class="cta-sub">GeckoTerminal is live. Contracts are audited. The company is registered. The tokenomics are deflationary. 1,012 holders and counting — with zero paid marketing.</p>
+    <div class="cta-actions">
+      <button class="cta-primary" onclick="openLink('https://ptdt.taxi/buy.html')">Buy PTDT Now</button>
+      <button class="cta-secondary" onclick="openLink('https://ptdt.taxi/stake.html')">Start Staking</button>
+    </div>
+    <div style="margin-top:28px">
+      <div class="cta-voice">
+        <span class="voice-dot"></span>
+        <span class="voice-text">Have questions? Call our AI agent:</span>
+        <span class="voice-num">+1 (917) 962 8784</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="nav-logo" style="margin-bottom:12px">
+          <div class="logo-mark"></div>
+          <span class="logo-text" style="color:rgba(255,255,255,0.9)">Pee<span>ther</span></span>
+        </div>
+        <div class="footer-tagline">Decentralized settlement infrastructure for global ride-hailing. 60% burned. 40% to stakers. Real yield from real rides.</div>
+        <div class="footer-socials">
+          <a class="social-btn" href="#" title="Telegram">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21.198 2.433a2.242 2.242 0 00-1.022.215l-8.609 3.33c-2.068.8-4.133 1.598-5.724 2.21a405.15 405.15 0 01-2.849 1.09c-.42.147-.99.332-1.473.901-.728.968.193 1.798.919 2.286 1.61.516 3.275 1.009 4.654 1.472.509 1.793 1.054 3.579 1.582 5.364.223.758.45 1.536.679 2.313.21.716.756 1.04 1.3 1.024.528-.011.97-.35 1.151-.974.4-1.42.895-2.801 1.398-4.177.45-1.251.893-2.501 1.378-3.75l9.258-8.498c.563-.533.884-1.265.844-2.04-.044-.812-.483-1.55-1.18-2.018a2.234 2.234 0 00-1.306-.289z"/></svg>
+          </a>
+          <a class="social-btn" href="#" title="X">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+          </a>
+          <a class="social-btn" href="#" title="Discord">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057c.001.022.015.04.033.055a19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03z"/></svg>
+          </a>
+          <a class="social-btn" href="#" title="GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Protocol</div>
+        <ul class="footer-links">
+          <li><a href="#">Buy PTDT</a></li>
+          <li><a href="#">Staking dApp</a></li>
+          <li><a href="#">Settlement API</a></li>
+          <li><a href="#">Explorer</a></li>
+          <li><a href="#">Grok Fare</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Resources</div>
+        <ul class="footer-links">
+          <li><a href="#">Whitepaper</a></li>
+          <li><a href="#">API Docs</a></li>
+          <li><a href="#">Audit Report</a></li>
+          <li><a href="#">GitHub</a></li>
+          <li><a href="#">Downloads</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Verified ✓</a></li>
+          <li><a href="#">Security</a></li>
+          <li><a href="#">Rebuttal</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Peether PTDT · Pink Taxi Group Ltd · United Kingdom · Trust the { Code }, // Not the Cult!</div>
+      <div class="footer-badges">
+        <span class="footer-badge fb-audited">✓ Audited 9.2/10</span>
+        <span class="footer-badge fb-verified">✓ BscScan Verified</span>
+        <span class="footer-badge fb-uk">✓ UK Registered</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Chart bars
+  var chart = document.getElementById('heroChart');
+  if(chart){
+    var vals = [35,48,42,58,45,62,55,70,63,78,68,82,74,88,80,92,85,78,90,88,95,87,93,100,91,97,89,95,88,96];
+    vals.forEach(function(v,i){
+      var b = document.createElement('div');
+      b.className = 'chart-bar' + (i===vals.length-1?' active':'');
+      b.style.height = v + '%';
+      chart.appendChild(b);
+    });
+  }
+
+  // Sticky nav scroll effect
+  var nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 20) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
+
+  // Smooth scroll for nav links
+  document.querySelectorAll('.nav-link').forEach(function(link){
+    link.addEventListener('click', function(){
+      document.querySelectorAll('.nav-link').forEach(function(l){l.classList.remove('active')});
+      link.classList.add('active');
+    });
+  });
+
+  // Hover anim on tier cards
+  document.querySelectorAll('.tier-card').forEach(function(card){
+    card.addEventListener('mouseenter', function(){
+      card.style.transition = 'all 0.25s cubic-bezier(0.34,1.56,0.64,1)';
+    });
+  });
+</script>
+</body>
+</html>

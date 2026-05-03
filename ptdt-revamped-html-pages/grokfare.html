@@ -1,0 +1,2118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grok Fare Analyzer | AI-Powered Settlement via PTDT Protocol | Peether</title>
+    <meta name="description" content="AI-powered ride fare estimation using Grok, with real-time PTDT protocol settlement visualization. See exactly how every fare is split: 60% burned, 40% to stakers. Built on BNB Smart Chain.">
+    <link rel="canonical" href="https://ptdt.taxi/grokfare.html">
+
+    <!-- Favicon: inline SVG primary + PNG fallback -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 28.8 29.04' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='14.35' cy='14.4' r='12.27' fill='%232ae97b'/%3E%3Ccircle cx='14.35' cy='14.4' r='10.66' fill='%23020202'/%3E%3Cpath d='M15.14,12.47c-.21-.34,2.18-3.91,4.97-4.8-3.22,.47-5.62,2.79-5.76,2.93,0,0-.02,.01-.02,.01,0,0,.01,0,.02-.01,0,0,.01,0,.02,.01h-.02c.64-.63,.45-.1,0,.85-.45-.95-.64-1.48,0-.86-.14-.15-2.55-2.46-5.76-2.93,2.79,.89,5.18,4.46,4.97,4.8-.57,.94-1.12,2.19-1.21,3.55-.03,.14-.05,.26-.05,.36,0,3.18,2.03,5.76,2.03,5.76,0,0,0,0,.02-.01,0,0,.01,.01,.01,.01,0,0,2.03-2.57,2.03-5.76,0-.1-.01-.22-.04-.36-.09-1.36-.63-2.61-1.21-3.55' fill='%23fb0b8c'/%3E%3Cpath d='M15.75,8.26c0,.77-.62,1.39-1.39,1.39s-1.4-.62-1.4-1.39,.63-1.39,1.4-1.39,1.39,.62,1.39,1.39' fill='%23fb068c'/%3E%3C/svg%3E">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://ptdt.taxi/favicon-32x32.png">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Grok Fare Analyzer | AI-Powered PTDT Settlement | Peether">
+    <meta property="og:description" content="AI-powered ride fare estimation with real-time PTDT protocol settlement. 60% burned, 40% to stakers. See how decentralized settlement works.">
+    <meta property="og:image" content="https://ptdt.taxi/grokfare-preview.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Grok Fare Analyzer — AI-Powered PTDT Protocol Settlement">
+    <meta property="og:site_name" content="Peether PTDT">
+    <meta property="og:url" content="https://ptdt.taxi/grokfare.html">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@PTDT_Token">
+    <meta name="twitter:url" content="https://ptdt.taxi/grokfare.html">
+    <meta name="twitter:title" content="Grok Fare Analyzer | AI-Powered PTDT Settlement">
+    <meta name="twitter:description" content="AI-powered ride fare estimation. See how PTDT protocol splits every fare: 60% burned, 40% to stakers. Powered by Grok AI.">
+    <meta name="twitter:image" content="https://ptdt.taxi/grokfare-preview.webp">
+
+    <!-- Additional SEO -->
+    <meta name="keywords" content="Grok fare analyzer, PTDT settlement, ride hailing DeFi, AI fare estimation, decentralized settlement, BNB Chain, Peether PTDT, xAI Grok, ride pricing, deflationary token">
+    <meta name="author" content="Peether PTDT">
+    <meta name="robots" content="index, follow">
+
+    <!-- Structured Data: WebApplication + FAQ -->
+    <script type="application/ld+json">
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Grok Fare Analyzer",
+        "url": "https://ptdt.taxi/grokfare.html",
+        "applicationCategory": "DeFi",
+        "operatingSystem": "Web Browser",
+        "description": "AI-powered ride fare estimation using Grok, with real-time PTDT protocol settlement visualization showing burn and staker distribution on BNB Smart Chain.",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Peether PTDT",
+          "url": "https://ptdt.taxi",
+          "logo": { "@type": "ImageObject", "url": "https://ptdt.taxi/logo.png" }
+        },
+        "datePublished": "2026-03-05",
+        "dateModified": "2026-03-05"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is the Grok Fare Analyzer?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The Grok Fare Analyzer uses xAI's Grok to estimate fair ride-hailing fares, then shows in real-time how the PTDT protocol would settle that fare on-chain: 60% burned permanently, 40% distributed to stakers as real yield."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does PTDT protocol settle ride-hailing fares?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Every fare settled via PTDT protocol is split automatically: 60% of the fee is burned forever (reducing supply), and 40% goes to stakers earning 12-18% APY. This creates deflationary pressure while rewarding holders with real yield from actual transaction fees."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Who built Peether PTDT and the Grok Fare Analyzer?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Peether PTDT was built entirely by a solo founder under Pink Taxi Group Ltd., a UK-registered company. Originally launched as Pink Taxi with John McAfee as Chief Advisor in 2018, the project was rebuilt from scratch as a decentralized settlement protocol on BNB Smart Chain. Audited 9.2/10."
+            }
+          }
+        ]
+      }
+    ]
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================
+           CSS VARIABLES (Branding System)
+           ============================================ */
+        :root {
+            --bg-primary: #0A0A0F;
+            --bg-secondary: #111118;
+            --bg-card: #1A1A24;
+            --bg-glass: rgba(15, 15, 22, 0.9);
+            --text-primary: #E8E8F0;
+            --text-secondary: #8888A0;
+            --text-muted: #555568;
+            --pink-primary: #fb0b8c;
+            --pink-light: #ff4da6;
+            --purple-primary: #a855f7;
+            --green-primary: #00a747;
+            --green-success: #10B981;
+            --amber: #f59e0b;
+            --silver-color: #94a3b8;
+            --gold-color: #eab308;
+            --border-color: #2A2A3A;
+            --border-light: rgba(255, 255, 255, 0.06);
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+            --shadow-pink: 0 15px 35px rgba(251, 11, 140, 0.4);
+            --gradient-pink: linear-gradient(135deg, #fb0b8c 0%, #ff4da6 50%, #a855f7 100%);
+            --gradient-green: linear-gradient(135deg, #2ae97b 0%, #10b981 100%);
+        }
+
+        /* ============================================
+           LIGHT MODE OVERRIDES
+           ============================================ */
+        body.light-mode {
+            --bg-primary: #F4F4F8;
+            --bg-secondary: #E8E8F0;
+            --bg-card: #FFFFFF;
+            --bg-glass: rgba(255, 255, 255, 0.92);
+            --text-primary: #1A1A2E;
+            --text-secondary: #555568;
+            --text-muted: #8888A0;
+            --border-color: #D0D0E0;
+            --border-light: rgba(0, 0, 0, 0.06);
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body {
+            font-family: 'Lexend', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+
+        /* ============================================
+           PARTICLE CANVAS
+           ============================================ */
+        #particleCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: var(--bg-primary);
+            transition: background-color 0.3s;
+        }
+
+
+        /* ============================================
+           PROGRESS BAR
+           ============================================ */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: var(--gradient-pink);
+            z-index: 9999;
+            box-shadow: 0 0 10px rgb(251 11 140 / .5);
+            transition: width 0.1s linear;
+        }
+
+
+        /* ============================================
+           THEME TOGGLE
+           ============================================ */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-pink);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .theme-toggle:hover {
+            transform: scale(1.1) rotate(15deg);
+            box-shadow: var(--shadow-pink);
+        }
+        .theme-toggle svg {
+            width: 24px;
+            height: 24px;
+            fill: #fff;
+        }
+
+
+        /* ============================================
+           HOME LOGO (Top Center - Above Navbar)
+           ============================================ */
+        .home-logo-section {
+            text-align: center;
+            padding: 24px 0 16px;
+        }
+        .home-logo-link {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+        .home-logo-link:hover { transform: scale(1.05); }
+        .home-logo-link img { width: 182px; height: auto; }
+
+        /* ============================================
+           COIN + SLOGAN SECTION (Below Navbar)
+           ============================================ */
+        .coin-slogan-section {
+            text-align: center;
+            padding: 24px 0 12px;
+        }
+
+        /* ============================================
+           TOP NAVBAR (Two-Row Vignette Card)
+           ============================================ */
+        .page-nav {
+            background: linear-gradient(135deg, rgba(251, 11, 140, 0.12), rgba(168, 85, 247, 0.12));
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(251, 11, 140, 0.15);
+            border-radius: 16px;
+            padding: 12px 24px;
+            margin: 0 auto 20px;
+            max-width: 960px;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            align-items: center;
+        }
+        .page-nav::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: var(--gradient-pink);
+        }
+        .nav-row {
+            display: flex;
+            gap: 6px;
+            justify-content: center;
+            align-items: center;
+        }
+        .nav-divider {
+            width: 80%;
+            max-width: 500px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+            margin: -1px 0;
+        }
+        .nav-link {
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 400;
+            font-size: .85em;
+            font-family: 'Fira Code', monospace;
+            text-transform: uppercase;
+            letter-spacing: .02em;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            white-space: nowrap;
+        }
+        .nav-link:hover {
+            background: rgb(251 11 140 / .12);
+            color: var(--pink-light);
+            border-color: rgb(251 11 140 / .3);
+            text-decoration: none;
+        }
+        .nav-link.active {
+            background: var(--gradient-pink);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(251, 11, 140, 0.35);
+        }
+        .nav-link.active.verified-tab {
+            background: linear-gradient(135deg, #006d30 0%, #009e44 50%, #007a36 100%);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(0, 158, 68, 0.35);
+        }
+        .nav-link.active.staking-tab {
+            background: linear-gradient(135deg, #d97706 0%, #f59e0b 50%, #eab308 100%);
+            color: #000;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35);
+        }
+        .nav-link.active.grok-tab {
+            background: linear-gradient(135deg, #4b5563 0%, #6b7280 50%, #9ca3af 100%);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(107, 114, 128, 0.45);
+            border: 1px solid rgba(255,255,255,0.18);
+        }
+        .nav-sep {
+            width: 1px;
+            height: 18px;
+            background: rgba(255,255,255,0.1);
+            margin: 0 2px;
+        }
+
+
+        /* ============================================
+           CONTAINER
+           ============================================ */
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+
+        /* ============================================
+           HERO SPLIT SECTION (Image + Content)
+           ============================================ */
+        .hero-split {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 30%, #0f1525 60%, #0a0e1a 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(251, 11, 140, 0.3);
+            margin-bottom: 32px;
+            box-shadow: 0 0 50px rgba(251, 11, 140, 0.15), 0 0 80px rgba(168, 85, 247, 0.08), inset 0 1px 0 rgba(251, 11, 140, 0.2), 0 0 40px rgba(251, 11, 140, 0.1);
+        }
+        .hero-split-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 1fr;
+        }
+        .hero-split-image {
+            padding: 0;
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .hero-split-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 0;
+            display: block;
+        }
+        .hero-split-content {
+            padding: 28px 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: linear-gradient(160deg, #1a1a2e 0%, #0d0d1a 40%, #050510 70%, #0a0a1f 100%);
+            border-left: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .hero-split-eyebrow {
+            color: var(--pink-primary);
+            font-family: 'Fira Code', monospace;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .hero-split-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            background: var(--gradient-pink);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 14px;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+        .hero-split-desc {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 0.92rem;
+            line-height: 1.65;
+            margin-bottom: 20px;
+        }
+        .hero-split-badges {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .hero-split-badge {
+            background: rgba(251, 11, 140, 0.12);
+            color: var(--pink-primary);
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(251, 11, 140, 0.25);
+            transition: all 0.3s ease;
+        }
+        .hero-split-badge:hover {
+            background: rgba(251, 11, 140, 0.2);
+            transform: translateY(-2px);
+        }
+        @media (max-width: 900px) {
+            .hero-split-grid { grid-template-columns: 1fr; }
+            .hero-split-content { padding: 24px 20px; }
+            .hero-split-image { min-height: 240px; }
+            .hero-split-title { font-size: 1.4rem; }
+        }
+        @media (max-width: 480px) {
+            .hero-split-content { padding: 20px 16px; }
+            .hero-split-image { min-height: 200px; }
+            .hero-split-title { font-size: 1.2rem; }
+            .hero-split-desc { font-size: 0.85rem; }
+            .hero-split-badge { padding: 6px 10px; font-size: 0.65rem; }
+        }
+
+
+        /* ============================================
+           HEADER (Benchmark Style)
+           ============================================ */
+        .header {
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            padding: 30px 40px 35px;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-pink);
+        }
+
+        /* Coin */
+        .coin-wrapper {
+            perspective: 1200px;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 12px;
+        }
+        .coin {
+            position: relative;
+            transform-style: preserve-3d;
+            border-radius: 50%;
+            width: 100%;
+            height: 100%;
+        }
+        .coin img {
+            position: relative;
+            z-index: 2;
+            transform: translateZ(14px);
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            backface-visibility: hidden;
+            background: #fff0;
+            box-shadow: 0 0 35px rgb(255 210 120 / .55), inset 0 0 14px rgb(255 255 255 / .3);
+        }
+        .coin::before {
+            content: "";
+            position: absolute;
+            inset: 3px;
+            border-radius: 50%;
+            background: linear-gradient(90deg, #7a5a00, #d4af37, #ffeb9c, #d4af37, #7a5a00);
+            transform: translateZ(-14px);
+            filter: blur(1px);
+        }
+        .coin::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            transform: translateZ(15px);
+            background: linear-gradient(135deg, transparent 40%, rgb(255 255 255 / .9) 50%, transparent 60%);
+            opacity: 0;
+            pointer-events: none;
+            animation: diamondSparkle 3s ease-in-out infinite;
+        }
+        @keyframes diamondSparkle {
+            0%, 100% { opacity: 0; }
+            50% { opacity: .6; }
+        }
+        @keyframes coinFlip {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(5400deg); }
+        }
+        .coin.animate {
+            animation: coinFlip 2.15s cubic-bezier(.25, .1, .25, 1);
+        }
+
+        /* Brand Name */
+        .brand-name {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 2em;
+            background: var(--gradient-pink);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: #fff0;
+            background-clip: text;
+            letter-spacing: -.02em;
+            margin-bottom: -10px;
+        }
+
+        /* Slogan */
+        .slogan-container {
+            margin: 0 auto 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            min-height: 45px;
+        }
+        .slogan {
+            font-size: clamp(18px, 4.5vw, 24px);
+            white-space: pre;
+            font-family: 'Space Grotesk', sans-serif;
+            display: inline-flex;
+            align-items: center;
+            color: #334155;
+            line-height: 1;
+        }
+        .slogan .char { display: none; }
+        .slogan .char.visible { display: inline; }
+        .slogan .light { font-weight: 300; color: #cbd5e1; letter-spacing: -.05em; }
+        .slogan .code { font-family: 'Fira Code', monospace; font-weight: 700; color: #EB4491; letter-spacing: -.01em; }
+        .slogan .gray { font-weight: 300; color: #94a3b8; letter-spacing: -.05em; }
+        .slogan .cult { font-weight: 700; color: #002FFF; position: relative; letter-spacing: -.01em; }
+        .slogan .cult::before,
+        .slogan .cult::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            background: #FF2F00;
+            border-radius: 2px;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.8s ease-in-out;
+        }
+        .slogan .cult::before { top: 50%; height: .06em; }
+        .slogan .cult::after { bottom: .05em; height: .12em; }
+        .finished .cult::before,
+        .finished .cult::after { transform: scaleX(1); }
+        .slogan .brackets { font-family: 'Fira Code', monospace; color: #57BF39; font-weight: 700; }
+        .slogan .exclamation { font-weight: 700; color: #FF2F00; }
+        .slogan .cursor {
+            display: inline-block;
+            width: 1.5px;
+            height: 1.1em;
+            background: #cbd5e1;
+            margin-left: 1px;
+            animation: blink 0.72s steps(1) infinite;
+            vertical-align: middle;
+        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        /* Light mode slogan overrides */
+        body.light-mode .slogan .light { color: #334155; }
+        body.light-mode .slogan .gray { color: #6B7280; }
+        body.light-mode .slogan .cursor { background: #1e293b; }
+
+        /* Header Separator */
+        .header-separator {
+            width: calc(100% - 80px);
+            height: 1.5px;
+            background: var(--border-color);
+            margin: 5px auto 20px;
+            border-radius: 2px;
+        }
+
+        /* Header Title */
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            background: var(--gradient-pink);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: #fff0;
+            background-clip: text;
+            font-size: 2.4em;
+            margin-bottom: 12px;
+            letter-spacing: -.04em;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 1.15em;
+            max-width: 700px;
+            margin: 0 auto 20px;
+            line-height: 1.5;
+            letter-spacing: -.02em;
+            color: var(--text-secondary);
+        }
+        .subtitle .hl-green { color: var(--green-primary); font-weight: 600; }
+        .subtitle .hl-pink { color: var(--pink-primary); font-weight: 600; }
+
+        .brand-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            border-radius: 50px;
+            font-size: .9em;
+            font-weight: 600;
+        }
+        .brand-badge .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: .5; transform: scale(1.2); }
+        }
+
+
+
+
+        /* ============================================
+           GROK FARE ANALYZER
+           ============================================ */
+        .grok-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-md);
+        }
+        .grok-card h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+        .form-group {
+            margin-bottom: 18px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-primary);
+            font-size: .95em;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 14px 16px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-family: 'Lexend', sans-serif;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--pink-primary);
+            box-shadow: 0 0 0 3px rgba(251, 11, 140, 0.15);
+        }
+        .form-group input::placeholder {
+            color: var(--text-muted);
+        }
+        .btn-analyze {
+            width: 100%;
+            padding: 16px;
+            background: var(--gradient-pink);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-family: 'Lexend', sans-serif;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            margin-top: 4px;
+        }
+        .btn-analyze:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-pink);
+        }
+        .btn-analyze:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .grok-spinner {
+            border: 3px solid var(--border-color);
+            border-top: 3px solid var(--pink-primary);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .loading-card {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-secondary);
+        }
+        .fare-display {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(251, 11, 140, 0.08), rgba(168, 85, 247, 0.08));
+            border-radius: 14px;
+            margin-bottom: 24px;
+        }
+        .fare-amount {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--pink-primary);
+            margin: 10px 0;
+        }
+        .fare-ptdt {
+            font-size: 1.2rem;
+            color: var(--green-success);
+            font-weight: 600;
+        }
+        .grok-response {
+            background: var(--bg-primary);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 3px solid var(--pink-primary);
+            margin-top: 20px;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+        .settlement-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 24px;
+        }
+        .split-card {
+            padding: 25px;
+            border-radius: 14px;
+            text-align: center;
+        }
+        .burn-card {
+            background: linear-gradient(135deg, rgba(255, 68, 68, 0.12), rgba(251, 11, 140, 0.12));
+            border: 1px solid rgba(255, 68, 68, 0.3);
+        }
+        .staker-card {
+            background: linear-gradient(135deg, rgba(42, 233, 123, 0.12), rgba(16, 185, 129, 0.12));
+            border: 1px solid rgba(42, 233, 123, 0.3);
+        }
+        .split-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+        .split-amount {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 8px 0;
+        }
+        .burn-card .split-amount { color: #ff4444; }
+        .staker-card .split-amount { color: var(--green-success); }
+        .split-percentage {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+        .bar-visualization {
+            height: 50px;
+            background: var(--bg-primary);
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            margin-top: 24px;
+        }
+        .bar-burn {
+            background: linear-gradient(90deg, #ff4444, var(--pink-primary));
+            width: 60%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: white;
+        }
+        .bar-staker {
+            background: linear-gradient(90deg, #2ae97b, #10B981);
+            width: 40%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: white;
+        }
+        .result-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin-top: 16px;
+        }
+        .result-info-item {
+            background: var(--bg-primary);
+            padding: 14px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+        }
+        .result-info-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+        }
+        .result-info-value {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--pink-primary);
+        }
+        .what-means {
+            margin-top: 24px;
+            padding: 20px;
+            background: var(--bg-primary);
+            border-radius: 10px;
+            border-left: 3px solid var(--green-success);
+        }
+        .what-means ul {
+            margin-top: 10px;
+            padding-left: 20px;
+            color: var(--text-secondary);
+            line-height: 1.9;
+        }
+        .what-means li { margin-bottom: 4px; }
+        .what-means strong { color: var(--text-primary); }
+        .staking-cta {
+            background: linear-gradient(135deg, rgba(251, 11, 140, 0.08), rgba(168, 85, 247, 0.08));
+            border: 1px solid rgba(251, 11, 140, 0.2);
+            border-radius: 16px;
+            padding: 28px;
+            margin-top: 24px;
+            margin-bottom: 14px;
+        }
+        .staking-cta h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .tier-mini-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 12px;
+            margin: 16px 0;
+        }
+        .tier-mini {
+            background: var(--bg-primary);
+            padding: 14px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+        .tier-mini-apy {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--green-success);
+        }
+        .tier-mini-label {
+            font-size: .82rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+        .btn-stake-cta {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--gradient-pink);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn-stake-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-pink);
+            color: white;
+            text-decoration: none;
+        }
+        .alert-card {
+            background: rgba(255, 68, 68, 0.08);
+            border: 1px solid rgba(255, 68, 68, 0.3);
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 16px;
+            color: #ff6b6b;
+        }
+        .powered-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            background: rgba(42, 233, 123, 0.08);
+            border: 1px solid rgba(42, 233, 123, 0.3);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--green-success);
+            margin-top: 12px;
+        }
+
+        /* ============================================
+           FOOTER (Benchmark)
+           ============================================ */
+        .footer { width: 100%; margin-top: 0px; position: relative; }
+        .footer-vignette {
+            background: linear-gradient(to right, rgb(236, 72, 153), rgb(147, 51, 234));
+            border-radius: 12px; box-shadow: 0 10px 15px -3px rgba(0,0,0,.1);
+            padding: 30px 5%; margin: 0 auto; max-width: 1100px; width: 95%;
+            display: flex; flex-direction: column; position: relative;
+        }
+        .footer-container { margin: 0 auto; max-width: 960px; width: 100%; }
+        .footer-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .footer-card {
+            background: rgba(255,255,255,.1) !important;
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            border-radius: 12px; box-shadow: 0 10px 15px -3px rgba(0,0,0,.1);
+            padding: 15px 20px 28px; transition: all 0.3s; display: flex; flex-direction: column;
+        }
+        .footer-card:hover { background: rgba(255,255,255,.15) !important; transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0,0,0,.2); }
+        .footer-card h3 { font-family: Montserrat, sans-serif; font-weight: 700; font-size: 1.125rem; margin: 0 0 10px; color: white; }
+        .footer-links-list { display: flex; flex-direction: column; gap: 8px; }
+        .footer-links-list a { color: rgba(255,255,255,.9); text-decoration: none; font-size: .975rem; font-weight: 400; transition: all .5s; display: flex; align-items: center; gap: 8px; line-height: 1.5; }
+        .footer-links-list a:hover { color: white; transform: translateX(4px); }
+        .social-icons { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+        .social-icon {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 35px; height: 35px; background: rgba(255,255,255,.2);
+            border: 1px solid rgba(255,255,255,.4); border-radius: 50%;
+            color: white; text-decoration: none; font-size: 1.2em; transition: all .3s;
+        }
+        .social-icon:hover { background: rgba(255,255,255,.4); transform: translateY(-3px) scale(1.1); box-shadow: 0 5px 15px rgba(0,0,0,.3); }
+        .downloads-btn {
+            display: block; text-align: center; padding: 8px 16px;
+            background: rgba(255,255,255,.25); border: 1px solid rgba(255,255,255,.4);
+            border-radius: 8px; color: white; text-decoration: none; font-size: .9rem;
+            font-weight: 600; margin-top: 16px; margin-bottom: 12px; transition: all .3s;
+        }
+        .downloads-btn:hover { background: rgba(255,255,255,.4); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,.2); }
+        .dev-contact { margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,.3); }
+        .dev-contact p { font-size: .875rem; color: rgba(255,255,255,.9); margin-bottom: 4px; }
+        .dev-contact a { color: white; text-decoration: none; font-weight: 600; }
+        .dev-contact a:hover { text-decoration: underline; }
+        .footer-info { padding-top: 20px !important; margin-top: 0 !important; padding-bottom: 20px; }
+        .footer-info-container { margin: 0 auto; max-width: 1100px; width: 100%; padding: 0 5vw; }
+        .footer-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .company-info { text-align: left; }
+        .contract-verification { text-align: right; }
+        .company-info h4, .contract-verification h4 { color: var(--text-primary); font-weight: 500; margin-bottom: 12px; font-size: 1.1em; }
+        .company-info p, .contract-verification p { color: var(--text-secondary); margin-bottom: 8px; font-size: .95em; }
+        .verification-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 34px; }
+        .badge-v {
+            color: var(--text-secondary);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: .8em;
+            font-weight: 500;
+            border: 1px solid transparent;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
+        }
+        .badge-bsc { background: rgba(16,185,129,.12); border-color: rgba(16,185,129,.24); }
+        .badge-audit { background: rgba(240,185,11,.12); border-color: rgba(240,185,11,.24); }
+        .badge-gov { background: rgba(168,85,247,.12); border-color: rgba(168,85,247,.24); }
+        body.light-mode .badge-bsc { background: rgba(16,185,129,.08); border-color: rgba(16,185,129,.18); color: #166534; }
+        body.light-mode .badge-audit { background: rgba(240,185,11,.10); border-color: rgba(240,185,11,.22); color: #a16207; }
+        body.light-mode .badge-gov { background: rgba(168,85,247,.10); border-color: rgba(168,85,247,.22); color: #7e22ce; }
+        .contract-item { margin-bottom: 20px; }
+        .contract-label { font-size: .85em; color: var(--text-muted); margin-bottom: 8px; }
+        .contract-box { display: flex; align-items: center; gap: 8px; background: var(--bg-card); border: 1px solid var(--border-light); padding: 12px 16px; border-radius: 8px; }
+        .contract-address { flex: 1; font-family: 'Fira Code', monospace; font-size: .85em; color: var(--text-primary); overflow-x: auto; white-space: nowrap; }
+        .copy-btn {
+            padding: 8px 10px; background: var(--gradient-pink); color: white; border: none;
+            border-radius: 6px; cursor: pointer; font-size: 0; width: 36px; height: 36px;
+            display: inline-flex; align-items: center; justify-content: center; transition: all .3s; position: relative;
+        }
+        .copy-btn::before {
+            content: ""; width: 16px; height: 16px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z'/%3E%3C/svg%3E");
+            background-size: contain; background-repeat: no-repeat; background-position: center; display: block;
+        }
+        .copy-btn:hover { transform: scale(1.08); box-shadow: 0 4px 12px rgba(251,11,140,.4); }
+        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid var(--border-light); }
+        .footer-links-bottom {
+            background: var(--bg-card); padding: 14px 20px; border-radius: 12px;
+            margin-top: 12px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 2px 6px; box-shadow: var(--shadow-sm);
+        }
+        .footer-links-bottom a {
+            background: var(--gradient-pink); -webkit-background-clip: text; -webkit-text-fill-color: #fff0; background-clip: text;
+            text-decoration: none; font-size: .875em; font-weight: 300; transition: all .3s; position: relative; padding: 2px 6px;
+        }
+        .footer-links-bottom a:hover { background: linear-gradient(135deg, #a0aec0 0%, #cbd5e0 100%); -webkit-background-clip: text; -webkit-text-fill-color: #fff0; background-clip: text; }
+        .separator { color: var(--text-muted); font-weight: 300; }
+        .copyright-line { font-weight: 300; margin-top: 20px; margin-bottom: 4px; color: var(--text-secondary); }
+        .women-safety-line { font-weight: 500; font-size: .9em; margin-bottom: 6px; color: var(--purple-primary); }
+        .heart { display: inline-block; animation: heartbeat 2s ease-in-out infinite; }
+        @keyframes heartbeat { 0%, 100% { transform: scale(1) } 10% { transform: scale(1.2) } 20% { transform: scale(1) } 30% { transform: scale(1.15) } 40% { transform: scale(1) } }
+        .footer-version { margin-top: 2px; font-size: .85em; color: var(--text-muted); }
+
+
+        /* ============================================
+           TOAST
+           ============================================ */
+        .toast {
+            position: fixed; bottom: 24px; right: 24px; z-index: 9999;
+            padding: 14px 22px; border-radius: 14px; font-size: 13px; font-weight: 500;
+            transform: translateY(100px); opacity: 0; transition: all .3s; max-width: 380px;
+        }
+        .toast.show { transform: translateY(0); opacity: 1; }
+        .toast.success { background: rgb(42 233 123 / .15); border: 1px solid rgb(42 233 123 / .4); color: var(--green-success); }
+        .toast.error { background: rgb(251 11 140 / .15); border: 1px solid rgb(251 11 140 / .4); color: var(--pink-light); }
+        .toast.info { background: rgb(168 85 247 / .15); border: 1px solid rgb(168 85 247 / .4); color: var(--purple-primary); }
+
+        .spinner {
+            width: 16px; height: 16px; border: 2px solid rgba(0,0,0,.2);
+            border-top-color: #000; border-radius: 50%;
+            animation: spin .6s linear infinite; display: inline-block;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 1024px) {
+            .footer-vignette, .footer-info-container { width: 98%; padding-left: 3vw; padding-right: 3vw; }
+        }
+
+        @media (max-width: 768px) {
+            .home-logo-section { padding: 20px 0 12px; }
+            .home-logo-link img { width: 156px; }
+            .coin-slogan-section { padding: 18px 0 10px; }
+            .coin-slogan-section .coin-wrapper { width: 96px; height: 96px; }
+            .coin-slogan-section .slogan { font-size: clamp(14px, 4vw, 20px); }
+            .page-nav { padding: 12px 14px; margin-top: 0; gap: 6px; }
+            .nav-row { gap: 4px; flex-wrap: wrap; width: 100%; }
+            .nav-link { padding: 6px 12px; font-size: .68em; }
+            .nav-sep { display: none; }
+            h1 { font-size: 1.8em; }
+            .container { padding: 15px; }
+            .header { padding: 25px 20px; }
+            .brand-name { font-size: 1.6em; }
+            .subtitle { font-size: 1em; }
+            .settlement-split { grid-template-columns: 1fr; }
+            .fare-amount { font-size: 2rem; }
+            .split-amount { font-size: 1.5rem; }
+            .bar-visualization { flex-direction: column; height: auto; }
+            .bar-burn, .bar-staker { width: 100%; padding: 14px; }
+            .footer-vignette { width: 100%; margin: 10px 0; padding: 25px 5vw; border-radius: 8px; }
+            .footer-cards { grid-template-columns: 1fr; }
+            .footer-info { padding-top: 20px !important; }
+            .footer-info-grid { grid-template-columns: 1fr; gap: 25px; text-align: center; }
+            .company-info, .contract-verification { padding-left: 0 !important; padding-right: 0 !important; text-align: center !important; }
+            .verification-badges { justify-content: center; }
+            .theme-toggle { width: 42px; height: 42px; top: 16px; right: 16px; }
+            .theme-toggle svg { width: 20px; height: 20px; }
+            .coin-wrapper { width: 90px; height: 90px; }
+            .toast { left: 16px; right: 16px; max-width: none; bottom: 16px; }
+        }
+
+        @media (max-width: 480px) {
+            .home-logo-section { padding: 16px 0 10px; }
+            .home-logo-link img { width: 130px; }
+            .coin-slogan-section { padding: 14px 0 8px; }
+            .coin-slogan-section .coin-wrapper { width: 80px; height: 80px; }
+            .coin-slogan-section .slogan { font-size: clamp(12px, 3.8vw, 17px); white-space: normal; text-align: center; justify-content: center; }
+            .page-nav { padding: 10px 10px; margin-top: 0; gap: 4px; }
+            .nav-row { gap: 6px; }
+            .nav-link { padding: 5px 9px; font-size: .58em; }
+            .nav-sep { display: none; }
+            h1 { font-size: 1.5em; }
+            .header { padding: 20px 16px; }
+            .brand-name { font-size: 1.4em; }
+            .subtitle { font-size: .9em; }
+            .grok-card { padding: 20px; }
+            .tier-mini-grid { grid-template-columns: 1fr 1fr 1fr; }
+            .result-info-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 360px) {
+            .page-nav { margin-top: 0; padding: 8px 8px; gap: 3px; }
+            .nav-link { padding: 4px 7px; font-size: .5em; }
+            .brand-name { font-size: 1.2em; }
+            .fare-amount { font-size: 1.8rem; }
+            .tier-mini-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Navbar parity with buy.html */
+        .page-nav {
+            background: linear-gradient(135deg, rgba(251, 11, 140, 0.12), rgba(168, 85, 247, 0.12));
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(251, 11, 140, 0.15);
+            border-radius: 16px; padding: 12px 24px; margin: 0 auto 0; max-width: 960px;
+            box-shadow: var(--shadow-md); position: relative; overflow: hidden;
+            display: flex; flex-direction: column; gap: 4px; align-items: center;
+        }
+        .page-nav::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gradient-pink); }
+        .nav-row { display: flex; gap: 1px; justify-content: center; align-items: center; }
+        .nav-row:last-child .nav-link {
+            padding: 6px 8px;  /* Slightly tighter than row 1 */
+            font-size: .78em;   /* Slightly smaller font */
+        }
+        .nav-divider { width: 80%; max-width: 500px; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent); margin: -1px 0; }
+        body.light-mode .nav-divider { background: linear-gradient(90deg, transparent, rgba(0,0,0,0.12), transparent); }
+        .nav-link {
+            padding: 8px 12px; border-radius: 8px; text-decoration: none; color: var(--text-secondary);
+            font-weight: 400; font-size: .82em; font-family: 'Fira Code', monospace;
+            text-transform: uppercase; letter-spacing: .02em; transition: all 0.3s ease; border: 1px solid transparent; white-space: nowrap;
+        }
+        .nav-link:hover { background: rgb(251 11 140 / .12); color: var(--pink-light); border-color: rgb(251 11 140 / .3); text-decoration: none; }
+        .nav-link.active { background: var(--gradient-pink); color: #fff; box-shadow: 0 4px 12px rgba(251, 11, 140, 0.35); }
+        .nav-link.active.buy-tab { background: var(--gradient-gold); color: var(--cmc-blue); box-shadow: 0 4px 12px rgba(240, 185, 11, 0.45); font-weight: 600; }
+        .nav-link.active.verified-tab { background: linear-gradient(135deg, #006d30 0%, #009e44 50%, #007a36 100%); color: #fff; box-shadow: 0 4px 12px rgba(0, 158, 68, 0.35); }
+        .nav-link.active.staking-tab { background: linear-gradient(135deg, #d97706 0%, #f59e0b 50%, #eab308 100%); color: #000; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35); }
+        .nav-link.active.grok-tab { background: linear-gradient(135deg, #fb0b8c 0%, #a855f7 50%, #6366f1 100%); color: #fff; box-shadow: 0 4px 12px rgba(168, 85, 247, 0.45); }
+        .nav-link.active.pancake-tab { background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 50%, #67e8f9 100%); color: #000; box-shadow: 0 4px 12px rgba(6, 182, 212, 0.35); }
+        .nav-sep { width: 1px; height: 18px; background: rgba(255,255,255,0.15); margin: 0 2px; }
+        body.light-mode .nav-sep { background: rgba(255,255,255,0.35); }
+
+        /* Light mode: solid pink navbar */
+        [data-theme="light"] .page-nav,
+        body.light-mode .page-nav {
+            background: linear-gradient(to top, #a0065a 0%, #b8076e 25%, #e50a83 55%, #fb0b8c 100%);
+            border-color: rgba(255,255,255,0.15);
+            box-shadow: 0 8px 24px rgba(251, 11, 140, 0.3), 0 4px 12px rgba(0,0,0,0.1);
+        }
+        [data-theme="light"] .page-nav::before,
+        body.light-mode .page-nav::before { background: linear-gradient(90deg, #ff4da6, #fff, #ff4da6); }
+        [data-theme="light"] .nav-divider,
+        body.light-mode .nav-divider { background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); }
+        [data-theme="light"] .nav-link,
+        body.light-mode .nav-link { color: rgba(255,255,255,0.85); }
+        [data-theme="light"] .nav-link:hover,
+        body.light-mode .nav-link:hover { background: rgba(255,255,255,0.15); color: #fff; border-color: rgba(255,255,255,0.3); }
+        [data-theme="light"] .nav-sep,
+        body.light-mode .nav-sep { background: rgba(255,255,255,0.35); }
+        [data-theme="dark"] .nav-divider { background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent); }
+        [data-theme="dark"] .nav-sep { background: rgba(255,255,255,0.15); }
+
+        @media (max-width: 768px) {
+            .page-nav { padding: 12px 14px; margin-top: 0; gap: 6px; }
+            .nav-row { gap: 4px; flex-wrap: wrap; width: 100%; }
+            .nav-link { padding: 6px 10px; font-size: .75em; }
+            .nav-row:last-child .nav-link { padding: 6px 10px; font-size: .75em; }
+            .nav-sep { display: none; }
+        }
+
+        @media (max-width: 480px) {
+            .page-nav { padding: 10px 10px; margin-top: 0; gap: 4px; }
+            .nav-row { gap: 6px; }
+            .nav-link { padding: 5px 8px; font-size: .7em; }
+            .nav-row:last-child .nav-link { padding: 5px 8px; font-size: .7em; }
+        }
+
+        @media print {
+            .page-nav { display: none; }
+        }
+
+
+        /* ============================================
+           DRAWER MODE (PTDT Revamped Home)
+           ============================================ */
+        body.ptdt-drawer-mode #particleCanvas,
+        body.ptdt-drawer-mode .progress-bar,
+        body.ptdt-drawer-mode .home-logo-section,
+        body.ptdt-drawer-mode .page-nav,
+        body.ptdt-drawer-mode .coin-slogan-section,
+        body.ptdt-drawer-mode .footer {
+            display: none !important;
+        }
+
+        body.ptdt-drawer-mode {
+            background: var(--bg-primary);
+            min-height: auto;
+        }
+
+        body.ptdt-drawer-mode .container {
+            width: 100%;
+            max-width: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        body.ptdt-drawer-mode .theme-toggle {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            z-index: 30;
+        }
+
+        body.ptdt-drawer-mode .hero-split {
+            max-width: none;
+            margin: 0;
+            border: 0;
+            border-radius: 0;
+            background: transparent;
+            box-shadow: none;
+            overflow: visible;
+        }
+
+        body.ptdt-drawer-mode .hero-split-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 0.76fr) minmax(420px, 1.24fr);
+            gap: clamp(20px, 2.6vw, 36px);
+            align-items: stretch;
+            padding: clamp(24px, 4vw, 46px) clamp(24px, 4.6vw, 52px) 28px;
+        }
+
+        body.ptdt-drawer-mode .hero-split-content {
+            order: 1;
+            align-self: center;
+            padding: 0;
+            background: transparent;
+            border-left: 0;
+        }
+
+        body.ptdt-drawer-mode .hero-split-image {
+            order: 2;
+            align-self: start;
+            min-width: 0;
+            height: clamp(320px, 29vw, 405px);
+            min-height: 0;
+            border-radius: 22px;
+            overflow: hidden;
+            background: #111827;
+            box-shadow: 0 22px 60px rgba(16, 16, 24, 0.20);
+        }
+
+        body.ptdt-drawer-mode .hero-split-image img {
+            width: 100%;
+            height: 100%;
+            min-height: 0;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        body.ptdt-drawer-mode .hero-split-eyebrow {
+            display: inline-flex;
+            width: auto;
+            padding: 10px 20px;
+            border-radius: 999px;
+            background: rgba(42, 233, 123, 0.10);
+            border: 1px solid rgba(42, 233, 123, 0.28);
+            color: var(--green-success);
+            font-family: Fira Code, monospace;
+            font-size: 12px;
+            letter-spacing: .12em;
+        }
+
+        body.ptdt-drawer-mode .hero-split-title {
+            max-width: 620px;
+            color: var(--pink-primary);
+            font-size: clamp(38px, 4.75vw, 64px);
+            line-height: 1.02;
+            font-weight: 800;
+            letter-spacing: -0.045em;
+            margin-bottom: 18px;
+        }
+
+        body.ptdt-drawer-mode .hero-split-desc {
+            max-width: 610px;
+            color: var(--text-secondary);
+            font-size: 16px;
+            line-height: 1.75;
+            margin-bottom: 22px;
+        }
+
+        body.ptdt-drawer-mode .hero-split-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        body.ptdt-drawer-mode .hero-split-badge {
+            margin: 0;
+            padding: 11px 18px;
+            border-radius: 999px;
+            background: var(--bg-glass);
+            color: var(--text-primary);
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+            font-weight: 700;
+        }
+
+        body.ptdt-drawer-mode .grok-card,
+        body.ptdt-drawer-mode #loadingSection,
+        body.ptdt-drawer-mode #resultSection {
+            width: calc(100% - clamp(48px, 9.2vw, 104px));
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media (max-width: 900px) {
+            body.ptdt-drawer-mode .hero-split-grid {
+                grid-template-columns: 1fr;
+            }
+            body.ptdt-drawer-mode .hero-split-image {
+                order: 1;
+                height: auto;
+                min-height: 260px;
+            }
+            body.ptdt-drawer-mode .hero-split-content { order: 2; }
+            body.ptdt-drawer-mode .hero-split-title { font-size: clamp(32px, 8vw, 44px); }
+        }
+
+        @media (max-width: 560px) {
+            body.ptdt-drawer-mode .hero-split-grid { padding: 20px 16px 24px; }
+            body.ptdt-drawer-mode .grok-card,
+            body.ptdt-drawer-mode #loadingSection,
+            body.ptdt-drawer-mode #resultSection {
+                width: calc(100% - 32px);
+            }
+            body.ptdt-drawer-mode .hero-split-image { min-height: 200px; }
+            body.ptdt-drawer-mode .hero-split-title { font-size: 31px; }
+            body.ptdt-drawer-mode .hero-split-desc { font-size: 15px; }
+        }
+
+</style>
+<script id="ptdt-grokfare-drawer-mode">
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  if (params.get("drawer") === "1") {
+    document.documentElement.classList.add("ptdt-drawer-mode-root");
+    document.addEventListener("DOMContentLoaded", function(){
+      document.body.classList.add("ptdt-drawer-mode");
+      function sendHeight(){
+        if (window.parent && window.parent !== window) {
+          window.parent.postMessage({
+            type: "ptdt-drawer-height",
+            height: document.documentElement.scrollHeight
+          }, "*");
+        }
+      }
+      sendHeight();
+      window.addEventListener("load", sendHeight);
+      window.addEventListener("resize", sendHeight);
+      if (window.MutationObserver) {
+        new MutationObserver(sendHeight).observe(document.body, { childList: true, subtree: true, attributes: true });
+      }
+      setTimeout(sendHeight, 300);
+      setTimeout(sendHeight, 1000);
+      setTimeout(sendHeight, 2500);
+    });
+  }
+})();
+</script>
+
+</head>
+<body>
+
+    <!-- Particle Background Canvas -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle Day/Night Mode">
+        <svg id="themeIcon" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/></svg>
+    </button>
+
+    <!-- HOME LOGO (Top Center) -->
+    <div class="home-logo-section">
+        <a href="https://ptdt.taxi" class="home-logo-link" title="Go to PTDT Homepage">
+            <img src="ptdt-main-logo.png" alt="PTDT Home">
+        </a>
+    </div>
+
+    <!-- TOP NAVBAR (Two-Row Vignette Card) -->
+    <nav class="page-nav">
+        <div class="nav-row">
+        <a href="https://ptdt.taxi/ptdt-docs/mainguide.html" class="nav-link">Main-Guide</a>
+        <span class="nav-sep"></span>
+        <a href="https://ptdt.taxi/ptdt-docs/apidocs.html" class="nav-link">API-Docs</a>
+        <span class="nav-sep"></span>
+        <a href="https://ptdt.taxi/ptdt-docs/dashboard.html" class="nav-link">Dashboard</a>
+        <span class="nav-sep"></span>
+        <a href="https://whitepaper.ptdt.taxi/" class="nav-link">WhitePaper</a>
+        <span class="nav-sep"></span>
+        <a href="https://ptdt.taxi/ptdt-docs/verified.html" class="nav-link verified-tab">Verified ✓</a>
+        <span class="nav-sep"></span>
+        <a href="https://ptdt.taxi/ptdt-docs/rebuttal.html" class="nav-link">Rebuttal</a>
+        <span class="nav-sep"></span>
+        <a href="https://ptdt.taxi/scope.html" class="nav-link">Scope</a>
+        <span class="nav-sep"></span>
+        <a href="https://ptdt.taxi/stake.html" class="nav-link staking-tab">⚡ Staking</a>
+        <span class="nav-sep"></span>
+        <a href="/buy.html" class="nav-link buy-tab">🏛 Buy PTDT</a>
+    </div>
+
+    <!-- DIVIDER -->
+    <div class="nav-divider"></div>
+
+    <!-- SECOND ROW (8 items - now balanced) -->
+    <div class="nav-row">
+        <a href="https://ptdt.taxi/coinranking.html" class="nav-link coinranking-tab">Coinranking</a>
+        <span class="nav-sep"></span>
+        <a href="/gecko.html" class="nav-link gecko-tab">🦎 GeckoTerminal</a>
+        <span class="nav-sep"></span>
+        <a href="/pancakeswap.html" class="nav-link pancake-tab">🥞 PancakeSwap</a>
+        <span class="nav-sep"></span>
+        <a href="/github.html" class="nav-link">▪️ GitHub</a>
+        <span class="nav-sep"></span>
+        <a href="/grokfare.html" class="nav-link active grok-tab">🤖 Grok Fare</a>
+        <span class="nav-sep"></span>
+        <a href="https://ptdt.taxi/grok-stake-sim.html" class="nav-link grok-tab">🧮 Stake Sim</a>
+        <span class="nav-sep"></span>
+        <a href="/ptdt-docs/downloads.html" class="nav-link">📥 Downloads</a>
+    </div>
+  </nav>
+
+    <!-- COIN + SLOGAN SECTION -->
+    <div class="coin-slogan-section">
+        <div class="coin-wrapper">
+            <div class="coin" id="headerCoin">
+                <img src="data:image/svg+xml,%3Csvg viewBox='0 0 28.8 29.04' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='14.35' cy='14.4' r='12.27' fill='%232ae97b' stroke='%23d1d3d4' stroke-miterlimit='10' stroke-width='.46'/%3E%3Ccircle cx='14.35' cy='14.4' r='10.66' fill='%23020202'/%3E%3Cpath d='M15.14,12.47c-.21-.34,2.18-3.91,4.97-4.8-3.22,.47-5.62,2.79-5.76,2.93,0,0-.02,.01-.02,.01,0,0,.01,0,.02-.01,0,0,.01,0,.02,.01h-.02c.64-.63,.45-.1,0,.85-.45-.95-.64-1.48,0-.86-.14-.15-2.55-2.46-5.76-2.93,2.79,.89,5.18,4.46,4.97,4.8-.57,.94-1.12,2.19-1.21,3.55-.03,.14-.05,.26-.05,.36,0,3.18,2.03,5.76,2.03,5.76,0,0,0,0,.02-.01,0,0,.01,.01,.01,.01,0,0,2.03-2.57,2.03-5.76,0-.1-.01-.22-.04-.36-.09-1.36-.63-2.61-1.21-3.55' fill='%23fb0b8c'/%3E%3Cpath d='M15.75,8.26c0,.77-.62,1.39-1.39,1.39s-1.4-.62-1.4-1.39,.63-1.39,1.4-1.39,1.39,.62,1.39,1.39' fill='%23fb068c'/%3E%3C/svg%3E" alt="Peether PTDT" draggable="false">
+            </div>
+        </div>
+        <div class="slogan" id="slogan">
+            <span id="part1"></span>
+            <span id="cursor-anchor-mid"></span>
+            <span id="part2"></span>
+            <span id="cursor-anchor-end"><span class="cursor" id="main-cursor"></span></span>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- ============================================
+             HERO SPLIT SECTION
+             ============================================ -->
+        <section class="hero-split">
+            <div class="hero-split-grid">
+                <div class="hero-split-image">
+                    <img src="grokfare-preview.webp" alt="Grok Fare Analyzer - AI-Powered PTDT Protocol Settlement" loading="lazy" decoding="async">
+                </div>
+                <div class="hero-split-content">
+                    <p class="hero-split-eyebrow">AI-Powered Settlement</p>
+                    <h1 class="hero-split-title">Grok Fare Analyzer</h1>
+                    <p class="hero-split-desc">See exactly how PTDT protocol settles every ride fare — 60% burned, 40% to stakers. Powered by xAI's Grok.</p>
+                    <div class="hero-split-badges">
+                        <span class="hero-split-badge">🤖 Grok AI</span>
+                        <span class="hero-split-badge">🔥 60% Burn</span>
+                        <span class="hero-split-badge">💰 40% Stakers</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ============================================
+             GROK FARE ANALYZER
+             ============================================ -->
+        <div class="grok-card">
+            <h2>🚗 Estimate Your Ride</h2>
+            <div id="fareForm">
+                <div class="form-group">
+                    <label for="pickup">📍 Pickup Location</label>
+                    <input type="text" id="pickup" placeholder="e.g., X HQ, 1355 Market St, San Francisco, CA" required>
+                </div>
+                <div class="form-group">
+                    <label for="destination">📍 Destination</label>
+                    <input type="text" id="destination" placeholder="e.g., SpaceX HQ, 1 Rocket Rd, Hawthorne, CA" required>
+                </div>
+                <div class="form-group">
+                    <label for="distance">📏 Estimated Distance (km) — Optional</label>
+                    <input type="number" id="distance" placeholder="e.g., 15" step="0.1" min="0">
+                </div>
+                <button class="btn-analyze" id="submitBtn" onclick="analyzeFare()">
+                    ⚡ Analyze with Grok AI
+                </button>
+            </div>
+        </div>
+
+        <div id="loadingSection" style="display: none;">
+            <div class="grok-card loading-card">
+                <div class="grok-spinner"></div>
+                <p>🤖 Consulting Grok AI for fair fare estimation...</p>
+                <p style="font-size:.85em;color:var(--text-muted);margin-top:8px;">Analyzing route, distance, and local market rates</p>
+            </div>
+        </div>
+
+        <div id="resultSection" style="display: none;">
+            <!-- Results injected by JS -->
+        </div>
+
+
+    </div><!-- /.container -->
+
+    <footer class="footer">
+        <div class="footer-vignette">
+            <div class="footer-container">
+                <div class="footer-cards">
+                    <div class="footer-card">
+                        <h3>| Quick Links</h3>
+                        <div class="footer-links-list">
+                          <a href="https://ptdt.taxi" target="_blank">🏠 Main Website</a>
+                          <a href="https://dapp.ptdt.taxi" target="_blank">📱 DApp Portal</a>
+                          <a href="https://ptdt.taxi/ptdt-docs/mainguide.html">🔗 Integration Guide</a>
+                          <a href="https://ptdt.taxi/ptdt-docs/apidocs.html">🔧 API Documentation</a>
+                          <a href="https://ptdt.taxi/ptdt-docs/securityresponse.html">🛡 Security Response</a>
+                          <a href="https://ptdt.taxi/ptdt-docs/dashboard.html">📊 Live Dashboard</a>
+                        </div>
+                    </div>
+                    <div class="footer-card">
+                        <h3>| Resources</h3>
+                        <div class="footer-links-list">
+                            <a href="https://bscscan.com/token/0x66c6Fc5E7F99272134a52DF9E88D94eD83E89278" target="_blank">📊 BscScan Contract</a>
+                            <a href="https://pancakeswap.finance/swap?outputCurrency=0x66c6Fc5E7F99272134a52DF9E88D94eD83E89278" target="_blank">💱 PancakeSwap</a>
+                            <a href="https://github.com/pinkpeether/peether-protocol" target="_blank">💻 GitHub Repository</a>
+                            <a href="https://dexscreener.com/bsc/0xF3a06E9Dc5d89B2fD8d7d30946c9aeddc5e01E28" target="_blank">📈 DexScreener Chart</a>
+                            <a href="https://lime-capitalist-canid-406.mypinata.cloud/ipfs/bafkreibvhgi5mhutt6agzrdjki7gxecpr5cvx26yvdyn6kigyumzm6ghuq" target="_blank">📄 Audit Report</a>
+                            <a href="https://blockchair.com/address/0x66c6fc5e7f99272134a52df9e88d94ed83e89278/aml-report.pdf" target="_blank">🌐 Gov Verification</a>
+                        </div>
+                    </div>
+                    <div class="footer-card">
+                        <h3>| Connect</h3>
+                        <div class="social-icons">
+                            <a href="https://t.me/PeetherPTDT" target="_blank" class="social-icon" title="Telegram">✈️</a>
+                            <a href="https://x.com/PTDT_Token" target="_blank" class="social-icon" title="X (Twitter)">𝕏</a>
+                            <a href="https://discord.gg/ptdt" target="_blank" class="social-icon" title="Discord">💬</a>
+                            <a href="https://www.facebook.com/PTDToken" target="_blank" class="social-icon" title="Facebook">📘</a>
+                            <a href="https://github.com/pinkpeether" target="_blank" class="social-icon" title="GitHub">💻</a>
+                            <a href="https://medium.com/pink-taxi/followers" target="_blank" class="social-icon" title="Medium">📝</a>
+                        </div>
+                        <a href="/ptdt-docs/downloads.html" class="downloads-btn">📥 Downloads</a>
+                        <div class="dev-contact">
+                            <p style="font-weight:500;margin-bottom:1px;">Developer Support:</p>
+                            <p>📧 <a href="mailto:dev@ptdt.taxi">dev@ptdt.taxi</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-info">
+            <div class="footer-info-container">
+                <div class="footer-info-grid">
+                    <div class="company-info">
+                        <h4>🏢 Company Information</h4>
+                        <p><strong>Pink Taxi Group Ltd.</strong></p>
+                        <p>Registered in the United Kingdom</p>
+                        <p><strong>Token:</strong> Peether PTDT (Pink Taxi Drive Token)</p>
+                        <p><strong>Network:</strong> BNB Smart Chain (BSC)</p>
+                        <div class="verification-badges">
+                            <span class="badge-v badge-bsc">✔ BSCScan Verified</span>
+                            <span class="badge-v badge-audit">✔ Audit 9.2/10</span>
+                            <span class="badge-v badge-gov">✔ Gov Verified</span>
+                        </div>
+                    </div>
+                    <div class="contract-verification">
+                        <h4>🔐 Contract &amp; Verification</h4>
+                        <div class="contract-item">
+                            <div class="contract-label">Staking Contract Address:</div>
+                            <div class="contract-box">
+                                <span class="contract-address" id="stakingContractAddr">0xfa6A09A581447255BD916ad98cf852fEFbC72494</span>
+                                <button class="copy-btn" onclick="copyToClipboard('stakingContractAddr')"></button>
+                            </div>
+                        </div>
+                        <div class="contract-item">
+                            <div class="contract-label">PTDT Token Contract:</div>
+                            <div class="contract-box">
+                                <span class="contract-address" id="tokenContractAddr">0x66c6Fc5E7F99272134a52DF9E88D94eD83E89278</span>
+                                <button class="copy-btn" onclick="copyToClipboard('tokenContractAddr')"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p class="women-safety-line">Made with <span class="heart">❤️</span> for women's safety</p>
+                    <p style="font-weight:300;color:var(--text-secondary);margin-bottom:12px;">Building the future of decentralized transportation. Peether PTDT Token is a utility token for the PTDT ecosystem.</p>
+                    <div class="footer-links-bottom">
+                        <a href="https://ptdt.taxi/" target="_blank">Website</a>
+                        <span class="separator">|</span>
+                        <a href="https://dapp.ptdt.taxi/" target="_blank">DApp Site</a>
+                        <span class="separator">|</span>
+                        <a href="https://whitepaper.ptdt.taxi/" target="_blank">White Paper</a>
+                        <span class="separator">|</span>
+                        <a href="https://ptdt.taxi/ptdt-docs/mainguide.html" target="_blank">Main Guide</a>
+                        <span class="separator">|</span>
+                        <a href="https://ptdt.taxi/ptdt-docs/dashboard.html" target="_blank">Live Dashboard</a>
+                        <span class="separator">|</span>
+                        <a href="https://ptdt.taxi/cert.html" target="_blank">Certificate</a>
+                        <span class="separator">|</span>
+                        <a href="https://ptdt.taxi/privacy.html" target="_blank">Privacy Policy</a>
+                        <span class="separator">|</span>
+                        <a href="https://ptdt.taxi/terms.html" target="_blank">Terms of Service</a>
+                        <span class="separator">|</span>
+                        <a href="https://ptdt.taxi/ptdt-docs/rebuttal.html" target="_blank">Rebuttal</a>
+                        <span class="separator">|</span>
+                        <a href="https://ptdt.taxi/cookies.html" target="_blank">Cookie Policy</a>
+                        <span class="separator">|</span>
+                        <a href="https://ptdt.taxi/ptdt-docs/verified.html">Verified</a>
+                        <span class="separator">|</span>
+                        <a href="https://ptdt.taxi/scope.html">Scope</a>
+                        <span class="separator">|</span>
+                        <a href="stake.html">Staking</a>
+                        <span class="separator">|</span>
+                        <a href="grokfare.html">Grok Fare</a>
+                        <span class="separator">|</span>
+                        <a href="/cdn-cgi/l/email-protection#b3d7d6c5f3c3c7d7c79dc7d2cbda">Contact Us</a>
+                    </div>
+                    <p class="copyright-line">Copyrights &copy; 2026 Peether – PTDT. Pink Taxi Group LTD. UK. All rights reserved.</p>
+                    <p class="footer-version">Grok Fare Analyzer v1.0 &bull; Last Updated: March 2026</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- TOAST -->
+    <div class="toast" id="toast"></div>
+
+
+
+    <!-- TOAST -->
+    <div class="toast" id="toast"></div>
+
+
+    <!-- ============================================
+         JAVASCRIPT
+         ============================================ -->
+    <script>
+        // ================================
+        // CONFIGURATION
+        // ================================
+        var CONFIG = {
+            GROK_API_URL: 'https://api.x.ai/v1/chat/completions',
+            GROK_API_KEY: 'YOUR_GROK_API_KEY_HERE',
+            BURN_PERCENTAGE: 60,
+            STAKER_PERCENTAGE: 40,
+            PTDT_CONTRACT: '0x66c6Fc5E7F99272134a52DF9E88D94eD83E89278',
+            STAKING_CONTRACT: '0xfa6A09A581447255BD916ad98cf852fEFbC72494',
+            LP_PAIR: '0xF3a06E9Dc5d89B2fD8d7d30946c9aeddc5e01E28',
+            BSC_RPC: 'https://bsc-dataseed.binance.org/',
+            priceCache: null,
+            priceCacheTime: 0
+        };
+
+
+        // ================================
+        // LIVE PTDT PRICE (On-Chain LP Reserves)
+        // ================================
+        async function getLivePTDTPrice() {
+            var now = Date.now();
+            if (CONFIG.priceCache && now - CONFIG.priceCacheTime < 30000) {
+                return CONFIG.priceCache;
+            }
+            try {
+                // Call getReserves() on LP pair contract
+                var resp = await fetch(CONFIG.BSC_RPC, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        jsonrpc: '2.0',
+                        method: 'eth_call',
+                        params: [{ to: CONFIG.LP_PAIR, data: '0x0902f1ac' }, 'latest'],
+                        id: 1
+                    })
+                });
+                var data = await resp.json();
+                var hex = data.result;
+                if (!hex || hex.length < 130) return 1.0;
+
+                // Parse reserves: token0=USDT, token1=PTDT
+                // Use string slicing to avoid JS Number overflow
+                // Divide by 1e18 using BigInt
+                var r0Hex = hex.slice(2, 66);
+                var r1Hex = hex.slice(66, 130);
+
+                var r0Big = BigInt('0x' + r0Hex);
+                var r1Big = BigInt('0x' + r1Hex);
+                var divisor = BigInt('1000000000000000000');
+
+                // Convert to float: whole + fractional
+                var usdtWhole = Number(r0Big / divisor);
+                var usdtFrac = Number(r0Big % divisor) / 1e18;
+                var usdtReserve = usdtWhole + usdtFrac;
+
+                var ptdtWhole = Number(r1Big / divisor);
+                var ptdtFrac = Number(r1Big % divisor) / 1e18;
+                var ptdtReserve = ptdtWhole + ptdtFrac;
+
+                if (ptdtReserve <= 0) return 1.0;
+
+                var price = usdtReserve / ptdtReserve;
+                CONFIG.priceCache = price;
+                CONFIG.priceCacheTime = now;
+                return price;
+            } catch (e) {
+                console.error('On-chain price fetch error:', e);
+                return 1.0;
+            }
+        }
+
+
+        // ================================
+        // TOAST
+        // ================================
+        function showToast(msg, type) {
+            type = type || 'info';
+            var t = document.getElementById('toast');
+            t.textContent = msg;
+            t.className = 'toast ' + type + ' show';
+            setTimeout(function() { t.classList.remove('show'); }, 4000);
+        }
+
+
+        // ================================
+        // FARE ANALYSIS
+        // ================================
+        async function analyzeFare() {
+            var pickup = document.getElementById('pickup').value.trim();
+            var destination = document.getElementById('destination').value.trim();
+            var distanceVal = document.getElementById('distance').value;
+            var distance = distanceVal ? parseFloat(distanceVal) : null;
+
+            if (!pickup || !destination) {
+                showToast('Please enter both pickup and destination', 'error');
+                return;
+            }
+
+            var btn = document.getElementById('submitBtn');
+            var loadingSection = document.getElementById('loadingSection');
+            var resultSection = document.getElementById('resultSection');
+
+            btn.disabled = true;
+            btn.textContent = 'Analyzing...';
+            loadingSection.style.display = 'block';
+            resultSection.style.display = 'none';
+
+            try {
+                var fareData = await callGrokAPI(pickup, destination, distance);
+                displayResults(fareData, pickup, destination, distance);
+            } catch (error) {
+                console.error('Error:', error);
+                displayError(error.message);
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '⚡ Analyze with Grok AI';
+                loadingSection.style.display = 'none';
+            }
+        }
+
+
+        // ================================
+        // GROK API CALL
+        // ================================
+        async function callGrokAPI(pickup, destination, distance) {
+            var distanceText = distance ? ', approximately ' + distance + ' km' : '';
+
+            var prompt = 'You are a fair ride-hailing pricing expert. Estimate a fair market fare (in USD) for a ride from "' + pickup + '" to "' + destination + '"' + distanceText + '. Consider local market rates, distance, typical travel time, and geographic pricing norms. Respond with: FARE: [amount] then REASON: [your 2-sentence reasoning]';
+
+            // Use simulated response (swap to real Grok API when key is available)
+            var grokResponse = await simulateGrokResponse(pickup, destination, distance);
+
+            var fareMatch = grokResponse.match(/FARE:\s*\$?(\d+\.?\d*)/i);
+            var reasonMatch = grokResponse.match(/REASON:\s*(.+)/is);
+
+            var fareUSD = fareMatch ? parseFloat(fareMatch[1]) : estimateFallbackFare(distance);
+            var reason = reasonMatch ? reasonMatch[1].trim() : 'Based on typical market rates for this route.';
+
+            var ptdtPrice = await getLivePTDTPrice();
+            var farePTDT = fareUSD / ptdtPrice;
+
+            return {
+                fareUSD: fareUSD,
+                farePTDT: farePTDT,
+                ptdtPrice: ptdtPrice,
+                grokRawResponse: grokResponse,
+                reason: reason,
+                burnAmount: (farePTDT * CONFIG.BURN_PERCENTAGE) / 100,
+                stakerAmount: (farePTDT * CONFIG.STAKER_PERCENTAGE) / 100
+            };
+        }
+
+        async function simulateGrokResponse(pickup, destination, distance) {
+            await new Promise(function(resolve) { setTimeout(resolve, 2000); });
+            var baseFare = distance ? distance * 0.8 : 12;
+            var fare = Math.round(baseFare * 100) / 100;
+            return 'FARE: $' + fare + '\n\nREASON: For a ride from ' + pickup + ' to ' + destination + (distance ? ' (' + distance + ' km)' : '') + ', a fair market rate would be approximately $' + fare + ' USD. This estimate factors in local transportation costs, typical distance-based pricing, and regional market standards including base rate, distance charge, and operational costs.';
+        }
+
+        function estimateFallbackFare(distance) {
+            if (distance && distance > 0) {
+                return Math.round((5 + distance * 0.8) * 100) / 100;
+            }
+            return 12.00;
+        }
+
+
+        // ================================
+        // DISPLAY RESULTS
+        // ================================
+        function displayResults(fareData, pickup, destination, distance) {
+            var resultSection = document.getElementById('resultSection');
+
+            var distanceHTML = distance ? '<div class="result-info-item"><div class="result-info-label">Distance</div><div class="result-info-value">' + distance + ' km</div></div>' : '';
+
+            var html = '' +
+                '<div class="grok-card">' +
+                    '<h2>📊 Fare Analysis Results</h2>' +
+                    '<div class="result-info-grid">' +
+                        '<div class="result-info-item">' +
+                            '<div class="result-info-label">From</div>' +
+                            '<div class="result-info-value">' + pickup + '</div>' +
+                        '</div>' +
+                        '<div class="result-info-item">' +
+                            '<div class="result-info-label">To</div>' +
+                            '<div class="result-info-value">' + destination + '</div>' +
+                        '</div>' +
+                        distanceHTML +
+                    '</div>' +
+                    '<div class="fare-display">' +
+                        '<div style="font-size:1rem;opacity:.7;">Fair Market Fare</div>' +
+                        '<div class="fare-amount">$' + fareData.fareUSD.toFixed(2) + ' USD</div>' +
+                        '<div class="fare-ptdt">≈ ' + fareData.farePTDT.toFixed(2) + ' PTDT</div>' +
+                        '<div style="font-size:.85rem;color:var(--text-muted);margin-top:6px;">Live PTDT Price: $' + fareData.ptdtPrice.toFixed(3) + '</div>' +
+                    '</div>' +
+                    '<div class="grok-response">' +
+                        '<strong>🤖 Grok AI Analysis:</strong><br/>' +
+                        fareData.reason +
+                    '</div>' +
+                '</div>' +
+
+                '<div class="grok-card">' +
+                    '<h2>⚡ PTDT Settlement Distribution</h2>' +
+                    '<p style="color:var(--text-secondary);margin-bottom:20px;">Every ride settled on PTDT Protocol splits the fare automatically on-chain:</p>' +
+                    '<div class="settlement-split">' +
+                        '<div class="split-card burn-card">' +
+                            '<div class="split-label">🔥 Burned Forever</div>' +
+                            '<div class="split-amount">' + fareData.burnAmount.toFixed(2) + '</div>' +
+                            '<div style="font-size:.9rem;margin-top:4px;color:var(--text-muted);">PTDT</div>' +
+                            '<div class="split-percentage">' + CONFIG.BURN_PERCENTAGE + '%</div>' +
+                        '</div>' +
+                        '<div class="split-card staker-card">' +
+                            '<div class="split-label">💎 To Stakers</div>' +
+                            '<div class="split-amount">' + fareData.stakerAmount.toFixed(2) + '</div>' +
+                            '<div style="font-size:.9rem;margin-top:4px;color:var(--text-muted);">PTDT</div>' +
+                            '<div class="split-percentage">' + CONFIG.STAKER_PERCENTAGE + '%</div>' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="bar-visualization">' +
+                        '<div class="bar-burn">🔥 60% BURNED</div>' +
+                        '<div class="bar-staker">💎 40% STAKERS</div>' +
+                    '</div>' +
+                    '<div class="what-means">' +
+                        '<strong>💡 What This Means:</strong>' +
+                        '<ul>' +
+                            '<li><strong>' + fareData.burnAmount.toFixed(2) + ' PTDT</strong> removed from supply forever (deflationary pressure)</li>' +
+                            '<li><strong>' + fareData.stakerAmount.toFixed(2) + ' PTDT</strong> distributed to stakers as real yield (12-18% APY)</li>' +
+                            '<li>No middleman fees, no hidden charges</li>' +
+                            '<li>100% transparent on-chain settlement</li>' +
+                        '</ul>' +
+                    '</div>' +
+                '</div>' +
+
+                '<div class="staking-cta">' +
+                    '<h3>🚀 Want to Stake and Earn?</h3>' +
+                    '<p style="color:var(--text-secondary);margin-bottom:16px;">Stake PTDT tokens to earn real yield from every ride settled on the protocol.</p>' +
+                    '<div class="tier-mini-grid">' +
+                        '<div class="tier-mini">' +
+                            '<div class="tier-mini-apy">12%</div>' +
+                            '<div class="tier-mini-label">🪙 Bronze (30d)</div>' +
+                        '</div>' +
+                        '<div class="tier-mini">' +
+                            '<div class="tier-mini-apy">15%</div>' +
+                            '<div class="tier-mini-label">⚡ Silver (60d)</div>' +
+                        '</div>' +
+                        '<div class="tier-mini">' +
+                            '<div class="tier-mini-apy">18%</div>' +
+                            '<div class="tier-mini-label">👑 Gold (90d)</div>' +
+                        '</div>' +
+                    '</div>' +
+                    '<div style="text-align:center;margin-top:16px;">' +
+                        '<a href="https://ptdt.taxi/stake.html" target="_blank" class="btn-stake-cta">Start Staking Now →</a>' +
+                    '</div>' +
+                '</div>';
+
+            resultSection.innerHTML = html;
+            resultSection.style.display = 'block';
+            resultSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function displayError(message) {
+            var resultSection = document.getElementById('resultSection');
+            resultSection.innerHTML = '' +
+                '<div class="grok-card">' +
+                    '<div class="alert-card">' +
+                        '<strong>⚠️ Error:</strong> ' + message +
+                    '</div>' +
+                    '<p style="color:var(--text-secondary);">' +
+                        'This demo requires a Grok API key. Currently using simulated responses to demonstrate functionality.' +
+                    '</p>' +
+                '</div>';
+            resultSection.style.display = 'block';
+        }
+
+
+        // ================================
+        // ENTER KEY SUPPORT
+        // ================================
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                var active = document.activeElement;
+                if (active && (active.id === 'pickup' || active.id === 'destination' || active.id === 'distance')) {
+                    e.preventDefault();
+                    analyzeFare();
+                }
+            }
+        });
+
+
+        // ================================
+        // THEME TOGGLE
+        // ================================
+        var SUN_SVG = '<svg viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="5" fill="white"/><g stroke="white" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></g></svg>';
+        var MOON_SVG = '<svg viewBox="0 0 24 24" width="24" height="24" fill="white"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/></svg>';
+
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+            var isLight = document.body.classList.contains('light-mode');
+            document.getElementById('themeToggle').innerHTML = isLight ? SUN_SVG : MOON_SVG;
+            document.getElementById('particleCanvas').style.background = isLight ? '#F4F4F8' : '#0A0A0F';
+            try { localStorage.setItem('ptdt-theme', isLight ? 'light' : 'dark'); } catch(e) {}
+        }
+
+        (function() {
+            try {
+                if (localStorage.getItem('ptdt-theme') === 'light') {
+                    document.body.classList.add('light-mode');
+                    document.getElementById('themeToggle').innerHTML = SUN_SVG;
+                    document.getElementById('particleCanvas').style.background = '#F4F4F8';
+                }
+            } catch(e) {}
+        })();
+
+
+        // ================================
+        // PARTICLE BACKGROUND
+        // ================================
+        (function() {
+            var canvas = document.getElementById('particleCanvas');
+            if (!canvas) return;
+            var ctx = canvas.getContext('2d');
+            function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+            resize();
+            window.addEventListener('resize', resize);
+            var colors = ['rgba(251, 10, 139, 0.5)', 'rgba(0, 226, 110, 0.5)'];
+            var particles = [];
+            for (var i = 0; i < 60; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width, y: Math.random() * canvas.height,
+                    radius: Math.random() * 3 + 1, color: colors[Math.floor(Math.random() * colors.length)],
+                    vx: Math.random() - 0.5, vy: Math.random() - 0.5
+                });
+            }
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (var i = 0; i < particles.length; i++) {
+                    var p = particles[i];
+                    ctx.beginPath(); ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2); ctx.fillStyle = p.color; ctx.fill();
+                    p.x += p.vx; p.y += p.vy;
+                    if (p.x < 0) { p.x = canvas.width; p.vx *= -1; }
+                    if (p.x > canvas.width) { p.x = 0; p.vx *= -1; }
+                    if (p.y < 0) { p.y = canvas.height; p.vy *= -1; }
+                    if (p.y > canvas.height) { p.y = 0; p.vy *= -1; }
+                }
+                requestAnimationFrame(animate);
+            }
+            animate();
+        })();
+
+
+        // ================================
+        // HEADER COIN ANIMATION
+        // ================================
+        (function() {
+            var coin = document.getElementById('headerCoin');
+            if (!coin) return;
+            setTimeout(function() { coin.classList.add('animate'); setTimeout(function() { coin.classList.remove('animate'); }, 2150); }, 500);
+            setInterval(function() { coin.classList.add('animate'); setTimeout(function() { coin.classList.remove('animate'); }, 2150); }, 30000);
+        })();
+
+
+        // ================================
+        // SLOGAN TYPING ANIMATION
+        // ================================
+        (function() {
+            var sloganPart1 = [
+                { text: "Trust the ", cls: "light" },
+                { text: "{", cls: "brackets" },
+                { text: " ", cls: "light" },
+                { text: "Code", cls: "code" },
+                { text: " ", cls: "light" },
+                { text: "}", cls: "brackets" },
+                { text: ",", cls: "light" }
+            ];
+            var sloganPart2 = [
+                { text: " ", cls: "light" },
+                { text: "// Not the ", cls: "gray" },
+                { text: "Cult", cls: "cult" },
+                { text: "!", cls: "exclamation" }
+            ];
+            var part1Area = document.getElementById('part1');
+            var part2Area = document.getElementById('part2');
+            var mainCursor = document.getElementById('main-cursor');
+            var anchorMid = document.getElementById('cursor-anchor-mid');
+            var sloganEl = document.getElementById('slogan');
+            var currentDelay = 500;
+
+            function typeSegments(segments, container) {
+                for (var s = 0; s < segments.length; s++) {
+                    var seg = segments[s];
+                    var span = document.createElement('span');
+                    if (seg.cls) span.className = seg.cls;
+                    container.appendChild(span);
+                    var chars = seg.text.split('');
+                    for (var c = 0; c < chars.length; c++) {
+                        var charSpan = document.createElement('span');
+                        charSpan.className = 'char';
+                        charSpan.textContent = chars[c];
+                        span.appendChild(charSpan);
+                        (function(cs, sp, delay) {
+                            setTimeout(function() { cs.classList.add('visible'); sp.appendChild(mainCursor); }, delay);
+                        })(charSpan, span, currentDelay);
+                        currentDelay += (chars[c] === ' ' ? 70 : 100);
+                    }
+                }
+            }
+
+            typeSegments(sloganPart1, part1Area);
+            typeSegments(sloganPart2, part2Area);
+
+            var finalDelay = currentDelay;
+            setTimeout(function() {
+                setTimeout(function() {
+                    sloganEl.classList.add('finished');
+                    setTimeout(function() { anchorMid.appendChild(mainCursor); }, 2000);
+                }, 800);
+            }, finalDelay);
+        })();
+
+
+        // ================================
+        // PROGRESS BAR
+        // ================================
+        (function() {
+            var bar = document.getElementById('progressBar');
+            function update() {
+                var scroll = document.body.scrollTop || document.documentElement.scrollTop;
+                var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                bar.style.width = (height > 0 ? (scroll / height) * 100 : 0) + '%';
+            }
+            window.addEventListener('scroll', update, { passive: true });
+            window.addEventListener('load', update);
+        })();
+
+
+        // ================================
+        // COPY TO CLIPBOARD (footer)
+        // ================================
+        function copyToClipboard(elemId) {
+            var el = document.getElementById(elemId);
+            if (!el) return;
+            navigator.clipboard.writeText(el.textContent).then(function() {
+                showToast('Copied to clipboard!', 'success');
+            });
+        }
+
+    </script>
+</body>
+</html>

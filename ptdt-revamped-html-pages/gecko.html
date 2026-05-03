@@ -1,0 +1,1714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PTDT on GeckoTerminal | Live On-Chain Market Data | Peether</title>
+    <meta name="description" content="Track PTDT on GeckoTerminal with live price, liquidity, FDV and holders. GeckoTerminal gives PTDT a clean public market surface for real on-chain visibility.">
+    <link rel="canonical" href="https://ptdt.taxi/geckoterminal.html">
+
+    <!-- Favicon: inline SVG primary + PNG fallback -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 28.8 29.04' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='14.35' cy='14.4' r='12.27' fill='%232ae97b'/%3E%3Ccircle cx='14.35' cy='14.4' r='10.66' fill='%23020202'/%3E%3Cpath d='M15.14,12.47c-.21-.34,2.18-3.91,4.97-4.8-3.22,.47-5.62,2.79-5.76,2.93,0,0-.02,.01-.02,.01,0,0,.01,0,.02-.01,0,0,.01,0,.02,.01h-.02c.64-.63,.45-.1,0,.85-.45-.95-.64-1.48,0-.86-.14-.15-2.55-2.46-5.76-2.93,2.79,.89,5.18,4.46,4.97,4.8-.57,.94-1.12,2.19-1.21,3.55-.03,.14-.05,.26-.05,.36,0,3.18,2.03,5.76,2.03,5.76,0,0,0,0,.02-.01,0,0,.01,.01,.01,.01,0,0,2.03-2.57,2.03-5.76,0-.1-.01-.22-.04-.36-.09-1.36-.63-2.61-1.21-3.55' fill='%23fb0b8c'/%3E%3Cpath d='M15.75,8.26c0,.77-.62,1.39-1.39,1.39s-1.4-.62-1.4-1.39,.63-1.39,1.4-1.39,1.39,.62,1.39,1.39' fill='%23fb068c'/%3E%3C/svg%3E">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://ptdt.taxi/favicon-32x32.png">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="PTDT on GeckoTerminal | Live On-Chain Market Data">
+    <meta property="og:description" content="Follow PTDT live on GeckoTerminal with real-time BNB Chain market data, pool visibility, liquidity and holder context.">
+    <meta property="og:image" content="https://ptdt.taxi/gecko-preview.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="PTDT on GeckoTerminal live market page">
+    <meta property="og:site_name" content="Peether PTDT">
+    <meta property="og:url" content="https://ptdt.taxi/geckoterminal.html">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@PTDT_Token">
+    <meta name="twitter:url" content="https://ptdt.taxi/geckoterminal.html">
+    <meta name="twitter:title" content="PTDT on GeckoTerminal | Live On-Chain Market Data">
+    <meta name="twitter:description" content="Track PTDT live on GeckoTerminal with price, liquidity, FDV and holder visibility pulled from the live BNB Chain pool.">
+    <meta name="twitter:image" content="https://ptdt.taxi/gecko-preview.webp">
+
+    <!-- Additional SEO -->
+    <meta name="keywords" content="PTDT GeckoTerminal, GeckoTerminal PTDT, PTDT live price, PTDT liquidity, PTDT FDV, PTDT holders, BNB Chain pool, Peether token market data">
+    <meta name="author" content="Peether PTDT">
+    <meta name="robots" content="index, follow">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "headline": "PTDT on GeckoTerminal | Live On-Chain Market Data",
+      "description": "Track PTDT on GeckoTerminal with live price, liquidity, FDV and holder visibility from the live BNB Chain pool.",
+      "author": {
+        "@type": "Organization",
+        "name": "Peether PTDT"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Peether PTDT",
+        "url": "https://ptdt.taxi",
+        "logo": { "@type": "ImageObject", "url": "https://ptdt.taxi/logo.png" }
+      },
+      "url": "https://ptdt.taxi/geckoterminal.html",
+      "image": "https://ptdt.taxi/gecko-preview.webp",
+      "datePublished": "2026-03-30",
+      "dateModified": "2026-03-30"
+    }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-primary: #0A0A0F;
+            --bg-secondary: #111118;
+            --bg-card: #1A1A24;
+            --bg-glass: rgba(15, 15, 22, 0.9);
+            --text-primary: #E8E8F0;
+            --text-secondary: #8888A0;
+            --text-muted: #555568;
+            --pink-primary: #fb0b8c;
+            --pink-light: #ff4da6;
+            --purple-primary: #a855f7;
+            --green-primary: #00a747;
+            --green-success: #10B981;
+            --amber: #f59e0b;
+            --amber-light: #fbbf24;
+            --binance-gold: #F0B90B;
+            --cmc-blue: #3861FB;
+            --gecko-purple: #7c3aed;
+            --gecko-purple-light: #a855f7;
+            --gecko-mint: #86efac;
+            --border-color: #2A2A3A;
+            --border-light: rgba(255, 255, 255, 0.06);
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+            --gradient-pink: linear-gradient(135deg, #fb0b8c 0%, #ff4da6 50%, #a855f7 100%);
+            --gradient-gold: linear-gradient(135deg, #F0B90B 0%, #fbbf24 50%, #f59e0b 100%);
+            --gradient-cmc: linear-gradient(135deg, #3861FB 0%, #6B8AFF 100%);
+            --gradient-gecko: linear-gradient(135deg, #5b21b6 0%, #7c3aed 55%, #fb0b8c 100%);
+        }
+
+        body.light-mode {
+            --bg-primary: #F4F4F8;
+            --bg-secondary: #E8E8F0;
+            --bg-card: #FFFFFF;
+            --bg-glass: rgba(255, 255, 255, 0.92);
+            --text-primary: #1A1A2E;
+            --text-secondary: #555568;
+            --text-muted: #8888A0;
+            --border-color: #D0D0E0;
+            --border-light: rgba(0, 0, 0, 0.06);
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.12);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; }
+
+        body {
+            font-family: 'Lexend', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        #particleCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: var(--bg-primary);
+            transition: background-color 0.3s;
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: var(--gradient-gecko);
+            z-index: 9999;
+            box-shadow: 0 0 10px rgba(124, 58, 237, 0.5);
+            transition: width 0.1s linear;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-gecko);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .theme-toggle:hover { transform: scale(1.1) rotate(15deg); }
+        .theme-toggle svg { width: 24px; height: 24px; fill: #fff; }
+
+        .page-nav {
+            background: linear-gradient(135deg, rgba(251, 11, 140, 0.12), rgba(168, 85, 247, 0.12));
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(251, 11, 140, 0.15);
+            border-radius: 16px;
+            padding: 12px 24px;
+            margin: 0 auto 0;
+            max-width: 960px;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            align-items: center;
+        }
+        .page-nav::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gradient-pink); }
+        .nav-row { display: flex; gap: 6px; justify-content: center; align-items: center; }
+        .page-nav .nav-row:last-child { gap: 4px; }
+        .page-nav .nav-row:last-child .nav-link { padding-left: 10px; padding-right: 10px; }
+        .page-nav .nav-row:last-child { gap: 4px; }
+        .page-nav .nav-row:last-child .nav-link { padding-left: 10px; padding-right: 10px; }
+        .nav-divider { width: 80%; max-width: 500px; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent); margin: -1px 0; }
+        body.light-mode .nav-divider { background: linear-gradient(90deg, transparent, rgba(0,0,0,0.12), transparent); }
+        .nav-link {
+            padding: 8px 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 400;
+            font-size: .82em;
+            font-family: 'Fira Code', monospace;
+            text-transform: uppercase;
+            letter-spacing: .02em;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            white-space: nowrap;
+        }
+        .nav-link:hover { background: rgba(251, 11, 140, 0.12); color: var(--pink-light); border-color: rgba(251, 11, 140, 0.3); text-decoration: none; }
+        .nav-link.active.buy-tab { background: var(--gradient-gold); color: var(--cmc-blue); box-shadow: 0 4px 12px rgba(240, 185, 11, 0.45); font-weight: 600; }
+        .nav-link.active.verified-tab { background: linear-gradient(135deg, #006d30 0%, #009e44 50%, #007a36 100%); color: #fff; box-shadow: 0 4px 12px rgba(0, 158, 68, 0.35); }
+        .nav-link.active.staking-tab { background: linear-gradient(135deg, #d97706 0%, #f59e0b 50%, #eab308 100%); color: #000; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35); }
+        .nav-link.active.grok-tab { background: linear-gradient(135deg, #fb0b8c 0%, #a855f7 50%, #6366f1 100%); color: #fff; box-shadow: 0 4px 12px rgba(168, 85, 247, 0.45); }
+        .nav-link.active.pancake-tab { background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 50%, #67e8f9 100%); color: #000; box-shadow: 0 4px 12px rgba(6, 182, 212, 0.35); }
+        .nav-link.active.gecko-tab { background: var(--gradient-gecko); color: #fff; box-shadow: 0 4px 12px rgba(124, 58, 237, 0.45); font-weight: 600; }
+        .nav-sep { width: 1px; height: 18px; background: rgba(255,255,255,0.15); margin: 0 2px; }
+        body.light-mode .nav-sep { background: rgba(255,255,255,0.35); }
+
+        body.light-mode .page-nav {
+            background: linear-gradient(to top, #a0065a 0%, #b8076e 25%, #e50a83 55%, #fb0b8c 100%);
+            border-color: rgba(255,255,255,0.15);
+            box-shadow: 0 8px 24px rgba(251, 11, 140, 0.3), 0 4px 12px rgba(0,0,0,0.1);
+        }
+        body.light-mode .page-nav::before { background: linear-gradient(90deg, #ff4da6, #fff, #ff4da6); }
+        body.light-mode .nav-divider { background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); }
+        body.light-mode .nav-link { color: rgba(255,255,255,0.85); }
+        body.light-mode .nav-link:hover { background: rgba(255,255,255,0.15); color: #fff; border-color: rgba(255,255,255,0.3); }
+
+        .home-logo-section { text-align: center; padding: 24px 0 16px; }
+        .home-logo-link { display: inline-block; transition: transform 0.3s ease; }
+        .home-logo-link:hover { transform: scale(1.05); }
+        .home-logo-link img { width: 182px; height: auto; }
+
+        .coin-slogan-section { text-align: center; padding: 24px 0 12px; }
+        .coin-wrapper { perspective: 1200px; width: 120px; height: 120px; margin: 0 auto 12px; }
+        .coin { position: relative; transform-style: preserve-3d; border-radius: 50%; width: 100%; height: 100%; }
+        .coin img {
+            position: relative;
+            z-index: 2;
+            transform: translateZ(14px);
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            backface-visibility: hidden;
+            background: transparent;
+            box-shadow: 0 0 35px rgba(168, 85, 247, 0.45), inset 0 0 14px rgba(255, 255, 255, 0.3);
+        }
+        .coin::before {
+            content: "";
+            position: absolute;
+            inset: 3px;
+            border-radius: 50%;
+            background: linear-gradient(90deg, #4c1d95, #8b5cf6, #f472b6, #8b5cf6, #4c1d95);
+            transform: translateZ(-14px);
+            filter: blur(1px);
+        }
+        .coin::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            transform: translateZ(15px);
+            background: linear-gradient(135deg, transparent 40%, rgba(255, 255, 255, 0.9) 50%, transparent 60%);
+            opacity: 0;
+            pointer-events: none;
+            animation: diamondSparkle 3s ease-in-out infinite;
+        }
+        @keyframes diamondSparkle { 0%, 100% { opacity: 0; } 50% { opacity: .6; } }
+        @keyframes coinFlip { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(5400deg); } }
+        .coin.animate { animation: coinFlip 2.15s cubic-bezier(.25, .1, .25, 1); }
+
+        .slogan {
+            font-size: clamp(18px, 4.5vw, 24px);
+            white-space: pre;
+            font-family: 'Space Grotesk', sans-serif;
+            display: inline-flex;
+            align-items: center;
+            color: #334155;
+            line-height: 1;
+        }
+        .slogan .char { display: none; }
+        .slogan .char.visible { display: inline; }
+        .slogan .light { font-weight: 300; color: #cbd5e1; letter-spacing: -.05em; }
+        .slogan .code { font-family: 'Fira Code', monospace; font-weight: 700; color: #EB4491; letter-spacing: -.01em; }
+        .slogan .gray { font-weight: 300; color: #94a3b8; letter-spacing: -.05em; }
+        .slogan .market { font-weight: 700; color: var(--gecko-purple-light); letter-spacing: -.01em; }
+        .slogan .brackets { font-family: 'Fira Code', monospace; color: #57BF39; font-weight: 700; }
+        .slogan .cursor { display: inline-block; width: 1.5px; height: 1.1em; background: #cbd5e1; margin-left: 1px; animation: blink 0.72s steps(1) infinite; vertical-align: middle; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        body.light-mode .slogan .light { color: #334155; }
+        body.light-mode .slogan .gray { color: #6B7280; }
+        body.light-mode .slogan .cursor { background: #1e293b; }
+
+        .container { max-width: 960px; margin: 0 auto; padding: 20px; }
+
+        .hero-split {
+            background: linear-gradient(135deg, #12091f 0%, #1e1036 30%, #150b25 60%, #09050f 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(124, 58, 237, 0.28);
+            margin-bottom: 32px;
+            margin-top: -8px;
+            box-shadow: 0 0 50px rgba(124, 58, 237, 0.18), 0 0 80px rgba(251, 11, 140, 0.08), inset 0 1px 0 rgba(168, 85, 247, 0.18), 0 0 40px rgba(124, 58, 237, 0.12);
+        }
+        .hero-split-grid { display: grid; grid-template-columns: 1.15fr 1fr; }
+        .hero-split-image { padding: 0; display: flex; align-items: stretch; justify-content: center; overflow: hidden; }
+        .hero-split-image img { width: 100%; height: 100%; object-fit: cover; object-position: center; border-radius: 0; display: block; }
+        .hero-split-content {
+            padding: 28px 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: linear-gradient(160deg, #150a24 0%, #0d0718 40%, #06030b 70%, #0a0612 100%);
+            border-left: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .hero-split-eyebrow {
+            color: var(--gecko-purple-light);
+            font-family: 'Fira Code', monospace;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .hero-split-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 14px;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            background: none;
+            -webkit-background-clip: initial;
+            background-clip: initial;
+            -webkit-text-fill-color: #ffffff;
+        }
+        .hero-split-title .ptdt-pink {
+            color: var(--pink-primary);
+            -webkit-text-fill-color: var(--pink-primary);
+        }
+        .hero-split-title .plain-white {
+            color: #ffffff;
+            -webkit-text-fill-color: #ffffff;
+        }
+        .hero-split-title .gecko-purple {
+            color: var(--pink-primary);
+            -webkit-text-fill-color: var(--pink-primary);
+        }
+        .hero-split-desc { color: rgba(255, 255, 255, 0.75); font-size: 0.92rem; line-height: 1.65; margin-bottom: 20px; }
+        .hero-split-badges { display: flex; gap: 10px; flex-wrap: wrap; }
+        .hero-split-badge {
+            background: rgba(124, 58, 237, 0.12);
+            color: var(--gecko-purple-light);
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(124, 58, 237, 0.25);
+            transition: all 0.3s ease;
+        }
+        .hero-split-badge:hover { background: rgba(124, 58, 237, 0.2); transform: translateY(-2px); }
+        .hero-split-badge.pink { background: rgba(251, 11, 140, 0.12); color: var(--pink-primary); border-color: rgba(251, 11, 140, 0.25); }
+        .hero-split-badge.green { background: rgba(16, 185, 129, 0.12); color: #10B981; border-color: rgba(16, 185, 129, 0.25); }
+
+        .hero-split-image { min-height: 100%; }
+        .gecko-launch-wrap {
+            margin-top: 18px;
+            display: flex;
+            justify-content: center;
+        }
+        .gecko-launch-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+        .gecko-launch-btn:hover {
+            transform: translateY(-2px) scale(1.015);
+            filter: drop-shadow(0 10px 20px rgba(124, 58, 237, 0.18));
+        }
+        .gecko-launch-btn img {
+            width: min(100%, 340px);
+            height: auto;
+            display: block;
+        }
+
+        .header {
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            padding: 30px 40px 35px;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+        .header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--gradient-gecko); }
+        .header-separator { width: calc(100% - 80px); height: 1.5px; background: var(--border-color); margin: 5px auto 20px; border-radius: 2px; }
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            background: var(--gradient-gecko);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            font-size: 2.2em;
+            margin-bottom: 12px;
+            letter-spacing: -.04em;
+            line-height: 1.2;
+        }
+        .subtitle { font-size: 1.05em; max-width: 700px; margin: 0 auto 20px; line-height: 1.5; letter-spacing: -.02em; color: var(--text-secondary); }
+        .hl-pink { color: var(--pink-primary); font-weight: 600; }
+        .hl-green { color: var(--green-success); font-weight: 600; }
+        .hl-purple { color: var(--gecko-purple-light); font-weight: 600; }
+        .brand-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: .85em;
+            font-weight: 600;
+            font-family: 'Fira Code', monospace;
+            background: rgba(124, 58, 237, 0.1);
+            border: 1px solid rgba(124, 58, 237, 0.28);
+            color: var(--gecko-purple-light);
+            text-decoration: none;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+        }
+        .brand-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(124, 58, 237, 0.22);
+            background: rgba(124, 58, 237, 0.16);
+            border-color: rgba(124, 58, 237, 0.38);
+        }
+        .dot { width: 8px; height: 8px; border-radius: 50%; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+        .stats-banner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
+        .stat-item {
+            background: var(--bg-glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+        }
+        .stat-number { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.6em; margin-bottom: 4px; }
+        .stat-label { font-size: .75em; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); font-family: 'Fira Code', monospace; }
+        .green-num { color: var(--green-success); }
+        .pink-num { color: var(--pink-primary); }
+        .purple-num { color: var(--gecko-purple-light); }
+        .mint-num { color: var(--gecko-mint); }
+
+        .platforms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px; }
+        .platform-card {
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid var(--border-light);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .platform-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+        .platform-accent { height: 4px; }
+        .platform-accent.gecko { background: var(--gradient-gecko); }
+        .platform-accent.pink { background: var(--gradient-pink); }
+        .platform-body { padding: 28px; }
+        .platform-header { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+        .platform-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 700;
+        }
+        .platform-icon.gecko { background: rgba(124, 58, 237, 0.15); color: var(--gecko-purple-light); border: 1px solid rgba(124, 58, 237, 0.3); }
+        .platform-icon.pink { background: rgba(251, 11, 140, 0.15); color: var(--pink-primary); border: 1px solid rgba(251, 11, 140, 0.3); }
+        .platform-name { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.2em; }
+        .platform-name.gecko { color: var(--gecko-purple-light); }
+        .platform-name.pink { color: var(--pink-primary); }
+        .platform-sub { font-size: .75em; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; font-family: 'Fira Code', monospace; }
+        .platform-desc { color: var(--text-secondary); font-size: .92em; line-height: 1.65; margin-bottom: 20px; }
+        .platform-features { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+        .platform-feature { display: flex; align-items: center; gap: 10px; font-size: .88em; color: var(--text-secondary); }
+        .platform-feature .check { color: var(--green-success); font-weight: 700; }
+        .platform-btn {
+            display: block;
+            width: 100%;
+            padding: 14px 20px;
+            border-radius: 12px;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1em;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: .5px;
+        }
+        .platform-btn.gecko { background: var(--gradient-gecko); color: #fff; }
+        .platform-btn.gecko:hover { box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4); transform: translateY(-2px); }
+        .platform-btn.pink { background: var(--gradient-pink); color: #fff; }
+        .platform-btn.pink:hover { box-shadow: 0 8px 25px rgba(251, 11, 140, 0.35); transform: translateY(-2px); }
+
+        .discovery-callout {
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.08), rgba(251, 11, 140, 0.08));
+            border: 1px solid rgba(124, 58, 237, 0.18);
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+        .discovery-callout-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.4em;
+            color: var(--gecko-purple-light);
+            margin-bottom: 12px;
+        }
+        .discovery-callout-text { color: var(--text-secondary); font-size: .95em; line-height: 1.7; max-width: 700px; margin: 0 auto 20px; }
+        .discovery-callout-quote {
+            font-family: 'Fira Code', monospace;
+            font-size: .85em;
+            color: var(--pink-primary);
+            padding: 16px 24px;
+            background: rgba(251, 11, 140, 0.06);
+            border-left: 3px solid var(--pink-primary);
+            border-radius: 0 8px 8px 0;
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .info-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
+        .info-card {
+            background: var(--bg-glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .info-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+        .info-card-icon { font-size: 28px; margin-bottom: 10px; }
+        .info-card-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+        .info-card-sub { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+
+        .contract-section {
+            background: var(--bg-glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+        .contract-section-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1em; margin-bottom: 12px; color: var(--gecko-purple-light); }
+        .contract-copy-row { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        .contract-mini {
+            font-family: 'Fira Code', monospace;
+            font-size: .82em;
+            color: var(--text-secondary);
+            background: rgba(255,255,255,0.04);
+            padding: 10px 16px;
+            border-radius: 8px;
+            border: 1px solid var(--border-light);
+            word-break: break-all;
+        }
+        .copy-mini-btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            background: rgba(124, 58, 237, 0.1);
+            color: var(--gecko-purple-light);
+            font-family: 'Fira Code', monospace;
+            font-size: .82em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .copy-mini-btn:hover { background: rgba(124, 58, 237, 0.2); }
+
+        .cta-section {
+            text-align: center;
+            padding: 32px 20px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.08), rgba(251, 11, 140, 0.08));
+            border-radius: 20px;
+            border: 1px solid var(--border-light);
+        }
+        .cta-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.3em; margin-bottom: 16px; color: var(--text-primary); }
+        .cta-copy { max-width: 680px; margin: 0 auto 18px; color: var(--text-secondary); font-size: .95em; line-height: 1.65; }
+        .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: .95em;
+            transition: all 0.3s ease;
+        }
+        .cta-btn-primary { background: var(--gradient-gecko); color: #fff; }
+        .cta-btn-primary:hover { box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4); transform: translateY(-2px); }
+        .cta-btn-secondary { background: rgba(251, 11, 140, 0.1); color: var(--pink-primary); border: 1px solid rgba(251, 11, 140, 0.3); }
+        .cta-btn-secondary:hover { background: rgba(251, 11, 140, 0.2); transform: translateY(-2px); }
+
+        .footer { width: 100%; margin-top: 0; position: relative; }
+        .footer-vignette {
+            background: linear-gradient(to right, rgb(236, 72, 153), rgb(147, 51, 234));
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,.1);
+            padding: 30px 5%;
+            margin: 0 auto;
+            max-width: 1100px;
+            width: 95%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .footer-container { margin: 0 auto; max-width: 960px; width: 100%; }
+        .footer-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .footer-card {
+            background: rgba(255,255,255,.1) !important;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,.1);
+            padding: 15px 20px 28px;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .footer-card:hover { background: rgba(255,255,255,.15) !important; transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0,0,0,.2); }
+        .footer-card h3 { font-family: Montserrat, sans-serif; font-weight: 700; font-size: 1.125rem; margin: 0 0 10px; color: white; }
+        .footer-links-list { display: flex; flex-direction: column; gap: 8px; }
+        .footer-links-list a { color: rgba(255,255,255,.9); text-decoration: none; font-size: .975rem; font-weight: 400; transition: all .5s; display: flex; align-items: center; gap: 8px; line-height: 1.5; }
+        .footer-links-list a:hover { color: white; transform: translateX(4px); }
+        .social-icons { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            background: rgba(255,255,255,.2);
+            border: 1px solid rgba(255,255,255,.4);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: all .3s;
+        }
+        .social-icon:hover { background: rgba(255,255,255,.4); transform: translateY(-3px) scale(1.1); box-shadow: 0 5px 15px rgba(0,0,0,.3); }
+        .downloads-btn {
+            display: block;
+            text-align: center;
+            padding: 8px 16px;
+            background: rgba(255,255,255,.25);
+            border: 1px solid rgba(255,255,255,.4);
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+            font-size: .9rem;
+            font-weight: 600;
+            margin-top: 16px;
+            margin-bottom: 12px;
+            transition: all .3s;
+        }
+        .downloads-btn:hover { background: rgba(255,255,255,.4); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,.2); }
+        .dev-contact { margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,.3); }
+        .dev-contact p { font-size: .875rem; color: rgba(255,255,255,.9); margin-bottom: 4px; }
+        .dev-contact a { color: white; text-decoration: none; font-weight: 600; }
+        .dev-contact a:hover { text-decoration: underline; }
+
+        .footer-info { padding-top: 20px !important; margin-top: 0 !important; padding-bottom: 20px; }
+        .footer-info-container { margin: 0 auto; max-width: 1100px; width: 100%; padding: 0 5vw; }
+        .footer-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .company-info { text-align: left; }
+        .contract-verification { text-align: right; }
+        .company-info h4, .contract-verification h4 { color: var(--text-primary); font-weight: 500; margin-bottom: 12px; font-size: 1.1em; }
+        .company-info p, .contract-verification p { color: var(--text-secondary); margin-bottom: 8px; font-size: .95em; }
+        .verification-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 34px; }
+        .badge-v {
+            color: var(--text-secondary);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: .8em;
+            font-weight: 500;
+            border: 1px solid transparent;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
+        }
+        .badge-bsc { background: rgba(16,185,129,.12); border-color: rgba(16,185,129,.24); }
+        .badge-audit { background: rgba(240,185,11,.12); border-color: rgba(240,185,11,.24); }
+        .badge-gov { background: rgba(168,85,247,.12); border-color: rgba(168,85,247,.24); }
+        body.light-mode .badge-bsc { background: rgba(16,185,129,.08); border-color: rgba(16,185,129,.18); color: #166534; }
+        body.light-mode .badge-audit { background: rgba(240,185,11,.10); border-color: rgba(240,185,11,.22); color: #a16207; }
+        body.light-mode .badge-gov { background: rgba(168,85,247,.10); border-color: rgba(168,85,247,.22); color: #7e22ce; }
+        .contract-item { margin-bottom: 20px; }
+        .contract-label { font-size: .85em; color: var(--text-muted); margin-bottom: 8px; }
+        .contract-box { display: flex; align-items: center; gap: 8px; background: var(--bg-card); border: 1px solid var(--border-light); padding: 12px 16px; border-radius: 8px; }
+        .contract-address { flex: 1; font-family: 'Fira Code', monospace; font-size: .85em; color: var(--text-primary); overflow-x: auto; white-space: nowrap; }
+        .copy-btn {
+            padding: 8px 10px;
+            background: var(--gradient-pink);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0;
+            width: 36px;
+            height: 36px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all .3s;
+            position: relative;
+        }
+        .copy-btn::before {
+            content: "";
+            width: 16px;
+            height: 16px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            display: block;
+        }
+        .copy-btn:hover { transform: scale(1.08); box-shadow: 0 4px 12px rgba(251,11,140,.4); }
+
+        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid var(--border-light); }
+        .footer-links-bottom {
+            background: var(--bg-card);
+            padding: 14px 20px;
+            border-radius: 12px;
+            margin-top: 12px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 2px 6px;
+            box-shadow: var(--shadow-sm);
+        }
+        .footer-links-bottom a {
+            background: var(--gradient-pink);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            text-decoration: none;
+            font-size: .875em;
+            font-weight: 300;
+            transition: all .3s;
+            position: relative;
+            padding: 2px 6px;
+        }
+        .footer-links-bottom a:hover { background: linear-gradient(135deg, #a0aec0 0%, #cbd5e0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; color: transparent; }
+        .separator { color: var(--text-muted); font-weight: 300; }
+        .copyright-line { font-weight: 300; margin-top: 20px; margin-bottom: 4px; color: var(--text-secondary); }
+        .women-safety-line { font-weight: 500; font-size: .9em; margin-bottom: 6px; color: var(--purple-primary); }
+        .heart { display: inline-block; animation: heartbeat 2s ease-in-out infinite; }
+        @keyframes heartbeat { 0%, 100% { transform: scale(1) } 10% { transform: scale(1.2) } 20% { transform: scale(1) } 30% { transform: scale(1.15) } 40% { transform: scale(1) } }
+        .footer-version { margin-top: 2px; font-size: .85em; color: var(--text-muted); }
+
+        .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); padding: 14px 28px; border-radius: 12px; font-family: 'Fira Code', monospace; font-size: .85em; font-weight: 600; z-index: 9999; opacity: 0; transition: all .4s; pointer-events: none; }
+        .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+        .toast.success { background: rgba(16,185,129,.9); color: #fff; }
+        .toast.error { background: rgba(239,68,68,.9); color: #fff; }
+        .toast.info { background: rgba(124,58,237,.92); color: #fff; }
+
+        @media (max-width: 1024px) {
+            .footer-vignette, .footer-info-container { width: 98%; padding-left: 3vw; padding-right: 3vw; }
+        }
+        @media (max-width: 768px) {
+            .coin-slogan-section { padding: 18px 0 10px; }
+            .coin-slogan-section .coin-wrapper { width: 96px; height: 96px; }
+            .coin-slogan-section .slogan { font-size: clamp(14px, 4vw, 20px); }
+            .home-logo-section { padding: 20px 0 12px; }
+            .home-logo-link img { width: 156px; }
+            .page-nav { padding: 12px 14px; margin-top: 0; gap: 6px; }
+            .nav-row { gap: 4px; flex-wrap: wrap; width: 100%; }
+            .page-nav .nav-row:last-child { gap: 3px; }
+            .nav-link { padding: 6px 10px; font-size: .75em; }
+            .nav-sep { display: none; }
+            .hero-split-grid { grid-template-columns: 1fr; }
+            .hero-split-content { padding: 24px 20px; }
+            .hero-split-image { min-height: 240px; }
+            .hero-split-title { font-size: 1.4rem; }
+            .platforms-grid { grid-template-columns: 1fr; }
+            .stats-banner { grid-template-columns: repeat(2, 1fr); }
+            .info-cards { grid-template-columns: 1fr; }
+            .footer-cards { grid-template-columns: 1fr; }
+            .footer-info-grid { grid-template-columns: 1fr; text-align: left; }
+            .contract-verification { text-align: left; }
+        }
+        @media (max-width: 480px) {
+            .coin-slogan-section { padding: 14px 0 8px; }
+            .coin-slogan-section .coin-wrapper { width: 80px; height: 80px; }
+            .coin-slogan-section .slogan { font-size: clamp(12px, 3.8vw, 17px); white-space: normal; text-align: center; justify-content: center; }
+            .home-logo-section { padding: 16px 0 10px; }
+            .home-logo-link img { width: 130px; }
+            .page-nav { padding: 10px 10px; margin-top: 0; gap: 4px; }
+            .nav-row { gap: 6px; }
+            .page-nav .nav-row:last-child { gap: 4px; }
+            .nav-link { padding: 5px 8px; font-size: .7em; }
+            .hero-split-content { padding: 20px 16px; }
+            .hero-split-image { min-height: 200px; }
+            .hero-split-title { font-size: 1.2rem; }
+            .hero-split-desc { font-size: 0.85rem; }
+            .hero-split-badge { padding: 6px 10px; font-size: 0.65rem; }
+            .stats-banner { grid-template-columns: 1fr 1fr; }
+            .stat-number { font-size: 1.3em; }
+            .footer-vignette { padding: 20px 4vw; }
+            .footer-card { padding: 12px 16px 20px; }
+            .footer-card h3 { font-size: 1rem; }
+            .footer-links-list a { font-size: .875rem; }
+            .footer-links-bottom { padding: 10px 14px; gap: 2px 4px; }
+            .footer-links-bottom a { font-size: .78em; padding: 2px 4px; }
+            .contract-box { padding: 10px 12px; }
+            .contract-address { font-size: .72em; }
+            .copy-btn { width: 30px; height: 30px; }
+            .copy-btn::before { width: 13px; height: 13px; }
+        }
+        @media (max-width: 360px) {
+            .footer-info-grid { gap: 20px; }
+            .contract-box { flex-direction: column; align-items: stretch; }
+            .copy-btn { align-self: flex-end; }
+        }
+
+        @media print {
+            body { background: #fff; color: #000; }
+            #particleCanvas, .page-nav, .theme-toggle, .progress-bar, .footer, .cta-section { display: none; }
+        }
+
+        /* Navbar parity with buy.html */
+        .page-nav {
+            background: linear-gradient(135deg, rgba(251, 11, 140, 0.12), rgba(168, 85, 247, 0.12));
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(251, 11, 140, 0.15);
+            border-radius: 16px; padding: 12px 24px; margin: 0 auto 0; max-width: 960px;
+            box-shadow: var(--shadow-md); position: relative; overflow: hidden;
+            display: flex; flex-direction: column; gap: 4px; align-items: center;
+        }
+        .page-nav::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gradient-pink); }
+        .nav-row { display: flex; gap: 1px; justify-content: center; align-items: center; }
+        .nav-row:last-child .nav-link {
+            padding: 6px 8px;  /* Slightly tighter than row 1 */
+            font-size: .78em;   /* Slightly smaller font */
+        }
+        .nav-divider { width: 80%; max-width: 500px; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent); margin: -1px 0; }
+        body.light-mode .nav-divider { background: linear-gradient(90deg, transparent, rgba(0,0,0,0.12), transparent); }
+        .nav-link {
+            padding: 8px 12px; border-radius: 8px; text-decoration: none; color: var(--text-secondary);
+            font-weight: 400; font-size: .82em; font-family: 'Fira Code', monospace;
+            text-transform: uppercase; letter-spacing: .02em; transition: all 0.3s ease; border: 1px solid transparent; white-space: nowrap;
+        }
+        .nav-link:hover { background: rgb(251 11 140 / .12); color: var(--pink-light); border-color: rgb(251 11 140 / .3); text-decoration: none; }
+        .nav-link.active { background: var(--gradient-pink); color: #fff; box-shadow: 0 4px 12px rgba(251, 11, 140, 0.35); }
+        .nav-link.active.buy-tab { background: var(--gradient-gold); color: var(--cmc-blue); box-shadow: 0 4px 12px rgba(240, 185, 11, 0.45); font-weight: 600; }
+        .nav-link.active.verified-tab { background: linear-gradient(135deg, #006d30 0%, #009e44 50%, #007a36 100%); color: #fff; box-shadow: 0 4px 12px rgba(0, 158, 68, 0.35); }
+        .nav-link.active.staking-tab { background: linear-gradient(135deg, #d97706 0%, #f59e0b 50%, #eab308 100%); color: #000; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35); }
+        .nav-link.active.grok-tab { background: linear-gradient(135deg, #fb0b8c 0%, #a855f7 50%, #6366f1 100%); color: #fff; box-shadow: 0 4px 12px rgba(168, 85, 247, 0.45); }
+        .nav-link.active.pancake-tab { background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 50%, #67e8f9 100%); color: #000; box-shadow: 0 4px 12px rgba(6, 182, 212, 0.35); }
+        .nav-sep { width: 1px; height: 18px; background: rgba(255,255,255,0.15); margin: 0 2px; }
+        body.light-mode .nav-sep { background: rgba(255,255,255,0.35); }
+
+        /* Light mode: solid pink navbar */
+        [data-theme="light"] .page-nav,
+        body.light-mode .page-nav {
+            background: linear-gradient(to top, #a0065a 0%, #b8076e 25%, #e50a83 55%, #fb0b8c 100%);
+            border-color: rgba(255,255,255,0.15);
+            box-shadow: 0 8px 24px rgba(251, 11, 140, 0.3), 0 4px 12px rgba(0,0,0,0.1);
+        }
+        [data-theme="light"] .page-nav::before,
+        body.light-mode .page-nav::before { background: linear-gradient(90deg, #ff4da6, #fff, #ff4da6); }
+        [data-theme="light"] .nav-divider,
+        body.light-mode .nav-divider { background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); }
+        [data-theme="light"] .nav-link,
+        body.light-mode .nav-link { color: rgba(255,255,255,0.85); }
+        [data-theme="light"] .nav-link:hover,
+        body.light-mode .nav-link:hover { background: rgba(255,255,255,0.15); color: #fff; border-color: rgba(255,255,255,0.3); }
+        [data-theme="light"] .nav-sep,
+        body.light-mode .nav-sep { background: rgba(255,255,255,0.35); }
+        [data-theme="dark"] .nav-divider { background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent); }
+        [data-theme="dark"] .nav-sep { background: rgba(255,255,255,0.15); }
+
+        @media (max-width: 768px) {
+            .page-nav { padding: 12px 14px; margin-top: 0; gap: 6px; }
+            .nav-row { gap: 4px; flex-wrap: wrap; width: 100%; }
+            .nav-link { padding: 6px 10px; font-size: .75em; }
+            .nav-row:last-child .nav-link { padding: 6px 10px; font-size: .75em; }
+            .nav-sep { display: none; }
+        }
+
+        @media (max-width: 480px) {
+            .page-nav { padding: 10px 10px; margin-top: 0; gap: 4px; }
+            .nav-row { gap: 6px; }
+            .nav-link { padding: 5px 8px; font-size: .7em; }
+            .nav-row:last-child .nav-link { padding: 5px 8px; font-size: .7em; }
+        }
+
+        @media print {
+            .page-nav { display: none; }
+        }
+
+        /* Drawer mode: used only when embedded inside the revamped homepage drawer. */
+        body.ptdt-drawer-mode #particleCanvas,
+        body.ptdt-drawer-mode .progress-bar,
+        body.ptdt-drawer-mode .home-logo-section,
+        body.ptdt-drawer-mode .page-nav,
+        body.ptdt-drawer-mode .coin-slogan-section,
+        body.ptdt-drawer-mode .footer {
+            display: none !important;
+        }
+        body.ptdt-drawer-mode {
+            overflow-x: hidden;
+            min-height: auto;
+        }
+        body.ptdt-drawer-mode .container {
+            width: 100%;
+            max-width: none;
+            margin: 0;
+            padding: 0;
+        }
+        body.ptdt-drawer-mode .theme-toggle {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            z-index: 30;
+        }
+        body.ptdt-drawer-mode .hero-split {
+            max-width: none;
+            margin: 0;
+            border: 0;
+            border-radius: 0;
+            background: transparent;
+            box-shadow: none;
+            overflow: visible;
+        }
+        body.ptdt-drawer-mode .hero-split-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 0.76fr) minmax(420px, 1.24fr);
+            gap: clamp(20px, 2.6vw, 36px);
+            align-items: stretch;
+            padding: clamp(24px, 4vw, 46px) clamp(24px, 4.6vw, 52px) 28px;
+        }
+        body.ptdt-drawer-mode .hero-split-content {
+            order: 1;
+            align-self: center;
+            padding: 0;
+            background: transparent;
+            border-left: 0;
+        }
+        body.ptdt-drawer-mode .hero-split-image {
+            order: 2;
+            align-self: start;
+            min-width: 0;
+            height: clamp(320px, 29vw, 405px);
+            min-height: 0;
+            border-radius: 22px;
+            overflow: hidden;
+            background: #111827;
+            box-shadow: 0 22px 60px rgba(16,16,24,0.20);
+        }
+        body.ptdt-drawer-mode .hero-split-image img {
+            width: 100%;
+            height: 100%;
+            min-height: 0;
+            object-fit: cover;
+            object-position: center;
+        }
+        body.ptdt-drawer-mode .hero-split-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 12px;
+            border-radius: 999px;
+            background: rgba(124,58,237,0.12);
+            border: 1px solid rgba(124,58,237,0.28);
+            color: var(--gecko-purple-light);
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 0.08em;
+            margin-bottom: 16px;
+        }
+        body.ptdt-drawer-mode .hero-split-title {
+            max-width: 660px;
+            color: var(--text-primary);
+            font-size: clamp(38px, 4.75vw, 64px);
+            line-height: 1.02;
+            font-weight: 800;
+            letter-spacing: -0.045em;
+            margin-bottom: 18px;
+        }
+        body.ptdt-drawer-mode .hero-split-title .plain-white {
+            color: var(--text-primary);
+            -webkit-text-fill-color: var(--text-primary);
+        }
+        body.ptdt-drawer-mode .hero-split-desc {
+            max-width: 610px;
+            color: var(--text-secondary);
+            font-size: 16px;
+            line-height: 1.75;
+            margin-bottom: 22px;
+        }
+        body.ptdt-drawer-mode .hero-split-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 0;
+        }
+        body.ptdt-drawer-mode .hero-split-badge {
+            min-height: 46px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 18px;
+            border-radius: 999px;
+            background: rgba(124,58,237,0.12);
+            color: var(--gecko-purple-light);
+            font-size: 13px;
+            font-weight: 900;
+            letter-spacing: 0;
+            box-shadow: 0 8px 24px rgba(16,16,24,0.08);
+        }
+        body.ptdt-drawer-mode .hero-split-badge.pink {
+            background: rgba(251,11,140,0.12);
+            color: var(--pink-primary);
+            border-color: rgba(251,11,140,0.25);
+        }
+        body.ptdt-drawer-mode .hero-split-badge.green {
+            background: rgba(16,185,129,0.12);
+            color: var(--green-success);
+            border-color: rgba(16,185,129,0.25);
+        }
+        body.ptdt-drawer-mode .header,
+        body.ptdt-drawer-mode .stats-banner,
+        body.ptdt-drawer-mode .platforms-grid,
+        body.ptdt-drawer-mode .discovery-callout,
+        body.ptdt-drawer-mode .contract-section,
+        body.ptdt-drawer-mode .info-cards,
+        body.ptdt-drawer-mode .cta-section {
+            width: calc(100% - clamp(48px, 9.2vw, 104px));
+            margin-left: auto;
+            margin-right: auto;
+        }
+        @media (max-width: 900px) {
+            body.ptdt-drawer-mode .hero-split-grid {
+                grid-template-columns: 1fr;
+                padding: 24px 20px 26px;
+            }
+            body.ptdt-drawer-mode .hero-split-image {
+                order: 1;
+                height: auto;
+                min-height: 240px;
+                aspect-ratio: 16 / 9;
+            }
+            body.ptdt-drawer-mode .hero-split-content { order: 2; }
+            body.ptdt-drawer-mode .hero-split-title { font-size: clamp(32px, 8vw, 44px); }
+        }
+        @media (max-width: 560px) {
+            body.ptdt-drawer-mode .hero-split-grid { padding: 20px 16px 24px; }
+            body.ptdt-drawer-mode .header,
+            body.ptdt-drawer-mode .stats-banner,
+            body.ptdt-drawer-mode .platforms-grid,
+            body.ptdt-drawer-mode .discovery-callout,
+            body.ptdt-drawer-mode .contract-section,
+            body.ptdt-drawer-mode .info-cards,
+            body.ptdt-drawer-mode .cta-section {
+                width: calc(100% - 32px);
+            }
+            body.ptdt-drawer-mode .hero-split-image { min-height: 200px; }
+            body.ptdt-drawer-mode .hero-split-title { font-size: 31px; }
+            body.ptdt-drawer-mode .hero-split-desc { font-size: 15px; }
+        }
+
+</style>
+
+<script id="ptdt-gecko-drawer-mode">
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('drawer') === '1') {
+    document.documentElement.classList.add('ptdt-drawer-mode-root');
+    document.addEventListener('DOMContentLoaded', function(){
+      document.body.classList.add('ptdt-drawer-mode');
+      function sendHeight(){
+        if (window.parent && window.parent !== window) {
+          window.parent.postMessage({
+            type: 'ptdt-drawer-height',
+            height: document.documentElement.scrollHeight
+          }, '*');
+        }
+      }
+      sendHeight();
+      window.addEventListener('load', sendHeight);
+      window.addEventListener('resize', sendHeight);
+      if (window.MutationObserver) {
+        new MutationObserver(sendHeight).observe(document.body, { childList: true, subtree: true, attributes: true });
+      }
+      setTimeout(sendHeight, 300);
+      setTimeout(sendHeight, 1000);
+      setTimeout(sendHeight, 2500);
+    });
+  }
+})();
+</script>
+</head>
+<body>
+
+    <canvas id="particleCanvas"></canvas>
+
+    <div class="progress-bar" id="progressBar"></div>
+
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle Day/Night Mode">
+        <svg id="themeIcon" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/></svg>
+    </button>
+
+    <div class="home-logo-section">
+        <a href="https://ptdt.taxi" class="home-logo-link" title="Go to PTDT Homepage">
+            <img src="ptdt-main-logo.png" alt="PTDT Home">
+        </a>
+    </div>
+
+    <nav class="page-nav">
+        <div class="nav-row">
+        <a href="https://ptdt.taxi/ptdt-docs/mainguide.html" class="nav-link">Main-Guide</a>
+        <span class="nav-sep"></span>
+        <a href="https://ptdt.taxi/ptdt-docs/apidocs.html" class="nav-link">API-Docs</a>
+        <span class="nav-sep"></span>
+        <a href="https://ptdt.taxi/ptdt-docs/dashboard.html" class="nav-link">Dashboard</a>
+        <span class="nav-sep"></span>
+        <a href="https://whitepaper.ptdt.taxi/" class="nav-link">WhitePaper</a>
+        <span class="nav-sep"></span>
+        <a href="https://ptdt.taxi/ptdt-docs/verified.html" class="nav-link verified-tab">Verified ✓</a>
+        <span class="nav-sep"></span>
+        <a href="https://ptdt.taxi/ptdt-docs/rebuttal.html" class="nav-link">Rebuttal</a>
+        <span class="nav-sep"></span>
+        <a href="https://ptdt.taxi/scope.html" class="nav-link">Scope</a>
+        <span class="nav-sep"></span>
+        <a href="https://ptdt.taxi/stake.html" class="nav-link staking-tab">⚡ Staking</a>
+        <span class="nav-sep"></span>
+        <a href="/buy.html" class="nav-link buy-tab">🏛 Buy PTDT</a>
+    </div>
+
+    <!-- DIVIDER -->
+    <div class="nav-divider"></div>
+
+    <!-- SECOND ROW (8 items - now balanced) -->
+    <div class="nav-row">
+        <a href="https://ptdt.taxi/coinranking.html" class="nav-link coinranking-tab">Coinranking</a>
+        <span class="nav-sep"></span>
+        <a href="/gecko.html" class="nav-link active gecko-tab">🦎 GeckoTerminal</a>
+        <span class="nav-sep"></span>
+        <a href="/pancakeswap.html" class="nav-link pancake-tab">🥞 PancakeSwap</a>
+        <span class="nav-sep"></span>
+        <a href="/github.html" class="nav-link">▪️ GitHub</a>
+        <span class="nav-sep"></span>
+        <a href="/grokfare.html" class="nav-link grok-tab">🤖 Grok Fare</a>
+        <span class="nav-sep"></span>
+        <a href="https://ptdt.taxi/grok-stake-sim.html" class="nav-link grok-tab">🧮 Stake Sim</a>
+        <span class="nav-sep"></span>
+        <a href="/ptdt-docs/downloads.html" class="nav-link">📥 Downloads</a>
+    </div>
+  </nav>
+
+    <div class="coin-slogan-section">
+        <div class="coin-wrapper">
+            <div class="coin" id="headerCoin">
+                <img src="data:image/svg+xml,%3Csvg viewBox='0 0 28.8 29.04' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='14.35' cy='14.4' r='12.27' fill='%232ae97b' stroke='%23d1d3d4' stroke-miterlimit='10' stroke-width='.46'/%3E%3Ccircle cx='14.35' cy='14.4' r='10.66' fill='%23020202'/%3E%3Cpath d='M15.14,12.47c-.21-.34,2.18-3.91,4.97-4.8-3.22,.47-5.62,2.79-5.76,2.93,0,0-.02,.01-.02,.01,0,0,.01,0,.02-.01,0,0,.01,0,.02,.01h-.02c.64-.63,.45-.1,0,.85-.45-.95-.64-1.48,0-.86-.14-.15-2.55-2.46-5.76-2.93,2.79,.89,5.18,4.46,4.97,4.8-.57,.94-1.12,2.19-1.21,3.55-.03,.14-.05,.26-.05,.36,0,3.18,2.03,5.76,2.03,5.76,0,0,0,0,.02-.01,0,0,.01,.01,.01,.01,0,0,2.03-2.57,2.03-5.76,0-.1-.01-.22-.04-.36-.09-1.36-.63-2.61-1.21-3.55' fill='%23fb0b8c'/%3E%3Cpath d='M15.75,8.26c0,.77-.62,1.39-1.39,1.39s-1.4-.62-1.4-1.39,.63-1.39,1.4-1.39,1.39,.62,1.39,1.39' fill='%23fb068c'/%3E%3C/svg%3E" alt="Peether PTDT" draggable="false">
+            </div>
+        </div>
+        <div class="slogan" id="slogan">
+            <span id="part1"></span>
+            <span id="cursor-anchor-mid"></span>
+            <span id="part2"></span>
+            <span id="cursor-anchor-end"><span class="cursor" id="main-cursor"></span></span>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <section class="hero-split">
+            <div class="hero-split-grid">
+                <div class="hero-split-image">
+                    <img src="gecko-preview.webp" alt="PTDT on GeckoTerminal live market dashboard" loading="lazy" decoding="async">
+                </div>
+                <div class="hero-split-content">
+                    <p class="hero-split-eyebrow">Live Market Intel</p>
+                    <h1 class="hero-split-title"><span class="ptdt-pink">PTDT</span> <span class="plain-white">on</span> <span class="gecko-purple">GeckoTerminal</span></h1>
+                    <p class="hero-split-desc">GeckoTerminal makes PTDT's on-chain market footprint visible in real time. Price, liquidity, FDV and holder context all sit beside the actual BNB Chain pool instead of screenshots, claims or stale token pages.</p>
+                    <div class="hero-split-badges">
+                        <span class="hero-split-badge">GeckoTerminal</span>
+                        <span class="hero-split-badge pink">On-Chain</span>
+                        <span class="hero-split-badge green">BNB Chain</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <header class="header" id="header">
+            <div class="header-separator"></div>
+            <h2>Live Market Visibility on GeckoTerminal</h2>
+            <p class="subtitle">GeckoTerminal gives PTDT a public market surface where anyone can inspect <span class="hl-purple">real-time pool data</span>, <span class="hl-green">live liquidity</span> and <span class="hl-pink">holder visibility</span> directly from the active BNB Chain market.</p>
+            <div class="gecko-launch-wrap">
+                <a href="https://www.geckoterminal.com/bsc/pools/0xf3a06e9dc5d89b2fd8d7d30946c9aeddc5e01e28" target="_blank" rel="noopener noreferrer" class="gecko-launch-btn" title="Open PTDT GeckoTerminal stats page">
+                    <img src="gecko-button.png" alt="Open PTDT on GeckoTerminal">
+                </a>
+            </div>
+        </header>
+
+        <div class="stats-banner">
+            <div class="stat-item">
+                <div class="stat-number pink-num" id="statPrice">--</div>
+                <div class="stat-label">PTDT Price</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number green-num" id="statLiquidity">--</div>
+                <div class="stat-label">Liquidity</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number purple-num" id="statFdv">--</div>
+                <div class="stat-label">Fully Diluted Value</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number mint-num" id="statHolders">--</div>
+                <div class="stat-label">Holders</div>
+            </div>
+        </div>
+
+        <div class="platforms-grid">
+            <div class="platform-card">
+                <div class="platform-accent gecko"></div>
+                <div class="platform-body">
+                    <div class="platform-header">
+                        <div class="platform-icon gecko">G</div>
+                        <div>
+                            <div class="platform-name gecko">GeckoTerminal Pool</div>
+                            <div class="platform-sub">LIVE MARKET PAGE</div>
+                        </div>
+                    </div>
+                    <p class="platform-desc">This is PTDT's public GeckoTerminal surface for live pool monitoring. It gives buyers, researchers, communities and reviewers a direct view into the active PTDT / USDT market on BNB Smart Chain.</p>
+                    <div class="platform-features">
+                        <div class="platform-feature"><span class="check">✓</span> Live on-chain price visibility</div>
+                        <div class="platform-feature"><span class="check">✓</span> Public liquidity verification</div>
+                        <div class="platform-feature"><span class="check">✓</span> FDV and pool context in one place</div>
+                        <div class="platform-feature"><span class="check">✓</span> Direct proof of PTDT market activity</div>
+                    </div>
+                    <a href="https://www.geckoterminal.com/bsc/pools/0xf3a06e9dc5d89b2fd8d7d30946c9aeddc5e01e28" target="_blank" rel="noopener noreferrer" class="platform-btn gecko">Open GeckoTerminal →</a>
+                </div>
+            </div>
+
+            <div class="platform-card">
+                <div class="platform-accent pink"></div>
+                <div class="platform-body">
+                    <div class="platform-header">
+                        <div class="platform-icon pink">API</div>
+                        <div>
+                            <div class="platform-name pink">GeckoTerminal API</div>
+                            <div class="platform-sub">DATA FEED</div>
+                        </div>
+                    </div>
+                    <p class="platform-desc">GeckoTerminal is not just a listing page. Its API can power PTDT website widgets, dashboard panels, analytics views, Telegram experiences and other market-facing product surfaces from the same live pool data.</p>
+                    <div class="platform-features">
+                        <div class="platform-feature"><span class="check">✓</span> Token and pool endpoints</div>
+                        <div class="platform-feature"><span class="check">✓</span> OHLCV chart data support</div>
+                        <div class="platform-feature"><span class="check">✓</span> Useful for embeds and dashboards</div>
+                        <div class="platform-feature"><span class="check">✓</span> Keeps PTDT site data market-aware</div>
+                    </div>
+                    <a href="https://apiguide.geckoterminal.com/" target="_blank" rel="noopener noreferrer" class="platform-btn pink">Open API Guide →</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="discovery-callout">
+            <div class="discovery-callout-title">Why GeckoTerminal Matters</div>
+            <p class="discovery-callout-text">GeckoTerminal gives PTDT a clean market-discovery layer beside pages like Buy, PancakeSwap and GitHub. It is the place where users can inspect the live pool itself instead of relying on screenshots, stale token cards or unsupported claims.</p>
+            <div class="discovery-callout-quote">
+                "This page exists to show PTDT where serious market participants verify real pools: live on-chain, publicly visible, and tied directly to the active BNB Chain liquidity."
+            </div>
+        </div>
+
+        <div class="contract-section">
+            <div class="contract-section-title">GeckoTerminal Pool Address (BNB Smart Chain)</div>
+            <div class="contract-copy-row">
+                <span class="contract-mini" id="poolAddress">0xF3a06E9Dc5d89B2fD8d7d30946c9aeddc5e01E28</span>
+                <button class="copy-mini-btn" onclick="copyContract()">Copy</button>
+            </div>
+        </div>
+
+        <div class="info-cards">
+            <div class="info-card">
+                <div class="info-card-icon">🦎</div>
+                <div class="info-card-title" style="color:var(--gecko-purple-light)">Live On-Chain Price Visibility</div>
+                <div class="info-card-sub">GeckoTerminal gives PTDT a public price surface tied to the active pool, not a static marketing snapshot.</div>
+            </div>
+            <div class="info-card">
+                <div class="info-card-icon">🔍</div>
+                <div class="info-card-title" style="color:var(--pink-primary)">Pair-Level Transparency</div>
+                <div class="info-card-sub">Researchers, buyers, communities and reviewers can inspect PTDT / USDT pool context directly from the live BNB Chain market.</div>
+            </div>
+            <div class="info-card">
+                <div class="info-card-icon">🔌</div>
+                <div class="info-card-title" style="color:var(--green-success)">API + Site Utility</div>
+                <div class="info-card-sub">The same GeckoTerminal endpoints can feed PTDT dashboards, widgets, analytics modules and other market-aware product surfaces.</div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h3 class="cta-title">On-Chain Data Meets PTDT Infrastructure</h3>
+            <p class="cta-copy">PTDT already has a live BNB Chain market footprint. GeckoTerminal turns that market proof into a clean public entry point that users can verify, share and revisit whenever they need live context.</p>
+            <div class="cta-buttons">
+                <a href="https://www.geckoterminal.com/bsc/pools/0xf3a06e9dc5d89b2fd8d7d30946c9aeddc5e01e28" target="_blank" rel="noopener noreferrer" class="cta-btn cta-btn-primary">
+                    <span>🦎</span>
+                    <span>View PTDT Pool</span>
+                </a>
+                <a href="/buy.html" class="cta-btn cta-btn-secondary">
+                    <span>🏦</span>
+                    <span>Back to Buy PTDT</span>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        <div class="footer-vignette">
+            <div class="footer-container">
+                <div class="footer-cards">
+                    <div class="footer-card">
+                        <h3>| Quick Links</h3>
+                        <div class="footer-links-list">
+                            <a href="https://ptdt.taxi" target="_blank">🏠 Main Website</a>
+                            <a href="https://dapp.ptdt.taxi" target="_blank">📱 DApp Portal</a>
+                            <a href="https://ptdt.taxi/ptdt-docs/mainguide.html">🔗 Integration Guide</a>
+                            <a href="https://ptdt.taxi/ptdt-docs/apidocs.html">🔧 API Documentation</a>
+                            <a href="https://ptdt.taxi/ptdt-docs/securityresponse.html">🛡 Security Response</a>
+                            <a href="https://ptdt.taxi/ptdt-docs/dashboard.html">📊 Live Dashboard</a>
+                        </div>
+                    </div>
+                    <div class="footer-card">
+                        <h3>| Resources</h3>
+                        <div class="footer-links-list">
+                            <a href="https://www.geckoterminal.com/bsc/pools/0xf3a06e9dc5d89b2fd8d7d30946c9aeddc5e01e28" target="_blank">🦎 GeckoTerminal Pool</a>
+                            <a href="https://apiguide.geckoterminal.com/" target="_blank">📡 GeckoTerminal API</a>
+                            <a href="https://pancakeswap.finance/swap?outputCurrency=0x66c6Fc5E7F99272134a52DF9E88D94eD83E89278" target="_blank">💱 PancakeSwap</a>
+                            <a href="https://dexscreener.com/bsc/0xF3a06E9Dc5d89B2fD8d7d30946c9aeddc5e01E28" target="_blank">📈 DexScreener Chart</a>
+                            <a href="https://bscscan.com/token/0x66c6Fc5E7F99272134a52DF9E88D94eD83E89278" target="_blank">📊 BscScan Contract</a>
+                            <a href="https://lime-capitalist-canid-406.mypinata.cloud/ipfs/bafkreibvhgi5mhutt6agzrdjki7gxecpr5cvx26yvdyn6kigyumzm6ghuq" target="_blank">📄 Audit Report</a>
+                        </div>
+                    </div>
+                    <div class="footer-card">
+                        <h3>| Connect</h3>
+                        <div class="social-icons">
+                            <a href="https://t.me/PeetherPTDT" target="_blank" class="social-icon" title="Telegram">✈️</a>
+                            <a href="https://x.com/PTDT_Token" target="_blank" class="social-icon" title="X (Twitter)">𝕏</a>
+                            <a href="https://discord.gg/ptdt" target="_blank" class="social-icon" title="Discord">💬</a>
+                            <a href="https://www.facebook.com/PTDToken" target="_blank" class="social-icon" title="Facebook">📘</a>
+                            <a href="https://github.com/pinkpeether" target="_blank" class="social-icon" title="GitHub">💻</a>
+                            <a href="https://medium.com/pink-taxi/followers" target="_blank" class="social-icon" title="Medium">📝</a>
+                        </div>
+                        <a href="/ptdt-docs/downloads.html" class="downloads-btn">📥 Downloads</a>
+                        <div class="dev-contact">
+                            <p style="font-weight:500;margin-bottom:1px;">Developer Support:</p>
+                            <p>📧 <a href="mailto:dev@ptdt.taxi">dev@ptdt.taxi</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-info">
+            <div class="footer-info-container">
+                <div class="footer-info-grid">
+                    <div class="company-info">
+                        <h4>🏢 Company Information</h4>
+                        <p><strong>Pink Taxi Group Ltd.</strong></p>
+                        <p>Registered in the United Kingdom</p>
+                        <p><strong>Token:</strong> Peether PTDT (Pink Taxi Drive Token)</p>
+                        <p><strong>Network:</strong> BNB Smart Chain (BSC)</p>
+                        <div class="verification-badges">
+                            <span class="badge-v badge-bsc">✔ BSCScan Verified</span>
+                            <span class="badge-v badge-audit">✔ Audit 9.2/10</span>
+                            <span class="badge-v badge-gov">✔ Gov Verified</span>
+                        </div>
+                    </div>
+                    <div class="contract-verification">
+                        <h4>🔐 Contract &amp; Verification</h4>
+                        <div class="contract-item">
+                            <div class="contract-label">Staking Contract Address:</div>
+                            <div class="contract-box">
+                                <span class="contract-address" id="stakingContractAddr">0xfa6A09A581447255BD916ad98cf852fEFbC72494</span>
+                                <button class="copy-btn" onclick="copyToClipboard('stakingContractAddr')"></button>
+                            </div>
+                        </div>
+                        <div class="contract-item">
+                            <div class="contract-label">PTDT Token Contract:</div>
+                            <div class="contract-box">
+                                <span class="contract-address" id="tokenContractAddr">0x66c6Fc5E7F99272134a52DF9E88D94eD83E89278</span>
+                                <button class="copy-btn" onclick="copyToClipboard('tokenContractAddr')"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p class="women-safety-line">Made with <span class="heart">❤️</span> for women's safety</p>
+                    <p style="font-weight:300;color:var(--text-secondary);margin-bottom:12px;">Building the future of decentralized transportation. Peether PTDT Token is a utility token for the PTDT ecosystem.</p>
+                    <div class="footer-links-bottom">
+                        <a href="https://ptdt.taxi/" target="_blank">Website</a>
+                        <span class="separator">|</span>
+                        <a href="https://dapp.ptdt.taxi/" target="_blank">DApp Site</a>
+                        <span class="separator">|</span>
+                        <a href="https://whitepaper.ptdt.taxi/" target="_blank">White Paper</a>
+                        <span class="separator">|</span>
+                        <a href="https://ptdt.taxi/ptdt-docs/mainguide.html" target="_blank">Main Guide</a>
+                        <span class="separator">|</span>
+                        <a href="https://ptdt.taxi/ptdt-docs/dashboard.html" target="_blank">Live Dashboard</a>
+                        <span class="separator">|</span>
+                        <a href="https://www.geckoterminal.com/bsc/pools/0xf3a06e9dc5d89b2fd8d7d30946c9aeddc5e01e28" target="_blank">GeckoTerminal</a>
+                        <span class="separator">|</span>
+                        <a href="https://ptdt.taxi/cert.html" target="_blank">Certificate</a>
+                        <span class="separator">|</span>
+                        <a href="https://ptdt.taxi/privacy.html" target="_blank">Privacy Policy</a>
+                        <span class="separator">|</span>
+                        <a href="https://ptdt.taxi/terms.html" target="_blank">Terms of Service</a>
+                        <span class="separator">|</span>
+                        <a href="https://ptdt.taxi/ptdt-docs/rebuttal.html" target="_blank">Rebuttal</a>
+                        <span class="separator">|</span>
+                        <a href="https://ptdt.taxi/cookies.html" target="_blank">Cookie Policy</a>
+                        <span class="separator">|</span>
+                        <a href="https://ptdt.taxi/ptdt-docs/verified.html">Verified</a>
+                        <span class="separator">|</span>
+                        <a href="https://ptdt.taxi/scope.html">Scope</a>
+                        <span class="separator">|</span>
+                        <a href="stake.html">Staking</a>
+                        <span class="separator">|</span>
+                        <a href="grokfare.html">Grok Fare</a>
+                        <span class="separator">|</span>
+                        <a href="/cdn-cgi/l/email-protection#b3d7d6c5f3c3c7d7c79dc7d2cbda">Contact Us</a>
+                    </div>
+                    <p class="copyright-line">Copyrights &copy; 2026 Peether – PTDT. Pink Taxi Group LTD. UK. All rights reserved.</p>
+                    <p class="footer-version">GeckoTerminal Guide Version 1 &bull; Last Updated: March 2026</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="toast" id="toast"></div>
+
+    <script>
+        var POOL_API = "https://api.geckoterminal.com/api/v2/networks/bsc/pools/0xf3a06e9dc5d89b2fd8d7d30946c9aeddc5e01e28";
+        var TOKEN_INFO_API = "https://api.geckoterminal.com/api/v2/networks/bsc/tokens/0x66c6Fc5E7F99272134a52DF9E88D94eD83E89278/info";
+        var POOL_ADDRESS = "0xF3a06E9Dc5d89B2fD8d7d30946c9aeddc5e01E28";
+
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+            var isLight = document.body.classList.contains('light-mode');
+            localStorage.setItem('ptdt-theme', isLight ? 'light' : 'dark');
+            updateThemeIcon();
+        }
+
+        function updateThemeIcon() {
+            var icon = document.getElementById('themeIcon');
+            var isLight = document.body.classList.contains('light-mode');
+            icon.innerHTML = isLight
+                ? '<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>'
+                : '<path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/>';
+        }
+
+        (function() {
+            var saved = localStorage.getItem('ptdt-theme');
+            if (saved === 'light') document.body.classList.add('light-mode');
+            updateThemeIcon();
+        })();
+
+        (function() {
+            var canvas = document.getElementById('particleCanvas');
+            var ctx = canvas.getContext('2d');
+            var particles = [];
+            var PARTICLE_COUNT = 60;
+
+            function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+            resize();
+            window.addEventListener('resize', resize);
+
+            function Particle() { this.reset(); }
+            Particle.prototype.reset = function() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.3;
+                this.vy = (Math.random() - 0.5) * 0.3;
+                this.radius = Math.random() * 2 + 1;
+                this.color = Math.random() > 0.5 ? 'rgba(124, 58, 237, 0.38)' : 'rgba(251, 11, 140, 0.32)';
+            };
+            Particle.prototype.update = function() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            };
+            Particle.prototype.draw = function() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            };
+
+            for (var i = 0; i < PARTICLE_COUNT; i++) particles.push(new Particle());
+
+            function animate() {
+                var isLight = document.body.classList.contains('light-mode');
+                ctx.fillStyle = isLight ? '#F4F4F8' : '#0A0A0F';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                for (var j = 0; j < particles.length; j++) {
+                    particles[j].update();
+                    particles[j].draw();
+                }
+                for (var a = 0; a < particles.length; a++) {
+                    for (var b = a + 1; b < particles.length; b++) {
+                        var dx = particles[a].x - particles[b].x;
+                        var dy = particles[a].y - particles[b].y;
+                        var dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 120) {
+                            ctx.beginPath();
+                            ctx.moveTo(particles[a].x, particles[a].y);
+                            ctx.lineTo(particles[b].x, particles[b].y);
+                            ctx.strokeStyle = 'rgba(124, 58, 237, ' + (0.12 * (1 - dist / 120)) + ')';
+                            ctx.stroke();
+                        }
+                    }
+                }
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+        })();
+
+        (function() {
+            var sloganPart1 = [
+                { text: "Trust the ", cls: "light" },
+                { text: "{", cls: "brackets" },
+                { text: " ", cls: "light" },
+                { text: "Code", cls: "code" },
+                { text: " ", cls: "light" },
+                { text: "}", cls: "brackets" },
+                { text: ",", cls: "light" }
+            ];
+            var sloganPart2 = [
+                { text: " ", cls: "light" },
+                { text: "// ", cls: "gray" },
+                { text: "Track the Market", cls: "market" }
+            ];
+            var part1Area = document.getElementById('part1');
+            var part2Area = document.getElementById('part2');
+            var mainCursor = document.getElementById('main-cursor');
+            var anchorMid = document.getElementById('cursor-anchor-mid');
+            var sloganEl = document.getElementById('slogan');
+            var currentDelay = 500;
+
+            function typeSegments(segments, container) {
+                for (var s = 0; s < segments.length; s++) {
+                    var seg = segments[s];
+                    var span = document.createElement('span');
+                    if (seg.cls) span.className = seg.cls;
+                    container.appendChild(span);
+                    var chars = seg.text.split('');
+                    for (var c = 0; c < chars.length; c++) {
+                        var charSpan = document.createElement('span');
+                        charSpan.className = 'char';
+                        charSpan.textContent = chars[c];
+                        span.appendChild(charSpan);
+                        (function(cs, sp, delay) {
+                            setTimeout(function() {
+                                cs.classList.add('visible');
+                                sp.appendChild(mainCursor);
+                            }, delay);
+                        })(charSpan, span, currentDelay);
+                        currentDelay += (chars[c] === ' ' ? 70 : 100);
+                    }
+                }
+            }
+
+            typeSegments(sloganPart1, part1Area);
+            typeSegments(sloganPart2, part2Area);
+
+            var finalDelay = currentDelay;
+            setTimeout(function() {
+                setTimeout(function() {
+                    sloganEl.classList.add('finished');
+                    setTimeout(function() { anchorMid.appendChild(mainCursor); }, 2000);
+                }, 800);
+            }, finalDelay);
+        })();
+
+        (function() {
+            var bar = document.getElementById('progressBar');
+            function update() {
+                var scroll = document.body.scrollTop || document.documentElement.scrollTop;
+                var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                bar.style.width = (height > 0 ? (scroll / height) * 100 : 0) + '%';
+            }
+            window.addEventListener('scroll', update, { passive: true });
+            window.addEventListener('load', update);
+        })();
+
+        (function() {
+            var coin = document.getElementById('headerCoin');
+            if (!coin) return;
+
+            function spinCoin() {
+                coin.classList.remove('animate');
+                void coin.offsetWidth;
+                coin.classList.add('animate');
+                setTimeout(function() { coin.classList.remove('animate'); }, 2200);
+            }
+
+            spinCoin();
+            setInterval(spinCoin, 6500);
+        })();
+
+        function copyToClipboard(elementId) {
+            var el = document.getElementById(elementId);
+            if (!el) return;
+            var text = el.textContent || el.innerText;
+            navigator.clipboard.writeText(text).then(function() {
+                showToast('Copied to clipboard!', 'success');
+            }).catch(function() {
+                showToast('Failed to copy', 'error');
+            });
+        }
+
+        function copyContract() {
+            navigator.clipboard.writeText(POOL_ADDRESS).then(function() {
+                showToast('Pool address copied!', 'success');
+            }).catch(function() {
+                showToast('Failed to copy', 'error');
+            });
+        }
+
+        function showToast(msg, type) {
+            type = type || 'info';
+            var t = document.getElementById('toast');
+            t.textContent = msg;
+            t.className = 'toast ' + type + ' show';
+            setTimeout(function() { t.classList.remove('show'); }, 4000);
+        }
+
+        function formatUsd(value) {
+            var number = Number(value);
+            if (!Number.isFinite(number)) return '--';
+            if (number >= 1) {
+                return '$' + number.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            }
+            return '$' + number.toLocaleString('en-US', { minimumFractionDigits: 4, maximumFractionDigits: 6 });
+        }
+
+        function compactNumber(value) {
+            var number = Number(value);
+            if (!Number.isFinite(number)) return '--';
+            return new Intl.NumberFormat('en-US', {
+                notation: 'compact',
+                maximumFractionDigits: number >= 1000 ? 1 : 2
+            }).format(number);
+        }
+
+        async function loadMarketData() {
+            try {
+                var responses = await Promise.all([
+                    fetch(POOL_API),
+                    fetch(TOKEN_INFO_API)
+                ]);
+                if (!responses[0].ok || !responses[1].ok) throw new Error('Failed to fetch Gecko data');
+
+                var poolJson = await responses[0].json();
+                var tokenJson = await responses[1].json();
+                var pool = poolJson && poolJson.data && poolJson.data.attributes;
+                var token = tokenJson && tokenJson.data && tokenJson.data.attributes;
+                if (!pool || !token) throw new Error('Incomplete data');
+
+                var price = formatUsd(pool.base_token_price_usd);
+                var liquidity = formatUsd(pool.reserve_in_usd);
+                var fdv = formatUsd(pool.fdv_usd);
+                var holders = compactNumber(token.holders && token.holders.count);
+
+                var statPrice = document.getElementById('statPrice');
+                var statLiquidity = document.getElementById('statLiquidity');
+                var statFdv = document.getElementById('statFdv');
+                var statHolders = document.getElementById('statHolders');
+
+                if (statPrice) statPrice.textContent = price;
+                if (statLiquidity) statLiquidity.textContent = liquidity;
+                if (statFdv) statFdv.textContent = fdv;
+                if (statHolders) statHolders.textContent = holders;
+            } catch (error) {
+                console.error('GeckoTerminal page data error:', error);
+            }
+        }
+
+        loadMarketData();
+        setInterval(loadMarketData, 60000);
+    </script>
+</body>
+</html>

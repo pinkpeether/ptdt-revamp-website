@@ -1,0 +1,3810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PTDT API Documentation | Developer Integration Guide | Peether</title>
+    <meta name="description" content="Complete PTDT Token API documentation: REST endpoints, smart contract integration, authentication, JavaScript/Python SDKs, and live examples for developers.">
+    <link rel="canonical" href="https://ptdt.taxi/ptdt-docs/apidocs.html">
+
+    <!-- Favicon: inline SVG primary + PNG fallback -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 28.8 29.04' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='14.35' cy='14.4' r='12.27' fill='%232ae97b'/%3E%3Ccircle cx='14.35' cy='14.4' r='10.66' fill='%23020202'/%3E%3Cpath d='M15.14,12.47c-.21-.34,2.18-3.91,4.97-4.8-3.22,.47-5.62,2.79-5.76,2.93,0,0-.02,.01-.02,.01,0,0,.01,0,.02-.01,0,0,.01,0,.02,.01h-.02c.64-.63,.45-.1,0,.85-.45-.95-.64-1.48,0-.86-.14-.15-2.55-2.46-5.76-2.93,2.79,.89,5.18,4.46,4.97,4.8-.57,.94-1.12,2.19-1.21,3.55-.03,.14-.05,.26-.05,.36,0,3.18,2.03,5.76,2.03,5.76,0,0,0,0,.02-.01,0,0,.01,.01,.01,.01,0,0,2.03-2.57,2.03-5.76,0-.1-.01-.22-.04-.36-.09-1.36-.63-2.61-1.21-3.55' fill='%23fb0b8c'/%3E%3Cpath d='M15.75,8.26c0,.77-.62,1.39-1.39,1.39s-1.4-.62-1.4-1.39,.63-1.39,1.4-1.39,1.39,.62,1.39,1.39' fill='%23fb068c'/%3E%3C/svg%3E">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://ptdt.taxi/favicon-32x32.png">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="PTDT API Documentation | Developer Integration Guide">
+    <meta property="og:description" content="Complete API documentation for PTDT Token integration. REST endpoints, smart contracts, authentication, and SDK examples.">
+    <meta property="og:image" content="https://ptdt.taxi/ptdt-docs/api-preview.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="PTDT Live API - Developer Integration Guide">
+    <meta property="og:site_name" content="Peether PTDT">
+    <meta property="og:url" content="https://ptdt.taxi/ptdt-docs/apidocs.html">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@PTDT_Token">
+    <meta name="twitter:url" content="https://ptdt.taxi/ptdt-docs/apidocs.html">
+    <meta name="twitter:title" content="PTDT API Documentation | Developer Integration Guide">
+    <meta name="twitter:description" content="Complete API documentation for PTDT Token. REST endpoints, smart contracts, authentication, and SDK examples.">
+    <meta name="twitter:image" content="https://ptdt.taxi/ptdt-docs/api-preview.webp">
+    
+    <!-- Additional SEO -->
+    <meta name="keywords" content="PTDT API, cryptocurrency API, token integration, blockchain API, smart contract API, Web3 API, BSC API, developer documentation">
+    <meta name="author" content="Peether PTDT">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "PTDT Developer API Documentation",
+      "description": "Complete API documentation for PTDT Token integration including REST endpoints, smart contract methods, authentication, and SDK examples.",
+      "author": {
+        "@type": "Organization",
+        "name": "Peether PTDT"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Peether PTDT",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://ptdt.taxi/logo.png"
+        }
+      },
+      "url": "https://ptdt.taxi/ptdt-docs/apidocs.html",
+      "datePublished": "2025-10-01",
+      "dateModified": "2026-03-19",
+      "image": "https://ptdt.taxi/ptdt-docs/api-preview.webp"
+    }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Fira+Code:wght@400;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           CSS VARIABLES (from Benchmark)
+           ============================================ */
+        :root {
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #F8F9FA;
+            --bg-card: #FFFFFF;
+            --bg-glass: rgba(255, 255, 255, 0.9);
+            --text-primary: #2D3748;
+            --text-secondary: #718096;
+            --text-muted: #A0AEC0;
+            --pink-primary: #fb0b8c;
+            --pink-light: #ff4da6;
+            --purple-primary: #a855f7;
+            --green-primary: #00a747;
+            --green-success: #10B981;
+            --orange-warning: #F59E0B;
+            --border-color: #E5E7EB;
+            --border-light: rgba(0, 0, 0, 0.1);
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-pink: 0 15px 35px rgba(251, 11, 140, 0.2);
+            --gradient-pink: linear-gradient(135deg, #fb0b8c 0%, #ff4da6 50%, #a855f7 100%);
+            --gradient-green: linear-gradient(135deg, #2ae97b 0%, #10b981 100%);
+            --bg-pattern-1: rgba(251, 11, 140, 0.08);
+            --bg-pattern-2: rgba(42, 233, 123, 0.05);
+            --bg-pattern-3: rgba(168, 85, 247, 0.05);
+            --syntax-keyword: #d63384;
+            --syntax-string: #198754;
+            --syntax-number: #0d6efd;
+            --syntax-comment: #6c757d;
+            --syntax-property: #6f42c1;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #1e293b;
+            --bg-glass: rgba(30, 41, 59, 0.9);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border-color: #334155;
+            --border-light: rgba(255, 255, 255, 0.1);
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+            --shadow-pink: 0 15px 35px rgba(251, 11, 140, 0.4);
+            --bg-pattern-1: rgba(251, 11, 140, 0.15);
+            --bg-pattern-2: rgba(42, 233, 123, 0.1);
+            --bg-pattern-3: rgba(168, 85, 247, 0.1);
+            --syntax-keyword: #ff79c6;
+            --syntax-string: #50fa7b;
+            --syntax-number: #bd93f9;
+            --syntax-comment: #6272a4;
+            --syntax-property: #ffb86c;
+        }
+
+        /* ============================================
+           GLOBAL RESET & BASE (from Benchmark)
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body {
+            font-family: 'Lexend', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* ============================================
+           PARTICLE CANVAS (from Benchmark)
+           ============================================ */
+        #particleCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: var(--bg-primary);
+            transition: background-color 0.3s;
+        }
+
+        /* ============================================
+           PROGRESS BAR (from Benchmark)
+           ============================================ */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: var(--gradient-pink);
+            z-index: 9999;
+            box-shadow: 0 0 10px rgb(251 11 140 / .5);
+            transition: width 0.1s linear;
+        }
+
+        /* ============================================
+           THEME TOGGLE (from Benchmark)
+           ============================================ */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-pink);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1) rotate(15deg);
+            box-shadow: var(--shadow-pink);
+        }
+
+        .theme-toggle svg {
+            width: 24px;
+            height: 24px;
+            fill: #fff;
+        }
+
+        /* ============================================
+           HOME LOGO (Top Center - Above Navbar)
+           ============================================ */
+        .home-logo-section {
+            text-align: center;
+            padding: 24px 0 16px;
+        }
+        .home-logo-link {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+        .home-logo-link:hover {
+            transform: scale(1.05);
+        }
+        .home-logo-link img {
+            width: 182px;
+            height: auto;
+        }
+        @media (max-width: 768px) {
+            .home-logo-section { padding: 20px 0 12px; }
+            .home-logo-link img { width: 156px; }
+        }
+        @media (max-width: 480px) {
+            .home-logo-section { padding: 16px 0 10px; }
+            .home-logo-link img { width: 130px; }
+        }
+
+
+        /* ============================================
+           COIN + SLOGAN SECTION (Below Navbar)
+           ============================================ */
+        .coin-slogan-section {
+            text-align: center;
+            padding: 24px 0 12px;
+        }
+        .coin-wrapper {
+            perspective: 1200px;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 8px;
+        }
+        .coin {
+            position: relative;
+            transform-style: preserve-3d;
+            border-radius: 50%;
+            width: 100%;
+            height: 100%;
+        }
+        .coin img {
+            position: relative;
+            z-index: 2;
+            transform: translateZ(14px);
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            backface-visibility: hidden;
+            background: transparent;
+            box-shadow: 0 0 35px rgb(255 210 120 / .55), inset 0 0 14px rgb(255 255 255 / .3);
+        }
+        .coin::before {
+            content: "";
+            position: absolute;
+            inset: 3px;
+            border-radius: 50%;
+            background: linear-gradient(90deg, #7a5a00, #d4af37, #ffeb9c, #d4af37, #7a5a00);
+            transform: translateZ(-14px);
+            filter: blur(1px);
+        }
+        .coin::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            transform: translateZ(15px);
+            background: linear-gradient(135deg, transparent 40%, rgb(255 255 255 / .9) 50%, transparent 60%);
+            opacity: 0;
+            pointer-events: none;
+            animation: diamondSparkle 3s ease-in-out infinite;
+        }
+        @keyframes diamondSparkle {
+            0%, 100% { opacity: 0; }
+            50% { opacity: .6; }
+        }
+        @keyframes coinFlip {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(5400deg); }
+        }
+        .coin.animate {
+            animation: coinFlip 2.15s cubic-bezier(.25, .1, .25, 1);
+        }
+
+        /* Slogan */
+        .slogan {
+            font-size: clamp(18px, 4.5vw, 24px);
+            white-space: pre;
+            font-family: 'Space Grotesk', sans-serif;
+            display: inline-flex;
+            align-items: center;
+            color: #334155;
+            line-height: 1;
+        }
+        .slogan .char { display: none; }
+        .slogan .char.visible { display: inline; }
+        .slogan .light { font-weight: 300; color: #334155; letter-spacing: -.05em; }
+        .slogan .code { font-family: 'Fira Code', monospace; font-weight: 700; color: #EB4491; letter-spacing: -.01em; }
+        .slogan .gray { font-weight: 300; color: #6B7280; letter-spacing: -.05em; }
+        .slogan .cult { font-weight: 700; color: #002FFF; position: relative; letter-spacing: -.01em; }
+        .slogan .cult::before,
+        .slogan .cult::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            background: #FF2F00;
+            border-radius: 2px;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.8s ease-in-out;
+        }
+        .slogan .cult::before { top: 50%; height: .06em; }
+        .slogan .cult::after { bottom: .05em; height: .12em; }
+        .finished .cult::before,
+        .finished .cult::after { transform: scaleX(1); }
+        .slogan .brackets { font-family: 'Fira Code', monospace; color: #57BF39; font-weight: 700; }
+        .slogan .exclamation { font-weight: 700; color: #FF2F00; }
+        .slogan .cursor {
+            display: inline-block;
+            width: 1.5px;
+            height: 1.1em;
+            background: #1e293b;
+            margin-left: 1px;
+            animation: blink 0.72s steps(1) infinite;
+            vertical-align: middle;
+        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        [data-theme="dark"] .slogan .light { color: #cbd5e1; }
+        [data-theme="dark"] .slogan .gray { color: #94a3b8; }
+        [data-theme="dark"] .slogan .cursor { background: #cbd5e1; }
+
+        @media (max-width: 768px) {
+            .coin-slogan-section { padding: 18px 0 10px; }
+            .coin-wrapper { width: 96px; height: 96px; }
+            .slogan { font-size: clamp(14px, 4vw, 20px); }
+        }
+        @media (max-width: 480px) {
+            .coin-slogan-section { padding: 14px 0 8px; }
+            .coin-wrapper { width: 80px; height: 80px; }
+            .slogan { font-size: clamp(12px, 3.8vw, 17px); white-space: normal; text-align: center; justify-content: center; }
+        }
+
+
+        /* ============================================
+           HERO SPLIT SECTION (Image + Content)
+           ============================================ */
+        .hero-split {
+            background: linear-gradient(135deg, #1a0a2e 0%, #2d0a4e 30%, #1e0838 60%, #0d1a2e 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            margin-bottom: 32px;
+            margin-top: -8px;
+            box-shadow: 0 0 50px rgba(139, 0, 255, 0.25), 0 0 80px rgba(251, 11, 140, 0.1), inset 0 1px 0 rgba(168, 85, 247, 0.2), 0 0 40px rgba(168, 85, 247, 0.15);
+        }
+        .hero-split-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 1fr;
+        }
+        .hero-split-image {
+            padding: 0;
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .hero-split-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 0;
+            display: block;
+        }
+        .hero-split-content {
+            padding: 28px 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a0a2e 0%, #2d0a4e 30%, #1e0838 60%, #0d1a2e 100%);
+            border-left: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .hero-split-eyebrow {
+            color: #10B981;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .hero-split-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fb0b8c;
+            margin-bottom: 14px;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+        .hero-split-desc {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 0.92rem;
+            line-height: 1.65;
+            margin-bottom: 20px;
+        }
+        .hero-split-badges {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .hero-split-badge {
+            background: rgba(16, 185, 129, 0.12);
+            color: #10B981;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            transition: all 0.3s ease;
+        }
+        .hero-split-badge:hover {
+            background: rgba(16, 185, 129, 0.2);
+            transform: translateY(-2px);
+        }
+        .hero-split-badge.pink {
+            background: rgba(251, 11, 140, 0.12);
+            color: #fb0b8c;
+            border: 1px solid rgba(251, 11, 140, 0.25);
+        }
+        .hero-split-badge.pink:hover {
+            background: rgba(251, 11, 140, 0.2);
+        }
+        @media (max-width: 900px) {
+            .hero-split-grid { grid-template-columns: 1fr; }
+            .hero-split-content { padding: 24px 20px; }
+            .hero-split-image { min-height: 240px; }
+            .hero-split-title { font-size: 1.4rem; }
+        }
+        @media (max-width: 480px) {
+            .hero-split-content { padding: 20px 16px; }
+            .hero-split-image { min-height: 200px; }
+            .hero-split-title { font-size: 1.2rem; }
+            .hero-split-desc { font-size: 0.85rem; }
+            .hero-split-badge { padding: 6px 10px; font-size: 0.65rem; }
+        }
+
+
+        /* ============================================
+           TOP NAVBAR (Two-Row Vignette Card)
+           ============================================ */
+        .page-nav {
+            background: linear-gradient(135deg, rgba(251, 11, 140, 0.12), rgba(168, 85, 247, 0.12));
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(251, 11, 140, 0.15);
+            border-radius: 16px;
+            padding: 12px 24px;
+            margin: 0 auto 0;
+            max-width: 960px;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            align-items: center;
+        }
+        .page-nav::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: var(--gradient-pink);
+        }
+        .nav-row { display: flex; gap: 0px; justify-content: center; align-items: center; }
+        .nav-row:last-child .nav-link {
+            padding: 6px 8px;  /* Slightly tighter than row 1 */
+            font-size: .78em;   /* Slightly smaller font */
+        }
+        .nav-divider {
+            width: 80%;
+            max-width: 500px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.5), transparent);
+            margin: -1px 0;
+        }
+        body.light-mode .nav-divider {
+            background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.5), transparent);
+        }
+        .nav-link {
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 400;
+            font-size: .85em;
+            font-family: 'Fira Code', monospace;
+            text-transform: uppercase;
+            letter-spacing: .02em;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            white-space: nowrap;
+        }
+        .nav-link:hover {
+            background: rgb(251 11 140 / .12);
+            color: var(--pink-light);
+            border-color: rgb(251 11 140 / .3);
+            text-decoration: none;
+        }
+        .nav-link.active {
+            background: var(--gradient-pink);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(251, 11, 140, 0.35);
+        }
+        .nav-link.active.verified-tab {
+            background: linear-gradient(135deg, #006d30 0%, #009e44 50%, #007a36 100%);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(0, 158, 68, 0.35);
+        }
+        .nav-link.active.staking-tab {
+            background: linear-gradient(135deg, #d97706 0%, #f59e0b 50%, #eab308 100%);
+            color: #000;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35);
+        }
+        .nav-link.active.grok-tab {
+            background: linear-gradient(135deg, #fb0b8c 0%, #a855f7 50%, #6366f1 100%);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(168, 85, 247, 0.45);
+        }
+        .nav-sep {
+            width: 1px;
+            height: 18px;
+            background: rgba(0, 0, 0, 0.2);
+            margin: 0 2px;
+        }
+        body.light-mode .nav-sep {
+            background: rgba(0, 0, 0, 0.2);
+        }
+        [data-theme="dark"] .nav-sep {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        [data-theme="dark"] .nav-divider {
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+        }
+
+        /* ============================================
+           CONTAINER (from Benchmark)
+           ============================================ */
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* ============================================
+           HEADER (from Benchmark)
+           ============================================ */
+        .header {
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            padding: 30px 40px 35px;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-pink);
+        }
+
+        /* Coin Animation (from Benchmark) */
+        .coin-wrapper {
+            perspective: 1200px;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 12px;
+        }
+
+        .coin {
+            position: relative;
+            transform-style: preserve-3d;
+            border-radius: 50%;
+            width: 100%;
+            height: 100%;
+        }
+
+        .coin img {
+            position: relative;
+            z-index: 2;
+            transform: translateZ(14px);
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            backface-visibility: hidden;
+            background: #fff0;
+            box-shadow: 0 0 35px rgb(255 210 120 / .55), inset 0 0 14px rgb(255 255 255 / .3);
+        }
+
+        .coin::before {
+            content: "";
+            position: absolute;
+            inset: 3px;
+            border-radius: 50%;
+            background: linear-gradient(90deg, #7a5a00, #d4af37, #ffeb9c, #d4af37, #7a5a00);
+            transform: translateZ(-14px);
+            filter: blur(1px);
+        }
+
+        .coin::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            transform: translateZ(15px);
+            background: linear-gradient(135deg, transparent 40%, rgb(255 255 255 / .9) 50%, transparent 60%);
+            opacity: 0;
+            pointer-events: none;
+            animation: diamondSparkle 3s ease-in-out infinite;
+        }
+
+        @keyframes diamondSparkle {
+            0%, 100% { opacity: 0; }
+            50% { opacity: .6; }
+        }
+
+        @keyframes coinFlip {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(5400deg); }
+        }
+
+        .coin.animate {
+            animation: coinFlip 2.15s cubic-bezier(.25, .1, .25, 1);
+        }
+
+        .brand-name {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 2em;
+            background: var(--gradient-pink);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: #fff0;
+            background-clip: text;
+            letter-spacing: -.02em;
+            margin-bottom: -10px;
+        }
+
+        /* Slogan Animation (from Benchmark) */
+        .slogan-container {
+            margin: 0 auto 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            min-height: 45px;
+        }
+
+        .slogan {
+            font-size: clamp(18px, 4.5vw, 24px);
+            white-space: pre;
+            font-family: 'Space Grotesk', sans-serif;
+            display: inline-flex;
+            align-items: center;
+            color: #334155;
+            line-height: 1;
+        }
+
+        .slogan .char { display: none; }
+        .slogan .char.visible { display: inline; }
+
+        .slogan .light { font-weight: 300; color: #334155; letter-spacing: -.05em; }
+        .slogan .code { font-family: 'Fira Code', monospace; font-weight: 700; color: #EB4491; letter-spacing: -.01em; }
+        .slogan .gray { font-weight: 300; color: #6B7280; letter-spacing: -.05em; }
+        .slogan .cult {
+            font-weight: 700;
+            color: #002FFF;
+            position: relative;
+            letter-spacing: -.01em;
+        }
+        .slogan .cult::before,
+        .slogan .cult::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            background: #FF2F00;
+            border-radius: 2px;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.8s ease-in-out;
+        }
+        .slogan .cult::before { top: 50%; height: .06em; }
+        .slogan .cult::after { bottom: .05em; height: .12em; }
+        .finished .cult::before,
+        .finished .cult::after { transform: scaleX(1); }
+        .slogan .brackets { font-family: 'Fira Code', monospace; color: #57BF39; font-weight: 700; }
+        .slogan .exclamation { font-weight: 700; color: #FF2F00; }
+        .slogan .cursor {
+            display: inline-block;
+            width: 1.5px;
+            height: 1.1em;
+            background: #1e293b;
+            margin-left: 1px;
+            animation: blink 0.72s steps(1) infinite;
+            vertical-align: middle;
+        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        [data-theme="dark"] .slogan .light { color: #cbd5e1; }
+        [data-theme="dark"] .slogan .gray { color: #94a3b8; }
+        [data-theme="dark"] .slogan .cursor { background: #cbd5e1; }
+
+        .header-separator {
+            width: calc(100% - 80px);
+            height: 1px;
+            background: var(--border-color);
+            margin: 5px auto 20px;
+            border-radius: 2px;
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            background: var(--gradient-pink);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: #fff0;
+            background-clip: text;
+            font-size: 2.4em;
+            margin-bottom: 12px;
+            letter-spacing: -.02em;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 1.15em;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 20px;
+            line-height: 1.6;
+        }
+
+        .brand-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgb(251 11 140 / .1);
+            border: 1px solid rgb(251 11 140 / .3);
+            padding: 10px 18px;
+            border-radius: 50px;
+            font-size: .9em;
+            color: var(--pink-light);
+        }
+
+        .brand-badge .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--green-primary);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: .5; transform: scale(1.2); }
+        }
+
+        /* ============================================
+           STICKY NAV / TABS (from Benchmark style)
+           ============================================ */
+        .sticky-nav {
+            position: sticky;
+            top: 70px; /* Push below the search bar height */
+            z-index: 99; /* Below search bar z-index */
+            margin-bottom: 30px;
+            transition: all 0.3s;
+        }
+
+        .sticky-nav.is-sticky .tabs-wrapper {
+            top: 0;
+        }
+
+        .tabs-wrapper {
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .tabs {
+            display: flex;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .tabs::-webkit-scrollbar { display: none; }
+
+        .tab {
+            flex: 1;
+            padding: 18px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: .9em;
+            border: none;
+            background: #fff0;
+            color: var(--text-secondary);
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .tab:hover {
+            background: rgb(251 11 140 / .1);
+            color: var(--pink-light);
+        }
+
+        .tab.active {
+            background: var(--gradient-pink);
+            color: #fff;
+        }
+
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--green-primary);
+        }
+
+        /* Tab container */
+        .tab-container {
+            background: var(--bg-card);
+            border: none;
+            border-radius: 16px;
+            margin-bottom: 30px;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 40px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .tab-content.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Tab progress dots */
+        .tab-progress {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            padding: 15px;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .tab-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--border-color);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .tab-dot.active {
+            background: var(--gradient-pink);
+            transform: scale(1.3);
+            box-shadow: 0 0 10px rgb(251 11 140 / .5);
+        }
+
+        .tab-dot:hover { background: var(--pink-light); }
+
+        /* ============================================
+           TYPOGRAPHY (from Benchmark)
+           ============================================ */
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--text-primary);
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgb(251 11 140 / .3);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        h2::before {
+            content: '';
+            width: 4px;
+            height: 30px;
+            background: var(--gradient-pink);
+            border-radius: 4px;
+        }
+
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--pink-light);
+            font-size: 1.3em;
+            margin: 30px 0 15px 0;
+        }
+
+        h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--green-primary);
+            font-size: 1.1em;
+            margin: 20px 0 10px 0;
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        ul, ol { margin-left: 20px; margin-top: 15px; }
+        li { margin: 12px 0; color: var(--text-secondary); }
+        a { color: var(--pink-light); text-decoration: none; transition: color 0.3s; }
+        a:hover { color: var(--pink-primary); text-decoration: underline; }
+
+        /* ============================================
+           COLLAPSIBLES (from Benchmark)
+           ============================================ */
+        .collapsible {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .collapsible:hover {
+            border-color: rgb(251 11 140 / .3);
+            box-shadow: var(--shadow-md);
+        }
+
+        .collapsible-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 25px;
+            cursor: pointer;
+            background: var(--bg-secondary);
+            transition: all 0.3s;
+        }
+
+        .collapsible-header:hover { background: rgb(251 11 140 / .05); }
+
+        .collapsible-header h3 {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toggle-icon {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: var(--pink-primary);
+            transition: transform 0.3s;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--gradient-pink);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.2em;
+        }
+
+        .collapsible.open .toggle-icon { transform: rotate(45deg); }
+
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+
+        .collapsible.open .collapsible-content { max-height: 5000px; }
+        .collapsible-body { padding: 25px; }
+
+        /* ============================================
+           CODE BLOCKS (from API Doc)
+           ============================================ */
+        .code-block-wrapper {
+            position: relative;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .code-block-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--gradient-pink);
+            padding: 10px 20px;
+            border-radius: 16px 16px 0 0;
+        }
+
+        .code-block-header .language {
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: .85em;
+            text-transform: uppercase;
+        }
+
+        .copy-code-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgb(255 255 255 / .2);
+            border: none;
+            padding: 6px 14px;
+            border-radius: 8px;
+            color: #fff;
+            font-family: 'Lexend', sans-serif;
+            font-size: .8em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .copy-code-btn:hover { background: rgb(255 255 255 / .3); transform: scale(1.05); }
+        .copy-code-btn.copied { background: var(--green-success); }
+
+        .code-block {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-light);
+            border-top: none;
+            color: var(--text-primary);
+            padding: 25px;
+            border-radius: 0 0 16px 16px;
+            overflow-x: auto;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: .9em;
+            line-height: 1.6;
+            white-space: pre;
+        }
+
+        .code-block .keyword { color: var(--syntax-keyword); font-weight: 600; }
+        .code-block .string { color: var(--syntax-string); }
+        .code-block .number { color: var(--syntax-number); }
+        .code-block .comment { color: var(--syntax-comment); font-style: italic; }
+        .code-block .property { color: var(--syntax-property); }
+
+        code {
+            background: var(--bg-secondary);
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: .9em;
+            color: var(--green-primary);
+        }
+
+        /* ============================================
+           API PLAYGROUND (from API Doc)
+           ============================================ */
+        .api-playground {
+            background: linear-gradient(135deg, rgb(251 11 140 / .05) 0%, rgb(168 85 247 / .05) 100%);
+            border: 2px dashed rgb(251 11 140 / .3);
+            border-radius: 16px;
+            padding: 25px;
+            margin: 25px 0;
+            overflow: hidden;
+        }
+
+        .api-playground-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .api-playground-header .icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-pink);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3em;
+        }
+
+        .api-playground-header h4 { margin: 0; color: var(--text-primary); }
+        .api-playground-header span { color: var(--text-secondary); font-size: .9em; }
+
+        .playground-input-group {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .playground-input { flex: 1; min-width: 200px; }
+
+        .playground-input label {
+            display: block;
+            color: var(--text-secondary);
+            font-size: .85em;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        .playground-input input,
+        .playground-input select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            background: var(--bg-card);
+            color: var(--text-primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: .9em;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .playground-input input:focus,
+        .playground-input select:focus {
+            border-color: var(--pink-primary);
+            box-shadow: 0 0 0 3px rgb(251 11 140 / .1);
+        }
+
+        .try-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--gradient-pink);
+            color: #fff;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: .95em;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: var(--shadow-md);
+        }
+
+        .try-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-pink); }
+        .try-btn.loading { pointer-events: none; opacity: .8; }
+
+        .try-btn .spinner {
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgb(255 255 255 / .3);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .playground-response { margin-top: 20px; display: none; }
+        .playground-response.active { display: block; animation: fadeIn 0.5s ease; }
+
+        .response-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+
+        .response-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: .85em;
+            font-weight: 600;
+        }
+
+        .response-status.success { background: rgb(16 185 129 / .2); color: var(--green-success); }
+        .response-time { color: var(--text-muted); font-size: .85em; }
+
+        /* ============================================
+           TABLES (from Benchmark)
+           ============================================ */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 20px 0;
+            border-radius: 16px;
+            border: 1px solid var(--border-light);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-card);
+        }
+
+        th {
+            background: var(--gradient-pink);
+            color: #fff;
+            padding: 18px 20px;
+            text-align: left;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: .95em;
+        }
+
+        td {
+            padding: 18px 20px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: .95em;
+        }
+
+        tr:hover { background: rgb(251 11 140 / .05); }
+        tr:last-child td { border-bottom: none; }
+
+        /* ============================================
+           INFO / WARNING BOXES (from Benchmark)
+           ============================================ */
+        .info-box {
+            background: linear-gradient(135deg, rgb(251 11 140 / .1) 0%, rgb(168 85 247 / .1) 100%);
+            border: 1px solid rgb(251 11 140 / .3);
+            border-bottom: 4px solid var(--pink-primary);
+            padding: 20px;
+            border-radius: 16px;
+            margin: 25px 0;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, rgb(245 158 11 / .1) 0%, rgb(251 191 36 / .1) 100%);
+            border: 1px solid rgb(245 158 11 / .3);
+            border-left: 4px solid var(--orange-warning);
+            padding: 25px;
+            border-radius: 16px;
+            margin: 25px 0;
+        }
+
+        .info-box h4, .warning-box h4 { margin-top: 0; }
+
+        /* ============================================
+           STAKING CARDS (from API Doc)
+           ============================================ */
+        .staking-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .staking-card {
+            background: linear-gradient(135deg, rgb(251 11 140 / .1) 0%, rgb(168 85 247 / .1) 100%);
+            border: 1px solid rgb(251 11 140 / .3);
+            padding: 25px;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .staking-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-pink);
+            border-color: var(--pink-primary);
+        }
+
+        .staking-card .apy {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 2em;
+            background: var(--gradient-pink);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: #fff0;
+            background-clip: text;
+        }
+
+        .staking-card .period {
+            color: var(--text-secondary);
+            font-size: .95em;
+            margin-top: 8px;
+        }
+
+        /* ============================================
+           SEARCH (from API Doc)
+           ============================================ */
+        .search-container {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000; /* Above sticky nav */
+            width: 100%;
+            max-width: 400px;
+            padding: 0 20px;
+        }
+
+        .search-box { position: relative; width: 100%; }
+
+        .search-box input {
+            width: 100%;
+            padding: 14px 20px 14px 50px;
+            border: 1px solid var(--border-light);
+            border-radius: 50px;
+            background: var(--bg-glass);
+            backdrop-filter: blur(10px);
+            font-family: 'Lexend', sans-serif;
+            font-size: .95em;
+            color: var(--text-primary);
+            outline: none;
+            transition: all 0.3s;
+            box-shadow: var(--shadow-md);
+        }
+
+        .search-box input:focus {
+            border-color: var(--pink-primary);
+            box-shadow: var(--shadow-pink);
+        }
+
+        .search-box input::placeholder { color: var(--text-muted); }
+
+        .search-box .search-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 1.1em;
+        }
+
+        .search-box .shortcut {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--bg-secondary);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: .75em;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+            border: 1px solid var(--border-color);
+        }
+
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            margin-top: 10px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+            max-height: 400px;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .search-results.active { display: block; animation: slideDown 0.3s ease; }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .search-result-item {
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .search-result-item:hover { background: rgb(251 11 140 / .1); }
+        .search-result-item:last-child { border-bottom: none; }
+        .search-result-item .title { font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+        .search-result-item .context { font-size: .85em; color: var(--text-secondary); }
+
+        .search-result-item .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: .7em;
+            font-weight: 600;
+            margin-left: 8px;
+            background: var(--gradient-pink);
+            color: #fff;
+        }
+
+        /* ============================================
+           NETWORK STATUS (from API Doc)
+           ============================================ */
+        .network-status {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--bg-glass);
+            backdrop-filter: blur(10px);
+            padding: 10px 18px;
+            border-radius: 50px;
+            border: 1px solid var(--border-light);
+            font-size: .85em;
+            z-index: 1000;
+            box-shadow: var(--shadow-md);
+        }
+
+        .network-status .pulse-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--green-success);
+            border-radius: 50%;
+            animation: networkPulse 2s ease-in-out infinite;
+            box-shadow: 0 0 10px var(--green-success);
+        }
+
+        @keyframes networkPulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.3); opacity: .7; }
+        }
+
+        /* ============================================
+           KEYBOARD HINT (from API Doc)
+           ============================================ */
+        .keyboard-hint {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--bg-glass);
+            backdrop-filter: blur(10px);
+            padding: 12px 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+            font-size: .85em;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: var(--shadow-md);
+            z-index: 100;
+        }
+
+        .keyboard-hint kbd {
+            background: var(--bg-secondary);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: .9em;
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+        }
+
+        /* ============================================
+           FOOTER (from Benchmark - exact copy)
+           ============================================ */
+        .footer {
+            width: 100%;
+            margin-top: -30px;
+            position: relative;
+        }
+
+        .footer-vignette {
+            background: linear-gradient(to right, rgb(236, 72, 153), rgb(147, 51, 234));
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            padding: 30px 5%;
+            margin: 0 auto;
+            margin-bottom: 0 !important;
+            max-width: 1100px;
+            width: 95%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .footer-container {
+            margin: 0 auto;
+            max-width: 960px;
+            width: 100%;
+        }
+
+        .footer-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 0;
+        }
+
+        .footer-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            padding: 15px 20px 28px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-card:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+        }
+
+        [data-theme="dark"] .footer-card { background: rgba(255, 255, 255, 0.1); }
+        [data-theme="dark"] .footer-card:hover { background: rgba(255, 255, 255, 0.15); }
+
+        .footer-card h3 {
+            font-family: Montserrat, sans-serif;
+            font-weight: 700;
+            font-size: 1.125rem;
+            margin: 0 0 10px 0;
+            color: white;
+        }
+
+        .footer-links-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .footer-links-list a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-size: 0.975rem;
+            font-weight: 400;
+            transition: all 0.5s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            line-height: 1.5;
+        }
+
+        .footer-links-list a:hover {
+            color: white;
+            transform: translateX(4px);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .downloads-btn {
+            display: block;
+            text-align: center;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 16px;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .downloads-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .dev-contact {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .dev-contact p {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 4px;
+        }
+
+        .dev-contact a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .dev-contact a:hover { text-decoration: underline; }
+
+        .footer-info {
+            padding-top: 20px !important;
+            margin-top: 0 !important;
+            padding-bottom: 20px;
+        }
+
+        .footer-info-container {
+            margin: 0 auto;
+            max-width: 1100px;
+            width: 100%;
+            padding: 0 5vw;
+        }
+
+        .footer-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .company-info {
+            padding-right: 0px;
+            padding-left: 0px;
+            text-align: left;
+        }
+
+        .contract-verification {
+            padding-left: 0px;
+            text-align: right;
+        }
+
+        .company-info h4,
+        .contract-verification h4 {
+            color: var(--text-primary);
+            font-weight: 500;
+            margin-bottom: 12px;
+            font-size: 1.1em;
+        }
+
+        .company-info p,
+        .contract-verification p {
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        .verification-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 34px;
+        }
+
+        .badge-v {
+            color: var(--text-secondary);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 500;
+            border: 1px solid transparent;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+        }
+
+        .badge-v.badge-bsc { background: rgba(16, 185, 129, 0.12); border-color: rgba(16, 185, 129, 0.24); }
+        .badge-v.badge-audit { background: rgba(240, 185, 11, 0.12); border-color: rgba(240, 185, 11, 0.24); }
+        .badge-v.badge-gov { background: rgba(168, 85, 247, 0.12); border-color: rgba(168, 85, 247, 0.24); }
+
+        .badge-v.badge-bsc { color: #166534; }
+        .badge-v.badge-audit { color: #a16207; }
+        .badge-v.badge-gov { color: #7e22ce; }
+
+        [data-theme="dark"] .badge-v.badge-bsc,
+        body.dark-mode .badge-v.badge-bsc { color: #d1fae5; }
+        [data-theme="dark"] .badge-v.badge-audit,
+        body.dark-mode .badge-v.badge-audit { color: #fef3c7; }
+        [data-theme="dark"] .badge-v.badge-gov,
+        body.dark-mode .badge-v.badge-gov { color: #f3e8ff; }
+
+        .contract-item { margin-bottom: 20px; }
+
+        .contract-label {
+            font-size: 0.85em;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .contract-box {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            padding: 12px 16px;
+            border-radius: 8px;
+        }
+
+        .contract-address {
+            flex: 1;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85em;
+            color: var(--text-primary);
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .copy-btn {
+            padding: 8px 10px;
+            background: var(--gradient-pink);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0;
+            width: 36px;
+            height: 36px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .copy-btn::before {
+            content: "";
+            width: 16px;
+            height: 16px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            display: block;
+        }
+
+        .copy-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 4px 12px rgba(251, 11, 140, 0.4);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-light);
+        }
+        
+        .footer-links-bottom {
+            background: var(--bg-card);
+            padding: 14px 20px;
+            border-radius: 12px;
+            margin-top: 12px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 2px 6px;
+            box-shadow: var(--shadow-sm)
+        }
+
+        .footer-links-bottom a {
+            background: var(--gradient-pink);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: #fff0;
+            background-clip: text;
+            text-decoration: none;
+            font-size: .875em;
+            font-weight: 300;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 2px 6px
+        }
+
+        .footer-links-bottom a:hover {
+            background: linear-gradient(135deg, #a0aec0 0%, #cbd5e0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: #fff0;
+            background-clip: text
+        }
+
+        .separator { 
+            color: var(--text-muted); 
+            font-weight: 300 
+        }
+
+        .copyright-line {
+            font-weight: 300;
+            margin-top: 20px;
+            margin-bottom: 4px;
+            color: var(--text-secondary)
+        }
+
+        .women-safety-line {
+            font-weight: 500;
+            font-size: .9em;
+            margin-bottom: 6px;
+            color: var(--purple-primary)
+        }
+
+        .heart { 
+            display: inline-block; 
+            animation: heartbeat 2s ease-in-out infinite 
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1) }
+            10% { transform: scale(1.2) }
+            20% { transform: scale(1) }
+            30% { transform: scale(1.15) }
+            40% { transform: scale(1) }
+        }
+
+        .footer-version {
+            margin-top: 2px;
+            font-size: .85em;
+            color: var(--text-muted)
+        }
+
+        /* ============================================
+           CUSTOM SCROLLBAR — pink/purple vignette
+           ============================================ */
+        html { scrollbar-width: thin; scrollbar-color: rgba(194, 20, 138, 0.62) rgba(20, 10, 22, 0.6); }
+        ::-webkit-scrollbar { width: 6px; height: 0; }
+        ::-webkit-scrollbar:horizontal { display: none; height: 0; }
+        ::-webkit-scrollbar-track {
+            background: linear-gradient(180deg, rgba(40,15,40,0.85) 0%, rgba(28,10,32,0.9) 100%);
+            border-left: 1px solid rgba(251,11,140,0.18);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, rgba(251,11,140,0.72) 0%, rgba(194,20,138,0.62) 50%, rgba(107,33,168,0.62) 100%);
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            border-radius: 999px;
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.18), 0 2px 6px rgba(107,33,168,0.45);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #ff2aa0 0%, #d81995 50%, #7c2bc1 100%);
+            background-clip: padding-box;
+        }
+        ::-webkit-scrollbar-thumb:active {
+            background: linear-gradient(180deg, #e0087d 0%, #a8138f 50%, #581c87 100%);
+            background-clip: padding-box;
+        }
+        ::-webkit-scrollbar-corner { background: transparent; }
+
+        /* ============================================
+           PARTICLE CANVAS
+           ============================================ */
+        #particleCanvas {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; background: var(--bg-primary); transition: background-color 0.3s;
+        }
+
+        /* ============================================
+           PROGRESS BAR
+           ============================================ */
+        .progress-bar {
+            position: fixed; top: 0; left: 0; width: 0%; height: 4px;
+            background: var(--gradient-gold);
+            z-index: 9999; box-shadow: 0 0 10px rgb(240 185 11 / .5); transition: width 0.1s linear;
+        }
+
+        /* ============================================
+           THEME TOGGLE
+           ============================================ */
+        .theme-toggle {
+            position: fixed; top: 20px; right: 20px; width: 50px; height: 50px;
+            border-radius: 50%; background: var(--gradient-pink); border: none; cursor: pointer;
+            box-shadow: var(--shadow-lg); z-index: 1000;
+            display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .theme-toggle:hover { transform: scale(1.1) rotate(15deg); }
+        .theme-toggle svg { width: 24px; height: 24px; fill: #fff; }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 1024px) {
+            .footer-vignette, .footer-info-container { width: 98%; padding-left: 3vw; padding-right: 3vw; }
+            .tiers-grid { gap: 16px; }
+        }
+
+        @media (max-width: 768px) {
+            .page-nav { padding: 12px 14px; margin-top: 70px; gap: 6px; }
+            .nav-row { gap: 4px; flex-wrap: wrap; width: 100%; }
+            .nav-link { padding: 6px 12px; font-size: .68em; }
+            .nav-sep { display: none; }
+            h1 { font-size: 1.8em; }
+            .container { padding: 15px; }
+            .header { padding: 25px 20px; }
+            .brand-name { font-size: 1.6em; }
+            .subtitle { font-size: 1em; }
+            .wallet-bar { flex-direction: column; gap: 8px; }
+            .btn-connect { width: 100%; max-width: 280px; }
+            .stats-banner { grid-template-columns: repeat(2, 1fr); }
+            .stat-number { font-size: 1.3em; }
+            .tiers-grid { grid-template-columns: 1fr; }
+            .position-grid { grid-template-columns: repeat(2, 1fr); }
+            .position-card { padding: 24px 20px; }
+            .position-actions { flex-direction: column; }
+            .info-cards { grid-template-columns: 1fr; }
+            .cta-section { padding: 28px 20px; }
+            .cta-buttons { flex-direction: column; align-items: center; }
+            .cta-btn { width: 100%; max-width: 300px; justify-content: center; }
+            .footer-vignette { width: 100%; margin: 10px 0; padding: 25px 5vw; border-radius: 8px; }
+            .footer-cards { grid-template-columns: 1fr; }
+            .footer-info { padding-top: 20px !important; }
+            .footer-info-grid { grid-template-columns: 1fr; gap: 25px; text-align: center; }
+            .company-info, .contract-verification { padding-left: 0 !important; padding-right: 0 !important; text-align: center !important; }
+            .verification-badges { justify-content: center; }
+            .theme-toggle { width: 42px; height: 42px; top: 16px; right: 16px; }
+            .theme-toggle svg { width: 20px; height: 20px; }
+            .coin-wrapper { width: 90px; height: 90px; }
+            .toast { left: 16px; right: 16px; max-width: none; bottom: 16px; }
+        }
+
+        @media (max-width: 480px) {
+            .page-nav { padding: 10px 10px; margin-top: 64px; gap: 4px; }
+            .nav-row { gap: 6px; }
+            .nav-link { padding: 5px 9px; font-size: .58em; }
+            .nav-sep { display: none; }
+            h1 { font-size: 1.5em; }
+            .header { padding: 20px 16px; }
+            .brand-name { font-size: 1.4em; }
+            .subtitle { font-size: .9em; }
+            .header-separator { width: calc(100% - 32px); }
+            .stats-banner { grid-template-columns: 1fr 1fr; }
+            .stat-item { padding: 18px 10px; }
+            .stat-number { font-size: 1.15em; }
+            .stat-label { font-size: .65em; letter-spacing: 1px; }
+            .tier-body { padding: 20px; }
+            .tier-apy { font-size: 32px; }
+            .tier-header { gap: 10px; }
+            .tier-icon { width: 42px; height: 42px; font-size: 20px; }
+            .tier-name { font-size: 16px; }
+            .stake-input { font-size: 18px; }
+            .position-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+            .pos-value { font-size: 15px; }
+            .pos-label { font-size: 9px; }
+            .info-card { padding: 18px; }
+            .info-card-title { font-size: 13px; }
+            .info-card-sub { font-size: 11px; }
+            .footer-vignette { padding: 20px 4vw; }
+            .footer-card { padding: 12px 16px 20px; }
+            .footer-card h3 { font-size: 1rem; }
+            .footer-links-list a { font-size: .875rem; }
+            .footer-links-bottom { padding: 10px 14px; gap: 2px 4px; }
+            .footer-links-bottom a { font-size: .78em; padding: 2px 4px; }
+            .contract-box { padding: 10px 12px; }
+            .contract-address { font-size: .72em; }
+            .copy-btn { width: 30px; height: 30px; }
+            .copy-btn::before { width: 13px; height: 13px; }
+            .coin-wrapper { width: 80px; height: 80px; }
+            .slogan { font-size: clamp(14px, 4vw, 20px); }
+            .slogan-container { min-height: 36px; }
+            .brand-badge { font-size: .78em; padding: 8px 14px; }
+        }
+
+        @media (max-width: 360px) {
+            .page-nav { margin-top: 60px; padding: 8px 8px; gap: 3px; }
+            .nav-link { padding: 4px 7px; font-size: .5em; }
+            h1 { font-size: 1.3em; }
+            .brand-name { font-size: 1.2em; }
+            .stats-banner { grid-template-columns: 1fr 1fr; gap: 1px; }
+            .stat-item { padding: 14px 8px; }
+            .stat-number { font-size: 1em; }
+            .tier-apy { font-size: 28px; }
+            .tier-body { padding: 16px; }
+            .position-grid { grid-template-columns: 1fr; }
+            .coin-wrapper { width: 70px; height: 70px; }
+            .slogan { font-size: clamp(12px, 3.5vw, 18px); }
+            .footer-info-grid { gap: 20px; }
+            .contract-box { flex-direction: column; align-items: stretch; }
+            .copy-btn { align-self: flex-end; }
+        }
+        
+        /* Navbar parity with buy.html */
+        .page-nav {
+            background: linear-gradient(135deg, rgba(251, 11, 140, 0.12), rgba(168, 85, 247, 0.12));
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(251, 11, 140, 0.15);
+            border-radius: 16px; padding: 12px 24px; margin: 0 auto 0; max-width: 960px;
+            box-shadow: var(--shadow-md); position: relative; overflow: hidden;
+            display: flex; flex-direction: column; gap: 4px; align-items: center;
+        }
+        .page-nav::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gradient-pink); }
+        .nav-row { display: flex; gap: 1px; justify-content: center; align-items: center; }
+        .nav-row:last-child .nav-link {
+            padding: 6px 8px;  /* Slightly tighter than row 1 */
+            font-size: .78em;   /* Slightly smaller font */
+        }
+        .nav-divider { width: 80%; max-width: 500px; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent); margin: -1px 0; }
+        body.light-mode .nav-divider { background: linear-gradient(90deg, transparent, rgba(0,0,0,0.12), transparent); }
+        .nav-link {
+            padding: 8px 12px; border-radius: 8px; text-decoration: none; color: var(--text-secondary);
+            font-weight: 400; font-size: .82em; font-family: 'Fira Code', monospace;
+            text-transform: uppercase; letter-spacing: .02em; transition: all 0.3s ease; border: 1px solid transparent; white-space: nowrap;
+        }
+        .nav-link:hover { background: rgb(251 11 140 / .12); color: var(--pink-light); border-color: rgb(251 11 140 / .3); text-decoration: none; }
+        .nav-link.active { background: var(--gradient-pink); color: #fff; box-shadow: 0 4px 12px rgba(251, 11, 140, 0.35); }
+        .nav-link.active.buy-tab { background: var(--gradient-gold); color: var(--cmc-blue); box-shadow: 0 4px 12px rgba(240, 185, 11, 0.45); font-weight: 600; }
+        .nav-link.active.verified-tab { background: linear-gradient(135deg, #006d30 0%, #009e44 50%, #007a36 100%); color: #fff; box-shadow: 0 4px 12px rgba(0, 158, 68, 0.35); }
+        .nav-link.active.staking-tab { background: linear-gradient(135deg, #d97706 0%, #f59e0b 50%, #eab308 100%); color: #000; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35); }
+        .nav-link.active.grok-tab { background: linear-gradient(135deg, #fb0b8c 0%, #a855f7 50%, #6366f1 100%); color: #fff; box-shadow: 0 4px 12px rgba(168, 85, 247, 0.45); }
+        .nav-link.active.pancake-tab { background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 50%, #67e8f9 100%); color: #000; box-shadow: 0 4px 12px rgba(6, 182, 212, 0.35); }
+        .nav-sep { width: 1px; height: 18px; background: rgba(255,255,255,0.15); margin: 0 2px; }
+        body.light-mode .nav-sep { background: rgba(255,255,255,0.35); }
+
+        /* Light mode: solid pink navbar */
+        [data-theme="light"] .page-nav,
+        body.light-mode .page-nav {
+            background: linear-gradient(to top, #a0065a 0%, #b8076e 25%, #e50a83 55%, #fb0b8c 100%);
+            border-color: rgba(255,255,255,0.15);
+            box-shadow: 0 8px 24px rgba(251, 11, 140, 0.3), 0 4px 12px rgba(0,0,0,0.1);
+        }
+        [data-theme="light"] .page-nav::before,
+        body.light-mode .page-nav::before { background: linear-gradient(90deg, #ff4da6, #fff, #ff4da6); }
+        [data-theme="light"] .nav-divider,
+        body.light-mode .nav-divider { background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); }
+        [data-theme="light"] .nav-link,
+        body.light-mode .nav-link { color: rgba(255,255,255,0.85); }
+        [data-theme="light"] .nav-link:hover,
+        body.light-mode .nav-link:hover { background: rgba(255,255,255,0.15); color: #fff; border-color: rgba(255,255,255,0.3); }
+        [data-theme="light"] .nav-sep,
+        body.light-mode .nav-sep { background: rgba(255,255,255,0.35); }
+        [data-theme="dark"] .nav-divider { background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent); }
+        [data-theme="dark"] .nav-sep { background: rgba(255,255,255,0.15); }
+
+        @media (max-width: 768px) {
+            .page-nav { padding: 12px 14px; margin-top: 0; gap: 6px; }
+            .nav-row { gap: 4px; flex-wrap: wrap; width: 100%; }
+            .nav-link { padding: 6px 10px; font-size: .75em; }
+            .nav-row:last-child .nav-link { padding: 6px 10px; font-size: .75em; }
+            .nav-sep { display: none; }
+        }
+
+        @media (max-width: 480px) {
+            .page-nav { padding: 10px 10px; margin-top: 0; gap: 4px; }
+            .nav-row { gap: 6px; }
+            .nav-link { padding: 5px 8px; font-size: .7em; }
+            .nav-row:last-child .nav-link { padding: 5px 8px; font-size: .7em; }
+        }
+
+        @media print {
+            .page-nav { display: none; }
+        }
+
+
+        /* Drawer mode: used only when this document is embedded inside the revamped homepage drawer. */
+        body.ptdt-drawer-mode #particleCanvas,
+        body.ptdt-drawer-mode .progress-bar,
+        body.ptdt-drawer-mode .network-status,
+        body.ptdt-drawer-mode .search-container,
+        body.ptdt-drawer-mode .keyboard-hint,
+        body.ptdt-drawer-mode .home-logo-section,
+        body.ptdt-drawer-mode .page-nav,
+        body.ptdt-drawer-mode .coin-slogan-section,
+        body.ptdt-drawer-mode .footer {
+            display: none !important;
+        }
+        body.ptdt-drawer-mode {
+            overflow-x: hidden;
+            background: #fff;
+            min-height: auto;
+        }
+        body.ptdt-drawer-mode .container {
+            width: 100%;
+            max-width: none;
+            margin: 0;
+            padding: 0;
+        }
+        body.ptdt-drawer-mode .theme-toggle {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            z-index: 30;
+        }
+        body.ptdt-drawer-mode .hero-split {
+            max-width: none;
+            margin: 0;
+            border: 0;
+            border-radius: 0;
+            background: transparent;
+            box-shadow: none;
+            overflow: visible;
+        }
+        body.ptdt-drawer-mode .hero-split-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 0.76fr) minmax(420px, 1.24fr);
+            gap: clamp(20px, 2.6vw, 36px);
+            align-items: stretch;
+            padding: clamp(24px, 4vw, 46px) clamp(24px, 4.6vw, 52px) 28px;
+        }
+        body.ptdt-drawer-mode .hero-split-content {
+            order: 1;
+            align-self: center;
+            padding: 0;
+            background: transparent;
+            border-left: 0;
+        }
+        body.ptdt-drawer-mode .hero-split-visual-stack {
+            order: 2;
+            position: relative;
+            z-index: 1;
+            display: grid;
+            gap: 16px;
+            align-self: start;
+            min-width: 0;
+        }
+        body.ptdt-drawer-mode .hero-split-image {
+            min-height: 0;
+            height: clamp(320px, 29vw, 405px);
+            border-radius: 22px;
+            overflow: hidden;
+            background: #111827;
+            box-shadow: 0 22px 60px rgba(16,16,24,0.20);
+        }
+        body.ptdt-drawer-mode .hero-split-image img {
+            width: 100%;
+            height: 100%;
+            min-height: 0;
+            object-fit: cover;
+            object-position: center;
+        }
+        body.ptdt-drawer-mode .hero-split-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 12px;
+            border-radius: 999px;
+            background: rgba(251, 11, 140, 0.08);
+            border: 1px solid rgba(251, 11, 140, 0.18);
+            color: #fb0b8c;
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 0.08em;
+            margin-bottom: 16px;
+        }
+        body.ptdt-drawer-mode .hero-split-title {
+            max-width: 620px;
+            color: #101018;
+            font-size: clamp(34px, 4.35vw, 58px);
+            line-height: 1.02;
+            font-weight: 900;
+            letter-spacing: -0.045em;
+            margin-bottom: 18px;
+        }
+        body.ptdt-drawer-mode .hero-split-title .title-pink { color: #fb0b8c; }
+        body.ptdt-drawer-mode .hero-split-title .title-green { color: #00a747; }
+        body.ptdt-drawer-mode .hero-split-title .title-blue { color: #3861fb; }
+        body.ptdt-drawer-mode .hero-split-title .title-ink { color: #101018; }
+        body.ptdt-drawer-mode .hero-split-desc {
+            max-width: 610px;
+            color: #6b6478;
+            font-size: 16px;
+            line-height: 1.75;
+            margin-bottom: 22px;
+        }
+        body.ptdt-drawer-mode .hero-split-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 0;
+        }
+        body.ptdt-drawer-mode .hero-split-badge {
+            min-height: 46px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 18px;
+            border-radius: 999px;
+            border: 1px solid rgba(16,16,24,0.12);
+            background: #fff;
+            color: #101018;
+            font-family: 'Lexend', sans-serif;
+            font-size: 13px;
+            font-weight: 900;
+            letter-spacing: 0;
+            box-shadow: 0 8px 24px rgba(16,16,24,0.08);
+        }
+        body.ptdt-drawer-mode .hero-split-badge.primary {
+            border-color: rgba(251,11,140,0.38);
+            background: linear-gradient(135deg, #fb0b8c, #ff4bad);
+            color: #fff;
+        }
+        body.ptdt-drawer-mode .hero-split-badge.green {
+            border-color: rgba(0,167,71,0.34);
+            background: rgba(0,167,71,0.08);
+            color: #007a36;
+        }
+        body.ptdt-drawer-mode .hero-split-badge.blue {
+            border-color: rgba(56,97,251,0.32);
+            background: rgba(56,97,251,0.08);
+            color: #2647c8;
+        }
+        body.ptdt-drawer-mode .api-hero-meta-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            min-width: 0;
+            padding: 18px 20px;
+            border: 1px solid #ece8f1;
+            border-radius: 18px;
+            background: rgba(255,255,255,0.84);
+            box-shadow: 0 16px 38px rgba(16,16,24,0.08);
+        }
+        body.ptdt-drawer-mode .api-hero-meta-card span {
+            display: block;
+            margin-bottom: 6px;
+            color: #8e849c;
+            font-family: 'Fira Code', monospace;
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        body.ptdt-drawer-mode .api-hero-meta-card code {
+            color: #3b3447;
+            font-family: 'Fira Code', monospace;
+            font-size: 13px;
+            overflow-wrap: anywhere;
+        }
+        body.ptdt-drawer-mode .api-hero-meta-pill {
+            flex: 0 0 auto;
+            min-height: 46px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 18px;
+            border-radius: 999px;
+            border: 1px solid rgba(251,11,140,0.38);
+            background: linear-gradient(135deg, #fb0b8c, #ff4bad);
+            color: #fff;
+            font-size: 13px;
+            font-weight: 900;
+            white-space: nowrap;
+        }
+        @media (max-width: 900px) {
+            body.ptdt-drawer-mode .hero-split-grid {
+                grid-template-columns: 1fr;
+                padding: 24px 20px 26px;
+            }
+            body.ptdt-drawer-mode .hero-split-visual-stack { order: 1; }
+            body.ptdt-drawer-mode .hero-split-content { order: 2; }
+            body.ptdt-drawer-mode .hero-split-image {
+                height: auto;
+                min-height: 240px;
+                aspect-ratio: 16 / 9;
+            }
+            body.ptdt-drawer-mode .hero-split-title { font-size: clamp(32px, 8vw, 44px); }
+        }
+        body.ptdt-drawer-mode .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            margin: 0 clamp(24px, 4.6vw, 52px) 30px;
+        }
+        body.ptdt-drawer-mode .tabs-wrapper {
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        html[data-theme="dark"] body.ptdt-drawer-mode {
+            background: #070914;
+        }
+        html[data-theme="dark"] body.ptdt-drawer-mode .hero-split-title,
+        html[data-theme="dark"] body.ptdt-drawer-mode .hero-split-title .title-ink {
+            color: #fff;
+        }
+        html[data-theme="dark"] body.ptdt-drawer-mode .hero-split-desc {
+            color: rgba(255, 255, 255, 0.72);
+        }
+        html[data-theme="dark"] body.ptdt-drawer-mode .hero-split-badge {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.14);
+            color: rgba(255, 255, 255, 0.86);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+        }
+        html[data-theme="dark"] body.ptdt-drawer-mode .hero-split-badge.primary {
+            color: #fff;
+            background: linear-gradient(135deg, #fb0b8c, #ff4bad);
+            border-color: rgba(251,11,140,0.44);
+        }
+        html[data-theme="dark"] body.ptdt-drawer-mode .hero-split-badge.green {
+            color: #6ee7a8;
+            background: rgba(0,167,71,0.12);
+            border-color: rgba(0,167,71,0.28);
+        }
+        html[data-theme="dark"] body.ptdt-drawer-mode .hero-split-badge.blue {
+            color: #8ea2ff;
+            background: rgba(56,97,251,0.12);
+            border-color: rgba(56,97,251,0.30);
+        }
+        html[data-theme="dark"] body.ptdt-drawer-mode .api-hero-meta-card,
+        html[data-theme="dark"] body.ptdt-drawer-mode .tabs-wrapper {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 16px 38px rgba(0, 0, 0, 0.25);
+        }
+        html[data-theme="dark"] body.ptdt-drawer-mode .api-hero-meta-card span {
+            color: rgba(255, 255, 255, 0.58);
+        }
+        html[data-theme="dark"] body.ptdt-drawer-mode .api-hero-meta-card code {
+            color: rgba(255, 255, 255, 0.88);
+            background: rgba(255, 255, 255, 0.06);
+        }
+        html[data-theme="dark"] body.ptdt-drawer-mode .tab {
+            color: rgba(255, 255, 255, 0.72);
+        }
+        html[data-theme="dark"] body.ptdt-drawer-mode .tab:hover {
+            color: #ff4da6;
+            background: rgba(251, 11, 140, 0.12);
+        }
+        html[data-theme="dark"] body.ptdt-drawer-mode .tab.active {
+            color: #fff;
+        }
+        @media (max-width: 560px) {
+            body.ptdt-drawer-mode .container { padding: 0; }
+            body.ptdt-drawer-mode .hero-split-grid { padding: 20px 16px 24px; }
+            body.ptdt-drawer-mode .sticky-nav { margin: 0 16px 24px; }
+            body.ptdt-drawer-mode .hero-split-image { min-height: 200px; }
+            body.ptdt-drawer-mode .hero-split-title { font-size: 31px; }
+            body.ptdt-drawer-mode .hero-split-desc { font-size: 15px; }
+            body.ptdt-drawer-mode .api-hero-meta-card {
+                align-items: stretch;
+                flex-direction: column;
+            }
+            body.ptdt-drawer-mode .api-hero-meta-pill { width: 100%; }
+        }
+</style>
+<script id="ptdt-api-drawer-mode-css">
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('drawer') === '1') {
+    document.documentElement.classList.add('ptdt-drawer-mode-root');
+    document.addEventListener('DOMContentLoaded', function(){
+      document.body.classList.add('ptdt-drawer-mode');
+      function sendHeight(){
+        if (window.parent && window.parent !== window) {
+          window.parent.postMessage({
+            type: 'ptdt-drawer-height',
+            height: document.documentElement.scrollHeight
+          }, '*');
+        }
+      }
+      sendHeight();
+      window.addEventListener('load', sendHeight);
+      window.addEventListener('resize', sendHeight);
+      setTimeout(sendHeight, 300);
+      setTimeout(sendHeight, 1000);
+    });
+  }
+})();
+</script>
+</head>
+<body>
+
+    <!-- Particle Background Canvas -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Network Status -->
+    <div class="network-status">
+        <div class="pulse-dot"></div>
+        <span>BSC Mainnet:</span>
+        <strong>Online</strong>
+    </div>
+
+    <!-- Search -->
+    <div class="search-container">
+        <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="searchInput" placeholder="Search endpoints, methods..." autocomplete="off">
+            <span class="shortcut">Ctrl+K</span>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+    </div>
+
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18C8.68629 18 6 15.3137 6 12C6 8.68629 8.68629 6 12 6C15.3137 6 18 8.68629 18 12C18 15.3137 15.3137 18 12 18ZM11 1H13V4H11V1ZM11 20H13V23H11V20ZM3.51472 4.92893L4.92893 3.51472L7.05025 5.63604L5.63604 7.05025L3.51472 4.92893ZM16.9497 18.364L18.364 16.9497L20.4853 19.0711L19.0711 20.4853L16.9497 18.364ZM19.0711 3.51472L20.4853 4.92893L18.364 7.05025L16.9497 5.63604L19.0711 3.51472ZM5.63604 16.9497L7.05025 18.364L4.92893 20.4853L3.51472 19.0711L5.63604 16.9497ZM23 11V13H20V11H23ZM4 11V13H1V11H4Z"></path></svg>
+        <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </button>
+
+    <!-- Keyboard Hint -->
+    <div class="keyboard-hint">
+        <span><kbd>←</kbd><kbd>→</kbd> Navigate tabs</span>
+        <span><kbd>Ctrl</kbd>+<kbd>K</kbd> Search</span>
+    </div>
+
+    <!-- HOME LOGO (Top Center) -->
+    <div class="home-logo-section">
+        <a href="https://ptdt.taxi" class="home-logo-link" title="Go to PTDT Homepage">
+            <img src="ptdt-main-logo.png" alt="PTDT Home">
+        </a>
+    </div>
+
+    <!-- TOP NAVBAR (Two-Row Vignette Card) -->
+  <nav class="page-nav">
+        <div class="nav-row">
+        <a href="https://ptdt.taxi/ptdt-docs/mainguide.html" class="nav-link">Main-Guide</a>
+        <span class="nav-sep"></span>
+        <a href="https://ptdt.taxi/ptdt-docs/apidocs.html" class="nav-link active">API-Docs</a>
+        <span class="nav-sep"></span>
+        <a href="https://ptdt.taxi/ptdt-docs/dashboard.html" class="nav-link">Dashboard</a>
+        <span class="nav-sep"></span>
+        <a href="https://whitepaper.ptdt.taxi/" class="nav-link">WhitePaper</a>
+        <span class="nav-sep"></span>
+        <a href="https://ptdt.taxi/ptdt-docs/verified.html" class="nav-link verified-tab">Verified ✓</a>
+        <span class="nav-sep"></span>
+        <a href="https://ptdt.taxi/ptdt-docs/rebuttal.html" class="nav-link">Rebuttal</a>
+        <span class="nav-sep"></span>
+        <a href="https://ptdt.taxi/scope.html" class="nav-link">Scope</a>
+        <span class="nav-sep"></span>
+        <a href="https://ptdt.taxi/stake.html" class="nav-link staking-tab">⚡ Staking</a>
+        <span class="nav-sep"></span>
+        <a href="/buy.html" class="nav-link buy-tab">🏛 Buy PTDT</a>
+    </div>
+
+    <!-- DIVIDER -->
+    <div class="nav-divider"></div>
+
+    <!-- SECOND ROW (8 items - now balanced) -->
+    <div class="nav-row">
+        <a href="https://ptdt.taxi/coinranking.html" class="nav-link coinranking-tab">Coinranking</a>
+        <span class="nav-sep"></span>
+        <a href="/gecko.html" class="nav-link gecko-tab">🦎 GeckoTerminal</a>
+        <span class="nav-sep"></span>
+        <a href="/pancakeswap.html" class="nav-link pancake-tab">🥞 PancakeSwap</a>
+        <span class="nav-sep"></span>
+        <a href="/github.html" class="nav-link">▪️ GitHub</a>
+        <span class="nav-sep"></span>
+        <a href="/grokfare.html" class="nav-link grok-tab">🤖 Grok Fare</a>
+        <span class="nav-sep"></span>
+        <a href="https://ptdt.taxi/grok-stake-sim.html" class="nav-link grok-tab">🧮 Stake Sim</a>
+        <span class="nav-sep"></span>
+        <a href="/ptdt-docs/downloads.html" class="nav-link">📥 Downloads</a>
+    </div>
+  </nav>
+
+    <!-- COIN + SLOGAN SECTION -->
+    <div class="coin-slogan-section">
+        <div class="coin-wrapper">
+            <div class="coin" id="headerCoin">
+                <img src="data:image/svg+xml,%3Csvg viewBox='0 0 28.8 29.04' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='14.35' cy='14.4' r='12.27' fill='%232ae97b' stroke='%23d1d3d4' stroke-miterlimit='10' stroke-width='.46'/%3E%3Ccircle cx='14.35' cy='14.4' r='10.66' fill='%23020202'/%3E%3Cpath d='M15.14,12.47c-.21-.34,2.18-3.91,4.97-4.8-3.22,.47-5.62,2.79-5.76,2.93,0,0-.02,.01-.02,.01,0,0,.01,0,.02-.01,0,0,.01,0,.02,.01h-.02c.64-.63,.45-.1,0,.85-.45-.95-.64-1.48,0-.86-.14-.15-2.55-2.46-5.76-2.93,2.79,.89,5.18,4.46,4.97,4.8-.57,.94-1.12,2.19-1.21,3.55-.03,.14-.05,.26-.05,.36,0,3.18,2.03,5.76,2.03,5.76,0,0,0,0,.02-.01,0,0,.01,.01,.01,.01,0,0,2.03-2.57,2.03-5.76,0-.1-.01-.22-.04-.36-.09-1.36-.63-2.61-1.21-3.55' fill='%23fb0b8c'/%3E%3Cpath d='M15.75,8.26c0,.77-.62,1.39-1.39,1.39s-1.4-.62-1.4-1.39,.63-1.39,1.4-1.39,1.39,.62,1.39,1.39' fill='%23fb068c'/%3E%3C/svg%3E" alt="Peether PTDT" draggable="false">
+            </div>
+        </div>
+        <div class="slogan" id="slogan">
+            <span id="part1"></span>
+            <span id="cursor-anchor-mid"></span>
+            <span id="part2"></span>
+            <span id="cursor-anchor-end"><span class="cursor" id="main-cursor"></span></span>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- ============================================
+             HERO SPLIT SECTION (Buy drawer pattern)
+             ============================================ -->
+        <section class="hero-split">
+            <div class="hero-split-grid">
+                <div class="hero-split-content">
+                    <p class="hero-split-eyebrow">Developer Documentation</p>
+                    <h1 class="hero-split-title">
+                        <span class="title-pink">PTDT</span> <span class="title-ink">Live</span><br>
+                        <span class="title-green">Developer</span> <span class="title-blue">API</span>
+                    </h1>
+                    <p class="hero-split-desc">Complete documentation for integrating with the Peether PTDT Ecosystem. REST endpoints, smart contract methods, authentication, and SDK examples.</p>
+                    <div class="hero-split-badges">
+                        <span class="hero-split-badge primary">REST API ↗</span>
+                        <span class="hero-split-badge green">BSC Mainnet</span>
+                        <span class="hero-split-badge blue">SDK Examples</span>
+                    </div>
+                </div>
+                <div class="hero-split-visual-stack">
+                    <div class="hero-split-image">
+                        <img src="apidocs-preview.webp" alt="PTDT API Documentation - Developer Integration Guide" loading="lazy" decoding="async">
+                    </div>
+                    <div class="api-hero-meta-card">
+                        <div>
+                            <span>API Base URL</span>
+                            <code>https://api.ptdt.taxi/v1</code>
+                        </div>
+                        <div class="api-hero-meta-pill">v1.0.0 Live</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STICKY NAV - 7 Tabs (from API Doc) -->
+        <div class="sticky-nav" id="stickyNav">
+            <div class="tabs-wrapper">
+                <div class="tabs" id="tabs">
+                    <button class="tab active" data-tab="0">📖 Intro</button>
+                    <button class="tab" data-tab="1">🔐 Auth</button>
+                    <button class="tab" data-tab="2">⏱️ Limits</button>
+                    <button class="tab" data-tab="3">🪙 Contracts</button>
+                    <button class="tab" data-tab="4">💰 Endpoints</button>
+                    <button class="tab" data-tab="5">🔧 Resources</button>
+                    <button class="tab" data-tab="6">📦 SDKs</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-container">
+
+            <!-- TAB 0: Introduction -->
+            <div class="tab-content active" id="tab0">
+                <h2>📖 Introduction</h2>
+                <p>Welcome to the PTDT API documentation. This API allows you to interact with the Peether PTDT Token Ecosystem, including token operations, staking, ride payments, and loyalty programs.</p>
+
+                <div class="collapsible open">
+                    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                        <h3>🔗 Base URLs</h3>
+                        <div class="toggle-icon">+</div>
+                    </div>
+                    <div class="collapsible-content">
+                        <div class="collapsible-body">
+                            <div class="code-block-wrapper">
+                                <div class="code-block-header">
+                                    <span class="language">Endpoints</span>
+                                    <button class="copy-code-btn" onclick="copyCode(this)">📋 Copy</button>
+                                </div>
+                                <div class="code-block"><span class="comment">// REST API</span>
+<span class="property">REST API:</span>  <span class="string">https://api.ptdt.taxi/v1</span>
+
+<span class="comment">// BSC RPC Endpoint</span>
+<span class="property">BSC RPC:</span>   <span class="string">https://bsc-dataseed.binance.org/</span>
+
+<span class="comment">// PTDT Token Contract Address</span>
+<span class="property">PTDT Contract:</span> <span class="string">0x66c6Fc5E7F99272134a52DF9E88D94eD83E89278</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="collapsible open">
+                    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                        <h3>🚀 Quick Start</h3>
+                        <div class="toggle-icon">+</div>
+                    </div>
+                    <div class="collapsible-content">
+                        <div class="collapsible-body">
+                            <div class="code-block-wrapper">
+                                <div class="code-block-header">
+                                    <span class="language">JavaScript</span>
+                                    <button class="copy-code-btn" onclick="copyCode(this)">📋 Copy</button>
+                                </div>
+                                <div class="code-block"><span class="keyword">const</span> { ethers } = <span class="keyword">require</span>(<span class="string">'ethers'</span>);
+
+<span class="comment">// Connect to BSC</span>
+<span class="keyword">const</span> provider = <span class="keyword">new</span> ethers.providers.JsonRpcProvider(
+  <span class="string">'https://bsc-dataseed.binance.org/'</span>
+);
+
+<span class="comment">// PTDT Token Contract</span>
+<span class="keyword">const</span> PTDT_ADDRESS = <span class="string">'0x66c6Fc5E7F99272134a52DF9E88D94eD83E89278'</span>;
+<span class="keyword">const</span> PTDT_ABI = [<span class="comment">/* ABI */</span>];
+<span class="keyword">const</span> ptdtContract = <span class="keyword">new</span> ethers.Contract(PTDT_ADDRESS, PTDT_ABI, provider);
+
+<span class="comment">// Get token balance</span>
+<span class="keyword">const</span> balance = <span class="keyword">await</span> ptdtContract.balanceOf(address);
+console.log(<span class="string">`Balance: ${ethers.utils.formatEther(balance)} PTDT`</span>);</div>
+                            </div>
+
+                            <!-- API Playground -->
+                            <div class="api-playground">
+                                <div class="api-playground-header">
+                                    <div class="icon">🧪</div>
+                                    <div>
+                                        <h4>Try It Live</h4>
+                                        <span>Test the balance endpoint right here</span>
+                                    </div>
+                                </div>
+                                <div class="playground-input-group">
+                                    <div class="playground-input">
+                                        <label>Wallet Address</label>
+                                        <input type="text" id="balanceAddress" placeholder="0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb4">
+                                    </div>
+                                </div>
+                                <button class="try-btn" onclick="tryBalanceEndpoint()"><span>▶</span> Run Request</button>
+                                <div class="playground-response" id="balanceResponse">
+                                    <div class="response-header">
+                                        <div class="response-status success">✓ 200 OK</div>
+                                        <div class="response-time">127ms</div>
+                                    </div>
+                                    <div class="code-block-wrapper">
+                                        <div class="code-block-header">
+                                            <span class="language">Response</span>
+                                            <button class="copy-code-btn" onclick="copyCode(this)">📋 Copy</button>
+                                        </div>
+                                        <div class="code-block" id="balanceResponseCode"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 1: Authentication -->
+            <div class="tab-content" id="tab1">
+                <h2>🔐 Authentication</h2>
+                <p>PTDT API uses API keys and wallet signatures for authentication depending on the endpoint type.</p>
+
+                <div class="collapsible open">
+                    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                        <h3>🔑 API Key Authentication</h3>
+                        <div class="toggle-icon">+</div>
+                    </div>
+                    <div class="collapsible-content">
+                        <div class="collapsible-body">
+                            <p>For REST API endpoints, include your API key in the request headers:</p>
+                            <div class="code-block-wrapper">
+                                <div class="code-block-header">
+                                    <span class="language">HTTP Headers</span>
+                                    <button class="copy-code-btn" onclick="copyCode(this)">📋 Copy</button>
+                                </div>
+                                <div class="code-block"><span class="property">Authorization:</span> <span class="string">Bearer YOUR_API_KEY</span>
+<span class="property">X-API-Key:</span>      <span class="string">YOUR_API_KEY</span>
+<span class="property">Content-Type:</span>   <span class="string">application/json</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="collapsible open">
+                    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                        <h3>👛 Web3 Wallet Authentication</h3>
+                        <div class="toggle-icon">+</div>
+                    </div>
+                    <div class="collapsible-content">
+                        <div class="collapsible-body">
+                            <p>For blockchain interactions, authenticate using wallet signatures:</p>
+                            <div class="code-block-wrapper">
+                                <div class="code-block-header">
+                                    <span class="language">JavaScript</span>
+                                    <button class="copy-code-btn" onclick="copyCode(this)">📋 Copy</button>
+                                </div>
+                                <div class="code-block"><span class="keyword">const</span> signer = provider.getSigner();
+<span class="keyword">const</span> address = <span class="keyword">await</span> signer.getAddress();
+<span class="keyword">const</span> message = <span class="string">`Sign this message to authenticate
+with PTDT API. Nonce: ${Date.now()}`</span>;
+<span class="keyword">const</span> signature = <span class="keyword">await</span> signer.signMessage(message);
+
+<span class="comment">// Send authentication request</span>
+<span class="keyword">const</span> response = <span class="keyword">await</span> fetch(<span class="string">'https://api.ptdt.taxi/v1/auth'</span>, {
+  <span class="property">method:</span> <span class="string">'POST'</span>,
+  <span class="property">headers:</span> { <span class="string">'Content-Type'</span>: <span class="string">'application/json'</span> },
+  <span class="property">body:</span> JSON.stringify({ address, message, signature })
+});</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="collapsible open">
+                    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                        <h3>📝 Obtaining API Keys</h3>
+                        <div class="toggle-icon">+</div>
+                    </div>
+                    <div class="collapsible-content">
+                        <div class="collapsible-body">
+                            <strong>Production API Access:</strong>
+                            <ol style="margin:15px 0;padding-left:20px;">
+                                <li>Register at dapp.ptdt.taxi/developers</li>
+                                <li>Complete KYC verification</li>
+                                <li>Generate your API keys from the dashboard</li>
+                                <li>Securely store your keys (never commit to version control)</li>
+                            </ol>
+                            <div class="warning-box">
+                                <h4>⚠️ Security Best Practices:</h4>
+                                <ul style="margin:15px 0;padding-left:20px;">
+                                    <li>Never share your API keys publicly</li>
+                                    <li>Rotate keys every 90 days</li>
+                                    <li>Use environment variables for key storage</li>
+                                    <li>Implement IP whitelisting when possible</li>
+                                    <li>Monitor API usage for suspicious activity</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: Rate Limits -->
+            <div class="tab-content" id="tab2">
+                <h2>⏱️ Rate Limits</h2>
+                <p>To ensure fair usage and system stability, PTDT API implements rate limiting on all endpoints.</p>
+
+                <div class="collapsible open">
+                    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                        <h3>📊 Rate Limit Tiers</h3>
+                        <div class="toggle-icon">+</div>
+                    </div>
+                    <div class="collapsible-content">
+                        <div class="collapsible-body">
+                            <div class="table-wrapper">
+                                <table>
+                                    <thead>
+                                        <tr><th>Tier</th><th>Requests/Min</th><th>Requests/Hour</th><th>Burst Limit</th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td><strong>Free</strong></td><td>60</td><td>1,000</td><td>10/sec</td></tr>
+                                        <tr><td><strong>Developer</strong></td><td>300</td><td>10,000</td><td>50/sec</td></tr>
+                                        <tr><td><strong>Business</strong></td><td>1,000</td><td>50,000</td><td>100/sec</td></tr>
+                                        <tr><td><strong>Enterprise</strong></td><td>Custom</td><td>Custom</td><td>Custom</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="collapsible open">
+                    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                        <h3>📋 Rate Limit Headers</h3>
+                        <div class="toggle-icon">+</div>
+                    </div>
+                    <div class="collapsible-content">
+                        <div class="collapsible-body">
+                            <p>Every API response includes rate limit information:</p>
+                            <div class="code-block-wrapper">
+                                <div class="code-block-header">
+                                    <span class="language">HTTP Headers</span>
+                                    <button class="copy-code-btn" onclick="copyCode(this)">📋 Copy</button>
+                                </div>
+                                <div class="code-block"><span class="property">X-RateLimit-Limit:</span>     <span class="number">60</span>
+<span class="property">X-RateLimit-Remaining:</span> <span class="number">45</span>
+<span class="property">X-RateLimit-Reset:</span>     <span class="number">1704830400</span>
+<span class="property">Retry-After:</span>            <span class="number">60</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="collapsible open">
+                    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                        <h3>🔄 Handling Rate Limits</h3>
+                        <div class="toggle-icon">+</div>
+                    </div>
+                    <div class="collapsible-content">
+                        <div class="collapsible-body">
+                            <div class="code-block-wrapper">
+                                <div class="code-block-header">
+                                    <span class="language">JavaScript</span>
+                                    <button class="copy-code-btn" onclick="copyCode(this)">📋 Copy</button>
+                                </div>
+                                <div class="code-block"><span class="keyword">async function</span> makeAPIRequest(url, options) {
+  <span class="keyword">const</span> response = <span class="keyword">await</span> fetch(url, options);
+  <span class="keyword">if</span> (response.status === <span class="number">429</span>) {
+    <span class="keyword">const</span> retryAfter = response.headers.get(<span class="string">'Retry-After'</span>);
+    console.log(<span class="string">`Rate limited. Retrying after ${retryAfter}s`</span>);
+    <span class="keyword">await new</span> Promise(r => setTimeout(r, retryAfter * <span class="number">1000</span>));
+    <span class="keyword">return</span> makeAPIRequest(url, options);
+  }
+  <span class="keyword">return</span> response;
+}</div>
+                            </div>
+                            <div class="info-box">
+                                <h4>💡 Pro Tips:</h4>
+                                <ul style="margin:15px 0;padding-left:20px;">
+                                    <li>Implement exponential backoff for retries</li>
+                                    <li>Cache responses when possible</li>
+                                    <li>Batch requests to reduce API calls</li>
+                                    <li>Use webhooks instead of polling</li>
+                                    <li>Monitor rate limit headers proactively</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: Smart Contracts -->
+            <div class="tab-content" id="tab3">
+                <h2>🪙 Smart Contracts</h2>
+
+                <div class="collapsible open">
+                    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                        <h3>📝 PTDT Token Contract</h3>
+                        <div class="toggle-icon">+</div>
+                    </div>
+                    <div class="collapsible-content">
+                        <div class="collapsible-body">
+                            <p>Approve a spender to transfer tokens on your behalf.</p>
+                            <div class="warning-box">
+                                <h4>⚠️ Security Warning:</h4>
+                                <p>Never approve unlimited amounts. Always approve only what you need.</p>
+                            </div>
+                            <h4>Parameters</h4>
+                            <div class="table-wrapper">
+                                <table>
+                                    <thead><tr><th>Parameter</th><th>Type</th><th>Description</th></tr></thead>
+                                    <tbody>
+                                        <tr><td><code>spender</code> <strong>REQUIRED</strong></td><td>address</td><td>The address authorized to spend tokens</td></tr>
+                                        <tr><td><code>amount</code> <strong>REQUIRED</strong></td><td>uint256</td><td>The exact amount to approve (in wei)</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <h4>Example</h4>
+                            <div class="code-block-wrapper">
+                                <div class="code-block-header">
+                                    <span class="language">JavaScript</span>
+                                    <button class="copy-code-btn" onclick="copyCode(this)">📋 Copy</button>
+                                </div>
+                                <div class="code-block"><span class="comment">// Approve 100 PTDT for staking</span>
+<span class="keyword">const</span> amount = ethers.utils.parseEther(<span class="string">'100'</span>);
+<span class="keyword">const</span> stakingAddress = <span class="string">'0x...'</span>;
+<span class="keyword">const</span> tx = <span class="keyword">await</span> ptdtContract.approve(stakingAddress, amount);
+<span class="keyword">await</span> tx.wait();
+console.log(<span class="string">'Approval successful!'</span>);</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="collapsible open">
+                    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                        <h3>💎 Staking Pool Contract</h3>
+                        <div class="toggle-icon">+</div>
+                    </div>
+                    <div class="collapsible-content">
+                        <div class="collapsible-body">
+                            <p>Stake PTDT tokens to earn rewards. Requires prior approval.</p>
+                            <h4>Parameters</h4>
+                            <div class="table-wrapper">
+                                <table>
+                                    <thead><tr><th>Parameter</th><th>Type</th><th>Description</th></tr></thead>
+                                    <tbody>
+                                        <tr><td><code>amount</code> <strong>REQUIRED</strong></td><td>uint256</td><td>Amount to stake (minimum: 100 PTDT)</td></tr>
+                                        <tr><td><code>lockPeriod</code> <strong>REQUIRED</strong></td><td>uint256</td><td>Lock period: 0 (30d), 1 (90d), 2 (180d)</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <h4>💰 Staking Rewards APY</h4>
+                            <div class="staking-cards">
+                                <div class="staking-card"><div class="apy">5%</div><div class="period">30 Days</div></div>
+                                <div class="staking-card"><div class="apy">8%</div><div class="period">90 Days</div></div>
+                                <div class="staking-card"><div class="apy">12%</div><div class="period">180 Days</div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="collapsible open">
+                    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                        <h3>🚖 Ride Payment Contract</h3>
+                        <div class="toggle-icon">+</div>
+                    </div>
+                    <div class="collapsible-content">
+                        <div class="collapsible-body">
+                            <p>Handle ride bookings and payments using PTDT tokens.</p>
+                            <h4>Book Ride</h4>
+                            <div class="table-wrapper">
+                                <table>
+                                    <thead><tr><th>Parameter</th><th>Type</th><th>Description</th></tr></thead>
+                                    <tbody>
+                                        <tr><td><code>rideId</code> <strong>REQUIRED</strong></td><td>bytes32</td><td>Unique ride identifier</td></tr>
+                                        <tr><td><code>driver</code> <strong>REQUIRED</strong></td><td>address</td><td>Driver's wallet address</td></tr>
+                                        <tr><td><code>estimatedFare</code> <strong>REQUIRED</strong></td><td>uint256</td><td>Fare in PTDT (wei format)</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <h4>Payment Breakdown</h4>
+                            <ul style="margin:15px 0;padding-left:20px;">
+                                <li><strong>Platform Fee:</strong> 5%</li>
+                                <li><strong>Driver Earnings:</strong> 95%</li>
+                                <li>All fees collected in PTDT tokens</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="collapsible open">
+                    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                        <h3>⭐ Loyalty Program Contract</h3>
+                        <div class="toggle-icon">+</div>
+                    </div>
+                    <div class="collapsible-content">
+                        <div class="collapsible-body">
+                            <p>Reward users with loyalty points for using Peether PTDT Token Ecosystem.</p>
+                            <h4>Loyalty Tiers</h4>
+                            <div class="table-wrapper">
+                                <table>
+                                    <thead><tr><th>Tier</th><th>Points Required</th><th>Benefits</th></tr></thead>
+                                    <tbody>
+                                        <tr><td><strong>Bronze</strong></td><td>0 - 999</td><td>1x points per PTDT</td></tr>
+                                        <tr><td><strong>Silver</strong></td><td>1,000 - 4,999</td><td>1.5x points + 5% discount</td></tr>
+                                        <tr><td><strong>Gold</strong></td><td>5,000 - 19,999</td><td>2x points + 10% discount</td></tr>
+                                        <tr><td><strong>Platinum</strong></td><td>20,000+</td><td>3x points + 15% + Priority</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <h4>How to Earn Points</h4>
+                            <ul style="margin:15px 0;padding-left:20px;">
+                                <li>1 point per 1 PTDT spent on rides</li>
+                                <li>Daily login bonus: 10 points</li>
+                                <li>Refer a friend: 500 points</li>
+                                <li>Complete 7-day ride streak: 1,000 points</li>
+                                <li>Multipliers based on loyalty tier</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 4: REST API Endpoints -->
+            <div class="tab-content" id="tab4">
+                <h2>💰 REST API Endpoints</h2>
+
+                <div class="collapsible open">
+                    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                        <h3>💵 Get Balance</h3>
+                        <div class="toggle-icon">+</div>
+                    </div>
+                    <div class="collapsible-content">
+                        <div class="collapsible-body">
+                            <p>Retrieve PTDT token balance for a specific address.</p>
+                            <h4>Parameters</h4>
+                            <div class="table-wrapper">
+                                <table>
+                                    <thead><tr><th>Parameter</th><th>Type</th><th>Description</th></tr></thead>
+                                    <tbody>
+                                        <tr><td><code>address</code> <strong>REQUIRED</strong></td><td>string</td><td>Wallet address (path parameter)</td></tr>
+                                        <tr><td><code>formatted</code> <strong>OPTIONAL</strong></td><td>boolean</td><td>Return formatted balance (default: false)</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <h4>Response Example</h4>
+                            <div class="code-block-wrapper">
+                                <div class="code-block-header">
+                                    <span class="language">JSON</span>
+                                    <button class="copy-code-btn" onclick="copyCode(this)">📋 Copy</button>
+                                </div>
+                                <div class="code-block">{
+  <span class="property">"address"</span>: <span class="string">"0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb4"</span>,
+  <span class="property">"balance"</span>: <span class="string">"1000000000000000000000"</span>,
+  <span class="property">"balanceFormatted"</span>: <span class="string">"1000.00"</span>,
+  <span class="property">"symbol"</span>: <span class="string">"PTDT"</span>,
+  <span class="property">"decimals"</span>: <span class="number">18</span>,
+  <span class="property">"timestamp"</span>: <span class="number">1704830400</span>
+}</div>
+                            </div>
+                            <h4>cURL Example</h4>
+                            <div class="code-block-wrapper">
+                                <div class="code-block-header">
+                                    <span class="language">cURL</span>
+                                    <button class="copy-code-btn" onclick="copyCode(this)">📋 Copy</button>
+                                </div>
+                                <div class="code-block">curl -X GET \
+  <span class="string">'https://api.ptdt.taxi/v1/balance/0x742d35Cc...?formatted=true'</span> \
+  -H <span class="string">'Authorization: Bearer YOUR_API_KEY'</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="collapsible open">
+                    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                        <h3>✅ Get Approvals</h3>
+                        <div class="toggle-icon">+</div>
+                    </div>
+                    <div class="collapsible-content">
+                        <div class="collapsible-body">
+                            <p>Get all token approvals for an address.</p>
+                            <h4>Parameters</h4>
+                            <div class="table-wrapper">
+                                <table>
+                                    <thead><tr><th>Parameter</th><th>Type</th><th>Description</th></tr></thead>
+                                    <tbody>
+                                        <tr><td><code>address</code> <strong>REQUIRED</strong></td><td>string</td><td>Wallet address to check</td></tr>
+                                        <tr><td><code>active_only</code> <strong>OPTIONAL</strong></td><td>boolean</td><td>Show only active approvals (default: true)</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="warning-box">
+                                <h4>⚠️ Security Recommendation:</h4>
+                                <p>Regularly audit your approvals and revoke any that are no longer needed. Unlimited approvals pose significant security risks.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="collapsible open">
+                    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                        <h3>🔒 Stake Tokens</h3>
+                        <div class="toggle-icon">+</div>
+                    </div>
+                    <div class="collapsible-content">
+                        <div class="collapsible-body">
+                            <p>Initiate a staking transaction via the REST API.</p>
+                            <h4>Request Parameters</h4>
+                            <div class="table-wrapper">
+                                <table>
+                                    <thead><tr><th>Parameter</th><th>Type</th><th>Description</th></tr></thead>
+                                    <tbody>
+                                        <tr><td><code>address</code> <strong>REQUIRED</strong></td><td>string</td><td>User's wallet address</td></tr>
+                                        <tr><td><code>amount</code> <strong>REQUIRED</strong></td><td>string</td><td>Amount to stake in PTDT</td></tr>
+                                        <tr><td><code>lockPeriod</code> <strong>REQUIRED</strong></td><td>number</td><td>Lock period: 30, 90, or 180</td></tr>
+                                        <tr><td><code>autoCompound</code> <strong>OPTIONAL</strong></td><td>boolean</td><td>Enable auto-compounding (default: false)</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- Staking Playground -->
+                            <div class="api-playground">
+                                <div class="api-playground-header">
+                                    <div class="icon">🧪</div>
+                                    <div>
+                                        <h4>Try It Live</h4>
+                                        <span>Simulate a staking request</span>
+                                    </div>
+                                </div>
+                                <div class="playground-input-group">
+                                    <div class="playground-input">
+                                        <label>Amount (PTDT)</label>
+                                        <input type="number" id="stakeAmount" placeholder="1000" value="1000">
+                                    </div>
+                                    <div class="playground-input">
+                                        <label>Lock Period</label>
+                                        <select id="stakePeriod">
+                                            <option value="30">30 Days (5% APY)</option>
+                                            <option value="90">90 Days (8% APY)</option>
+                                            <option value="180">180 Days (12% APY)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <button class="try-btn" onclick="tryStakeEndpoint()"><span>▶</span> Calculate Rewards</button>
+                                <div class="playground-response" id="stakeResponse">
+                                    <div class="response-header">
+                                        <div class="response-status success">✓ 200 OK</div>
+                                        <div class="response-time">89ms</div>
+                                    </div>
+                                    <div class="code-block-wrapper">
+                                        <div class="code-block-header">
+                                            <span class="language">Response</span>
+                                            <button class="copy-code-btn" onclick="copyCode(this)">📋 Copy</button>
+                                        </div>
+                                        <div class="code-block" id="stakeResponseCode"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 5: Resources -->
+            <div class="tab-content" id="tab5">
+                <h2>🔧 Resources & Error Handling</h2>
+
+                <div class="collapsible open">
+                    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                        <h3>⚠️ Error Codes</h3>
+                        <div class="toggle-icon">+</div>
+                    </div>
+                    <div class="collapsible-content">
+                        <div class="collapsible-body">
+                            <div class="table-wrapper">
+                                <table>
+                                    <thead><tr><th>Code</th><th>Message</th><th>Description</th></tr></thead>
+                                    <tbody>
+                                        <tr><td><code>E001</code></td><td>Insufficient balance</td><td>User doesn't have enough PTDT</td></tr>
+                                        <tr><td><code>E002</code></td><td>Insufficient allowance</td><td>Contract not approved to spend</td></tr>
+                                        <tr><td><code>E003</code></td><td>Below minimum</td><td>Amount below minimum threshold</td></tr>
+                                        <tr><td><code>E004</code></td><td>Lock period active</td><td>Cannot withdraw during lock</td></tr>
+                                        <tr><td><code>E005</code></td><td>Invalid lock period</td><td>Must be 30, 90, or 180</td></tr>
+                                        <tr><td><code>E006</code></td><td>Rate limit exceeded</td><td>Too many requests</td></tr>
+                                        <tr><td><code>E007</code></td><td>Invalid address</td><td>Bad wallet address format</td></tr>
+                                        <tr><td><code>E008</code></td><td>Unauthorized</td><td>Invalid or missing API key</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="collapsible open">
+                    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                        <h3>🔔 Webhooks</h3>
+                        <div class="toggle-icon">+</div>
+                    </div>
+                    <div class="collapsible-content">
+                        <div class="collapsible-body">
+                            <p>Register webhooks to receive real-time notifications for token events.</p>
+                            <h4>Register Webhook</h4>
+                            <div class="code-block-wrapper">
+                                <div class="code-block-header">
+                                    <span class="language">JSON</span>
+                                    <button class="copy-code-btn" onclick="copyCode(this)">📋 Copy</button>
+                                </div>
+                                <div class="code-block">{
+  <span class="property">"url"</span>: <span class="string">"https://your-domain.com/webhook"</span>,
+  <span class="property">"events"</span>: [<span class="string">"transfer"</span>, <span class="string">"approval"</span>, <span class="string">"stake"</span>, <span class="string">"unstake"</span>, <span class="string">"reward_claimed"</span>],
+  <span class="property">"secret"</span>: <span class="string">"your_webhook_secret"</span>
+}</div>
+                            </div>
+                            <h4>Webhook Payload Example</h4>
+                            <div class="code-block-wrapper">
+                                <div class="code-block-header">
+                                    <span class="language">JSON</span>
+                                    <button class="copy-code-btn" onclick="copyCode(this)">📋 Copy</button>
+                                </div>
+                                <div class="code-block">{
+  <span class="property">"event"</span>: <span class="string">"stake"</span>,
+  <span class="property">"timestamp"</span>: <span class="number">1704830400</span>,
+  <span class="property">"txHash"</span>: <span class="string">"0xabc123..."</span>,
+  <span class="property">"data"</span>: {
+    <span class="property">"user"</span>: <span class="string">"0x742d35Cc..."</span>,
+    <span class="property">"amount"</span>: <span class="string">"1000000000000000000000"</span>,
+    <span class="property">"lockPeriod"</span>: <span class="number">90</span>,
+    <span class="property">"apy"</span>: <span class="number">8</span>
+  }
+}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 6: SDKs -->
+            <div class="tab-content" id="tab6">
+                <h2>📦 Official SDKs</h2>
+
+                <div class="collapsible open">
+                    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                        <h3>JavaScript/TypeScript</h3>
+                        <div class="toggle-icon">+</div>
+                    </div>
+                    <div class="collapsible-content">
+                        <div class="collapsible-body">
+                            <div class="code-block-wrapper">
+                                <div class="code-block-header">
+                                    <span class="language">JavaScript</span>
+                                    <button class="copy-code-btn" onclick="copyCode(this)">📋 Copy</button>
+                                </div>
+                                <div class="code-block"><span class="comment">// Install</span>
+npm install @ptdt/sdk ethers
+
+<span class="keyword">import</span> { PTDTClient } <span class="keyword">from</span> <span class="string">'@ptdt/sdk'</span>;
+
+<span class="keyword">const</span> client = <span class="keyword">new</span> PTDTClient({
+  <span class="property">network:</span> <span class="string">'mainnet'</span>,
+  <span class="property">provider:</span> window.ethereum
+});
+
+<span class="comment">// Check balance</span>
+<span class="keyword">const</span> balance = <span class="keyword">await</span> client.getBalance(address);
+
+<span class="comment">// Stake tokens</span>
+<span class="keyword">const</span> result = <span class="keyword">await</span> client.stake({
+  <span class="property">amount:</span> <span class="string">'1000'</span>,
+  <span class="property">lockPeriod:</span> <span class="number">90</span>
+});</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="collapsible open">
+                    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                        <h3>Python</h3>
+                        <div class="toggle-icon">+</div>
+                    </div>
+                    <div class="collapsible-content">
+                        <div class="collapsible-body">
+                            <div class="code-block-wrapper">
+                                <div class="code-block-header">
+                                    <span class="language">Python</span>
+                                    <button class="copy-code-btn" onclick="copyCode(this)">📋 Copy</button>
+                                </div>
+                                <div class="code-block"><span class="comment"># Install</span>
+pip install ptdt-sdk web3
+
+<span class="keyword">from</span> ptdt <span class="keyword">import</span> PTDTClient
+
+client = PTDTClient(
+  <span class="property">network=</span><span class="string">'mainnet'</span>,
+  <span class="property">provider_url=</span><span class="string">'https://bsc-dataseed.binance.org/'</span>
+)
+
+<span class="comment"># Get token info</span>
+balance = client.get_balance(address)
+print(<span class="string">f'Balance: {balance} PTDT'</span>)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="collapsible open">
+                    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                        <h3>🚀 Next Steps</h3>
+                        <div class="toggle-icon">+</div>
+                    </div>
+                    <div class="collapsible-content">
+                        <div class="collapsible-body">
+                            <p><strong>Ready to integrate?</strong></p>
+                            <ol style="margin:15px 0;padding-left:20px;">
+                                <li><strong>Get API Key:</strong> Contact the Peether PTDT Dev Team for production access</li>
+                                <li><strong>Test on Testnet:</strong> Try all endpoints on BSC Testnet first</li>
+                                <li><strong>Review Security:</strong> Follow our security best practices guide</li>
+                                <li><strong>Join Community:</strong> Connect with developers on Telegram</li>
+                            </ol>
+                            <div class="info-box">
+                                <h4>📚 For Additional Resources, please visit Quick Links and Resources section below.</h4>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Progress Dots -->
+            <div class="tab-progress">
+                <div class="tab-dot active" data-tab="0"></div>
+                <div class="tab-dot" data-tab="1"></div>
+                <div class="tab-dot" data-tab="2"></div>
+                <div class="tab-dot" data-tab="3"></div>
+                <div class="tab-dot" data-tab="4"></div>
+                <div class="tab-dot" data-tab="5"></div>
+                <div class="tab-dot" data-tab="6"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         FOOTER (from Benchmark - exact copy)
+         ============================================ -->
+    <footer class="footer">
+        <!-- Purple/Pink Gradient Section -->
+        <div class="footer-vignette">
+            <div class="footer-container">
+                <div class="footer-cards">
+
+                    <!-- Card 1: Quick Links -->
+                    <div class="footer-card">
+                        <h3>| Quick Links</h3>
+                        <div class="footer-links-list">
+                          <a href="https://ptdt.taxi" target="_blank">🏠 Main Website</a>
+                          <a href="https://dapp.ptdt.taxi" target="_blank">📱 DApp Portal</a>
+                          <a href="https://ptdt.taxi/ptdt-docs/mainguide.html">🔗 Integration Guide</a>
+                          <a href="https://ptdt.taxi/ptdt-docs/apidocs.html">🔧 API Documentation</a>
+                          <a href="https://ptdt.taxi/ptdt-docs/securityresponse.html">🛡 Security Response</a>
+                          <a href="https://ptdt.taxi/ptdt-docs/dashboard.html">📊 Live Dashboard</a>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Resources -->
+                    <div class="footer-card">
+                        <h3>| Resources</h3>
+                        <div class="footer-links-list">
+                            <a href="https://bscscan.com/token/0x66c6Fc5E7F99272134a52DF9E88D94eD83E89278" target="_blank">📊 BscScan Contract</a>
+                            <a href="https://pancakeswap.finance/swap?outputCurrency=0x66c6Fc5E7F99272134a52DF9E88D94eD83E89278" target="_blank">💱 PancakeSwap</a>
+                            <a href="https://github.com/pinkpeether/peether-protocol" target="_blank">💻 GitHub Repository</a>
+                            <a href="https://dexscreener.com/bsc/0xF3a06E9Dc5d89B2fD8d7d30946c9aeddc5e01E28" target="_blank">📈 DexScreener Chart</a>
+                            <a href="https://lime-capitalist-canid-406.mypinata.cloud/ipfs/bafkreibvhgi5mhutt6agzrdjki7gxecpr5cvx26yvdyn6kigyumzm6ghuq" target="_blank">📄 Audit Report</a>
+                            <a href="https://blockchair.com/address/0x66c6fc5e7f99272134a52df9e88d94ed83e89278/aml-report.pdf" target="_blank">🌐 Gov Verification</a>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Connect -->
+                    <div class="footer-card">
+                        <h3>| Connect</h3>
+                        <div class="social-icons">
+                            <a href="https://t.me/PeetherPTDT" target="_blank" class="social-icon" title="Telegram">✈️</a>
+                            <a href="https://x.com/PTDT_Token" target="_blank" class="social-icon" title="X (Twitter)">𝕏</a>
+                            <a href="https://discord.gg/ptdt" target="_blank" class="social-icon" title="Discord">💬</a>
+                            <a href="https://www.facebook.com/PTDToken" target="_blank" class="social-icon" title="Facebook">📘</a>
+                            <a href="https://github.com/pinkpeether" target="_blank" class="social-icon" title="GitHub">💻</a>
+                            <a href="https://medium.com/pink-taxi/followers" target="_blank" class="social-icon" title="Medium">📝</a>
+                        </div>
+                        <a href="https://ptdt.taxi/ptdt-docs/downloads.html" target="_blank" class="downloads-btn">📥 Downloads</a>
+                        <div class="dev-contact">
+                            <p style="font-weight: 500; margin-bottom: 1px;">Developer Support:</p>
+                            <p>📧 <a href="mailto:dev@ptdt.taxi">dev@ptdt.taxi</a></p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Light Info Section -->
+        <div class="footer-info">
+            <div class="footer-info-container">
+
+                <!-- Two Column Layout -->
+                <div class="footer-info-grid">
+
+                    <!-- LEFT: Company Information -->
+                    <div class="company-info">
+                        <h4>🏢 Company Information</h4>
+                        <p><strong>Pink Taxi Group Ltd.</strong></p>
+                        <p>Registered in the United Kingdom</p>
+                        <p><strong>Token:</strong> Peether PTDT (Pink Taxi Drive Token)</p>
+                        <p><strong>Network:</strong> BNB Smart Chain (BSC)</p>
+                        <div class="verification-badges">
+                            <span class="badge-v badge-bsc">✔ BSCScan Verified</span>
+                            <span class="badge-v badge-audit">✔ Audit 9.2/10</span>
+                            <span class="badge-v badge-gov">✔ Gov Verified</span>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT: Contract & Verification -->
+                    <div class="contract-verification">
+                        <h4>🔐 Contract & Verification</h4>
+                        <div class="contract-item">
+                            <div class="contract-label">Smart Contract Address (PTDT Token):</div>
+                            <div class="contract-box">
+                                <span class="contract-address" id="tokenContract">0x66c6Fc5E7F99272134a52DF9E88D94eD83E89278</span>
+                                <button class="copy-btn" onclick="copyToClipboard('tokenContract')"></button>
+                            </div>
+                        </div>
+                        <div class="contract-item">
+                            <div class="contract-label">Sale Contract Address:</div>
+                            <div class="contract-box">
+                                <span class="contract-address" id="saleContract">0xF3a06E9Dc5d89B2fD8d7d30946c9aeddc5e01E28</span>
+                                <button class="copy-btn" onclick="copyToClipboard('saleContract')"></button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                 <!-- FOOTER BOTTOM LAYOUT -->
+                <div class="footer-bottom">
+                    <p class="women-safety-line">Made with <span class="heart">❤️</span> for women's safety</p>
+                    <p style="font-weight: 300; color: var(--text-secondary); margin-bottom: 12px;">Building the future of decentralized transportation. Peether PTDT Token is a utility token for the PTDT ecosystem.</p>
+                    
+                    <div class="footer-links-bottom">
+                        <a href="https://ptdt.taxi/" target="_blank">Website</a>
+                        <span class="separator">|</span>
+                        <a href="https://dapp.ptdt.taxi/" target="_blank">DApp Site</a>
+                        <span class="separator">|</span>
+                        <a href="https://whitepaper.ptdt.taxi/" target="_blank">White Paper</a>
+                        <span class="separator">|</span>
+                        <a href="https://ptdt.taxi/ptdt-docs/mainguide.html" target="_blank">Main Guide</a>
+                        <span class="separator">|</span>
+                        <a href="https://ptdt.taxi/ptdt-docs/dashboard.html" target="_blank">Live Dashboard</a>
+                        <span class="separator">|</span>
+                        <a href="https://ptdt.taxi/cert.html" target="_blank">Certificate</a>
+                        <span class="separator">|</span>
+                        <a href="https://ptdt.taxi/privacy.html" target="_blank">Privacy Policy</a>
+                        <span class="separator">|</span>
+                        <a href="https://ptdt.taxi/terms.html" target="_blank">Terms of Service</a>
+                        <span class="separator">|</span>
+                        <a href="https://ptdt.taxi/ptdt-docs/rebuttal.html" target="_blank">Rebuttal</a>
+                        <span class="separator">|</span>
+                        <a href="https://ptdt.taxi/cookies.html" target="_blank">Cookie Policy</a>
+                        <span class="separator">|</span>
+                        <a href="https://ptdt.taxi/ptdt-docs/verified.html">Verified</a>
+                        <span class="separator">|</span>
+                        <a href="/cdn-cgi/l/email-protection#86f5f3f6f6e9f4f2c6f6f2e2f2a8f2e7feef">Contact Us</a>
+                    </div>
+                    
+                    <p class="copyright-line">Copyrights © 2026 Peether – PTDT. Pink Taxi Group LTD. UK. All rights reserved.</p>
+                    <p class="footer-version">Documentation Version 1 • Last Updated: February 2026</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================
+         JAVASCRIPT
+         ============================================ -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // ================================
+        // COPY TO CLIPBOARD (footer)
+        // ================================
+        function copyToClipboard(elementId) {
+            const text = document.getElementById(elementId).textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = event.target.closest('.copy-btn');
+                btn.style.background = 'linear-gradient(135deg, #10B981, #059669)';
+                setTimeout(() => { btn.style.background = 'var(--gradient-pink)'; }, 1500);
+            });
+        }
+
+        // ================================
+        // PARTICLE BACKGROUND (from Benchmark)
+        // ================================
+        const particleCanvas = document.getElementById('particleCanvas');
+        if (particleCanvas) {
+            const particleCtx = particleCanvas.getContext('2d');
+            function setParticleCanvasSize() {
+                particleCanvas.width = window.innerWidth;
+                particleCanvas.height = window.innerHeight;
+            }
+            setParticleCanvasSize();
+            window.addEventListener('resize', setParticleCanvasSize);
+
+            const particleColors = ['rgba(251, 10, 139, 0.6)', 'rgba(0, 226, 110, 0.6)'];
+            const particleCount = 60;
+            const particles = [];
+            for (let i = 0; i < particleCount; i++) {
+                particles.push({
+                    x: Math.random() * particleCanvas.width,
+                    y: Math.random() * particleCanvas.height,
+                    radius: Math.random() * 3 + 1,
+                    color: particleColors[Math.floor(Math.random() * particleColors.length)],
+                    vx: Math.random() - .5,
+                    vy: Math.random() - .5
+                });
+            }
+            function animateParticles() {
+                particleCtx.clearRect(0, 0, particleCanvas.width, particleCanvas.height);
+                particles.forEach(p => {
+                    particleCtx.beginPath();
+                    particleCtx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                    particleCtx.fillStyle = p.color;
+                    particleCtx.fill();
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    if (p.x < 0) { p.x = particleCanvas.width; p.vx *= -1; }
+                    if (p.x > particleCanvas.width) { p.x = 0; p.vx *= -1; }
+                    if (p.y < 0) { p.y = particleCanvas.height; p.vy *= -1; }
+                    if (p.y > particleCanvas.height) { p.y = 0; p.vy *= -1; }
+                });
+                requestAnimationFrame(animateParticles);
+            }
+            animateParticles();
+        }
+
+
+        // ================================
+        // HEADER COIN ANIMATION (from Benchmark)
+        // ================================
+        const headerCoin = document.getElementById('headerCoin');
+        if (headerCoin) {
+            setTimeout(() => {
+                headerCoin.classList.add('animate');
+                setTimeout(() => headerCoin.classList.remove('animate'), 2150);
+            }, 500);
+            setInterval(() => {
+                headerCoin.classList.add('animate');
+                setTimeout(() => headerCoin.classList.remove('animate'), 2150);
+            }, 30000);
+        }
+
+
+        // ================================
+        // SLOGAN TYPING ANIMATION (Looping)
+        // ================================
+        (function () {
+            const sloganPart1 = [
+                { text: "Trust the ", class: "light" },
+                { text: "{", class: "brackets" },
+                { text: " ", class: "light" },
+                { text: "Code", class: "code" },
+                { text: " ", class: "light" },
+                { text: "}", class: "brackets" },
+                { text: ",", class: "light" }
+            ];
+            const sloganPart2 = [
+                { text: " ", class: "light" },
+                { text: "// Not the ", class: "gray" },
+                { text: "Cult", class: "cult" },
+                { text: "!", class: "exclamation" }
+            ];
+
+            const part1Area = document.getElementById('part1');
+            const part2Area = document.getElementById('part2');
+            const mainCursor = document.getElementById('main-cursor');
+            const anchorMid = document.getElementById('cursor-anchor-mid');
+            const cursorEnd = document.getElementById('cursor-anchor-end');
+            const sloganEl = document.getElementById('slogan');
+
+            function runSloganAnimation() {
+                // Reset everything
+                part1Area.innerHTML = '';
+                part2Area.innerHTML = '';
+                sloganEl.classList.remove('finished');
+                cursorEnd.appendChild(mainCursor);
+
+                let currentDelay = 500;
+
+                function typeSegments(segments, targetContainer) {
+                    segments.forEach(seg => {
+                        const span = document.createElement('span');
+                        if (seg.class) span.className = seg.class;
+                        targetContainer.appendChild(span);
+                        seg.text.split('').forEach(char => {
+                            const charSpan = document.createElement('span');
+                            charSpan.className = 'char';
+                            charSpan.textContent = char;
+                            span.appendChild(charSpan);
+                            setTimeout(() => {
+                                charSpan.classList.add('visible');
+                                span.appendChild(mainCursor);
+                            }, currentDelay);
+                            currentDelay += (char === ' ' ? 70 : 100);
+                        });
+                    });
+                    return currentDelay;
+                }
+
+                // PHASE 1: Type both parts
+                typeSegments(sloganPart1, part1Area);
+                const totalTypingTime = typeSegments(sloganPart2, part2Area);
+
+                // PHASE 2: Cinematic Ending
+                setTimeout(() => {
+                    // Pause 0.8s after "!" appears
+                    setTimeout(() => {
+                        // Draw red strikethrough lines
+                        sloganEl.classList.add('finished');
+                        // Pause 2s, then cursor jumps back
+                        setTimeout(() => {
+                            anchorMid.appendChild(mainCursor);
+
+                            // PHASE 3: Hold the finished state, then restart
+                            setTimeout(() => {
+                                runSloganAnimation();
+                            }, 25000); // Hold for 25 seconds before restarting
+
+                        }, 2000);
+                    }, 800);
+                }, totalTypingTime);
+            }
+
+            // Start first animation
+            runSloganAnimation();
+        })();
+
+
+        // ================================
+        // THEME TOGGLE (from Benchmark)
+        // ================================
+        const themeToggle = document.getElementById('themeToggle');
+        const sunIcon = document.getElementById('sunIcon');
+        const moonIcon = document.getElementById('moonIcon');
+        const htmlElement = document.documentElement;
+        const savedTheme = localStorage.getItem('ptdt-theme') || 'light';
+        htmlElement.setAttribute('data-theme', savedTheme);
+        if (savedTheme === 'dark') {
+            sunIcon.style.display = 'none';
+            moonIcon.style.display = 'block';
+        } else {
+            sunIcon.style.display = 'block';
+            moonIcon.style.display = 'none';
+        }
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('ptdt-theme', newTheme);
+            if (newTheme === 'dark') {
+                sunIcon.style.display = 'none';
+                moonIcon.style.display = 'block';
+            } else {
+                sunIcon.style.display = 'block';
+                moonIcon.style.display = 'none';
+            }
+        });
+
+
+        // ================================
+        // TAB SWITCHING (7 tabs for API Doc)
+        // ================================
+        let currentTab = 0;
+        const totalTabs = 7;
+        const tabs = document.querySelectorAll('.tab');
+        const tabDots = document.querySelectorAll('.tab-dot');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        function switchTab(index) {
+            currentTab = index;
+            tabs.forEach((t, i) => t.classList.toggle('active', i === index));
+            tabDots.forEach((d, i) => d.classList.toggle('active', i === index));
+            tabContents.forEach((c, i) => c.classList.toggle('active', i === index));
+            const tabContainer = document.querySelector('.tab-container');
+            const offset = 10;
+            const elementPosition = tabContainer.getBoundingClientRect().top + window.pageYOffset;
+            window.scrollTo({ top: elementPosition - offset, behavior: 'smooth' });
+        }
+        
+        tabs.forEach(tab => tab.addEventListener('click', () => switchTab(parseInt(tab.dataset.tab, 10))));
+        tabDots.forEach(dot => dot.addEventListener('click', () => switchTab(parseInt(dot.dataset.tab, 10))));
+        
+        document.addEventListener('keydown', e => {
+            if (e.key === 'ArrowRight') { e.preventDefault(); switchTab((currentTab + 1) % totalTabs); }
+            else if (e.key === 'ArrowLeft') { e.preventDefault(); switchTab((currentTab - 1 + totalTabs) % totalTabs); }
+        });
+
+
+        // ================================
+        // COLLAPSIBLE SECTIONS
+        // ================================
+        function toggleCollapsible(header) {
+            header.parentElement.classList.toggle('open');
+        }
+
+
+        // ================================
+        // PROGRESS BAR + STICKY NAV (from Benchmark)
+        // ================================
+        const progressBar = document.getElementById('progressBar');
+        const stickyNav = document.getElementById('stickyNav');
+        function updateStickyState() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+            progressBar.style.width = scrolled + '%';
+            if (stickyNav) {
+                const stickyRect = stickyNav.getBoundingClientRect();
+                if (stickyRect.top <= 70) stickyNav.classList.add('is-sticky');
+                else stickyNav.classList.remove('is-sticky');
+            }
+        }
+        window.addEventListener('scroll', updateStickyState, { passive: true });
+        window.addEventListener('load', updateStickyState);
+
+
+        // ================================
+        // COPY CODE FUNCTION (from API Doc)
+        // ================================
+        function copyCode(btn) {
+            const codeBlock = btn.closest('.code-block-wrapper').querySelector('.code-block');
+            navigator.clipboard.writeText(codeBlock.innerText).then(() => {
+                btn.innerHTML = '✅ Copied!';
+                btn.classList.add('copied');
+                setTimeout(() => { btn.innerHTML = '📋 Copy'; btn.classList.remove('copied'); }, 2000);
+            });
+        }
+
+
+        // ================================
+        // COPY TO CLIPBOARD (Footer contract addresses)
+        // ================================
+        function copyToClipboard(elementId) {
+            const text = document.getElementById(elementId).textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = event.target.closest('.copy-btn');
+                if (btn) {
+                    btn.style.background = 'linear-gradient(135deg, #10B981, #059669)';
+                    setTimeout(() => { btn.style.background = 'var(--gradient-pink)'; }, 1500);
+                }
+            });
+        }
+
+
+        // ================================
+        // API PLAYGROUND — Balance Endpoint
+        // ================================
+        function tryBalanceEndpoint() {
+            const btn = event.target.closest('.try-btn');
+            const address = document.getElementById('balanceAddress').value || '0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb4';
+            btn.innerHTML = '<div class="spinner"></div>Loading...';
+            btn.classList.add('loading');
+            setTimeout(() => {
+                const randomBalance = (Math.random() * 10000).toFixed(2);
+                const response = {
+                    address: address,
+                    balance: (parseFloat(randomBalance) * 1e18).toString(),
+                    balanceFormatted: randomBalance,
+                    symbol: "PTDT",
+                    decimals: 18,
+                    timestamp: Math.floor(Date.now() / 1000)
+                };
+                document.getElementById('balanceResponseCode').innerHTML = syntaxHighlightJSON(JSON.stringify(response, null, 2));
+                document.getElementById('balanceResponse').classList.add('active');
+                btn.innerHTML = '<span>▶</span>Run Request';
+                btn.classList.remove('loading');
+            }, 800 + Math.random() * 500);
+        }
+
+
+        // ================================
+        // API PLAYGROUND — Staking Endpoint
+        // ================================
+        function tryStakeEndpoint() {
+            const btn = event.target.closest('.try-btn');
+            const amount = parseFloat(document.getElementById('stakeAmount').value) || 1000;
+            const period = parseInt(document.getElementById('stakePeriod').value);
+            const apyRates = { 30: 5, 90: 8, 180: 12 };
+            const apy = apyRates[period];
+            const estimatedReward = (amount * (apy / 100) * (period / 365)).toFixed(4);
+            btn.innerHTML = '<div class="spinner"></div>Calculating...';
+            btn.classList.add('loading');
+            setTimeout(() => {
+                const response = {
+                    status: "success",
+                    staking: {
+                        amount: amount.toString(),
+                        lockPeriod: period,
+                        apy: apy,
+                        startDate: new Date().toISOString(),
+                        endDate: new Date(Date.now() + period * 24 * 60 * 60 * 1000).toISOString(),
+                        estimatedReward: estimatedReward,
+                        totalAtMaturity: (amount + parseFloat(estimatedReward)).toFixed(4)
+                    }
+                };
+                document.getElementById('stakeResponseCode').innerHTML = syntaxHighlightJSON(JSON.stringify(response, null, 2));
+                document.getElementById('stakeResponse').classList.add('active');
+                btn.innerHTML = '<span>▶</span>Calculate Rewards';
+                btn.classList.remove('loading');
+            }, 600 + Math.random() * 400);
+        }
+
+
+        // ================================
+        // SYNTAX HIGHLIGHT JSON
+        // ================================
+        function syntaxHighlightJSON(json) {
+            return json
+                .replace(/(".*?")\s*:/g, '<span class="property">$1</span>:')
+                .replace(/:\s*(".*?")/g, ': <span class="string">$1</span>')
+                .replace(/:\s*(\d+\.?\d*)/g, ': <span class="number">$1</span>')
+                .replace(/:\s*(true|false)/g, ': <span class="keyword">$1</span>')
+                .replace(/:\s*(null)/g, ': <span class="comment">$1</span>');
+        }
+
+
+        // ================================
+        // SEARCH FUNCTIONALITY (from API Doc)
+        // ================================
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+        const searchableItems = [
+            { title: 'Get Balance', context: 'Retrieve PTDT token balance for a specific address', tab: 4, badge: 'Endpoint' },
+            { title: 'Get Approvals', context: 'Get all token approvals for an address', tab: 4, badge: 'Endpoint' },
+            { title: 'Stake Tokens', context: 'Initiate a staking transaction via the REST API', tab: 4, badge: 'Endpoint' },
+            { title: 'API Key Authentication', context: 'Include your API key in request headers', tab: 1, badge: 'Auth' },
+            { title: 'Web3 Wallet Authentication', context: 'Authenticate using wallet signatures', tab: 1, badge: 'Auth' },
+            { title: 'Rate Limits', context: 'Request limits per tier: Free, Developer, Business, Enterprise', tab: 2, badge: 'Limits' },
+            { title: 'PTDT Token Contract', context: 'Approve a spender to transfer tokens', tab: 3, badge: 'Contract' },
+            { title: 'Staking Pool Contract', context: 'Stake PTDT tokens to earn rewards', tab: 3, badge: 'Contract' },
+            { title: 'Ride Payment Contract', context: 'Handle ride bookings and payments', tab: 3, badge: 'Contract' },
+            { title: 'Loyalty Program', context: 'Reward users with loyalty points', tab: 3, badge: 'Contract' },
+            { title: 'Error Codes', context: 'E001, E002, E003... error handling reference', tab: 5, badge: 'Resource' },
+            { title: 'Webhooks', context: 'Register webhooks for real-time notifications', tab: 5, badge: 'Resource' },
+            { title: 'JavaScript SDK', context: 'npm install @ptdt/sdk ethers', tab: 6, badge: 'SDK' },
+            { title: 'Python SDK', context: 'pip install ptdt-sdk web3', tab: 6, badge: 'SDK' }
+        ];
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase().trim();
+                if (query.length === 0) { searchResults.classList.remove('active'); return; }
+                const filtered = searchableItems.filter(item =>
+                    item.title.toLowerCase().includes(query) || item.context.toLowerCase().includes(query)
+                );
+                if (filtered.length === 0) {
+                    searchResults.innerHTML = '<div class="search-result-item"><div class="title">No results found</div></div>';
+                } else {
+                    searchResults.innerHTML = filtered.map(item =>
+                        `<div class="search-result-item" onclick="switchTab(${item.tab});searchResults.classList.remove('active');searchInput.value='';"><div class="title">${item.title}<span class="badge">${item.badge}</span></div><div class="context">${item.context}</div></div>`
+                    ).join('');
+                }
+                searchResults.classList.add('active');
+            });
+            searchInput.addEventListener('blur', () => {
+                setTimeout(() => searchResults.classList.remove('active'), 200);
+            });
+            // Ctrl+K shortcut
+            document.addEventListener('keydown', (e) => {
+                if (e.ctrlKey && e.key === 'k') { e.preventDefault(); searchInput.focus(); }
+                if (e.key === 'Escape') { searchInput.blur(); searchResults.classList.remove('active'); }
+            });
+        }
+
+    </script>

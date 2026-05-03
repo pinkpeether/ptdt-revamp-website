@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PTDT Protocol | Telegram Mini App — Live Price, Staking & Burns</title>
+    <meta name="description" content="PTDT Telegram Mini App — live on-chain price, burn tracker, staking stats. Decentralized settlement protocol for ride-hailing on BNB Smart Chain. 60% burn, 40% to stakers.">
+    <meta name="keywords" content="PTDT, Peether, Telegram Mini App, live price, staking, burn tracker, BNB Chain, DeFi, deflationary, real yield">
+    <meta name="author" content="Peether PTDT">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ptdt.taxi/tg-app.html">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 28.8 29.04' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='14.35' cy='14.4' r='12.27' fill='%232ae97b'/%3E%3Ccircle cx='14.35' cy='14.4' r='10.66' fill='%23020202'/%3E%3Cpath d='M15.14,12.47c-.21-.34,2.18-3.91,4.97-4.8-3.22,.47-5.62,2.79-5.76,2.93,0,0-.02,.01-.02,.01,0,0,.01,0,.02-.01,0,0,.01,0,.02,.01h-.02c.64-.63,.45-.1,0,.85-.45-.95-.64-1.48,0-.86-.14-.15-2.55-2.46-5.76-2.93,2.79,.89,5.18,4.46,4.97,4.8-.57,.94-1.12,2.19-1.21,3.55-.03,.14-.05,.26-.05,.36,0,3.18,2.03,5.76,2.03,5.76,0,0,0,0,.02-.01,0,0,.01,.01,.01,.01,0,0,2.03-2.57,2.03-5.76,0-.1-.01-.22-.04-.36-.09-1.36-.63-2.61-1.21-3.55' fill='%23fb0b8c'/%3E%3Cpath d='M15.75,8.26c0,.77-.62,1.39-1.39,1.39s-1.4-.62-1.4-1.39,.63-1.39,1.4-1.39,1.39,.62,1.39,1.39' fill='%23fb068c'/%3E%3C/svg%3E">
+    <link rel="icon" type="image/png" href="https://ptdt.taxi/ptdtlogo.png">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ptdt.taxi/tg-app.html">
+    <meta property="og:site_name" content="Peether PTDT">
+    <meta property="og:title" content="PTDT Protocol | Telegram Mini App">
+    <meta property="og:description" content="Live on-chain PTDT data inside Telegram. Price, burns, staking stats. 60% burned, 40% to stakers. Audited 9.2/10.">
+    <meta property="og:image" content="https://ptdt.taxi/social-preview.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Peether PTDT — Telegram Mini App">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@PTDT_Token">
+    <meta name="twitter:url" content="https://ptdt.taxi/tg-app.html">
+    <meta name="twitter:title" content="PTDT Protocol | Telegram Mini App">
+    <meta name="twitter:description" content="Live on-chain PTDT data inside Telegram. Price, burns, staking. 60% burn, 40% to stakers.">
+    <meta name="twitter:image" content="https://ptdt.taxi/social-preview.png">
+
+    <!-- Telegram WebApp SDK -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Fira+Code:wght@400;500;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pink: #FB0A8B;
+            --green: #00E16E;
+            --purple: #A855F7;
+            --dark: #0A0A0F;
+            --dark-secondary: #12121A;
+            --dark-card: #1A1A24;
+            --text-primary: #FFFFFF;
+            --text-secondary: #94A3B8;
+            --text-muted: #64748B;
+            --border: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding-bottom: 100px;
+        }
+
+        /* Animated Background */
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-gradient::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(251, 10, 139, 0.12) 0%, transparent 70%);
+            animation: float1 15s ease-in-out infinite;
+        }
+
+        .bg-gradient::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(0, 225, 110, 0.1) 0%, transparent 70%);
+            animation: float2 18s ease-in-out infinite;
+        }
+
+        @keyframes float1 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, -30px); }
+        }
+
+        @keyframes float2 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-30px, 30px); }
+        }
+
+        /* Container */
+        .container {
+            position: relative;
+            z-index: 10;
+            padding: 16px;
+            max-width: 100%;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            object-fit: contain;
+        }
+
+        .brand {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-name {
+            font-size: 18px;
+            font-weight: 700;
+            font-family: 'Montserrat', 'Space Grotesk', sans-serif;
+            background: linear-gradient(90deg, #FB0A8B, var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .brand-tagline {
+            font-size: 10px;
+            color: var(--text-muted);
+            font-family: 'Fira Code', monospace;
+        }
+
+        .refresh-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: var(--dark-card);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 18px;
+        }
+
+        .refresh-btn:active {
+            transform: scale(0.95);
+            background: rgba(251, 10, 139, 0.1);
+        }
+
+        .refresh-btn.loading {
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Price Card */
+        .price-card {
+            background: var(--dark-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .price-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--pink), var(--purple), var(--green));
+        }
+
+        .price-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .price-row {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .price-value {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .price-change {
+            font-size: 14px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .price-change.up {
+            background: rgba(0, 225, 110, 0.15);
+            color: var(--green);
+        }
+
+        .price-change.down {
+            background: rgba(239, 68, 68, 0.15);
+            color: #EF4444;
+        }
+
+        .price-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .price-stat {
+            text-align: center;
+            padding: 12px 8px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+        }
+
+        .price-stat-value {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .price-stat-label {
+            font-size: 10px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Section Title */
+        .section-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin: 24px 0 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Burn Card */
+        .burn-card {
+            background: var(--dark-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+
+        .burn-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .burn-title {
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .burn-percentage {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--pink);
+        }
+
+        .burn-progress {
+            height: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 16px;
+        }
+
+        .burn-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--pink), #FF4444);
+            border-radius: 6px;
+            transition: width 0.5s ease;
+            position: relative;
+        }
+
+        .burn-progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .burn-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .burn-stat {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+            padding: 14px;
+            text-align: center;
+        }
+
+        .burn-stat-value {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .burn-stat-value.burned {
+            color: var(--pink);
+        }
+
+        .burn-stat-value.remaining {
+            color: var(--green);
+        }
+
+        .burn-stat-label {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        /* Staking Card */
+        .staking-card {
+            background: var(--dark-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+
+        .staking-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .staking-title {
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .staking-status {
+            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .staking-status.active {
+            background: rgba(0, 225, 110, 0.15);
+            color: var(--green);
+        }
+
+        .staking-status.paused {
+            background: rgba(239, 68, 68, 0.15);
+            color: #EF4444;
+        }
+
+        .staking-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .staking-stat {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+            padding: 14px;
+            text-align: center;
+        }
+
+        .staking-stat-value {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--green);
+            margin-bottom: 4px;
+        }
+
+        .staking-stat-label {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        /* Tiers */
+        .tiers {
+            display: flex;
+            gap: 8px;
+        }
+
+        .tier {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 12px 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .tier.bronze { border-color: rgba(205, 127, 50, 0.3); }
+        .tier.silver { border-color: rgba(192, 192, 192, 0.3); }
+        .tier.gold { border-color: rgba(255, 215, 0, 0.3); }
+
+        .tier-icon {
+            font-size: 20px;
+            margin-bottom: 6px;
+        }
+
+        .tier-name {
+            font-size: 11px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .tier.bronze .tier-name { color: #CD7F32; }
+        .tier.silver .tier-name { color: #C0C0C0; }
+        .tier.gold .tier-name { color: #FFD700; }
+
+        .tier-apy {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--green);
+        }
+
+        .tier-min {
+            font-size: 9px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* Quick Actions */
+        .actions {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .action-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px;
+            border-radius: 16px;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border: none;
+        }
+
+        .action-btn:active {
+            transform: scale(0.98);
+        }
+
+        .action-btn.primary {
+            background: linear-gradient(135deg, var(--pink), var(--purple));
+            color: white;
+        }
+
+        .action-btn.secondary {
+            background: var(--dark-card);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+        }
+
+        .action-btn.green {
+            background: linear-gradient(135deg, var(--green), #00B85A);
+            color: white;
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 24px 0;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .social-link.sl-x { background: #000; border: 1px solid rgba(255,255,255,0.15); }
+        .social-link.sl-tg { background: #0088CC; }
+        .social-link.sl-discord { background: #5865F2; }
+        .social-link.sl-fb { background: #1877F2; }
+        .social-link.sl-yt { background: #FF0000; }
+        .social-link.sl-medium { background: #00AB6C; }
+
+        .social-link:active {
+            transform: scale(0.95);
+        }
+
+        /* Footer */
+        .footer {
+            width: 100%;
+            margin-top: 24px;
+            position: relative;
+        }
+        .footer-vignette {
+            background: linear-gradient(to right, rgb(236, 72, 153), rgb(147, 51, 234));
+            border-radius: 16px;
+            padding: 20px 16px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .footer-vignette p {
+            color: rgba(255,255,255,0.9);
+            font-size: 11px;
+            margin-bottom: 6px;
+        }
+        .footer-vignette a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .footer-vignette a:hover { text-decoration: underline; }
+        .footer-links-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 4px 8px;
+            margin-top: 10px;
+        }
+        .footer-links-row a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 10px;
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+        .footer-links-row a:hover { color: #fff; }
+        .footer-links-row span { color: rgba(255,255,255,0.4); font-size: 10px; }
+        .footer-bottom-info {
+            text-align: center;
+            padding: 12px 0;
+            font-size: 10px;
+            color: var(--text-muted);
+        }
+        .footer-slogan {
+            font-family: 'Fira Code', monospace;
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            margin-top: 8px;
+        }
+
+        /* Contract Copy */
+        .contract-section {
+            background: var(--dark-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+
+        .contract-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .contract-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contract-address {
+            flex: 1;
+            font-family: 'Fira Code', monospace;
+            font-size: 11px;
+            color: var(--text-secondary);
+            background: rgba(0, 0, 0, 0.2);
+            padding: 10px 12px;
+            border-radius: 10px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .copy-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: rgba(251, 10, 139, 0.1);
+            border: 1px solid rgba(251, 10, 139, 0.2);
+            color: var(--pink);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:active {
+            transform: scale(0.95);
+        }
+
+        .copy-btn.copied {
+            background: rgba(0, 225, 110, 0.1);
+            border-color: rgba(0, 225, 110, 0.2);
+            color: var(--green);
+        }
+
+        /* Loading State */
+        .skeleton {
+            background: linear-gradient(90deg, var(--dark-card) 25%, rgba(255,255,255,0.05) 50%, var(--dark-card) 75%);
+            background-size: 200% 100%;
+            animation: skeleton-loading 1.5s infinite;
+            border-radius: 8px;
+        }
+
+        @keyframes skeleton-loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Last Updated */
+        .last-updated {
+            text-align: center;
+            font-size: 10px;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-gradient"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo-section">
+                <img src="https://ptdt.taxi/ptdt_newlogo.png" alt="PTDT Protocol" class="logo">
+                <div class="brand">
+                    <span class="brand-name">PTDT Protocol</span>
+                    <span class="brand-tagline">Trust the { Code }</span>
+                </div>
+            </div>
+            <button class="refresh-btn" onclick="refreshData()" id="refresh-btn">🔄</button>
+        </div>
+
+        <!-- Price Card -->
+        <div class="price-card">
+            <div class="price-label">PTDT Price</div>
+            <div class="price-row">
+                <span class="price-value" id="price">$0.0000</span>
+                <span class="price-change up" id="price-change">
+                    <span>↑</span>
+                    <span id="change-value">0.00%</span>
+                </span>
+            </div>
+            <div class="price-stats">
+                <div class="price-stat">
+                    <div class="price-stat-value" id="holders">--</div>
+                    <div class="price-stat-label">Holders</div>
+                </div>
+                <div class="price-stat">
+                    <div class="price-stat-value" id="lp-depth">$--</div>
+                    <div class="price-stat-label">LP Depth</div>
+                </div>
+                <div class="price-stat">
+                    <div class="price-stat-value" id="mcap">$--</div>
+                    <div class="price-stat-label">MCap</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Burn Section -->
+        <div class="section-title">🔥 Burn Tracker</div>
+        <div class="burn-card">
+            <div class="burn-header">
+                <span class="burn-title">🔥 Total Burned</span>
+                <span class="burn-percentage" id="burn-percentage">0.00%</span>
+            </div>
+            <div class="burn-progress">
+                <div class="burn-progress-bar" id="burn-bar" style="width: 0%"></div>
+            </div>
+            <div class="burn-stats">
+                <div class="burn-stat">
+                    <div class="burn-stat-value burned" id="total-burned">0 PTDT</div>
+                    <div class="burn-stat-label">Burned Forever</div>
+                </div>
+                <div class="burn-stat">
+                    <div class="burn-stat-value remaining" id="remaining-supply">100,000 PTDT</div>
+                    <div class="burn-stat-label">Remaining Supply</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Staking Section -->
+        <div class="section-title">💰 Staking</div>
+        <div class="staking-card">
+            <div class="staking-header">
+                <span class="staking-title">💎 Live Stats</span>
+                <span class="staking-status active" id="staking-status">● Active</span>
+            </div>
+            <div class="staking-stats">
+                <div class="staking-stat">
+                    <div class="staking-stat-value" id="total-staked">0 PTDT</div>
+                    <div class="staking-stat-label">Total Staked</div>
+                </div>
+                <div class="staking-stat">
+                    <div class="staking-stat-value" id="rewards-pool">0 PTDT</div>
+                    <div class="staking-stat-label">Rewards Pool</div>
+                </div>
+            </div>
+            <div class="tiers">
+                <div class="tier bronze">
+                    <div class="tier-icon">🥉</div>
+                    <div class="tier-name">Bronze</div>
+                    <div class="tier-apy">12%</div>
+                    <div class="tier-min">10+ PTDT</div>
+                </div>
+                <div class="tier silver">
+                    <div class="tier-icon">🥈</div>
+                    <div class="tier-name">Silver</div>
+                    <div class="tier-apy">15%</div>
+                    <div class="tier-min">100+ PTDT</div>
+                </div>
+                <div class="tier gold">
+                    <div class="tier-icon">🥇</div>
+                    <div class="tier-name">Gold</div>
+                    <div class="tier-apy">18%</div>
+                    <div class="tier-min">500+ PTDT</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="section-title">⚡ Quick Actions</div>
+        <div class="actions">
+            <a href="https://pancakeswap.finance/swap?outputCurrency=0x66c6Fc5E7F99272134a52DF9E88D94eD83E89278" target="_blank" class="action-btn primary">
+                🥞 Buy PTDT
+            </a>
+            <a href="https://ptdt.taxi/stake.html" target="_blank" class="action-btn green">
+                💎 Stake Now
+            </a>
+            <a href="https://ptdt.taxi/ptdt-docs/dashboard.html" target="_blank" class="action-btn secondary">
+                📊 Dashboard
+            </a>
+            <a href="https://dexscreener.com/bsc/0xF3a06E9Dc5d89B2fD8d7d30946c9aeddc5e01E28" target="_blank" class="action-btn secondary">
+                📈 Chart
+            </a>
+        </div>
+
+        <!-- Contract -->
+        <div class="contract-section">
+            <div class="contract-label">📜 Contract Address</div>
+            <div class="contract-row">
+                <div class="contract-address" id="contract">0x66c6Fc5E7F99272134a52DF9E88D94eD83E89278</div>
+                <button class="copy-btn" id="copy-btn" onclick="copyContract()">📋</button>
+            </div>
+        </div>
+
+        <!-- Social Links -->
+        <div class="social-links">
+            <a href="https://x.com/PTDT_Token" target="_blank" class="social-link sl-x">𝕏</a>
+            <a href="https://t.me/PeetherPTDT" target="_blank" class="social-link sl-tg">✈️</a>
+            <a href="https://discord.gg/khvFqFharQ" target="_blank" class="social-link sl-discord"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg></a>
+            <a href="https://www.facebook.com/PTDToken" target="_blank" class="social-link sl-fb">f</a>
+            <a href="https://youtube.com/@PinkTaxiGroupLtdUK" target="_blank" class="social-link sl-yt">▶</a>
+            <a href="https://medium.com/pink-taxi" target="_blank" class="social-link sl-medium">M</a>
+        </div>
+
+        <!-- Last Updated -->
+        <div class="last-updated" id="last-updated">Last updated: --</div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-vignette">
+                <p style="font-weight:600; font-size:13px; margin-bottom:8px;">Peether PTDT</p>
+                <p>Decentralized settlement protocol for ride-hailing</p>
+                <p>60% Burn | 40% Stakers | 12-18% APY | Audited 9.2/10</p>
+                <p>🏢 Pink Taxi Group Ltd. | UK Registered | OFAC + OFSI Cleared</p>
+                <div class="footer-links-row">
+                    <a href="https://ptdt.taxi" target="_blank">Website</a><span>|</span>
+                    <a href="https://whitepaper.ptdt.taxi" target="_blank">WhitePaper</a><span>|</span>
+                    <a href="https://ptdt.taxi/stake.html" target="_blank">Staking</a><span>|</span>
+                    <a href="https://ptdt.taxi/ptdt-docs/dashboard.html" target="_blank">Dashboard</a><span>|</span>
+                    <a href="https://ptdt.taxi/ptdt-docs/mainguide.html" target="_blank">Docs</a><span>|</span>
+                    <a href="https://ptdt.taxi/ptdt-docs/verified.html" target="_blank">Verified</a>
+                </div>
+                <p class="footer-slogan">Trust the { Code }, // Not the Cult!</p>
+            </div>
+            <div class="footer-bottom-info">
+                <p>© 2026 Peether – PTDT. Pink Taxi Group LTD. UK. All rights reserved.</p>
+                <p style="margin-top:4px;">Contract: 0x66c6Fc5E7F99272134a52DF9E88D94eD83E89278</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Telegram WebApp initialization
+        const tg = window.Telegram.WebApp;
+        tg.ready();
+        tg.expand();
+        
+        // Set header color
+        tg.setHeaderColor('#0A0A0F');
+        tg.setBackgroundColor('#0A0A0F');
+
+        // Constants
+        const BSC_RPC = "https://bsc.publicnode.com";
+        const PTDT_TOKEN = "0x66c6Fc5E7F99272134a52DF9E88D94eD83E89278";
+        const LP_PAIR = "0xF3a06E9Dc5d89B2fD8d7d30946c9aeddc5e01E28";
+        const STAKING_CONTRACT = "0xfa6A09A581447255BD916ad98cf852fEFbC72494";
+        const ORIGINAL_SUPPLY = 100000;
+
+        // Function selectors
+        const SELECTORS = {
+            totalSupply: "0x18160ddd",
+            getReserves: "0x0902f1ac",
+            totalStaked: "0x817b1cd2",
+            rewardsPool: "0x0359fea9",
+            paused: "0x5c975abb"
+        };
+
+        let lastPrice = null;
+
+        // RPC Call helper
+        async function rpcCall(to, data) {
+            try {
+                const response = await fetch(BSC_RPC, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        jsonrpc: '2.0',
+                        id: 1,
+                        method: 'eth_call',
+                        params: [{ to, data }, 'latest']
+                    })
+                });
+                const json = await response.json();
+                return json.result;
+            } catch (err) {
+                console.error('RPC Error:', err);
+                return null;
+            }
+        }
+
+        // Parse hex to number (with decimals)
+        function hexToNumber(hex, decimals = 18) {
+            if (!hex || hex === '0x') return 0;
+            const raw = BigInt(hex);
+            return Number(raw * 10000n / BigInt(10 ** decimals)) / 10000;
+        }
+
+        // Format number
+        function formatNumber(num, decimals = 2) {
+            if (num >= 1000000) return (num / 1000000).toFixed(decimals) + 'M';
+            if (num >= 1000) return (num / 1000).toFixed(decimals) + 'K';
+            return num.toLocaleString(undefined, { maximumFractionDigits: decimals });
+        }
+
+        // Fetch all data
+        async function fetchData() {
+            const refreshBtn = document.getElementById('refresh-btn');
+            refreshBtn.classList.add('loading');
+
+            try {
+                // Fetch price from LP reserves
+                const reservesHex = await rpcCall(LP_PAIR, SELECTORS.getReserves);
+                if (reservesHex && reservesHex !== '0x') {
+                    const hex = reservesHex.slice(2);
+                    const usdtReserve = hexToNumber('0x' + hex.slice(0, 64));
+                    const ptdtReserve = hexToNumber('0x' + hex.slice(64, 128));
+                    
+                    const price = usdtReserve / ptdtReserve;
+                    document.getElementById('price').textContent = '$' + price.toFixed(4);
+                    
+                    // Calculate change
+                    if (lastPrice !== null) {
+                        const change = ((price - lastPrice) / lastPrice) * 100;
+                        const changeEl = document.getElementById('price-change');
+                        const changeValueEl = document.getElementById('change-value');
+                        
+                        if (change >= 0) {
+                            changeEl.className = 'price-change up';
+                            changeEl.innerHTML = '<span>↑</span><span>' + change.toFixed(2) + '%</span>';
+                        } else {
+                            changeEl.className = 'price-change down';
+                            changeEl.innerHTML = '<span>↓</span><span>' + Math.abs(change).toFixed(2) + '%</span>';
+                        }
+                    }
+                    lastPrice = price;
+                    
+                    // LP Depth
+                    document.getElementById('lp-depth').textContent = '$' + formatNumber(usdtReserve * 2);
+                }
+
+                // Fetch total supply (for burn calculation)
+                const supplyHex = await rpcCall(PTDT_TOKEN, SELECTORS.totalSupply);
+                if (supplyHex) {
+                    const currentSupply = hexToNumber(supplyHex);
+                    const burned = ORIGINAL_SUPPLY - currentSupply;
+                    const burnPct = (burned / ORIGINAL_SUPPLY) * 100;
+                    
+                    document.getElementById('burn-percentage').textContent = burnPct.toFixed(2) + '%';
+                    document.getElementById('burn-bar').style.width = burnPct + '%';
+                    document.getElementById('total-burned').textContent = formatNumber(burned) + ' PTDT';
+                    document.getElementById('remaining-supply').textContent = formatNumber(currentSupply) + ' PTDT';
+                    
+                    // Market cap
+                    if (lastPrice) {
+                        document.getElementById('mcap').textContent = '$' + formatNumber(currentSupply * lastPrice);
+                    }
+                }
+
+                // Fetch staking data
+                const [totalStakedHex, rewardsPoolHex, pausedHex] = await Promise.all([
+                    rpcCall(STAKING_CONTRACT, SELECTORS.totalStaked),
+                    rpcCall(STAKING_CONTRACT, SELECTORS.rewardsPool),
+                    rpcCall(STAKING_CONTRACT, SELECTORS.paused)
+                ]);
+
+                if (totalStakedHex) {
+                    document.getElementById('total-staked').textContent = formatNumber(hexToNumber(totalStakedHex)) + ' PTDT';
+                }
+                if (rewardsPoolHex) {
+                    document.getElementById('rewards-pool').textContent = formatNumber(hexToNumber(rewardsPoolHex)) + ' PTDT';
+                }
+                if (pausedHex) {
+                    const isPaused = pausedHex === '0x0000000000000000000000000000000000000000000000000000000000000001';
+                    const statusEl = document.getElementById('staking-status');
+                    if (isPaused) {
+                        statusEl.className = 'staking-status paused';
+                        statusEl.textContent = '● Paused';
+                    } else {
+                        statusEl.className = 'staking-status active';
+                        statusEl.textContent = '● Active';
+                    }
+                }
+
+                // Fetch holder count from BscScan
+                try {
+                    const holdersResp = await fetch('https://api.bscscan.com/api?module=token&action=tokenholdercount&contractaddress=' + PTDT_TOKEN + '&apikey=YourApiKeyToken');
+                    const holdersData = await holdersResp.json();
+                    if (holdersData.result) {
+                        document.getElementById('holders').textContent = parseInt(holdersData.result).toLocaleString();
+                    }
+                } catch(e) {
+                    console.log('Holders fetch fallback');
+                }
+
+                // Update timestamp
+                document.getElementById('last-updated').textContent = 'Last updated: ' + new Date().toLocaleTimeString();
+
+            } catch (err) {
+                console.error('Fetch error:', err);
+            }
+
+            refreshBtn.classList.remove('loading');
+        }
+
+        // Copy contract address
+        function copyContract() {
+            const contract = document.getElementById('contract').textContent;
+            navigator.clipboard.writeText(contract).then(() => {
+                const btn = document.getElementById('copy-btn');
+                btn.textContent = '✓';
+                btn.classList.add('copied');
+                
+                // Telegram haptic feedback
+                if (tg.HapticFeedback) {
+                    tg.HapticFeedback.notificationOccurred('success');
+                }
+                
+                setTimeout(() => {
+                    btn.textContent = '📋';
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        // Refresh data
+        function refreshData() {
+            if (tg.HapticFeedback) {
+                tg.HapticFeedback.impactOccurred('light');
+            }
+            fetchData();
+        }
+
+        // Initial fetch
+        setTimeout(fetchData, 1000);
+
+        // Auto-refresh every 60 seconds
+        setInterval(fetchData, 60000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peether PTDT - Trust the Code</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      background: #0a0a0f;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    /* Animated grid background */
+    .grid-bg {
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background-image: 
+        linear-gradient(rgba(57, 191, 57, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(57, 191, 57, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: gridMove 20s linear infinite;
+      pointer-events: none;
+    }
+    
+    @keyframes gridMove {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(50px, 50px); }
+    }
+    
+    /* Ambient glow */
+    .ambient-glow {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(231, 53, 137, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: pulse 4s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+    }
+    
+    .slogan {
+      font-size: clamp(24px, 6vw, 56px);
+      font-family: 'Space Grotesk', sans-serif;
+      line-height: 1.2;
+      position: relative;
+      z-index: 10;
+      text-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+    
+    .line1, .line2 {
+      display: inline;
+      white-space: nowrap;
+    }
+    
+    .line2 {
+      padding-left: 0;
+    }
+    
+    .char {
+      display: none;
+      position: relative;
+    }
+    
+    .char.visible {
+      display: inline;
+    }
+    
+    .light .char {
+      font-weight: 300;
+      color: #e2e8f0;
+      letter-spacing: -.05em;
+    }
+    
+    .code {
+      position: relative;
+    }
+    
+    .code .char {
+      font-family: 'Fira Code', monospace;
+      font-weight: 700;
+      color: #E73589;
+      letter-spacing: -.01em;
+      text-shadow: 0 0 10px rgba(231, 53, 137, 0.5);
+    }
+    
+    .code.glow .char {
+      animation: codeGlow 2s ease-in-out infinite alternate;
+    }
+    
+    @keyframes codeGlow {
+      from { text-shadow: 0 0 10px rgba(231, 53, 137, 0.5); }
+      to { text-shadow: 0 0 20px rgba(231, 53, 137, 0.8), 0 0 40px rgba(231, 53, 137, 0.4); }
+    }
+    
+    .gray .char {
+      font-weight: 300;
+      color: #64748b;
+      letter-spacing: -.065em;
+    }
+    
+    .cult {
+      font-weight: 700;
+      color: #002FFF;
+      position: relative;
+      letter-spacing: -.01em;
+      display: inline;
+    }
+    
+    .cult .char {
+      color: #002FFF;
+      font-weight: 700;
+      transition: all 0.3s;
+    }
+    
+    .cult.glitch .char {
+      animation: glitch 0.3s ease forwards;
+    }
+    
+    @keyframes glitch {
+      0% { transform: translate(0); }
+      20% { transform: translate(-2px, 2px); }
+      40% { transform: translate(-2px, -2px); }
+      60% { transform: translate(2px, 2px); }
+      80% { transform: translate(2px, -2px); }
+      100% { transform: translate(0); }
+    }
+    
+    .cult::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      height: .08em;
+      background: #FF2F00;
+      border-radius: 2px;
+      transform: scaleX(0);
+      transform-origin: left;
+      box-shadow: 0 0 10px rgba(255, 47, 0, 0.8);
+    }
+    
+    .cult::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: .05em;
+      height: .14em;
+      background: #FF2F00;
+      border-radius: 2px;
+      transform: scaleX(0);
+      transform-origin: left;
+      box-shadow: 0 0 10px rgba(255, 47, 0, 0.8);
+    }
+    
+    .cult.strike::before {
+      animation: drawLine 0.35s ease-out forwards;
+    }
+    
+    .cult.underline::after {
+      animation: drawLine 0.35s ease-out forwards;
+    }
+    
+    @keyframes drawLine {
+      to { transform: scaleX(1); }
+    }
+    
+    .brackets .char {
+      font-family: 'Fira Code', monospace;
+      color: #57BF39;
+      font-weight: 700;
+      text-shadow: 0 0 15px rgba(87, 191, 57, 0.6);
+    }
+    
+    .exclamation .char {
+      font-weight: 700;
+      color: #FF2F00;
+      text-shadow: 0 0 10px rgba(255, 47, 0, 0.6);
+    }
+    
+    @keyframes popIn {
+      0% { transform: scale(0.5); opacity: 0; }
+      70% { transform: scale(1.2); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    
+    .char.pop {
+      animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+    
+    .cursor {
+      display: inline-block;
+      width: 3px;
+      height: 1.1em;
+      background: #57BF39;
+      vertical-align: text-bottom;
+      margin-left: 2px;
+      box-shadow: 0 0 10px rgba(87, 191, 57, 0.8);
+    }
+    
+    .cursor.blink {
+      animation: blink 0.6s infinite;
+    }
+    
+    .cursor.hidden {
+      display: none;
+    }
+    
+    @keyframes blink {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+    
+    /* Particle effects container */
+    .particles {
+      position: absolute;
+      pointer-events: none;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 5;
+    }
+    
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #57BF39;
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 0;
+    }
+    
+    @keyframes particleBurst {
+      0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(var(--tx), var(--ty)) scale(0);
+        opacity: 0;
+      }
+    }
+    
+    /* Logo watermark */
+    .watermark {
+      position: absolute;
+      bottom: 40px;
+      right: 40px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.3);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeIn 1s ease 7s forwards;
+    }
+    
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-bg"></div>
+  <div class="ambient-glow"></div>
+  <div class="particles" id="particles"></div>
+  
+  <div class="slogan" id="slogan">
+    <span class="line1" id="line1">
+      <span class="light" id="trust">
+        <span class="char">T</span><span class="char">r</span><span class="char">u</span><span class="char">s</span><span class="char">t</span><span class="char"> </span><span class="char">t</span><span class="char">h</span><span class="char">e</span><span class="char"> </span>
+      </span>
+      <span class="brackets" id="leftBracket"><span class="char">{</span></span>
+      <span class="code" id="code">
+        <span class="char">C</span><span class="char">o</span><span class="char">d</span><span class="char">e</span>
+      </span>
+      <span class="brackets" id="rightBracket"><span class="char">}</span></span><span class="light" id="comma"><span class="char">,</span><span class="char"> </span></span>
+      <span class="cursor hidden blink" id="cursorLine1"></span>
+    </span>
+    <span class="line2" id="line2">
+      <span class="gray" id="notthe">
+        <span class="char">/</span><span class="char">/</span><span class="char"> </span><span class="char">N</span><span class="char">o</span><span class="char">t</span><span class="char"> </span><span class="char">t</span><span class="char">h</span><span class="char">e</span><span class="char"> </span>
+      </span>
+      <span class="cult" id="cult">
+        <span class="char">C</span><span class="char">u</span><span class="char">l</span><span class="char">t</span>
+      </span>
+      <span class="exclamation" id="exclaim"><span class="char">!</span></span>
+      <span class="cursor hidden blink" id="cursorLine2"></span>
+    </span>
+  </div>
+  
+  <script>
+    // Sound disabled: keep the visual animation intact without Web Audio.
+    function initAudio() {}
+    function playTypingSound() {}
+    function playPopSound() {}
+    function playStrikeSound() {}
+    function startAmbientDrone() {}
+    
+    // Particle burst effect
+    function createParticles(x, y) {
+      const container = document.getElementById('particles');
+      const particleCount = 12;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        
+        const angle = (Math.PI * 2 * i) / particleCount;
+        const velocity = 50 + Math.random() * 50;
+        const tx = Math.cos(angle) * velocity;
+        const ty = Math.sin(angle) * velocity;
+        
+        particle.style.left = x + 'px';
+        particle.style.top = y + 'px';
+        particle.style.setProperty('--tx', tx + 'px');
+        particle.style.setProperty('--ty', ty + 'px');
+        particle.style.animation = `particleBurst 0.6s ease-out forwards`;
+        
+        container.appendChild(particle);
+        setTimeout(() => particle.remove(), 600);
+      }
+    }
+    
+    // Animation Control
+    window.animationReady = true;
+    window.animationStarted = false;
+    
+    const isHeadless = /HeadlessChrome/.test(navigator.userAgent);
+    const timingMultiplier = 0.7; // 30% faster playback
+    
+    function resetAnimation() {
+      document.querySelectorAll('.char').forEach((char) => {
+        char.classList.remove('visible', 'pop');
+      });
+      document.querySelectorAll('.cursor').forEach((cursor) => {
+        cursor.classList.add('hidden');
+      });
+      const code = document.getElementById('code');
+      const cult = document.getElementById('cult');
+      const particles = document.getElementById('particles');
+      if (code) code.classList.remove('glow');
+      if (cult) cult.classList.remove('strike', 'glitch', 'underline');
+      if (particles) particles.innerHTML = '';
+      window.animationStarted = false;
+    }
+    
+    function startAnimation() {
+      if (window.animationStarted) return;
+      window.animationStarted = true;
+      initAudio();
+      startAmbientDrone();
+      
+      const cursorLine1 = document.getElementById('cursorLine1');
+      const cursorLine2 = document.getElementById('cursorLine2');
+      const cult = document.getElementById('cult');
+      const code = document.getElementById('code');
+      const leftBracket = document.querySelector('#leftBracket .char');
+      const rightBracket = document.querySelector('#rightBracket .char');
+      
+      const trustChars = Array.from(document.querySelectorAll('#trust .char'));
+      const codeChars = Array.from(document.querySelectorAll('#code .char'));
+      const commaChars = Array.from(document.querySelectorAll('#comma .char'));
+      const nottheChars = Array.from(document.querySelectorAll('#notthe .char'));
+      const cultChars = Array.from(document.querySelectorAll('#cult .char'));
+      const exclaimChars = Array.from(document.querySelectorAll('#exclaim .char'));
+      
+      let delay = 0;
+      const charSpeedSlow = 180 * timingMultiplier;
+      const charSpeedNormal = 120 * timingMultiplier;
+      const pauseShort = 250 * timingMultiplier;
+      const pauseMedium = 400 * timingMultiplier;
+      const pauseLong = 600 * timingMultiplier;
+      const pauseBeforeCursorMove = 800 * timingMultiplier;
+      
+      // Step 1: Initial pause
+      delay += 600 * timingMultiplier;
+      setTimeout(() => cursorLine1.classList.remove('hidden'), delay);
+      delay += 300 * timingMultiplier;
+      
+      // Step 2: Type "Trust the "
+      trustChars.forEach((char) => {
+        setTimeout(() => {
+          char.classList.add('visible');
+          playTypingSound();
+        }, delay);
+        delay += charSpeedSlow;
+      });
+      delay += pauseShort;
+      
+      // Step 3: Type "Code"
+      codeChars.forEach((char) => {
+        setTimeout(() => {
+          char.classList.add('visible');
+          playTypingSound();
+        }, delay);
+        delay += charSpeedNormal;
+      });
+      delay += pauseShort;
+      
+      // Step 4: Type ","
+      commaChars.forEach((char) => {
+        setTimeout(() => {
+          char.classList.add('visible');
+          playTypingSound();
+        }, delay);
+        delay += charSpeedNormal;
+      });
+      delay += pauseMedium;
+      
+      // Step 5: Cursor to line 2
+      setTimeout(() => {
+        cursorLine1.classList.add('hidden');
+        cursorLine2.classList.remove('hidden');
+        playTypingSound();
+      }, delay);
+      delay += pauseShort;
+      
+      // Step 6: Type "// Not the "
+      nottheChars.forEach((char) => {
+        setTimeout(() => {
+          char.classList.add('visible');
+          playTypingSound();
+        }, delay);
+        delay += charSpeedNormal;
+      });
+      delay += pauseShort;
+      
+      // Step 7: Type "Cult"
+      cultChars.forEach((char) => {
+        setTimeout(() => {
+          char.classList.add('visible');
+          playTypingSound();
+        }, delay);
+        delay += charSpeedNormal;
+      });
+      delay += pauseShort;
+      
+      // Step 8: Type "!"
+      exclaimChars.forEach((char) => {
+        setTimeout(() => {
+          char.classList.add('visible');
+          playTypingSound();
+        }, delay);
+        delay += charSpeedNormal;
+      });
+      delay += pauseLong;
+      
+      // Step 9: Bracket pop with particles
+      setTimeout(() => {
+        leftBracket.classList.add('visible', 'pop');
+        playPopSound();
+        const rect = leftBracket.getBoundingClientRect();
+        createParticles(rect.left + rect.width/2, rect.top + rect.height/2);
+      }, delay);
+      delay += pauseMedium;
+      
+      setTimeout(() => {
+        rightBracket.classList.add('visible', 'pop');
+        playPopSound();
+        const rect = rightBracket.getBoundingClientRect();
+        createParticles(rect.left + rect.width/2, rect.top + rect.height/2);
+        // Add glow to code after brackets appear
+        code.classList.add('glow');
+      }, delay);
+      delay += pauseLong;
+      
+      // Step 10: Strikethrough with glitch
+      setTimeout(() => {
+        cult.classList.add('strike', 'glitch');
+        playStrikeSound();
+      }, delay);
+      delay += pauseMedium;
+      
+      // Step 11: Underline
+      setTimeout(() => {
+        cult.classList.add('underline');
+        playStrikeSound();
+      }, delay);
+      delay += pauseBeforeCursorMove;
+      
+      // Step 12: Cursor back to line 1
+      setTimeout(() => {
+        cursorLine2.classList.add('hidden');
+        cursorLine1.classList.remove('hidden');
+        playTypingSound();
+      }, delay);
+      
+      // Repeat the full slogan animation every 10 seconds.
+      setTimeout(() => {
+        resetAnimation();
+        startAnimation();
+      }, 10000);
+      
+      console.log('Animation duration:', delay, 'ms');
+    }
+    
+    window.startAnimation = startAnimation;
+    
+    window.addEventListener('load', () => {
+      document.body.addEventListener('click', startAnimation, { once: true });
+      setTimeout(startAnimation, 500);
+    });
+  </script>
+</body>
+</html>

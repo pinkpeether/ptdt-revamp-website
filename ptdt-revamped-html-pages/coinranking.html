@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PTDT on Coinranking | Public Market Surface | Peether</title>
+  <meta name="description" content="PTDT on Coinranking — a clean public market surface with indexable token visibility, contract verification, and direct discovery for market researchers and buyers. Deflationary BEP-20 token on BNB Smart Chain.">
+  <link rel="canonical" href="https://ptdt.taxi/coinranking.html">
+  <meta name="robots" content="index, follow">
+  <meta name="keywords" content="PTDT Coinranking, Peether token, BNB Chain, PTDT market, deflationary token, Pink Taxi Drive Token, token discovery, crypto aggregator">
+  <meta name="author" content="Peether PTDT">
+
+  <!-- Favicon: inline SVG primary + PNG fallback -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 28.8 29.04' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='14.35' cy='14.4' r='12.27' fill='%232ae97b'/%3E%3Ccircle cx='14.35' cy='14.4' r='10.66' fill='%23020202'/%3E%3Cpath d='M15.14,12.47c-.21-.34,2.18-3.91,4.97-4.8-3.22,.47-5.62,2.79-5.76,2.93,0,0-.02,.01-.02,.01,0,0,.01,0,.02-.01,0,0,.01,0,.02,.01h-.02c.64-.63,.45-.1,0,.85-.45-.95-.64-1.48,0-.86-.14-.15-2.55-2.46-5.76-2.93,2.79,.89,5.18,4.46,4.97,4.8-.57,.94-1.12,2.19-1.21,3.55-.03,.14-.05,.26-.05,.36,0,3.18,2.03,5.76,2.03,5.76,0,0,0,0,.02-.01,0,0,.01,.01,.01,.01,0,0,2.03-2.57,2.03-5.76,0-.1-.01-.22-.04-.36-.09-1.36-.63-2.61-1.21-3.55' fill='%23fb0b8c'/%3E%3Cpath d='M15.75,8.26c0,.77-.62,1.39-1.39,1.39s-1.4-.62-1.4-1.39,.63-1.39,1.4-1.39,1.39,.62,1.39,1.39' fill='%23fb068c'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://ptdt.taxi/favicon-32x32.png">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="PTDT on Coinranking | Public Market Surface | Peether">
+  <meta property="og:description" content="PTDT on Coinranking gives Peether a clean public market surface with indexable token visibility, contract verification, and direct discovery for market researchers and buyers.">
+  <meta property="og:image" content="https://ptdt.taxi/coinranking-preview.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="PTDT on Coinranking — Public Market Surface">
+  <meta property="og:site_name" content="Peether PTDT">
+  <meta property="og:url" content="https://ptdt.taxi/coinranking.html">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@PTDT_Token">
+  <meta name="twitter:url" content="https://ptdt.taxi/coinranking.html">
+  <meta name="twitter:title" content="PTDT on Coinranking | Public Market Surface | Peether">
+  <meta name="twitter:description" content="PTDT on Coinranking — indexable token visibility, contract verification context, and market discovery. Deflationary BEP-20 on BNB Smart Chain.">
+  <meta name="twitter:image" content="https://ptdt.taxi/coinranking-preview.webp">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "PTDT on Coinranking | Public Market Surface",
+    "description": "PTDT on Coinranking gives Peether a clean public market surface with indexable token visibility, contract verification, and direct discovery.",
+    "url": "https://ptdt.taxi/coinranking.html",
+    "image": "https://ptdt.taxi/coinranking-preview.webp",
+    "author": { "@type": "Organization", "name": "Peether PTDT" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Peether PTDT",
+      "logo": { "@type": "ImageObject", "url": "https://ptdt.taxi/logo.png" }
+    },
+    "datePublished": "2026-04-11",
+    "dateModified": "2026-04-11"
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-primary:#0A0A0F;
+      --bg-secondary:#111118;
+      --bg-card:#1A1A24;
+      --bg-glass:rgba(15,15,22,0.92);
+      --text-primary:#E8E8F0;
+      --text-secondary:#9a9ab2;
+      --text-muted:#66667b;
+      --pink-primary:#fb0b8c;
+      --pink-light:#ff4da6;
+      --purple-primary:#a855f7;
+      --green-primary:#35de8f;
+      --green-success:#10B981;
+      --amber:#f59e0b;
+      --coinranking-green:#35de8f;
+      --coinranking-navy:#102d6b;
+      --coinranking-deep:#0a2154;
+      --border-color:#2A2A3A;
+      --border-light:rgba(255,255,255,0.06);
+      --shadow-sm:0 1px 2px 0 rgba(0,0,0,.3);
+      --shadow-md:0 4px 6px -1px rgba(0,0,0,.4);
+      --shadow-lg:0 10px 15px -3px rgba(0,0,0,.5);
+      --gradient-pink:linear-gradient(135deg,#fb0b8c 0%,#ff4da6 50%,#a855f7 100%);
+      --gradient-coinranking:linear-gradient(135deg,#35de8f 0%,#1fbf77 35%,#102d6b 100%);
+      --gradient-coinranking-dark:linear-gradient(135deg,#102d6b 0%,#0a2154 100%);
+    }
+
+    body.light-mode {
+      --bg-primary:#F4F4F8;
+      --bg-secondary:#E8E8F0;
+      --bg-card:#FFFFFF;
+      --bg-glass:rgba(255,255,255,0.92);
+      --text-primary:#1A1A2E;
+      --text-secondary:#555568;
+      --text-muted:#8888A0;
+      --border-color:#D0D0E0;
+      --border-light:rgba(0,0,0,0.06);
+      --shadow-sm:0 1px 2px 0 rgba(0,0,0,.08);
+      --shadow-md:0 4px 6px -1px rgba(0,0,0,.1);
+      --shadow-lg:0 10px 15px -3px rgba(0,0,0,.12);
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; transition:background-color .3s ease, color .3s ease, border-color .3s ease; }
+    body { font-family:'Lexend', sans-serif; background:var(--bg-primary); color:var(--text-primary); line-height:1.6; min-height:100vh; }
+
+    #particleCanvas { position:fixed; inset:0; width:100%; height:100%; z-index:-1; background:var(--bg-primary); }
+
+    .theme-toggle {
+      position:fixed; top:20px; right:20px; width:50px; height:50px; border-radius:50%;
+      background:var(--gradient-coinranking); border:none; cursor:pointer; box-shadow:var(--shadow-lg);
+      z-index:1000; display:flex; align-items:center; justify-content:center;
+    }
+    .theme-toggle svg { width:24px; height:24px; fill:#fff; }
+
+    .page-nav {
+            background: linear-gradient(135deg, rgba(251, 11, 140, 0.12), rgba(168, 85, 247, 0.12));
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(251, 11, 140, 0.15);
+            border-radius: 16px;
+            padding: 12px 24px;
+            margin: 0 auto 0;
+            max-width: 960px;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            align-items: center;
+        }
+        .page-nav::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gradient-pink); }
+        .nav-row { display: flex; gap: 6px; justify-content: center; align-items: center; }
+        .page-nav .nav-row:last-child { gap: 4px; }
+        .page-nav .nav-row:last-child .nav-link { padding-left: 10px; padding-right: 10px; }
+        .page-nav .nav-row:last-child { gap: 4px; }
+        .page-nav .nav-row:last-child .nav-link { padding-left: 10px; padding-right: 10px; }
+        .nav-divider { width: 80%; max-width: 500px; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent); margin: -1px 0; }
+        body.light-mode .nav-divider { background: linear-gradient(90deg, transparent, rgba(0,0,0,0.12), transparent); }
+        .nav-link {
+            padding: 8px 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 400;
+            font-size: .82em;
+            font-family: 'Fira Code', monospace;
+            text-transform: uppercase;
+            letter-spacing: .02em;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            white-space: nowrap;
+        }
+        .nav-link:hover { background: rgba(251, 11, 140, 0.12); color: var(--pink-light); border-color: rgba(251, 11, 140, 0.3); text-decoration: none; }
+        .nav-link.active.buy-tab { background: var(--gradient-gold); color: var(--cmc-blue); box-shadow: 0 4px 12px rgba(240, 185, 11, 0.45); font-weight: 600; }
+        .nav-link.active.verified-tab { background: linear-gradient(135deg, #006d30 0%, #009e44 50%, #007a36 100%); color: #fff; box-shadow: 0 4px 12px rgba(0, 158, 68, 0.35); }
+        .nav-link.active.staking-tab { background: linear-gradient(135deg, #d97706 0%, #f59e0b 50%, #eab308 100%); color: #000; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35); }
+        .nav-link.active.grok-tab { background: linear-gradient(135deg, #fb0b8c 0%, #a855f7 50%, #6366f1 100%); color: #fff; box-shadow: 0 4px 12px rgba(168, 85, 247, 0.45); }
+        .nav-link.active.pancake-tab { background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 50%, #67e8f9 100%); color: #000; box-shadow: 0 4px 12px rgba(6, 182, 212, 0.35); }
+        .nav-link.active.gecko-tab { background: var(--gradient-gecko); color: #fff; box-shadow: 0 4px 12px rgba(124, 58, 237, 0.45); font-weight: 600; }
+        .nav-link.active.coinranking-tab { background: var(--gradient-coinranking); color: #fff; box-shadow: 0 4px 12px rgba(53, 222, 143, 0.45); font-weight: 600; }
+        .nav-sep { width: 1px; height: 18px; background: rgba(255,255,255,0.15); margin: 0 2px; }
+        body.light-mode .nav-sep { background: rgba(255,255,255,0.35); }
+
+        body.light-mode .page-nav {
+            background: linear-gradient(to top, #a0065a 0%, #b8076e 25%, #e50a83 55%, #fb0b8c 100%);
+            border-color: rgba(255,255,255,0.15);
+            box-shadow: 0 8px 24px rgba(251, 11, 140, 0.3), 0 4px 12px rgba(0,0,0,0.1);
+        }
+        body.light-mode .page-nav::before { background: linear-gradient(90deg, #ff4da6, #fff, #ff4da6); }
+        body.light-mode .nav-divider { background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); }
+        body.light-mode .nav-link { color: rgba(255,255,255,0.85); }
+        body.light-mode .nav-link:hover { background: rgba(255,255,255,0.15); color: #fff; border-color: rgba(255,255,255,0.3); }
+
+        .home-logo-section { text-align:center; padding:24px 0 16px; }
+    .home-logo-link img { width:182px; height:auto; }
+
+    .coin-slogan-section { text-align:center; padding:24px 0 12px; }
+    .coin-wrapper { perspective:1200px; width:120px; height:120px; margin:0 auto 12px; }
+    .coin { position:relative; transform-style:preserve-3d; border-radius:50%; width:100%; height:100%; }
+    .coin img {
+      position:relative; z-index:2; transform:translateZ(14px); width:100%; height:100%; border-radius:50%;
+      backface-visibility:hidden; background:transparent; box-shadow:0 0 35px rgba(53,222,143,.28), inset 0 0 14px rgba(255,255,255,.3);
+    }
+    .coin::before {
+      content:""; position:absolute; inset:3px; border-radius:50%;
+      background:linear-gradient(90deg, #102d6b, #35de8f, #102d6b, #fb0b8c, #102d6b);
+      transform:translateZ(-14px); filter:blur(1px);
+    }
+    .coin.animate { animation:coinFlip 2.15s cubic-bezier(.25,.1,.25,1); }
+    @keyframes coinFlip { 0% { transform:rotateY(0deg); } 100% { transform:rotateY(5400deg); } }
+
+    .slogan {
+            font-size: clamp(18px, 4.5vw, 24px);
+            white-space: pre;
+            font-family: 'Space Grotesk', sans-serif;
+            display: inline-flex;
+            align-items: center;
+            color: #334155;
+            line-height: 1;
+        }
+        .slogan .char { display: none; }
+        .slogan .char.visible { display: inline; }
+        .slogan .light { font-weight: 300; color: #cbd5e1; letter-spacing: -.05em; }
+        .slogan .code { font-family: 'Fira Code', monospace; font-weight: 700; color: #EB4491; letter-spacing: -.01em; }
+        .slogan .gray { font-weight: 300; color: #94a3b8; letter-spacing: -.05em; }
+        .slogan .market { font-weight: 700; color: var(--gecko-purple-light); letter-spacing: -.01em; }
+        .slogan .cult { font-weight: 700; color: #002FFF; position: relative; letter-spacing: -.01em; }
+        .slogan .cult::before, .slogan .cult::after {
+            content: ''; position: absolute; left: 0; right: 0; background: #FF2F00; border-radius: 2px;
+            transform: scaleX(0); transform-origin: left; transition: transform 0.8s ease-in-out;
+        }
+        .slogan .cult::before { top: 50%; height: .06em; }
+        .slogan .cult::after { bottom: .05em; height: .12em; }
+        .finished .cult::before, .finished .cult::after { transform: scaleX(1); }
+        .slogan .exclamation { font-weight: 700; color: #FF2F00; }
+        .slogan .brackets { font-family: 'Fira Code', monospace; color: #57BF39; font-weight: 700; }
+        .slogan .cursor { display: inline-block; width: 1.5px; height: 1.1em; background: #cbd5e1; margin-left: 1px; animation: blink 0.72s steps(1) infinite; vertical-align: middle; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        body.light-mode .slogan .light { color: #334155; }
+        body.light-mode .slogan .gray { color: #6B7280; }
+        body.light-mode .slogan .cursor { background: #1e293b; }
+
+        .container { max-width:960px; margin:0 auto; padding:20px; }
+
+    .hero-split {
+      background:linear-gradient(135deg, #07101f 0%, #0e1f42 28%, #101728 58%, #0b0810 100%);
+      border-radius:20px; overflow:hidden; border:1px solid rgba(53,222,143,.18);
+      margin-bottom:32px; margin-top:-8px;
+      box-shadow:0 0 50px rgba(16,45,107,.18), 0 0 80px rgba(53,222,143,.08), inset 0 1px 0 rgba(53,222,143,.12), 0 0 40px rgba(16,45,107,.12);
+    }
+    .hero-split-grid { display:grid; grid-template-columns:1.05fr .95fr; }
+    .hero-split-image {
+      display:flex; align-items:stretch; justify-content:center; overflow:hidden; min-height:100%;
+      padding:0;
+      background:
+        radial-gradient(circle at 25% 20%, rgba(53,222,143,.10), transparent 30%),
+        radial-gradient(circle at 80% 75%, rgba(16,45,107,.12), transparent 28%);
+    }
+    .hero-art { width:100%; min-height:100%; display:flex; align-items:stretch; justify-content:center; padding:0; }
+    .hero-art-image {
+      display:block; width:100%; height:100%; min-height:360px; object-fit:cover;
+      border-radius:0; border:none; background:transparent; box-shadow:none;
+    }
+    .hero-split-content {
+      padding:28px 32px; display:flex; flex-direction:column; justify-content:center;
+      background:linear-gradient(160deg, #0f2346 0%, #0d1831 40%, #080a15 70%, #0a0612 100%);
+      border-left:1px solid rgba(255,255,255,.06);
+    }
+    .hero-split-eyebrow {
+      color:var(--coinranking-green); font-family:'Fira Code', monospace; font-size:.72rem;
+      text-transform:uppercase; letter-spacing:3px; margin-bottom:10px; font-weight:600;
+    }
+    .hero-split-title {
+      font-family:'Montserrat', sans-serif; font-size:2rem; font-weight:700; color:#fff; margin-bottom:14px; line-height:1.2; letter-spacing:-.02em;
+    }
+    .hero-split-title .ptdt-pink { color:var(--pink-primary); }
+    .hero-split-title .plain-white { color:#fff; }
+    .hero-split-title .coinranking-blue { color:var(--coinranking-green); }
+    .hero-split-desc { color:rgba(255,255,255,.78); font-size:.92rem; line-height:1.65; margin-bottom:20px; }
+    .hero-split-badges { display:flex; gap:10px; flex-wrap:wrap; }
+    .hero-split-badge {
+      background:rgba(53,222,143,.10); color:var(--coinranking-green); padding:8px 14px; border-radius:6px;
+      font-family:'Fira Code', monospace; font-size:.72rem; font-weight:600; letter-spacing:.5px; border:1px solid rgba(53,222,143,.22);
+    }
+    .hero-split-badge.pink { background:rgba(251,11,140,.12); color:var(--pink-primary); border-color:rgba(251,11,140,.25); }
+    .hero-split-badge.green { background:rgba(16,185,129,.12); color:#10B981; border-color:rgba(16,185,129,.25); }
+
+    .header {
+      background:var(--bg-glass); backdrop-filter:blur(20px); border:1px solid var(--border-light); border-radius:24px;
+      padding:30px 40px 35px; margin-bottom:30px; text-align:center; position:relative; overflow:hidden; box-shadow:var(--shadow-md);
+    }
+    .header::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:var(--gradient-coinranking); }
+    .header-separator { width:calc(100% - 80px); height:1.5px; background:var(--border-color); margin:5px auto 20px; border-radius:2px; }
+    h2 {
+      font-family:'Montserrat', sans-serif; font-weight:700; background:var(--gradient-coinranking);
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; color:transparent;
+      font-size:2.2em; margin-bottom:12px; letter-spacing:-.04em; line-height:1.2;
+    }
+    .subtitle-main { font-size:1.05em; max-width:700px; margin:0 auto 20px; line-height:1.5; letter-spacing:-.02em; color:var(--text-secondary); }
+    .hl-pink { color:var(--pink-primary); font-weight:600; }
+    .hl-green { color:var(--green-success); font-weight:600; }
+    .hl-blue { color:var(--coinranking-green); font-weight:600; }
+
+    .brand-badge {
+      display:inline-flex; align-items:center; justify-content:center; padding:0;
+      background:transparent; border:none; border-radius:0; text-decoration:none;
+      box-shadow:none; transition:transform .28s ease, filter .28s ease;
+    }
+    .brand-badge:hover {
+      transform:translateY(-2px);
+      filter:drop-shadow(0 0 10px rgba(53,222,143,.30)) drop-shadow(0 0 18px rgba(16,45,107,.26));
+    }
+    .brand-badge img {
+      max-width:300px; width:min(100%, 300px); height:auto; display:block; background:transparent; border:none; box-shadow:none;
+      transition:filter .28s ease;
+    }
+    .brand-badge:hover img {
+      filter:drop-shadow(0 0 10px rgba(53,222,143,.34)) drop-shadow(0 0 20px rgba(16,45,107,.28));
+    }
+
+    .stats-banner { display:grid; grid-template-columns:repeat(4, 1fr); gap:16px; margin-bottom:32px; }
+    .stat-item {
+      background:var(--bg-glass); backdrop-filter:blur(10px); border:1px solid var(--border-light); border-radius:16px; padding:20px; text-align:center;
+    }
+    .stat-number { font-family:'Montserrat', sans-serif; font-weight:700; font-size:1.6em; margin-bottom:4px; }
+    .stat-label { font-size:.75em; text-transform:uppercase; letter-spacing:1px; color:var(--text-muted); font-family:'Fira Code', monospace; }
+    .green-num { color:var(--green-success); }
+    .pink-num { color:var(--pink-primary); }
+    .blue-num { color:var(--coinranking-green); }
+    .purple-num { color:var(--purple-primary); }
+
+    .platforms-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:32px; }
+    .platform-card {
+      background:var(--bg-glass); backdrop-filter:blur(20px); border-radius:20px; border:1px solid var(--border-light); overflow:hidden; transition:all .3s ease;
+    }
+    .platform-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-lg); }
+    .platform-accent { height:4px; }
+    .platform-accent.coinranking { background:var(--gradient-coinranking); }
+    .platform-accent.pink { background:var(--gradient-pink); }
+    .platform-body { padding:28px; }
+    .platform-header { display:flex; align-items:center; gap:14px; margin-bottom:16px; }
+    .platform-icon {
+      width:86px; height:86px; border-radius:24px; display:flex; align-items:center; justify-content:center;
+      font-size:22px; font-weight:800; flex-shrink:0;
+    }
+    .platform-icon.coinranking {
+      background:linear-gradient(135deg, rgba(53,222,143,.14), rgba(16,45,107,.10));
+      color:var(--coinranking-navy); border:1px solid rgba(53,222,143,.28); font-family:'Montserrat', sans-serif;
+    }
+    .platform-icon.why {
+      background:rgba(255,255,255,.02);
+      color:var(--coinranking-navy);
+      border:2px solid rgba(251,11,140,.18);
+      font-family:'Montserrat', sans-serif;
+      letter-spacing:-.03em;
+      box-shadow:inset 0 0 0 1px rgba(16,45,107,.05);
+    }
+    .platform-name { font-family:'Montserrat', sans-serif; font-weight:700; font-size:1.2em; }
+    .platform-name.coinranking { color:var(--coinranking-green); }
+    .platform-name.pink { color:var(--pink-primary); }
+    .platform-sub { font-size:.75em; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; font-family:'Fira Code', monospace; }
+    .platform-desc { color:var(--text-secondary); font-size:.92em; line-height:1.65; margin-bottom:20px; }
+    .platform-features { display:flex; flex-direction:column; gap:8px; margin-bottom:20px; }
+    .platform-feature { display:flex; align-items:center; gap:10px; font-size:.88em; color:var(--text-secondary); }
+    .platform-feature .check { color:var(--green-success); font-weight:700; }
+    .platform-btn {
+      display:block; width:100%; padding:14px 20px; border-radius:12px; border:none; font-family:'Montserrat', sans-serif;
+      font-weight:700; font-size:1em; text-align:center; text-decoration:none; cursor:pointer; transition:all .3s ease; letter-spacing:.5px;
+    }
+    .platform-btn.coinranking { background:var(--gradient-coinranking); color:#fff; }
+    .platform-btn.coinranking:hover { box-shadow:0 8px 25px rgba(16,45,107,.35); transform:translateY(-2px); }
+    .platform-btn.pink { background:var(--gradient-pink); color:#fff; }
+    .platform-btn.pink:hover { box-shadow:0 8px 25px rgba(251,11,140,.35); transform:translateY(-2px); }
+
+    .discovery-callout {
+      background:linear-gradient(135deg, rgba(53,222,143,.08), rgba(16,45,107,.10));
+      border:1px solid rgba(53,222,143,.18); border-radius:20px; padding:32px; margin-bottom:32px; text-align:center;
+    }
+    .discovery-callout-title {
+      font-family:'Montserrat', sans-serif; font-weight:700; font-size:1.4em; color:var(--coinranking-green); margin-bottom:12px;
+    }
+    .discovery-callout-text { color:var(--text-secondary); font-size:.95em; line-height:1.7; max-width:700px; margin:0 auto 20px; }
+    .discovery-callout-quote {
+      font-family:'Fira Code', monospace; font-size:.85em; color:var(--pink-primary); padding:16px 24px;
+      background:rgba(251,11,140,.06); border-left:3px solid var(--pink-primary); border-radius:0 8px 8px 0;
+      text-align:left; max-width:640px; margin:0 auto;
+    }
+
+    .verification-grid { display:grid; grid-template-columns:1.1fr .9fr; gap:24px; margin-bottom:32px; }
+    .verify-card, .link-card {
+      background:var(--bg-glass); backdrop-filter:blur(10px); border:1px solid var(--border-light); border-radius:16px; padding:24px;
+    }
+    .section-title { font-family:'Montserrat', sans-serif; font-size:1.12rem; font-weight:700; margin-bottom:12px; }
+    .verify-list { display:grid; gap:12px; margin-top:16px; }
+    .verify-item {
+      display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
+      padding:14px 16px; border-radius:14px; background:rgba(255,255,255,.04); border:1px solid var(--border-light);
+    }
+    .verify-item-label { font-family:'Fira Code', monospace; font-size:.78rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:.08em; margin-bottom:4px; }
+    .verify-item-value { font-size:.94rem; color:var(--text-primary); word-break:break-word; }
+    .badge-live {
+      padding:6px 10px; border-radius:999px; background:rgba(16,185,129,.12); color:var(--green-success);
+      border:1px solid rgba(16,185,129,.22); font-family:'Fira Code', monospace; font-size:.72rem; font-weight:700; white-space:nowrap;
+    }
+    .badge-proof {
+      padding:6px 10px; border-radius:999px; background:rgba(16,45,107,.12); color:var(--coinranking-green);
+      border:1px solid rgba(16,45,107,.22); font-family:'Fira Code', monospace; font-size:.72rem; font-weight:700; white-space:nowrap;
+    }
+    .link-stack { display:grid; gap:12px; margin-top:16px; }
+    .stack-link {
+      display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px 16px;
+      border-radius:14px; background:rgba(255,255,255,.04); border:1px solid var(--border-light); text-decoration:none; color:var(--text-primary);
+    }
+    .stack-link small { color:var(--text-muted); font-family:'Fira Code', monospace; }
+    .stack-link {
+      transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease, background-color .28s ease;
+    }
+    .stack-link:hover { transform:translateY(-2px); }
+    .verify-item.tone-green, .stack-link.tone-green {
+      background:rgba(53,222,143,.07);
+      border-color:rgba(53,222,143,.18);
+    }
+    .stack-link.tone-green:hover {
+      box-shadow:0 0 0 1px rgba(53,222,143,.18), 0 0 16px rgba(53,222,143,.18);
+      border-color:rgba(53,222,143,.34);
+    }
+    .verify-item.tone-navy, .stack-link.tone-navy {
+      background:rgba(16,45,107,.08);
+      border-color:rgba(16,45,107,.20);
+    }
+    .stack-link.tone-navy:hover {
+      box-shadow:0 0 0 1px rgba(16,45,107,.20), 0 0 16px rgba(16,45,107,.18);
+      border-color:rgba(16,45,107,.36);
+    }
+    .verify-item.tone-pink, .stack-link.tone-pink {
+      background:rgba(251,11,140,.06);
+      border-color:rgba(251,11,140,.16);
+    }
+    .stack-link.tone-pink:hover {
+      box-shadow:0 0 0 1px rgba(251,11,140,.16), 0 0 16px rgba(251,11,140,.16);
+      border-color:rgba(251,11,140,.30);
+    }
+    .verify-item.tone-purple, .stack-link.tone-purple {
+      background:rgba(168,85,247,.06);
+      border-color:rgba(168,85,247,.16);
+    }
+    .stack-link.tone-purple:hover {
+      box-shadow:0 0 0 1px rgba(168,85,247,.16), 0 0 16px rgba(168,85,247,.16);
+      border-color:rgba(168,85,247,.30);
+    }
+    .verify-item.tone-buy, .stack-link.tone-buy {
+      background:rgba(245,158,11,.06);
+      border-color:rgba(245,158,11,.18);
+    }
+    .stack-link.tone-buy:hover {
+      box-shadow:0 0 0 1px rgba(245,158,11,.16), 0 0 16px rgba(245,158,11,.16);
+      border-color:rgba(245,158,11,.30);
+    }
+    .stack-link .link-arrow {
+      font-weight:700;
+      color:var(--text-secondary);
+    }
+
+    .contract-section {
+      background:var(--bg-glass); backdrop-filter:blur(10px); border:1px solid var(--border-light); border-radius:16px;
+      padding:24px; margin-bottom:32px; text-align:center;
+    }
+    .contract-section-title { font-family:'Montserrat', sans-serif; font-weight:700; font-size:1em; margin-bottom:12px; color:var(--coinranking-green); }
+    .contract-copy-row { display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap; }
+    .contract-mini {
+      font-family:'Fira Code', monospace; font-size:.82em; color:var(--text-secondary);
+      background:var(--gradient-coinranking); color:#fff; padding:10px 16px; border-radius:8px; border:1px solid var(--border-light); word-break:break-all;
+    }
+    .copy-mini-btn {
+      padding:10px 20px; border-radius:8px; border:1px solid rgba(16,45,107,.3); background:var(--gradient-coinranking); color:#fff;
+      color:var(--coinranking-green); font-family:'Fira Code', monospace; font-size:.82em; font-weight:600; cursor:pointer;
+    }
+
+    .cta-btn-primary { background:var(--gradient-coinranking); color:#fff; }
+
+    .cta-section {
+      text-align:center; padding:32px 20px; margin-bottom:20px; background:linear-gradient(135deg, rgba(53,222,143,.08), rgba(16,45,107,.08));
+      border-radius:20px; border:1px solid var(--border-light);
+    }
+    .cta-title { font-family:'Montserrat', sans-serif; font-weight:700; font-size:1.3em; margin-bottom:16px; color:var(--text-primary); }
+    .cta-copy { max-width:680px; margin:0 auto 18px; color:var(--text-secondary); font-size:.95em; line-height:1.65; }
+    .cta-buttons { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+    .cta-btn {
+      display:inline-flex; align-items:center; gap:10px; padding:14px 28px; border-radius:12px; text-decoration:none;
+      font-family:'Montserrat', sans-serif; font-weight:700; font-size:.95em; transition:all .3s ease;
+    }
+    .cta-btn-primary { background:var(--gradient-coinranking); color:#fff; }
+    .cta-btn-secondary { background:rgba(251,11,140,.1); color:var(--pink-primary); border:1px solid rgba(251,11,140,.3); }
+
+    .footer { width:100%; margin-top:0; position:relative; }
+    .footer-vignette {
+      background:linear-gradient(to right, rgb(236,72,153), rgb(147,51,234)); border-radius:12px; box-shadow:0 10px 15px -3px rgba(0,0,0,.1);
+      padding:30px 5%; margin:0 auto; max-width:1100px; width:95%; display:flex; flex-direction:column; position:relative;
+    }
+    .footer-container { margin:0 auto; max-width:960px; width:100%; }
+    .footer-cards { display:grid; grid-template-columns:repeat(3, 1fr); gap:20px; }
+    .footer-card {
+      background:rgba(255,255,255,.1) !important; backdrop-filter:blur(10px); border-radius:12px; box-shadow:0 10px 15px -3px rgba(0,0,0,.1);
+      padding:15px 20px 28px; display:flex; flex-direction:column;
+    }
+    .footer-card h3 { font-family:Montserrat, sans-serif; font-weight:700; font-size:1.125rem; margin:0 0 10px; color:white; }
+    .footer-links-list { display:flex; flex-direction:column; gap:8px; }
+    .footer-links-list a { color:rgba(255,255,255,.9); text-decoration:none; font-size:.975rem; font-weight:400; display:flex; align-items:center; gap:8px; line-height:1.5; }
+    .social-icons { display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap; }
+    .social-icon {
+      display:inline-flex; align-items:center; justify-content:center; width:35px; height:35px;
+      background:rgba(255,255,255,.2); border:1px solid rgba(255,255,255,.4); border-radius:50%; color:white; text-decoration:none; font-size:1.2em;
+    }
+    .downloads-btn {
+      display:block; text-align:center; padding:8px 16px; background:rgba(255,255,255,.25); border:1px solid rgba(255,255,255,.4);
+      border-radius:8px; color:white; text-decoration:none; font-size:.9rem; font-weight:600; margin-top:16px; margin-bottom:12px;
+    }
+    .dev-contact { margin-top:12px; padding-top:12px; border-top:1px solid rgba(255,255,255,.3); }
+    .dev-contact p { font-size:.875rem; color:rgba(255,255,255,.9); margin-bottom:4px; }
+    .dev-contact a { color:white; text-decoration:none; font-weight:600; }
+
+    .footer-info { padding-top:20px !important; margin-top:0 !important; padding-bottom:20px; }
+    .footer-info-container { margin:0 auto; max-width:1100px; width:100%; padding:0 5vw; }
+    .footer-info-grid { display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-bottom:40px; }
+    .company-info { text-align:left; }
+    .contract-verification { text-align:right; }
+    .company-info h4, .contract-verification h4 { color:var(--text-primary); font-weight:500; margin-bottom:12px; font-size:1.1em; }
+    .company-info p, .contract-verification p { color:var(--text-secondary); margin-bottom:8px; font-size:.95em; }
+    .verification-badges { display:flex; flex-wrap:wrap; gap:8px; margin-top:34px; }
+    .badge-v { color:var(--text-secondary); padding:6px 12px; border-radius:20px; font-size:.8em; font-weight:500; border:1px solid transparent; box-shadow:inset 0 1px 0 rgba(255,255,255,.04); }
+    .badge-bsc { background:rgba(16,185,129,.12); border-color:rgba(16,185,129,.24); }
+    .badge-audit { background:rgba(240,185,11,.12); border-color:rgba(240,185,11,.24); }
+    .badge-gov { background:rgba(168,85,247,.12); border-color:rgba(168,85,247,.24); }
+    .contract-item { margin-bottom:20px; }
+    .contract-label { font-size:.85em; color:var(--text-muted); margin-bottom:8px; }
+    .contract-box { display:flex; align-items:center; gap:8px; background:var(--bg-card); border:1px solid var(--border-light); padding:12px 16px; border-radius:8px; }
+    .contract-address { flex:1; font-family:'Fira Code', monospace; font-size:.85em; color:var(--text-primary); overflow-x:auto; white-space:nowrap; }
+    .copy-btn {
+      padding:8px 10px; background:var(--gradient-pink); color:white; border:none; border-radius:6px; cursor:pointer; font-size:0;
+      width:36px; height:36px; display:inline-flex; align-items:center; justify-content:center; position:relative;
+    }
+    .copy-btn::before {
+      content:""; width:16px; height:16px;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z'/%3E%3C/svg%3E");
+      background-size:contain; background-repeat:no-repeat; background-position:center; display:block;
+    }
+    .footer-bottom { text-align:center; padding-top:30px; border-top:1px solid var(--border-light); }
+    .footer-links-bottom {
+      background:var(--bg-card); padding:14px 20px; border-radius:12px; margin-top:12px; display:flex; flex-wrap:wrap;
+      justify-content:center; align-items:center; gap:2px 6px; box-shadow:var(--shadow-sm);
+    }
+    .footer-links-bottom a {
+      background:var(--gradient-pink); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; color:transparent;
+      text-decoration:none; font-size:.875em; font-weight:300; padding:2px 6px;
+    }
+    .separator { color:var(--text-muted); font-weight:300; }
+    .copyright-line { font-weight:300; margin-top:20px; margin-bottom:4px; color:var(--text-secondary); }
+    .women-safety-line { font-weight:500; font-size:.9em; margin-bottom:6px; color:var(--purple-primary); }
+    .heart { display:inline-block; animation:heartbeat 2s ease-in-out infinite; }
+    @keyframes heartbeat { 0%,100% { transform:scale(1) } 10% { transform:scale(1.2) } 20% { transform:scale(1) } 30% { transform:scale(1.15) } 40% { transform:scale(1) } }
+    .footer-version { margin-top:2px; font-size:.85em; color:var(--text-muted); }
+
+    .toast {
+      position:fixed; bottom:30px; left:50%; transform:translateX(-50%) translateY(100px); padding:14px 28px; border-radius:12px;
+      font-family:'Fira Code', monospace; font-size:.85em; font-weight:600; z-index:9999; opacity:0; transition:all .4s; pointer-events:none;
+      background:rgba(16,45,107,.94); color:#fff;
+    }
+    .toast.show { transform:translateX(-50%) translateY(0); opacity:1; }
+
+    @media (max-width:768px) {
+      .coin-slogan-section { padding:18px 0 10px; }
+      .coin-slogan-section .coin-wrapper { width:96px; height:96px; }
+      .coin-slogan-section .slogan { font-size:clamp(14px,4vw,20px); }
+      .home-logo-section { padding:20px 0 12px; }
+      .home-logo-link img { width:156px; }
+      .page-nav { padding:12px 14px; }
+      .nav-sep { display:none; }
+      .hero-split-grid, .platforms-grid, .verification-grid, .footer-cards, .footer-info-grid { grid-template-columns:1fr; }
+      .hero-split-content { padding:24px 20px; }
+      .stats-banner { grid-template-columns:repeat(2,1fr); }
+      .contract-verification { text-align:left; }
+      .brand-badge img { max-width:240px; }
+      .hero-art-image { min-height:260px; }
+    }
+    @media (max-width:480px) {
+      .coin-slogan-section { padding:14px 0 8px; }
+      .coin-slogan-section .coin-wrapper { width:80px; height:80px; }
+      .coin-slogan-section .slogan { font-size:clamp(12px,3.8vw,17px); text-align:center; }
+      .home-logo-section { padding:16px 0 10px; }
+      .home-logo-link img { width:130px; }
+      .stats-banner { grid-template-columns:1fr 1fr; }
+      .stat-number { font-size:1.3em; }
+      .contract-box { flex-direction:column; align-items:stretch; }
+      .copy-btn { align-self:flex-end; }
+    }
+
+        /* Navbar parity with buy.html */
+        .page-nav {
+            background: linear-gradient(135deg, rgba(251, 11, 140, 0.12), rgba(168, 85, 247, 0.12));
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(251, 11, 140, 0.15);
+            border-radius: 16px; padding: 12px 24px; margin: 0 auto 0; max-width: 960px;
+            box-shadow: var(--shadow-md); position: relative; overflow: hidden;
+            display: flex; flex-direction: column; gap: 4px; align-items: center;
+        }
+        .page-nav::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gradient-pink); }
+        .nav-row { display: flex; gap: 1px; justify-content: center; align-items: center; }
+        .nav-row:last-child .nav-link {
+            padding: 6px 8px;  /* Slightly tighter than row 1 */
+            font-size: .78em;   /* Slightly smaller font */
+        }
+        .nav-divider { width: 80%; max-width: 500px; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent); margin: -1px 0; }
+        body.light-mode .nav-divider { background: linear-gradient(90deg, transparent, rgba(0,0,0,0.12), transparent); }
+        .nav-link {
+            padding: 8px 12px; border-radius: 8px; text-decoration: none; color: var(--text-secondary);
+            font-weight: 400; font-size: .82em; font-family: 'Fira Code', monospace;
+            text-transform: uppercase; letter-spacing: .02em; transition: all 0.3s ease; border: 1px solid transparent; white-space: nowrap;
+        }
+        .nav-link:hover { background: rgb(251 11 140 / .12); color: var(--pink-light); border-color: rgb(251 11 140 / .3); text-decoration: none; }
+        .nav-link.active { background: var(--gradient-pink); color: #fff; box-shadow: 0 4px 12px rgba(251, 11, 140, 0.35); }
+        .nav-link.active.buy-tab { background: var(--gradient-gold); color: var(--cmc-blue); box-shadow: 0 4px 12px rgba(240, 185, 11, 0.45); font-weight: 600; }
+        .nav-link.active.verified-tab { background: linear-gradient(135deg, #006d30 0%, #009e44 50%, #007a36 100%); color: #fff; box-shadow: 0 4px 12px rgba(0, 158, 68, 0.35); }
+        .nav-link.active.staking-tab { background: linear-gradient(135deg, #d97706 0%, #f59e0b 50%, #eab308 100%); color: #000; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35); }
+        .nav-link.active.grok-tab { background: linear-gradient(135deg, #fb0b8c 0%, #a855f7 50%, #6366f1 100%); color: #fff; box-shadow: 0 4px 12px rgba(168, 85, 247, 0.45); }
+        .nav-link.active.pancake-tab { background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 50%, #67e8f9 100%); color: #000; box-shadow: 0 4px 12px rgba(6, 182, 212, 0.35); }
+        .nav-sep { width: 1px; height: 18px; background: rgba(255,255,255,0.15); margin: 0 2px; }
+        body.light-mode .nav-sep { background: rgba(255,255,255,0.35); }
+
+        /* Light mode: solid pink navbar */
+        [data-theme="light"] .page-nav,
+        body.light-mode .page-nav {
+            background: linear-gradient(to top, #a0065a 0%, #b8076e 25%, #e50a83 55%, #fb0b8c 100%);
+            border-color: rgba(255,255,255,0.15);
+            box-shadow: 0 8px 24px rgba(251, 11, 140, 0.3), 0 4px 12px rgba(0,0,0,0.1);
+        }
+        [data-theme="light"] .page-nav::before,
+        body.light-mode .page-nav::before { background: linear-gradient(90deg, #ff4da6, #fff, #ff4da6); }
+        [data-theme="light"] .nav-divider,
+        body.light-mode .nav-divider { background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); }
+        [data-theme="light"] .nav-link,
+        body.light-mode .nav-link { color: rgba(255,255,255,0.85); }
+        [data-theme="light"] .nav-link:hover,
+        body.light-mode .nav-link:hover { background: rgba(255,255,255,0.15); color: #fff; border-color: rgba(255,255,255,0.3); }
+        [data-theme="light"] .nav-sep,
+        body.light-mode .nav-sep { background: rgba(255,255,255,0.35); }
+        [data-theme="dark"] .nav-divider { background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent); }
+        [data-theme="dark"] .nav-sep { background: rgba(255,255,255,0.15); }
+
+        @media (max-width: 768px) {
+            .page-nav { padding: 12px 14px; margin-top: 0; gap: 6px; }
+            .nav-row { gap: 4px; flex-wrap: wrap; width: 100%; }
+            .nav-link { padding: 6px 10px; font-size: .75em; }
+            .nav-row:last-child .nav-link { padding: 6px 10px; font-size: .75em; }
+            .nav-sep { display: none; }
+        }
+
+        @media (max-width: 480px) {
+            .page-nav { padding: 10px 10px; margin-top: 0; gap: 4px; }
+            .nav-row { gap: 6px; }
+            .nav-link { padding: 5px 8px; font-size: .7em; }
+            .nav-row:last-child .nav-link { padding: 5px 8px; font-size: .7em; }
+        }
+
+        @media print {
+            .page-nav { display: none; }
+        }
+
+
+        /* Drawer mode: used only when this document is embedded inside the revamped homepage drawer. */
+        .coinranking-hero-meta-card { display: none; }
+        body.ptdt-drawer-mode #particleCanvas,
+        body.ptdt-drawer-mode .home-logo-section,
+        body.ptdt-drawer-mode .page-nav,
+        body.ptdt-drawer-mode .coin-slogan-section,
+        body.ptdt-drawer-mode .footer {
+            display: none !important;
+        }
+        body.ptdt-drawer-mode {
+            overflow-x: hidden;
+            min-height: auto;
+        }
+        body.ptdt-drawer-mode .container {
+            width: 100%;
+            max-width: none;
+            margin: 0;
+            padding: 0;
+        }
+        body.ptdt-drawer-mode .header,
+        body.ptdt-drawer-mode .stats-banner,
+        body.ptdt-drawer-mode .platforms-grid,
+        body.ptdt-drawer-mode .discovery-callout,
+        body.ptdt-drawer-mode .verification-grid,
+        body.ptdt-drawer-mode .contract-section,
+        body.ptdt-drawer-mode .cta-section {
+            width: calc(100% - clamp(48px, 9.2vw, 104px));
+            margin-left: auto;
+            margin-right: auto;
+        }
+        body.ptdt-drawer-mode .theme-toggle {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            z-index: 30;
+        }
+        body.ptdt-drawer-mode .hero-split {
+            max-width: none;
+            margin: 0;
+            border: 0;
+            border-radius: 0;
+            background: transparent;
+            box-shadow: none;
+            overflow: visible;
+        }
+        body.ptdt-drawer-mode .hero-split-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 0.76fr) minmax(420px, 1.24fr);
+            gap: clamp(20px, 2.6vw, 36px);
+            align-items: stretch;
+            padding: clamp(24px, 4vw, 46px) clamp(24px, 4.6vw, 52px) 28px;
+        }
+        body.ptdt-drawer-mode .hero-split-content {
+            order: 1;
+            align-self: center;
+            padding: 0;
+            background: transparent;
+            border-left: 0;
+        }
+        body.ptdt-drawer-mode .hero-split-image {
+            order: 2;
+            display: grid;
+            gap: 16px;
+            align-self: start;
+            min-width: 0;
+            padding: 0;
+            overflow: visible;
+            background: transparent;
+        }
+        body.ptdt-drawer-mode .hero-art {
+            min-height: 0;
+            height: clamp(320px, 29vw, 405px);
+            border-radius: 22px;
+            overflow: hidden;
+            background: #111827;
+            box-shadow: 0 22px 60px rgba(16,16,24,0.20);
+        }
+        body.ptdt-drawer-mode .hero-art-image {
+            width: 100%;
+            height: 100%;
+            min-height: 0;
+            object-fit: cover;
+            object-position: center;
+        }
+        body.ptdt-drawer-mode .hero-split-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 12px;
+            border-radius: 999px;
+            background: rgba(53, 222, 143, 0.10);
+            border: 1px solid rgba(53, 222, 143, 0.22);
+            color: var(--coinranking-green);
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 0.08em;
+            margin-bottom: 16px;
+        }
+        body.ptdt-drawer-mode .hero-split-title {
+            max-width: 620px;
+            color: var(--text-primary);
+            font-size: clamp(34px, 4.35vw, 58px);
+            line-height: 1.02;
+            font-weight: 900;
+            letter-spacing: -0.045em;
+            margin-bottom: 18px;
+        }
+        body.ptdt-drawer-mode .hero-split-title .plain-white { color: var(--text-primary); }
+        body.ptdt-drawer-mode .hero-split-title .ptdt-pink { color: var(--pink-primary); }
+        body.ptdt-drawer-mode .hero-split-title .coinranking-blue { color: var(--coinranking-green); }
+        body.ptdt-drawer-mode .hero-split-desc {
+            max-width: 610px;
+            color: var(--text-secondary);
+            font-size: 16px;
+            line-height: 1.75;
+            margin-bottom: 22px;
+        }
+        body.ptdt-drawer-mode .hero-split-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 0;
+        }
+        body.ptdt-drawer-mode .hero-split-badge {
+            min-height: 46px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 18px;
+            border-radius: 999px;
+            background: rgba(53,222,143,.10);
+            color: var(--coinranking-green);
+            font-family: 'Lexend', sans-serif;
+            font-size: 13px;
+            font-weight: 900;
+            letter-spacing: 0;
+            box-shadow: 0 8px 24px rgba(16,16,24,0.08);
+        }
+        body.ptdt-drawer-mode .hero-split-badge.pink {
+            background: rgba(251, 11, 140, 0.12);
+            color: var(--pink-primary);
+            border-color: rgba(251, 11, 140, 0.25);
+        }
+        body.ptdt-drawer-mode .coinranking-hero-meta-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            min-width: 0;
+            padding: 18px 20px;
+            border: 1px solid var(--border-light);
+            border-radius: 18px;
+            background: var(--bg-glass);
+            box-shadow: 0 16px 38px rgba(16,16,24,0.08);
+        }
+        body.ptdt-drawer-mode .coinranking-hero-meta-card span {
+            display: block;
+            margin-bottom: 6px;
+            color: var(--text-muted);
+            font-family: 'Fira Code', monospace;
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        body.ptdt-drawer-mode .coinranking-hero-meta-card code {
+            color: var(--text-primary);
+            font-family: 'Fira Code', monospace;
+            font-size: 13px;
+            overflow-wrap: anywhere;
+        }
+        body.ptdt-drawer-mode .coinranking-hero-meta-pill {
+            flex: 0 0 auto;
+            min-height: 46px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 18px;
+            border-radius: 999px;
+            border: 1px solid rgba(53,222,143,0.34);
+            background: var(--gradient-coinranking);
+            color: #fff;
+            font-size: 13px;
+            font-weight: 900;
+            white-space: nowrap;
+        }
+        @media (max-width: 900px) {
+            body.ptdt-drawer-mode .hero-split-grid {
+                grid-template-columns: 1fr;
+                padding: 24px 20px 26px;
+            }
+            body.ptdt-drawer-mode .hero-split-image { order: 1; }
+            body.ptdt-drawer-mode .hero-split-content { order: 2; }
+            body.ptdt-drawer-mode .hero-art {
+                height: auto;
+                min-height: 240px;
+                aspect-ratio: 16 / 9;
+            }
+            body.ptdt-drawer-mode .hero-split-title { font-size: clamp(32px, 8vw, 44px); }
+        }
+        @media (max-width: 560px) {
+            body.ptdt-drawer-mode .hero-split-grid { padding: 20px 16px 24px; }
+            body.ptdt-drawer-mode .header,
+            body.ptdt-drawer-mode .stats-banner,
+            body.ptdt-drawer-mode .platforms-grid,
+            body.ptdt-drawer-mode .discovery-callout,
+            body.ptdt-drawer-mode .verification-grid,
+            body.ptdt-drawer-mode .contract-section,
+            body.ptdt-drawer-mode .cta-section {
+                width: calc(100% - 32px);
+            }
+            body.ptdt-drawer-mode .hero-art { min-height: 200px; }
+            body.ptdt-drawer-mode .hero-split-title { font-size: 31px; }
+            body.ptdt-drawer-mode .hero-split-desc { font-size: 15px; }
+            body.ptdt-drawer-mode .coinranking-hero-meta-card {
+                align-items: stretch;
+                flex-direction: column;
+            }
+            body.ptdt-drawer-mode .coinranking-hero-meta-pill { width: 100%; }
+        }
+
+</style>
+<script id="ptdt-coinranking-drawer-mode">
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('drawer') === '1') {
+    document.addEventListener('DOMContentLoaded', function(){
+      document.body.classList.add('ptdt-drawer-mode');
+      function sendHeight(){
+        if (window.parent && window.parent !== window) {
+          window.parent.postMessage({
+            type: 'ptdt-drawer-height',
+            height: document.documentElement.scrollHeight
+          }, '*');
+        }
+      }
+      sendHeight();
+      window.addEventListener('load', sendHeight);
+      window.addEventListener('resize', sendHeight);
+      setTimeout(sendHeight, 300);
+      setTimeout(sendHeight, 1000);
+    });
+  }
+})();
+</script>
+</head>
+<body>
+  <canvas id="particleCanvas"></canvas>
+
+  <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle Day/Night Mode">
+    <svg id="themeIcon" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/></svg>
+  </button>
+
+  <div class="home-logo-section">
+    <a href="https://ptdt.taxi" class="home-logo-link" title="Go to PTDT Homepage">
+      <img src="ptdt-main-logo.png" alt="PTDT Home">
+    </a>
+  </div>
+
+  <nav class="page-nav">
+        <div class="nav-row">
+        <a href="https://ptdt.taxi/ptdt-docs/mainguide.html" class="nav-link">Main-Guide</a>
+        <span class="nav-sep"></span>
+        <a href="https://ptdt.taxi/ptdt-docs/apidocs.html" class="nav-link">API-Docs</a>
+        <span class="nav-sep"></span>
+        <a href="https://ptdt.taxi/ptdt-docs/dashboard.html" class="nav-link">Dashboard</a>
+        <span class="nav-sep"></span>
+        <a href="https://whitepaper.ptdt.taxi/" class="nav-link">WhitePaper</a>
+        <span class="nav-sep"></span>
+        <a href="https://ptdt.taxi/ptdt-docs/verified.html" class="nav-link verified-tab">Verified ✓</a>
+        <span class="nav-sep"></span>
+        <a href="https://ptdt.taxi/ptdt-docs/rebuttal.html" class="nav-link">Rebuttal</a>
+        <span class="nav-sep"></span>
+        <a href="https://ptdt.taxi/scope.html" class="nav-link">Scope</a>
+        <span class="nav-sep"></span>
+        <a href="https://ptdt.taxi/stake.html" class="nav-link staking-tab">⚡ Staking</a>
+        <span class="nav-sep"></span>
+        <a href="/buy.html" class="nav-link buy-tab">🏛 Buy PTDT</a>
+    </div>
+
+    <!-- DIVIDER -->
+    <div class="nav-divider"></div>
+
+    <!-- SECOND ROW (8 items - now balanced) -->
+    <div class="nav-row">
+        <a href="https://ptdt.taxi/coinranking.html" class="nav-link active coinranking-tab">Coinranking</a>
+        <span class="nav-sep"></span>
+        <a href="/gecko.html" class="nav-link gecko-tab">🦎 GeckoTerminal</a>
+        <span class="nav-sep"></span>
+        <a href="/pancakeswap.html" class="nav-link pancake-tab">🥞 PancakeSwap</a>
+        <span class="nav-sep"></span>
+        <a href="/github.html" class="nav-link">▪️ GitHub</a>
+        <span class="nav-sep"></span>
+        <a href="/grokfare.html" class="nav-link grok-tab">🤖 Grok Fare</a>
+        <span class="nav-sep"></span>
+        <a href="https://ptdt.taxi/grok-stake-sim.html" class="nav-link grok-tab">🧮 Stake Sim</a>
+        <span class="nav-sep"></span>
+        <a href="/ptdt-docs/downloads.html" class="nav-link">📥 Downloads</a>
+    </div>
+  </nav>
+
+  <div class="coin-slogan-section">
+        <div class="coin-wrapper">
+            <div class="coin" id="headerCoin">
+                <img src="data:image/svg+xml,%3Csvg viewBox='0 0 28.8 29.04' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='14.35' cy='14.4' r='12.27' fill='%232ae97b' stroke='%23d1d3d4' stroke-miterlimit='10' stroke-width='.46'/%3E%3Ccircle cx='14.35' cy='14.4' r='10.66' fill='%23020202'/%3E%3Cpath d='M15.14,12.47c-.21-.34,2.18-3.91,4.97-4.8-3.22,.47-5.62,2.79-5.76,2.93,0,0-.02,.01-.02,.01,0,0,.01,0,.02-.01,0,0,.01,0,.02,.01h-.02c.64-.63,.45-.1,0,.85-.45-.95-.64-1.48,0-.86-.14-.15-2.55-2.46-5.76-2.93,2.79,.89,5.18,4.46,4.97,4.8-.57,.94-1.12,2.19-1.21,3.55-.03,.14-.05,.26-.05,.36,0,3.18,2.03,5.76,2.03,5.76,0,0,0,0,.02-.01,0,0,.01,.01,.01,.01,0,0,2.03-2.57,2.03-5.76,0-.1-.01-.22-.04-.36-.09-1.36-.63-2.61-1.21-3.55' fill='%23fb0b8c'/%3E%3Cpath d='M15.75,8.26c0,.77-.62,1.39-1.39,1.39s-1.4-.62-1.4-1.39,.63-1.39,1.4-1.39,1.39,.62,1.39,1.39' fill='%23fb068c'/%3E%3C/svg%3E" alt="Peether PTDT" draggable="false">
+            </div>
+        </div>
+        <div class="slogan" id="slogan">
+            <span id="part1"></span>
+            <span id="cursor-anchor-mid"></span>
+            <span id="part2"></span>
+            <span id="cursor-anchor-end"><span class="cursor" id="main-cursor"></span></span>
+        </div>
+    </div>
+
+  <div class="container">
+    <section class="hero-split">
+      <div class="hero-split-grid">
+        <div class="hero-split-image">
+          <div class="hero-art">
+            <img src="coinranking-preview.webp" alt="PTDT Coinranking Preview" class="hero-art-image">
+          </div>
+          <div class="coinranking-hero-meta-card">
+            <div>
+              <span>CoinRanking Profile</span>
+              <code>coinranking.com/coin/2onNouCr1RYx+peether-ptdt</code>
+            </div>
+            <div class="coinranking-hero-meta-pill">Public Surface</div>
+          </div>
+        </div>
+        <div class="hero-split-content">
+          <p class="hero-split-eyebrow">Public Aggregator Surface</p>
+          <h1 class="hero-split-title"><span class="ptdt-pink">PTDT</span> <span class="plain-white">on</span> <span class="coinranking-blue">Coinranking</span></h1>
+          <p class="hero-split-desc">Coinranking gives PTDT a clean public market-discovery surface. It matters because it creates one more indexable place where researchers, buyers, reviewers and wallets can inspect PTDT with contract context, supply context and market-facing visibility.</p>
+          <div class="hero-split-badges">
+            <span class="hero-split-badge">Coinranking</span>
+            <span class="hero-split-badge pink">Indexable</span>
+            <span class="hero-split-badge green">BNB Chain</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <header class="header" id="header">
+      <div class="header-separator"></div>
+      <h2>PTDT on Coinranking</h2>
+      <p class="subtitle-main">This page captures PTDT's Coinranking presence as an official PTDT market surface. It gives PTDT an additional <span class="hl-blue">public aggregator footprint</span>, reinforces <span class="hl-green">contract-level verifiability</span>, and creates another <span class="hl-pink">discoverable entry point</span> beside GeckoTerminal, PancakeSwap and GitHub.</p>
+      <a class="brand-badge" href="https://coinranking.com/coin/2onNouCr1RYx+peether-ptdt" target="_blank" rel="noopener noreferrer">
+        <img src="coinranking-button.png" alt="Open PTDT Coinranking Profile">
+      </a>
+    </header>
+
+        <!-- STATS BANNER -->
+        <div class="stats-banner">
+            <div class="stat-item">
+                <div class="stat-number gold-num" id="statPrice">--</div>
+                <div class="stat-label">PTDT Price</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number green-num" id="statLpDepth">--</div>
+                <div class="stat-label">LP Depth</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number pink-num">60%</div>
+                <div class="stat-label">Fee Burn</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number blue-num">3</div>
+                <div class="stat-label">Buy Routes</div>
+            </div>
+        </div>
+
+    <div class="platforms-grid">
+      <div class="platform-card">
+        <div class="platform-accent coinranking"></div>
+        <div class="platform-body">
+          <div class="platform-header">
+            <div class="platform-icon coinranking">CR</div>
+            <div>
+              <div class="platform-name coinranking">Coinranking Profile</div>
+              <div class="platform-sub">PUBLIC TOKEN PAGE</div>
+            </div>
+          </div>
+          <p class="platform-desc">Coinranking matters because it gives PTDT a recognizable token-directory surface where market participants can inspect the project summary, contract address, exchange references and general token visibility from an external aggregator context.</p>
+          <div class="platform-features">
+            <div class="platform-feature"><span class="check">✓</span> Indexable public token page</div>
+            <div class="platform-feature"><span class="check">✓</span> Contract and supply context</div>
+            <div class="platform-feature"><span class="check">✓</span> Exchange and market discovery layer</div>
+            <div class="platform-feature"><span class="check">✓</span> Cleaner external review surface</div>
+          </div>
+          <a href="https://coinranking.com/coin/2onNouCr1RYx+peether-ptdt" target="_blank" rel="noopener noreferrer" class="platform-btn coinranking">Open Coinranking →</a>
+        </div>
+      </div>
+
+      <div class="platform-card">
+        <div class="platform-accent pink"></div>
+        <div class="platform-body">
+          <div class="platform-header">
+            <div class="platform-icon why">PTDT</div>
+            <div>
+              <div class="platform-name pink">Why This Matters</div>
+              <div class="platform-sub">DISCOVERY + TRUST</div>
+            </div>
+          </div>
+          <p class="platform-desc">A Coinranking surface helps PTDT look more complete to outside reviewers. It gives another independent place to reference PTDT beside direct on-chain tools, which is useful for discovery, listings, diligence, and overall public market presentation.</p>
+          <div class="platform-features">
+            <div class="platform-feature"><span class="check">✓</span> Better external market presentation</div>
+            <div class="platform-feature"><span class="check">✓</span> Easier token discovery for new users</div>
+            <div class="platform-feature"><span class="check">✓</span> Additional proof surface in public view</div>
+            <div class="platform-feature"><span class="check">✓</span> Cleaner backlink / nav destination</div>
+          </div>
+          <a href="https://ptdt.taxi/buy.html" target="_blank" class="platform-btn pink">Back to Buy PTDT →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="verification-grid">
+      <section class="verify-card">
+        <div class="section-title">Verification Block</div>
+        <p style="color:var(--text-secondary)">Use this block to connect the Coinranking page back to PTDT's own proof surfaces.</p>
+        <div class="verify-list">
+          <div class="verify-item">
+            <div>
+              <div class="verify-item-label">Token Contract</div>
+              <div class="verify-item-value">0x66c6Fc5E7F99272134a52DF9E88D94eD83E89278</div>
+            </div>
+            <span class="badge-proof">BNB CHAIN</span>
+          </div>
+          <div class="verify-item">
+            <div>
+              <div class="verify-item-label">Primary DEX Surface</div>
+              <div class="verify-item-value">PTDT / USDT live pool on GeckoTerminal and PancakeSwap</div>
+            </div>
+            <span class="badge-live">LIVE</span>
+          </div>
+          <div class="verify-item">
+            <div>
+              <div class="verify-item-label">Protocol Positioning</div>
+              <div class="verify-item-value">PTDT is infrastructure, not an application — the token is the fuel, the API is the engine.</div>
+            </div>
+            <span class="badge-proof">PTDT</span>
+          </div>
+          <div class="verify-item">
+            <div>
+              <div class="verify-item-label">Official PTDT Links</div>
+              <div class="verify-item-value">Docs, Explorer, Financials, GitHub and Buy Guide all linkable from this page.</div>
+            </div>
+            <span class="badge-proof">LINKED</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="link-card">
+        <div class="section-title">Also Live On</div>
+        <p style="color:var(--text-secondary)">Use these companion surfaces beside Coinranking.</p>
+        <div class="link-stack">
+          <a class="stack-link tone-green" href="https://ptdt.taxi/gecko.html" target="_blank"><span><strong>GeckoTerminal</strong><br><small>On-chain pool visibility</small></span><span class="link-arrow" target="_blank">→</span></a>
+          <a class="stack-link tone-navy" href="https://ptdt.taxi/pancakeswap.html" target="_blank"><span><strong>PancakeSwap</strong><br><small>Swap and pool access</small></span><span class="link-arrow">→</span></a>
+          <a class="stack-link tone-pink" href="https://ptdt.taxi/github.html" target="_blank"><span><strong>GitHub</strong><br><small>Open build surface</small></span><span class="link-arrow">→</span></a>
+          <a class="stack-link tone-purple" href="https://ptdt.taxi/ptdt-docs/apidocs.html" target="_blank"><span><strong>PTDT Docs</strong><br><small>API and protocol docs</small></span><span class="link-arrow">→</span></a>
+          <a class="stack-link tone-buy" href="https://ptdt.taxi/buy.html" target="_blank"><span><strong>Buy</strong><br><small>Direct PTDT access page</small></span><span class="link-arrow">→</span></a>
+        </div>
+      </section>
+    </div>
+
+    <div class="contract-section">
+      <div class="contract-section-title">Coinranking Contract Reference</div>
+      <div class="contract-copy-row">
+        <span class="contract-mini" id="tokenContract">0x66c6Fc5E7F99272134a52DF9E88D94eD83E89278</span>
+        <button class="copy-mini-btn" onclick="copyContract()">Copy</button>
+      </div>
+    </div>
+
+    <div class="cta-section">
+      <h3 class="cta-title">Use Coinranking as One More PTDT Entry Point</h3>
+      <p class="cta-copy">This page is meant to help PTDT present Coinranking as an official external market surface — not as the settlement engine, but as a useful aggregator touchpoint for discovery, diligence and public visibility.</p>
+      <div class="cta-buttons">
+        <a href="https://coinranking.com/coin/2onNouCr1RYx+peether-ptdt" target="_blank" rel="noopener noreferrer" class="cta-btn cta-btn-primary"><span>Open Coinranking</span></a>
+        <a href="https://ptdt.taxi/gecko.html" target="_blank" class="cta-btn cta-btn-secondary"><span>Open Gecko</span></a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-vignette">
+      <div class="footer-container">
+        <div class="footer-cards">
+          <div class="footer-card">
+            <h3>| Quick Links</h3>
+            <div class="footer-links-list">
+              <a href="https://ptdt.taxi" target="_blank">🏠 Main Website</a>
+              <a href="https://dapp.ptdt.taxi" target="_blank">📱 DApp Portal</a>
+              <a href="https://ptdt.taxi/ptdt-docs/mainguide.html">🔗 Integration Guide</a>
+              <a href="https://ptdt.taxi/ptdt-docs/apidocs.html">🔧 API Documentation</a>
+              <a href="https://ptdt.taxi/ptdt-docs/securityresponse.html">🛡 Security Response</a>
+              <a href="https://ptdt.taxi/ptdt-docs/dashboard.html">📊 Live Dashboard</a>
+            </div>
+          </div>
+          <div class="footer-card">
+            <h3>| Resources</h3>
+            <div class="footer-links-list">
+              <a href="https://coinranking.com/coin/2onNouCr1RYx+peether-ptdt" target="_blank">📘 Coinranking</a>
+              <a href="https://ptdt.taxi/gecko.html" target="_blank">🦎 GeckoTerminal</a>
+              <a href="https://pancakeswap.finance/swap?outputCurrency=0x66c6Fc5E7F99272134a52DF9E88D94eD83E89278" target="_blank">💱 PancakeSwap</a>
+              <a href="https://github.com/pinkpeether" target="_blank">💻 GitHub</a>
+              <a href="https://bscscan.com/token/0x66c6Fc5E7F99272134a52DF9E88D94eD83E89278" target="_blank">📊 BscScan Contract</a>
+              <a href="https://ptdt.taxi/ptdt-docs/downloads.html" target="_blank">📄 Downloads</a>
+            </div>
+          </div>
+          <div class="footer-card">
+            <h3>| Connect</h3>
+            <div class="social-icons">
+              <a href="https://t.me/PeetherPTDT" target="_blank" class="social-icon" title="Telegram">✈️</a>
+              <a href="https://x.com/PTDT_Token" target="_blank" class="social-icon" title="X (Twitter)">𝕏</a>
+              <a href="https://discord.gg/ptdt" target="_blank" class="social-icon" title="Discord">💬</a>
+              <a href="https://www.facebook.com/PTDToken" target="_blank" class="social-icon" title="Facebook">📘</a>
+              <a href="https://github.com/pinkpeether" target="_blank" class="social-icon" title="GitHub">💻</a>
+              <a href="https://medium.com/pink-taxi/followers" target="_blank" class="social-icon" title="Medium">📝</a>
+            </div>
+            <a href="/ptdt-docs/downloads.html" class="downloads-btn">📥 Downloads</a>
+            <div class="dev-contact">
+              <p style="font-weight:500;margin-bottom:1px;">Developer Support:</p>
+              <p>📧 <a href="mailto:dev@ptdt.taxi">dev@ptdt.taxi</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-info">
+      <div class="footer-info-container">
+        <div class="footer-info-grid">
+          <div class="company-info">
+            <h4>🏢 Company Information</h4>
+            <p><strong>Pink Taxi Group Ltd.</strong></p>
+            <p>Registered in the United Kingdom</p>
+            <p><strong>Token:</strong> Peether PTDT (Pink Taxi Drive Token)</p>
+            <p><strong>Network:</strong> BNB Smart Chain (BSC)</p>
+            <div class="verification-badges">
+              <span class="badge-v badge-bsc">✔ BSCScan Verified</span>
+              <span class="badge-v badge-audit">✔ Audit 9.2/10</span>
+              <span class="badge-v badge-gov">✔ Gov Verified</span>
+            </div>
+          </div>
+          <div class="contract-verification">
+            <h4>🔐 Contract &amp; Verification</h4>
+            <div class="contract-item">
+              <div class="contract-label">Staking Contract Address:</div>
+              <div class="contract-box">
+                <span class="contract-address" id="stakingContractAddr">0xfa6A09A581447255BD916ad98cf852fEFbC72494</span>
+                <button class="copy-btn" onclick="copyToClipboard('stakingContractAddr')"></button>
+              </div>
+            </div>
+            <div class="contract-item">
+              <div class="contract-label">PTDT Token Contract:</div>
+              <div class="contract-box">
+                <span class="contract-address" id="tokenContractAddr">0x66c6Fc5E7F99272134a52DF9E88D94eD83E89278</span>
+                <button class="copy-btn" onclick="copyToClipboard('tokenContractAddr')"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p class="women-safety-line">Made with <span class="heart">❤️</span> for women's safety</p>
+          <p style="font-weight:300;color:var(--text-secondary);margin-bottom:12px;">Building the future of decentralized transportation. Peether PTDT Token is a utility token for the PTDT ecosystem.</p>
+          <div class="footer-links-bottom">
+            <a href="https://ptdt.taxi/" target="_blank">Website</a>
+            <span class="separator">|</span>
+            <a href="https://dapp.ptdt.taxi/" target="_blank">DApp Site</a>
+            <span class="separator">|</span>
+            <a href="https://whitepaper.ptdt.taxi/" target="_blank">White Paper</a>
+            <span class="separator">|</span>
+            <a href="https://ptdt.taxi/ptdt-docs/mainguide.html" target="_blank">Main Guide</a>
+            <span class="separator">|</span>
+            <a href="https://ptdt.taxi/ptdt-docs/dashboard.html" target="_blank">Live Dashboard</a>
+            <span class="separator">|</span>
+            <a href="https://coinranking.com/coin/2onNouCr1RYx+peether-ptdt" target="_blank">Coinranking</a>
+            <span class="separator">|</span>
+            <a href="https://ptdt.taxi/gecko.html" target="_blank">GeckoTerminal</a>
+            <span class="separator">|</span>
+            <a href="https://ptdt.taxi/cert.html" target="_blank">Certificate</a>
+            <span class="separator">|</span>
+            <a href="https://ptdt.taxi/privacy.html" target="_blank">Privacy Policy</a>
+            <span class="separator">|</span>
+            <a href="https://ptdt.taxi/terms.html" target="_blank">Terms of Service</a>
+            <span class="separator">|</span>
+            <a href="https://ptdt.taxi/ptdt-docs/rebuttal.html" target="_blank">Rebuttal</a>
+            <span class="separator">|</span>
+            <a href="https://ptdt.taxi/cookies.html" target="_blank">Cookie Policy</a>
+            <span class="separator">|</span>
+            <a href="https://ptdt.taxi/ptdt-docs/verified.html">Verified</a>
+            <span class="separator">|</span>
+            <a href="https://ptdt.taxi/scope.html">Scope</a>
+            <span class="separator">|</span>
+            <a href="https://ptdt.taxi/stake.html">Staking</a>
+            <span class="separator">|</span>
+            <a href="https://ptdt.taxi/grokfare.html">Grok Fare</a>
+          </div>
+          <p class="copyright-line">Copyrights &copy; 2026 Peether – PTDT. Pink Taxi Group LTD. UK. All rights reserved.</p>
+          <p class="footer-version">Coinranking Guide Version 1 &bull; Last Updated: April 2026</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+    <!-- TOAST -->
+    <div class="toast" id="toast"></div>
+
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        // ================================
+        // CONFIG
+        // ================================
+        var RPC = 'https://bsc.publicnode.com';
+        var LP_PAIR = '0xF3a06E9Dc5d89B2fD8d7d30946c9aeddc5e01E28';
+
+    function toggleTheme() {
+      document.body.classList.toggle('light-mode');
+      const isLight = document.body.classList.contains('light-mode');
+      localStorage.setItem('ptdt-theme', isLight ? 'light' : 'dark');
+      updateThemeIcon();
+    }
+
+    function updateThemeIcon() {
+      const icon = document.getElementById('themeIcon');
+      const isLight = document.body.classList.contains('light-mode');
+      icon.innerHTML = isLight
+        ? '<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>'
+        : '<path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/>';
+    }
+
+    (function () {
+      const saved = localStorage.getItem('ptdt-theme');
+      if (saved === 'light') document.body.classList.add('light-mode');
+      updateThemeIcon();
+    })();
+
+    (function () {
+      const canvas = document.getElementById('particleCanvas');
+      const ctx = canvas.getContext('2d');
+      const particles = [];
+      const PARTICLE_COUNT = 60;
+
+      function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+      resize();
+      window.addEventListener('resize', resize);
+
+      function Particle() { this.reset(); }
+      Particle.prototype.reset = function () {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.vx = (Math.random() - 0.5) * 0.3;
+        this.vy = (Math.random() - 0.5) * 0.3;
+        this.radius = Math.random() * 2 + 1;
+        this.color = Math.random() > 0.5 ? 'rgba(53,222,143,0.26)' : 'rgba(16,45,107,0.22)';
+      };
+      Particle.prototype.update = function () {
+        this.x += this.vx; this.y += this.vy;
+        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+      };
+      Particle.prototype.draw = function () {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+      };
+
+      for (let i = 0; i < PARTICLE_COUNT; i++) particles.push(new Particle());
+
+      function animate() {
+        const isLight = document.body.classList.contains('light-mode');
+        ctx.fillStyle = isLight ? '#F4F4F8' : '#0A0A0F';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        for (let p of particles) { p.update(); p.draw(); }
+        for (let a = 0; a < particles.length; a++) {
+          for (let b = a + 1; b < particles.length; b++) {
+            const dx = particles[a].x - particles[b].x;
+            const dy = particles[a].y - particles[b].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 120) {
+              ctx.beginPath();
+              ctx.moveTo(particles[a].x, particles[a].y);
+              ctx.lineTo(particles[b].x, particles[b].y);
+              ctx.strokeStyle = 'rgba(53,222,143,' + (0.10 * (1 - dist / 120)) + ')';
+              ctx.stroke();
+            }
+          }
+        }
+        requestAnimationFrame(animate);
+      }
+      animate();
+    })();
+
+(function() {
+            var sloganPart1 = [
+                { text: "Trust the ", cls: "light" },
+                { text: "{", cls: "brackets" },
+                { text: " ", cls: "light" },
+                { text: "Code", cls: "code" },
+                { text: " ", cls: "light" },
+                { text: "}", cls: "brackets" },
+                { text: ",", cls: "light" }
+            ];
+            var sloganPart2 = [
+                { text: " ", cls: "light" },
+                { text: "// Not the ", cls: "gray" },
+                { text: "Cult", cls: "cult" },
+                { text: "!", cls: "exclamation" }
+            ];
+            var part1Area = document.getElementById('part1');
+            var part2Area = document.getElementById('part2');
+            var mainCursor = document.getElementById('main-cursor');
+            var anchorMid = document.getElementById('cursor-anchor-mid');
+            var sloganEl = document.getElementById('slogan');
+            var currentDelay = 500;
+
+            function typeSegments(segments, container) {
+                for (var s = 0; s < segments.length; s++) {
+                    var seg = segments[s];
+                    var span = document.createElement('span');
+                    if (seg.cls) span.className = seg.cls;
+                    container.appendChild(span);
+                    var chars = seg.text.split('');
+                    for (var c = 0; c < chars.length; c++) {
+                        var charSpan = document.createElement('span');
+                        charSpan.className = 'char';
+                        charSpan.textContent = chars[c];
+                        span.appendChild(charSpan);
+                        (function(cs, sp, delay) {
+                            setTimeout(function() {
+                                cs.classList.add('visible');
+                                sp.appendChild(mainCursor);
+                            }, delay);
+                        })(charSpan, span, currentDelay);
+                        currentDelay += (chars[c] === ' ' ? 70 : 100);
+                    }
+                }
+            }
+
+            typeSegments(sloganPart1, part1Area);
+            typeSegments(sloganPart2, part2Area);
+
+            var finalDelay = currentDelay;
+            setTimeout(function() {
+                setTimeout(function() {
+                    sloganEl.classList.add('finished');
+                    setTimeout(function() { anchorMid.appendChild(mainCursor); }, 2000);
+                }, 800);
+            }, finalDelay);
+        })();
+
+            (function () {
+      const coin = document.getElementById('headerCoin');
+      function spinCoin() {
+        coin.classList.remove('animate');
+        void coin.offsetWidth;
+        coin.classList.add('animate');
+        setTimeout(() => coin.classList.remove('animate'), 2200);
+      }
+      spinCoin();
+      setInterval(spinCoin, 6500);
+    })();
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 3500);
+    }
+
+        // ================================
+        // COPY TO CLIPBOARD
+        // ================================
+        function copyToClipboard(elementId) {
+            var el = document.getElementById(elementId);
+            if (!el) return;
+            var text = el.textContent || el.innerText;
+            navigator.clipboard.writeText(text).then(function() {
+                showToast('Copied to clipboard!', 'success');
+            }).catch(function() { showToast('Failed to copy', 'error'); });
+        }
+
+        function copyContract() {
+            var text = '0x66c6Fc5E7F99272134a52DF9E88D94eD83E89278';
+            navigator.clipboard.writeText(text).then(function() {
+                showToast('Contract address copied!', 'success');
+            }).catch(function() { showToast('Failed to copy', 'error'); });
+        }
+
+
+        // ================================
+        // TOAST
+        // ================================
+        function showToast(msg, type) {
+            type = type || 'info';
+            var t = document.getElementById('toast');
+            t.textContent = msg;
+            t.className = 'toast ' + type + ' show';
+            setTimeout(function() { t.classList.remove('show'); }, 4000);
+        }
+
+
+        // ================================
+        // LIVE PRICE FROM LP RESERVES
+        // ================================
+        async function loadLiveData() {
+            try {
+                var resp = await fetch(RPC, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        jsonrpc: '2.0',
+                        method: 'eth_call',
+                        params: [{ to: LP_PAIR, data: '0x0902f1ac' }, 'latest'],
+                        id: 1
+                    })
+                });
+                var json = await resp.json();
+                if (json.result && json.result.length >= 130) {
+                    var hex = json.result.slice(2);
+                    var reserve0 = BigInt('0x' + hex.slice(0, 64));
+                    var reserve1 = BigInt('0x' + hex.slice(64, 128));
+                    var price = Number(reserve0 * 10000n / reserve1) / 10000;
+                    var lpDepth = Number(reserve0) / 1e18 * 2;
+
+                    document.getElementById('statPrice').textContent = '$' + price.toFixed(4);
+                    document.getElementById('statLpDepth').textContent = '$' + Math.round(lpDepth).toLocaleString();
+                }
+            } catch (e) {
+                console.error('Failed to load live data:', e);
+                document.getElementById('statPrice').textContent = '--';
+                document.getElementById('statLpDepth').textContent = '--';
+            }
+        }
+
+        loadLiveData();
+        setInterval(loadLiveData, 30000);
+
+    </script>
+</body>
+</html>
