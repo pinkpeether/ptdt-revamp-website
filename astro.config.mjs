@@ -4,6 +4,7 @@ import tailwind from "@astrojs/tailwind";
 import { fileURLToPath, URL } from "node:url";
 
 export default defineConfig({
+  site: process.env.PUBLIC_SITE_URL || "https://ptdt.taxi",
   integrations: [
     react(),
     tailwind({ applyBaseStyles: false }),
