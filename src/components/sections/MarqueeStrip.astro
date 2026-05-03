@@ -1,17 +1,15 @@
 ---
-const items = [
-  "Settlement Protocol","BNB Chain","60% Burned","40% to Stakers",
-  "Ride-Hailing","On-Chain","PTDT Token","Deflationary","9.2/10 Audit",
-  "Women Safety","Pink Taxi Origin","Staking Live","BEP-20","DeFi Infrastructure",
-  "Settlement Protocol","BNB Chain","60% Burned","40% to Stakers",
-  "Ride-Hailing","On-Chain","PTDT Token","Deflationary","9.2/10 Audit",
-  "Women Safety","Pink Taxi Origin","Staking Live","BEP-20","DeFi Infrastructure",
-];
+const items = ["Settlement Protocol","BNB Chain","60% Burned","40% to Stakers","Ride-Hailing","On-Chain","PTDT Token","Deflationary","9.2/10 Audit","Women Safety","Pink Taxi Origin","Staking Live"];
 ---
-<div class="marquee" aria-hidden="true">
+<section class="marquee-wrap" aria-hidden="true">
   <div class="marquee-track">
-    {items.map(item => (
-      <span><i></i>{item}</span>
-    ))}
+    {[...items, ...items].map((item) => <span class="marquee-item">• {item}</span>)}
   </div>
-</div>
+</section>
+
+<style>
+.marquee-wrap { overflow:hidden; background:#120f1a; border-top:1px solid rgba(255,255,255,.06); border-bottom:1px solid rgba(255,255,255,.06); }
+.marquee-track { display:flex; gap:32px; white-space:nowrap; padding:14px 0; width:max-content; animation:marq 28s linear infinite; }
+.marquee-item { color:rgba(255,255,255,.55); font-size:12px; font-weight:700; font-family:var(--font-mono); letter-spacing:.04em; }
+@keyframes marq { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+</style>
