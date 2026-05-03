@@ -1,65 +1,58 @@
 ---
-import "../styles/global.css";
-import Navbar from "@components/ui/Navbar.astro";
-import Footer from "@components/ui/Footer.astro";
-import AuthModal from "@components/islands/AuthModal";
-
 export interface Props {
-  title:       string;
+  title: string;
   description?: string;
-  ogImage?:    string;
+  ogImage?: string;
 }
 
 const {
   title,
-  description = "Peether PTDT — Decentralized Settlement Infrastructure for Global Ride-Hailing on BNB Chain.",
-  ogImage    = "/images/og-default.png",
+  description = "PTDT is the decentralized settlement protocol for global ride-hailing on BNB Chain.",
+  ogImage = "/og-default.png",
 } = Astro.props;
 
-const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const siteBase = Astro.site ?? new URL("https://ptdt.taxi");
+const canonical = new URL(Astro.url.pathname, siteBase).href;
+const ogUrl     = new URL(ogImage, siteBase).href;
 ---
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="canonical" href={canonical} />
-  <title>{title} | Peether PTDT</title>
-  <meta name="description" content={description} />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} — Peether PTDT</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
 
-  <!-- OG -->
-  <meta property="og:type"        content="website" />
-  <meta property="og:url"         content={canonical} />
-  <meta property="og:title"       content={title} />
-  <meta property="og:description" content={description} />
-  <meta property="og:image"       content={ogImage} />
+    <!-- Open Graph -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content={canonical} />
+    <meta property="og:title"       content={`${title} — Peether PTDT`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image"       content={ogUrl} />
 
-  <!-- Twitter -->
-  <meta name="twitter:card"        content="summary_large_image" />
-  <meta name="twitter:title"       content={title} />
-  <meta name="twitter:description" content={description} />
-  <meta name="twitter:image"       content={ogImage} />
+    <!-- Twitter -->
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content={`${title} — Peether PTDT`} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image"       content={ogUrl} />
 
-  <!-- Favicon -->
-  <link rel="icon" href="/favicon.ico" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=IBM+Plex+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
 
-  <!-- Fonts (preconnect) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;600;700&display=swap"
-    rel="stylesheet"
-  />
-</head>
-<body>
-  <!-- Auth Modal Island (renders globally, opens via custom event) -->
-  <AuthModal client:load />
-
-  <Navbar />
-  <main>
-    <slot />
-  </main>
-  <Footer />
-</body>
+    <!-- Styles -->
+    <link rel="stylesheet" href="/src/styles/tokens.css" />
+    <link rel="stylesheet" href="/src/styles/global.css" />
+  </head>
+  <body>
+    <slot name="navbar">
+      <!-- Default navbar injected here -->
+    </slot>
+    <main>
+      <slot />
+    </main>
+    <slot name="footer" />
+  </body>
 </html>
