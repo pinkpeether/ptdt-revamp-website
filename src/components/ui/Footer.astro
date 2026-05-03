@@ -1,91 +1,52 @@
 ---
 const year = new Date().getFullYear();
-const quickLinks = [
-  { href:"/protocol",   label:"Protocol"   },
-  { href:"/tokenomics", label:"Tokenomics" },
-  { href:"/security",   label:"Security"   },
-  { href:"/ecosystem",  label:"Ecosystem"  },
-  { href:"/developers", label:"Developers" },
-  { href:"/legacy",     label:"Legacy"     },
-];
-const appLinks = [
-  { href:"/stake",     label:"Stake PTDT"     },
-  { href:"/buy",       label:"Buy PTDT"       },
-  { href:"/dashboard", label:"Dashboard"      },
-  { href:"/downloads", label:"Downloads"      },
-];
 ---
-
 <footer class="site-footer">
-  <div class="container footer-inner">
-    <div class="footer-top">
-      <!-- Brand -->
-      <div class="footer-brand">
-        <a href="/"><img src="/ptdt-main-logo.png" alt="Peether PTDT" width="148" /></a>
-        <p class="footer-tagline">Decentralized settlement infrastructure for global ride-hailing on BNB Chain.</p>
-        <p class="footer-legal">Pink Taxi Group Ltd. · Company No. 11920005</p>
-      </div>
-
-      <!-- Quick links -->
-      <div class="footer-col">
-        <h4>Protocol</h4>
-        <ul>
-          {quickLinks.map(l => <li><a href={l.href}>{l.label}</a></li>)}
-        </ul>
-      </div>
-
-      <!-- App links -->
-      <div class="footer-col">
-        <h4>Apps</h4>
-        <ul>
-          {appLinks.map(l => <li><a href={l.href}>{l.label}</a></li>)}
-        </ul>
-      </div>
-
-      <!-- Contract -->
-      <div class="footer-col">
-        <h4>On-Chain</h4>
-        <p class="footer-micro">BNB Smart Chain</p>
-        <div class="footer-contract">
-          <span class="footer-addr" id="footer-addr">0x0000…0000</span>
-          <button onclick="navigator.clipboard.writeText(document.getElementById('footer-addr').textContent ?? '')" aria-label="Copy address">⎘</button>
-        </div>
-        <div class="footer-badges">
-          <span class="f-badge green">BNB Chain</span>
-          <span class="f-badge gold">Audited 9.2/10</span>
-          <span class="f-badge purple">Staking Live</span>
-        </div>
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <div class="footer-mark">P</div>
+      <div>
+        <strong>Peether PTDT</strong>
+        <p>Decentralized settlement infrastructure for ride-hailing on BNB Chain.</p>
       </div>
     </div>
-
-    <div class="footer-bottom">
-      <p>© {year} Peether PTDT — Pink Taxi Group Ltd. All rights reserved.</p>
-      <p class="footer-mission">Built for women's safety in mobility. ♥</p>
+    <div class="footer-col">
+      <h4>Protocol</h4>
+      <a href="/protocol">Protocol</a>
+      <a href="/tokenomics">Tokenomics</a>
+      <a href="/security">Security</a>
     </div>
+    <div class="footer-col">
+      <h4>Build</h4>
+      <a href="/developers">Developers</a>
+      <a href="/downloads">Downloads</a>
+      <a href="/ecosystem">Ecosystem</a>
+    </div>
+    <div class="footer-col">
+      <h4>App</h4>
+      <a href="/stake">Stake PTDT</a>
+      <a href="/buy">Buy PTDT</a>
+      <a href="/dashboard">Dashboard</a>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© {year} Peether PTDT.</span>
+    <span>Infrastructure, not an app.</span>
   </div>
 </footer>
 
 <style>
-  .site-footer { background:var(--paper); border-top:1px solid var(--line); padding: var(--space-16) 0 var(--space-8); }
-  .footer-inner { display:flex; flex-direction:column; gap:var(--space-12); }
-  .footer-top { display:grid; grid-template-columns:1.6fr 1fr 1fr 1.2fr; gap:var(--space-10); }
-  .footer-tagline { font-size:14px; color:var(--muted); line-height:1.7; margin:var(--space-4) 0 var(--space-2); max-width:280px; }
-  .footer-legal { font-size:12px; color:var(--muted-2); }
-  .footer-col h4 { font-size:13px; font-weight:800; color:var(--ink); margin-bottom:var(--space-4); letter-spacing:-0.01em; }
-  .footer-col ul { list-style:none; display:flex; flex-direction:column; gap:var(--space-2); }
-  .footer-col a { font-size:14px; color:var(--muted); transition:color 0.2s; }
-  .footer-col a:hover { color:var(--pink); }
-  .footer-micro { font-size:11px; font-family:var(--font-mono); color:var(--muted-2); margin-bottom:var(--space-3); }
-  .footer-contract { display:flex; align-items:center; gap:8px; background:var(--ink-2); border-radius:var(--radius-lg); padding:10px 14px; margin-bottom:var(--space-3); }
-  .footer-addr { font-family:var(--font-mono); font-size:11px; color:rgba(255,255,255,0.65); flex:1; }
-  .footer-contract button { color:rgba(255,255,255,0.4); font-size:14px; flex-shrink:0; }
-  .footer-badges { display:flex; flex-wrap:wrap; gap:6px; }
-  .f-badge { font-size:10px; font-weight:700; padding:4px 10px; border-radius:var(--radius-full); font-family:var(--font-mono); }
-  .f-badge.green  { background:var(--green-soft);  color:var(--green-2);  border:1px solid var(--green-line);  }
-  .f-badge.gold   { background:rgba(240,185,11,0.1); color:#a07a00; border:1px solid rgba(240,185,11,0.2); }
-  .f-badge.purple { background:var(--purple-soft); color:var(--purple);  border:1px solid rgba(128,87,215,0.2); }
-  .footer-bottom { border-top:1px solid var(--line); padding-top:var(--space-8); text-align:center; font-size:13px; color:var(--muted); }
-  .footer-mission { margin-top:4px; color:var(--purple); font-weight:600; font-size:13px; }
-  @media (max-width:900px)  { .footer-top { grid-template-columns:1fr 1fr; } }
-  @media (max-width:640px)  { .footer-top { grid-template-columns:1fr; } }
+.site-footer { background:#0c0c14; color:#fff; padding:56px 0 24px; }
+.footer-grid { display:grid; grid-template-columns:1.3fr 1fr 1fr 1fr; gap:28px; padding-bottom:28px; border-bottom:1px solid rgba(255,255,255,.08); }
+.footer-brand { display:flex; gap:14px; align-items:flex-start; }
+.footer-mark { width:46px; height:46px; border-radius:14px; display:grid; place-items:center; background:linear-gradient(135deg,var(--pink),#ff58b4); color:#fff; font-weight:900; }
+.footer-brand strong { display:block; font-size:16px; margin-bottom:6px; }
+.footer-brand p { color:rgba(255,255,255,.45); line-height:1.7; font-size:14px; max-width:320px; }
+.footer-col { display:flex; flex-direction:column; gap:10px; }
+.footer-col h4 { font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:rgba(255,255,255,.35); font-family:var(--font-mono); margin-bottom:4px; }
+.footer-col a { color:rgba(255,255,255,.75); font-size:14px; }
+.footer-col a:hover { color:var(--pink); }
+.footer-bottom { display:flex; justify-content:space-between; gap:12px; padding-top:18px; color:rgba(255,255,255,.35); font-size:12px; font-family:var(--font-mono); }
+@media (max-width: 900px) { .footer-grid { grid-template-columns:1fr 1fr; } .footer-bottom { flex-direction:column; } }
+@media (max-width: 560px) { .footer-grid { grid-template-columns:1fr; } }
 </style>
