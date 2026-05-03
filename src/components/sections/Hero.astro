@@ -1,234 +1,75 @@
 ---
 ---
 <section class="hero" id="hero">
-  <div class="hero-bg" role="presentation"></div>
-  <div class="hero-overlay" role="presentation"></div>
-
-  <!-- City map visual -->
-  <div class="hero-visual-wrap">
-    <div class="hero-map-card">
-      <!-- Grid -->
-      <div class="hmm-grid"></div>
-      <!-- Inline SVG spark route -->
-      <svg class="hmm-svg" viewBox="0 0 330 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M18 155 C 52 155 52 120 82 120 C 112 120 118 95 148 85 C 178 75 198 95 220 85 C 242 75 268 58 305 58"
-          stroke="#fb0b8c" stroke-width="2.2" stroke-linecap="round"
-          stroke-dasharray="420" stroke-dashoffset="420"
-          style="animation: spark-draw 4.5s cubic-bezier(0.16,1,0.3,1) infinite"
-        />
-        <circle cx="82"  cy="120" r="4.5" fill="#fb0b8c" opacity="0.9"/>
-        <circle cx="148" cy="85"  r="4.5" fill="#2ae97b" opacity="0.9"/>
-        <circle cx="220" cy="85"  r="4.5" fill="#b993ff" opacity="0.9"/>
-        <circle cx="305" cy="58"  r="6.5" fill="#fb0b8c" opacity="1"
-          style="animation: spark-pop 2.2s ease-in-out infinite"/>
-      </svg>
-      <!-- Nodes -->
-      <div class="node node-pink"   style="top:30%; left:25%"></div>
-      <div class="node node-green"  style="top:43%; left:45%"></div>
-      <div class="node node-purple" style="top:43%; left:67%"></div>
-      <div class="node node-hub"    style="top:29%; left:93%"></div>
-      <!-- HUB label -->
-      <div class="hub-label">PTDT</div>
-    </div>
-  </div>
-
-  <!-- Hero copy -->
-  <div class="hero-inner container">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="container hero-inner">
     <div class="hero-copy">
-      <!-- Eyebrow -->
-      <div class="eyebrow">
-        <span class="pulse-dot"></span>
-        Settlement Protocol · BNB Chain · Live
-      </div>
-
-      <!-- Headline -->
-      <h1 class="hero-h1">
-        The <span class="accent-pink">Visa</span> for<br/>
-        <span class="accent-green">Ride-Hailing.</span>
-      </h1>
-
-      <!-- Lead -->
-      <p class="hero-lead">
-        PTDT is <strong>decentralized settlement infrastructure</strong> for
-        global ride-hailing. Any platform. Any driver. Every fare settled on-chain.
-      </p>
-
-      <!-- Access rail -->
+      <div class="eyebrow"><span class="pulse-dot"></span> Settlement Protocol · BNB Chain · Live</div>
+      <h1 class="hero-h1">The <span class="accent-pink">Visa</span> for<br /><span class="accent-green">Ride-Hailing.</span></h1>
+      <p class="hero-lead">PTDT is decentralized settlement infrastructure for global ride-hailing. Any platform. Any driver. Every fare settled on-chain.</p>
       <div class="access-rail">
         <a href="/developers" class="access-link">⚙ Settlement API</a>
-        <a href="/security"   class="access-link">🛡 Audit 9.2/10</a>
-        <a href="https://github.com/pinkpeether" target="_blank" rel="noopener" class="access-link">⌥ GitHub</a>
-        <a href="/downloads"  class="access-link">↓ Downloads</a>
+        <a href="/security" class="access-link">🛡 Audit 9.2/10</a>
+        <a href="/downloads" class="access-link">↓ Downloads</a>
       </div>
-
-      <!-- CTAs -->
       <div class="hero-cta">
-        <a href="/stake"    class="btn btn-primary">Stake PTDT</a>
-        <a href="/protocol" class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,0.2);">
-          Explore Protocol
-        </a>
+        <a href="/stake" class="btn btn-primary">Stake PTDT</a>
+        <a href="/protocol" class="btn btn-ghost hero-ghost">Explore Protocol</a>
       </div>
-
-      <!-- Stats -->
       <div class="hero-stats">
-        <div class="hero-stat">
-          <div class="hero-stat-val">100<span>K</span></div>
-          <div class="hero-stat-label">Hard Cap</div>
-        </div>
-        <div class="hero-stat-divider"></div>
-        <div class="hero-stat">
-          <div class="hero-stat-val">60<span>%</span></div>
-          <div class="hero-stat-label">Fee Burned</div>
-        </div>
-        <div class="hero-stat-divider"></div>
-        <div class="hero-stat">
-          <div class="hero-stat-val">9.2<span>/10</span></div>
-          <div class="hero-stat-label">Audit Score</div>
-        </div>
+        <div><div class="hero-stat-val">100<span>K</span></div><div class="hero-stat-label">Hard Cap</div></div>
+        <div><div class="hero-stat-val">60<span>%</span></div><div class="hero-stat-label">Fee Burned</div></div>
+        <div><div class="hero-stat-val">9.2<span>/10</span></div><div class="hero-stat-label">Audit Score</div></div>
+      </div>
+    </div>
+    <div class="hero-visual-wrap" aria-hidden="true">
+      <div class="hero-map-card">
+        <div class="hmm-grid"></div>
+        <svg class="hmm-svg" viewBox="0 0 330 200" fill="none">
+          <path d="M18 155 C 52 155 52 120 82 120 C 112 120 118 95 148 85 C 178 75 198 95 220 85 C 242 75 268 58 305 58" stroke="#fb0b8c" stroke-width="2.2" stroke-linecap="round" />
+          <circle cx="82" cy="120" r="4.5" fill="#fb0b8c" />
+          <circle cx="148" cy="85" r="4.5" fill="#2ae97b" />
+          <circle cx="220" cy="85" r="4.5" fill="#b993ff" />
+          <circle cx="305" cy="58" r="6.5" fill="#fb0b8c" />
+        </svg>
+        <div class="node node-pink" style="top:30%; left:25%"></div>
+        <div class="node node-green" style="top:43%; left:45%"></div>
+        <div class="node node-purple" style="top:43%; left:67%"></div>
+        <div class="node node-hub" style="top:29%; left:93%"></div>
+        <div class="hub-label">PTDT</div>
       </div>
     </div>
   </div>
 </section>
 
 <style>
-  .hero {
-    position: relative;
-    min-height: 100vh;
-    background: var(--ink);
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    padding: var(--space-16) 0;
-  }
-  .hero-bg {
-    position: absolute; inset: 0;
-    background:
-      radial-gradient(ellipse 80% 60% at 60% 40%, rgba(251,11,140,0.12) 0%, transparent 60%),
-      radial-gradient(ellipse 50% 50% at 80% 80%, rgba(128,87,215,0.10) 0%, transparent 55%),
-      radial-gradient(ellipse 60% 40% at 20% 60%, rgba(42,233,123,0.06) 0%, transparent 50%),
-      #101018;
-  }
-  .hero-overlay { position: absolute; inset: 0; background: rgba(16,16,24,0.35); }
-
-  /* Map card */
-  .hero-visual-wrap {
-    position: absolute;
-    right: clamp(-60px, -4vw, 0px);
-    top: 50%;
-    transform: translateY(-50%);
-    width: clamp(340px, 42vw, 600px);
-    padding-right: 40px;
-  }
-  .hero-map-card {
-    position: relative;
-    width: 100%; aspect-ratio: 330/200;
-    background: #0d0d1a;
-    border-radius: 20px;
-    border: 1px solid rgba(251,11,140,0.2);
-    overflow: hidden;
-    box-shadow: 0 0 80px rgba(251,11,140,0.12), 0 40px 80px rgba(0,0,0,0.4);
-  }
-  .hmm-grid {
-    position: absolute; inset: 0;
-    background-image:
-      linear-gradient(rgba(251,11,140,0.07) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(251,11,140,0.07) 1px, transparent 1px);
-    background-size: 12.5% 12.5%;
-  }
-  .hmm-svg {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-  }
-  .node {
-    position: absolute; border-radius: 50%;
-    transform: translate(-50%, -50%);
-    animation: node-pulse 3s ease-in-out infinite;
-  }
-  .node-pink   { width:10px; height:10px; background:#fb0b8c; box-shadow:0 0 14px #fb0b8c; }
-  .node-green  { width:10px; height:10px; background:#2ae97b; box-shadow:0 0 14px #2ae97b; animation-delay:.6s; }
-  .node-purple { width:10px; height:10px; background:#b993ff; box-shadow:0 0 14px #b993ff; animation-delay:1.2s; }
-  .node-hub    { width:16px; height:16px; background:#fb0b8c; box-shadow:0 0 24px #fb0b8c; animation-delay:.3s; }
-  .hub-label {
-    position: absolute; right: 6%; top: 22%;
-    font-size: 9px; font-weight: 900; color: #fb0b8c;
-    font-family: var(--font-mono);
-    text-shadow: 0 0 12px rgba(251,11,140,0.8);
-    letter-spacing: .08em;
-    transform: translateY(18px);
-  }
-
-  /* Copy */
-  .hero-inner { position: relative; z-index: 2; }
-  .hero-copy  { max-width: 560px; display: flex; flex-direction: column; gap: var(--space-6); }
-
-  .eyebrow {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 7px 16px; border-radius: var(--radius-full);
-    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
-    font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.6);
-    font-family: var(--font-mono); width: fit-content;
-  }
-
-  .hero-h1 {
-    font-size: clamp(3rem, 6vw, 5.5rem);
-    font-weight: 900; letter-spacing: -0.05em; line-height: 1;
-    color: #fff;
-  }
-  .accent-pink  { color: var(--pink); }
-  .accent-green { color: var(--green-light); }
-
-  .hero-lead {
-    font-size: clamp(1rem, 1.5vw, 1.15rem);
-    color: rgba(255,255,255,0.5); line-height: 1.75; max-width: 440px;
-  }
-  .hero-lead strong { color: rgba(255,255,255,0.8); font-weight: 700; }
-
-  .access-rail {
-    display: flex; flex-wrap: wrap; gap: 8px;
-  }
-  .access-link {
-    padding: 6px 14px; border-radius: var(--radius-full);
-    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
-    font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.55);
-    transition: border-color .2s, color .2s, background .2s;
-  }
-  .access-link:hover { border-color: var(--pink-line); color: var(--pink); background: rgba(251,11,140,0.08); }
-
-  .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
-
-  .hero-stats {
-    display: flex; align-items: center; gap: var(--space-6);
-    padding-top: var(--space-4);
-    border-top: 1px solid rgba(255,255,255,0.08);
-  }
-  .hero-stat-val {
-    font-size: 1.8rem; font-weight: 900; color: #fff; letter-spacing: -0.05em;
-    line-height: 1;
-  }
-  .hero-stat-val span { font-size: 1rem; color: var(--pink); }
-  .hero-stat-label { font-size: 11px; color: rgba(255,255,255,0.35); font-family: var(--font-mono); margin-top: 4px; }
-  .hero-stat-divider { width: 1px; height: 36px; background: rgba(255,255,255,0.1); }
-
-  /* Animations */
-  @keyframes spark-draw {
-    0%   { stroke-dashoffset: 420; opacity: 0; }
-    10%  { opacity: 1; }
-    70%  { stroke-dashoffset: 0;   opacity: 1; }
-    90%  { opacity: 0; }
-    100% { stroke-dashoffset: 420; opacity: 0; }
-  }
-  @keyframes spark-pop {
-    0%, 100% { r: 6.5; opacity: 1; }
-    50%       { r: 10;  opacity: 0.6; }
-  }
-  @keyframes node-pulse {
-    0%, 100% { transform: translate(-50%,-50%) scale(1);   opacity: 0.8; }
-    50%       { transform: translate(-50%,-50%) scale(1.5); opacity: 1;   }
-  }
-
-  @media (max-width: 900px) {
-    .hero-visual-wrap { display: none; }
-    .hero { min-height: auto; padding: 80px 0 60px; }
-  }
+.hero { position: relative; min-height: 100vh; background: var(--ink); display: flex; align-items: center; overflow: hidden; }
+.hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(251,11,140,.12) 0%, transparent 60%), radial-gradient(ellipse 50% 50% at 80% 80%, rgba(128,87,215,.10) 0%, transparent 55%), radial-gradient(ellipse 60% 40% at 20% 60%, rgba(42,233,123,.06) 0%, transparent 50%), #101018; }
+.hero-overlay { position:absolute; inset:0; background:rgba(16,16,24,.35); }
+.hero-inner { position: relative; z-index: 2; display:grid; grid-template-columns: 1.05fr .95fr; gap: 40px; align-items:center; min-height:100vh; padding-top: 110px; padding-bottom: 70px; }
+.hero-copy { display:flex; flex-direction:column; gap: 24px; }
+.eyebrow { display:inline-flex; align-items:center; gap:8px; width:fit-content; padding:7px 16px; border-radius:var(--radius-full); background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.1); font-size:12px; font-weight:700; color:rgba(255,255,255,.6); font-family:var(--font-mono); }
+.hero-h1 { font-size: clamp(3rem, 6vw, 5.5rem); font-weight:900; letter-spacing:-.05em; line-height:1; color:#fff; }
+.accent-pink { color: var(--pink); }
+.accent-green { color: var(--green-light); }
+.hero-lead { font-size: clamp(1rem, 1.5vw, 1.15rem); color: rgba(255,255,255,.55); line-height:1.75; max-width: 520px; }
+.access-rail, .hero-cta { display:flex; flex-wrap:wrap; gap:12px; }
+.access-link { padding:6px 14px; border-radius:999px; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.1); font-size:12px; font-weight:700; color:rgba(255,255,255,.6); }
+.hero-ghost { color:#fff; border-color:rgba(255,255,255,.2); }
+.hero-stats { display:flex; gap:28px; padding-top:20px; border-top:1px solid rgba(255,255,255,.08); flex-wrap:wrap; }
+.hero-stat-val { font-size:1.8rem; font-weight:900; color:#fff; letter-spacing:-.05em; }
+.hero-stat-val span { font-size:1rem; color:var(--pink); }
+.hero-stat-label { font-size:11px; color:rgba(255,255,255,.35); font-family:var(--font-mono); margin-top:4px; }
+.hero-visual-wrap { display:flex; justify-content:flex-end; }
+.hero-map-card { position:relative; width:min(100%, 560px); aspect-ratio:330/200; background:#0d0d1a; border-radius:20px; border:1px solid rgba(251,11,140,.2); overflow:hidden; box-shadow:0 0 80px rgba(251,11,140,.12), 0 40px 80px rgba(0,0,0,.4); }
+.hmm-grid { position:absolute; inset:0; background-image: linear-gradient(rgba(251,11,140,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(251,11,140,.07) 1px, transparent 1px); background-size:12.5% 12.5%; }
+.hmm-svg { position:absolute; inset:0; width:100%; height:100%; }
+.node { position:absolute; border-radius:50%; transform:translate(-50%, -50%); }
+.node-pink { width:10px; height:10px; background:#fb0b8c; box-shadow:0 0 14px #fb0b8c; }
+.node-green { width:10px; height:10px; background:#2ae97b; box-shadow:0 0 14px #2ae97b; }
+.node-purple { width:10px; height:10px; background:#b993ff; box-shadow:0 0 14px #b993ff; }
+.node-hub { width:16px; height:16px; background:#fb0b8c; box-shadow:0 0 24px #fb0b8c; }
+.hub-label { position:absolute; right:6%; top:22%; font-size:9px; font-weight:900; color:#fb0b8c; font-family:var(--font-mono); letter-spacing:.08em; transform:translateY(18px); }
+@media (max-width: 980px) { .hero-inner { grid-template-columns:1fr; min-height:auto; } .hero-visual-wrap { order:-1; justify-content:center; } .hero { padding:0; } }
 </style>
