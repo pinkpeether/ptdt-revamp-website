@@ -2,122 +2,60 @@
 import SectionTag from "@components/ui/SectionTag.astro";
 import SettlementApiDrawer from "@components/islands/SettlementApiDrawer";
 ---
-
 <section class="section why-section" id="why-peether">
   <div class="container">
     <div class="why-grid">
-      <!-- LEFT: Image -->
       <div class="why-image-wrap">
         <img src="/image-to-use.png" alt="Peether PTDT — decentralized ride-hailing settlement" loading="lazy" />
         <div class="why-image-badge">
-          <div class="badge-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            </svg>
-          </div>
+          <div class="badge-icon">🛡</div>
           <div>
             <div class="badge-val">9.2 / 10</div>
             <div class="badge-lbl">Smart Contract Audit Score</div>
           </div>
         </div>
       </div>
-
-      <!-- RIGHT: Copy -->
       <div class="why-copy">
         <SectionTag color="pink">Why Peether</SectionTag>
-        <h2 class="section-h2">
-          A Mobility Network<br/><em>Built for Web3</em>
-        </h2>
-        <p class="section-sub">
-          PTDT is infrastructure — not an app. Any ride-hailing platform can plug into
-          the protocol and settle fares on-chain with full transparency and zero
-          custodial risk.
-        </p>
-
+        <h2 class="section-h2">A Mobility Network<br /><em>Built for Web3</em></h2>
+        <p class="section-sub">PTDT is infrastructure — not an app. Any ride-hailing platform can plug into the protocol and settle fares on-chain with full transparency and zero custodial risk.</p>
         <ul class="check-list">
-          <li>
-            <span class="check-icon">
-              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2">
-                <polyline points="2 6 5 9 10 3"/>
-              </svg>
-            </span>
-            Ride fares settled on BNB Chain — transparent, auditable, permissionless.
-          </li>
-          <li>
-            <span class="check-icon">
-              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2">
-                <polyline points="2 6 5 9 10 3"/>
-              </svg>
-            </span>
-            60% of every protocol fee is permanently burned — deflationary by design.
-          </li>
-          <li>
-            <span class="check-icon">
-              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2">
-                <polyline points="2 6 5 9 10 3"/>
-              </svg>
-            </span>
-            40% flows to stakers — real yield from real settlement volume.
-          </li>
-          <li>
-            <span class="check-icon">
-              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2">
-                <polyline points="2 6 5 9 10 3"/>
-              </svg>
-            </span>
-            Women-safety origin story — Pink Taxi Group, est. 2019, UK registered.
-          </li>
+          <li><span class="check-icon">✓</span> Ride fares settled on BNB Chain — transparent, auditable, permissionless.</li>
+          <li><span class="check-icon">✓</span> 60% of every protocol fee is permanently burned — deflationary by design.</li>
+          <li><span class="check-icon">✓</span> 40% flows to stakers — real yield from real settlement volume.</li>
+          <li><span class="check-icon">✓</span> Women-safety origin story — Pink Taxi Group, est. 2019, UK registered.</li>
         </ul>
-
-        <!-- Contract box -->
         <div class="contract-box">
           <div style="flex:1">
             <div class="contract-label">PTDT Token · BNB Smart Chain</div>
-            <div class="contract-addr" id="why-contract-addr">0x0000000000000000000000000000000000000000</div>
+            <div class="contract-addr" id="why-contract-addr">0x66c6Fc5E7F99272134a52DF9E88D94eD83E89278</div>
           </div>
           <span class="contract-badge">BEP-20</span>
-          <button
-            onclick="navigator.clipboard.writeText(document.getElementById('why-contract-addr').textContent ?? '')"
-            style="color:rgba(255,255,255,0.4);font-size:16px;padding:4px;flex-shrink:0;"
-            aria-label="Copy contract address"
-          >⎘</button>
+          <button onclick="navigator.clipboard.writeText(document.getElementById('why-contract-addr').textContent ?? '')" aria-label="Copy contract address">⎘</button>
         </div>
-
-        <!-- CTAs -->
         <div class="why-cta-row">
           <a href="/buy" class="btn btn-primary">Buy PTDT</a>
-
-          <!--
-            Settlement API button:
-            Fires a custom event → SettlementApiDrawer island catches it and
-            opens the in-page drawer. NO new page / window.open().
-          -->
-          <button
-            class="btn btn-ghost"
-            onclick="window.dispatchEvent(new CustomEvent('ptdt:open-settlement-api'))"
-            aria-label="Open Settlement API reference"
-          >
-            Settlement API
-          </button>
+          <button class="btn btn-ghost" onclick="window.dispatchEvent(new CustomEvent('ptdt:open-settlement-api'))">Settlement API</button>
         </div>
       </div>
     </div>
   </div>
 </section>
-
-<!-- Settlement API Drawer island — rendered once globally -->
 <SettlementApiDrawer client:load />
 
 <style>
-  .why-section { background: var(--paper); }
-  .why-grid {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 72px; align-items: center;
-  }
-  .why-copy { display: flex; flex-direction: column; gap: 0; }
-  .why-cta-row { display: flex; gap: 12px; margin-top: var(--space-8); flex-wrap: wrap; }
-  @media (max-width: 860px) {
-    .why-grid { grid-template-columns: 1fr; gap: var(--space-10); }
-    .why-image-wrap { order: -1; }
-  }
+.why-section { background: var(--paper); }
+.why-grid { display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:center; }
+.why-image-wrap { position:relative; border-radius:28px; overflow:hidden; background:#fff; box-shadow:var(--shadow-lg); min-height:460px; }
+.why-image-wrap img { width:100%; height:100%; object-fit:cover; }
+.why-image-badge { position:absolute; left:20px; bottom:20px; display:flex; gap:12px; align-items:center; background:rgba(255,255,255,.9); backdrop-filter:blur(12px); border:1px solid rgba(16,16,24,.08); padding:12px 16px; border-radius:18px; box-shadow:var(--shadow-md); }
+.badge-icon { width:42px; height:42px; border-radius:14px; display:grid; place-items:center; background:var(--green-soft); color:var(--green); font-size:20px; }
+.badge-val { font-size:18px; font-weight:900; color:var(--ink); }
+.badge-lbl { font-size:11px; color:var(--muted); }
+.why-copy { display:flex; flex-direction:column; gap:18px; }
+.check-list { list-style:none; display:flex; flex-direction:column; gap:12px; }
+.check-list li { display:flex; gap:12px; color:var(--muted); line-height:1.7; }
+.check-icon { width:22px; height:22px; border-radius:999px; display:grid; place-items:center; background:var(--pink-soft); color:var(--pink); font-size:12px; font-weight:900; flex-shrink:0; margin-top:2px; }
+.why-cta-row { display:flex; gap:12px; flex-wrap:wrap; }
+@media (max-width: 920px) { .why-grid { grid-template-columns:1fr; gap:32px; } .why-image-wrap { order:-1; min-height:320px; } }
 </style>
