@@ -1,40 +1,45 @@
 ---
 import SectionTag from "@components/ui/SectionTag.astro";
 const items = [
-  { status:"done",   q:"Q1 2024", title:"Protocol Design & Whitepaper", desc:"Core settlement architecture, tokenomics model, and initial whitepaper published." },
-  { status:"done",   q:"Q3 2024", title:"Smart Contract Audit",          desc:"Independent security audit completed. Score: 9.2/10." },
-  { status:"active", q:"Q1 2025", title:"BNB Chain Mainnet Launch",       desc:"PTDT token live on BNB Smart Chain. Staking protocol activated." },
-  { status:"next",   q:"Q3 2025", title:"Settlement API v1",              desc:"REST API for ride-hailing platform integrations. Developer docs released." },
-  { status:"next",   q:"Q1 2026", title:"Explorer & Cockpit",             desc:"On-chain settlement explorer and analytics cockpit go live." },
-  { status:"next",   q:"Q3 2026", title:"Global Platform Integrations",   desc:"First external ride-hailing platforms integrate the PTDT settlement layer." },
+  { status:"done", q:"Q1 2024", title:"Protocol Design & Whitepaper", desc:"Core settlement architecture, tokenomics model, and initial whitepaper published." },
+  { status:"done", q:"Q3 2024", title:"Smart Contract Audit", desc:"Independent security audit completed. Score: 9.2/10." },
+  { status:"active", q:"Q1 2025", title:"BNB Chain Mainnet Launch", desc:"PTDT token live on BNB Smart Chain. Staking protocol activated." },
+  { status:"next", q:"Q3 2025", title:"Settlement API v1", desc:"REST API for ride-hailing platform integrations. Developer docs released." },
+  { status:"next", q:"Q1 2026", title:"Explorer & Cockpit", desc:"On-chain settlement explorer and analytics cockpit go live." },
+  { status:"next", q:"Q3 2026", title:"Global Platform Integrations", desc:"First external ride-hailing platforms integrate the PTDT settlement layer." },
 ];
 ---
 <section class="section roadmap-section" id="roadmap">
-  <div class="container">
-    <div class="roadmap-grid">
-      <div>
-        <SectionTag color="purple">Roadmap</SectionTag>
-        <h2 class="section-h2" style="margin-top:var(--space-4)">
-          Building the<br/><em>Settlement Layer</em>
-        </h2>
-        <p class="section-sub">Infrastructure takes time to build right. Here's where we are.</p>
-      </div>
-      <div class="timeline">
-        {items.map(item => (
-          <div class={`tl-item tl-${item.status}`}>
-            <div class="tl-dot"></div>
-            <div class="tl-status">
-              {item.status === "done" ? "✓ Complete" : item.status === "active" ? "⦿ In Progress" : `◌ ${item.q}`}
-            </div>
-            <div class="tl-title">{item.title}</div>
-            <div class="tl-desc">{item.desc}</div>
-          </div>
-        ))}
-      </div>
+  <div class="container roadmap-grid">
+    <div class="roadmap-copy">
+      <SectionTag color="purple">Roadmap</SectionTag>
+      <h2 class="section-h2 roadmap-title">Building the<br /><em>Settlement Layer</em></h2>
+      <p class="section-sub">Infrastructure takes time to build right. Here's where we are.</p>
+    </div>
+    <div class="timeline">
+      {items.map((item) => (
+        <article class={`tl-item tl-${item.status}`}>
+          <div class="tl-dot"></div>
+          <div class="tl-status">{item.status === "done" ? "✓ Complete" : item.status === "active" ? "⦿ In Progress" : `◌ ${item.q}`}</div>
+          <div class="tl-title">{item.title}</div>
+          <div class="tl-desc">{item.desc}</div>
+        </article>
+      ))}
     </div>
   </div>
 </section>
 
 <style>
-  .roadmap-section { background: #fff; }
+.roadmap-section { background:#fff; }
+.roadmap-grid { display:grid; grid-template-columns: .9fr 1.1fr; gap: 64px; align-items:start; }
+.roadmap-title { margin-top:16px; }
+.timeline { padding-top: 8px; }
+.tl-item { border-left:2px solid rgba(16,16,24,.1); padding-left:20px; margin-bottom:28px; position:relative; }
+.tl-dot { position:absolute; left:-7px; top:4px; width:12px; height:12px; border-radius:50%; background:var(--pink); border:2px solid #fff; box-shadow:0 0 0 2px rgba(251,11,140,.12); }
+.tl-status { font-size:11px; font-weight:800; font-family:var(--font-mono); color:var(--muted-2); margin-bottom:6px; }
+.tl-item.tl-done .tl-status { color:var(--green-2); } .tl-item.tl-active .tl-status { color:var(--pink); }
+.tl-item.tl-done .tl-dot { background:var(--green); box-shadow:0 0 0 2px rgba(0,167,71,.12); }
+.tl-title { font-size:16px; font-weight:900; color:var(--ink); margin-bottom:6px; }
+.tl-desc { font-size:13px; color:var(--muted); line-height:1.7; }
+@media (max-width: 900px) { .roadmap-grid { grid-template-columns:1fr; gap:32px; } }
 </style>
