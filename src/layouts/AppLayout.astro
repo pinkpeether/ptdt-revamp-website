@@ -4,6 +4,8 @@ export interface Props {
   description?: string;
 }
 
+import "../styles/global.css";
+
 const { title, description = "PTDT Protocol dApp" } = Astro.props;
 const siteBase  = Astro.site ?? new URL("https://ptdt.taxi");
 const canonical = new URL(Astro.url.pathname, siteBase).href;
@@ -19,17 +21,15 @@ const canonical = new URL(Astro.url.pathname, siteBase).href;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,700;0,800;0,900;1,900&family=IBM+Plex+Mono:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,700;0,800;0,900&family=IBM+Plex+Mono:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
   </head>
-  <body>
+  <body class="app-body">
     <slot />
   </body>
 </html>
 
 <style is:global>
-  @import "/src/styles/tokens.css";
-  @import "/src/styles/global.css";
-  body { background: #0A0A0F; color: #fff; min-height: 100vh; }
+  .app-body { background: #0A0A0F; color: #fff; min-height: 100vh; }
 </style>
