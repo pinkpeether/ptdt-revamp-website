@@ -5,13 +5,16 @@ export interface Props {
   ogImage?: string;
 }
 
+import "@styles/tokens.css";
+import "@styles/global.css";
+
 const {
   title,
   description = "PTDT is the decentralized settlement protocol for global ride-hailing on BNB Chain.",
   ogImage = "/og-default.png",
 } = Astro.props;
 
-const siteBase = Astro.site ?? new URL("https://ptdt.taxi");
+const siteBase  = Astro.site ?? new URL("https://ptdt.taxi");
 const canonical = new URL(Astro.url.pathname, siteBase).href;
 const ogUrl     = new URL(ogImage, siteBase).href;
 ---
@@ -37,22 +40,13 @@ const ogUrl     = new URL(ogImage, siteBase).href;
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image"       content={ogUrl} />
 
-    <!-- Fonts -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=IBM+Plex+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="/src/styles/tokens.css" />
-    <link rel="stylesheet" href="/src/styles/global.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900;1,14..32,900&family=IBM+Plex+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <slot name="navbar">
-      <!-- Default navbar injected here -->
-    </slot>
-    <main>
-      <slot />
-    </main>
-    <slot name="footer" />
+    <slot name="before-body" />
+    <slot />
   </body>
 </html>
