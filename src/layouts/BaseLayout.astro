@@ -5,8 +5,9 @@ export interface Props {
   ogImage?: string;
 }
 
-// ✅ Correct Astro CSS loading: relative import in frontmatter
 import "../styles/global.css";
+import Navbar from "@components/ui/Navbar.astro";
+import Footer from "@components/ui/Footer.astro";
 
 const {
   title,
@@ -14,9 +15,9 @@ const {
   ogImage = "/og-default.png",
 } = Astro.props;
 
-const siteBase  = Astro.site ?? new URL("https://ptdt.taxi");
+const siteBase = Astro.site ?? new URL("https://ptdt.taxi");
 const canonical = new URL(Astro.url.pathname, siteBase).href;
-const ogUrl     = new URL(ogImage, siteBase).href;
+const ogUrl = new URL(ogImage, siteBase).href;
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -26,29 +27,24 @@ const ogUrl     = new URL(ogImage, siteBase).href;
     <title>{title} — Peether PTDT</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-
-    <!-- Open Graph -->
-    <meta property="og:type"        content="website" />
-    <meta property="og:url"         content={canonical} />
-    <meta property="og:title"       content={`${title} — Peether PTDT`} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={`${title} — Peether PTDT`} />
     <meta property="og:description" content={description} />
-    <meta property="og:image"       content={ogUrl} />
-
-    <!-- Twitter -->
-    <meta name="twitter:card"        content="summary_large_image" />
-    <meta name="twitter:title"       content={`${title} — Peether PTDT`} />
+    <meta property="og:image" content={ogUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${title} — Peether PTDT`} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image"       content={ogUrl} />
-
-    <!-- Google Fonts -->
+    <meta name="twitter:image" content={ogUrl} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,900&family=IBM+Plex+Mono:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <slot />
+    <Navbar />
+    <main>
+      <slot />
+    </main>
+    <Footer />
   </body>
 </html>
