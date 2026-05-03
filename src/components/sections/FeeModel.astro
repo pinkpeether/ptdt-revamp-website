@@ -1,56 +1,46 @@
 ---
 import SectionTag from "@components/ui/SectionTag.astro";
 ---
-<section class="section section-dark fee-section" id="fee-model">
+<section class="section fee-section" id="fee-model">
   <div class="container">
-    <div style="text-align:center; margin-bottom: var(--space-12)">
+    <div class="fee-head">
       <SectionTag color="pink">Protocol Fee Model</SectionTag>
-      <h2 class="section-h2" style="color:#fff; margin-top:var(--space-4)">
-        Every Fee Matters
-      </h2>
-      <p class="section-sub" style="margin:var(--space-3) auto 0;text-align:center">
-        PTDT's fee model is built for long-term deflation and staker rewards.
-      </p>
+      <h2 class="section-h2 fee-title">Every Fee Matters</h2>
+      <p class="section-sub fee-sub">PTDT's fee model is built for long-term deflation and staker rewards.</p>
     </div>
-
     <div class="fee-split">
       <div class="fee-half burn">
         <div class="fee-pct">60%</div>
-        <h3 class="fee-title">Permanently Burned</h3>
-        <p class="fee-desc">
-          60% of every protocol fee is sent to the burn address — permanently
-          reducing PTDT supply with every settlement.
-        </p>
-        <div class="fee-pills" style="margin-top:20px">
-          <span class="fee-pill pink">Deflationary</span>
-          <span class="fee-pill pink">Auto-Burn</span>
-          <span class="fee-pill pink">On-Chain Verified</span>
-        </div>
+        <h3>Permanently Burned</h3>
+        <p>60% of every protocol fee is sent to the burn address — permanently reducing PTDT supply with every settlement.</p>
+        <div class="fee-pills"><span class="fee-pill pink">Deflationary</span><span class="fee-pill pink">Auto-Burn</span><span class="fee-pill pink">On-Chain Verified</span></div>
       </div>
       <div class="fee-half stake">
         <div class="fee-pct">40%</div>
-        <h3 class="fee-title">To Stakers</h3>
-        <p class="fee-desc">
-          40% flows to active stakers as real protocol yield. Bronze, Silver,
-          and Gold tiers earn 12%, 15%, and 18% APY respectively.
-        </p>
-        <div class="fee-pills" style="margin-top:20px">
-          <span class="fee-pill green">Real Yield</span>
-          <span class="fee-pill green">12–18% APY</span>
-          <span class="fee-pill green">Non-Inflationary</span>
-        </div>
+        <h3>To Stakers</h3>
+        <p>40% flows to active stakers as real protocol yield. Bronze, Silver, and Gold tiers earn 12%, 15%, and 18% APY respectively.</p>
+        <div class="fee-pills"><span class="fee-pill green">Real Yield</span><span class="fee-pill green">12–18% APY</span><span class="fee-pill green">Non-Inflationary</span></div>
       </div>
     </div>
   </div>
 </section>
 
 <style>
-  .fee-section { background: var(--ink); }
-  .fee-pills { display:flex; flex-wrap:wrap; gap:8px; }
-  .fee-pill {
-    font-size:11px; font-weight:700; font-family:var(--font-mono);
-    padding:4px 12px; border-radius:var(--radius-full);
-  }
-  .fee-pill.pink  { background:rgba(251,11,140,0.12); color:var(--pink); border:1px solid var(--pink-line); }
-  .fee-pill.green { background:rgba(42,233,123,0.12); color:var(--green-light); border:1px solid rgba(42,233,123,0.25); }
+.fee-section { background: var(--ink); color:#fff; }
+.fee-head { text-align:center; margin-bottom:48px; }
+.fee-title { color:#fff; margin-top:16px; }
+.fee-sub { color:rgba(255,255,255,.45); text-align:center; margin:12px auto 0; }
+.fee-split { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+.fee-half { padding:48px 40px; border-radius:28px; text-align:center; }
+.fee-half.burn { background:rgba(251,11,140,.08); border:1px solid var(--pink-line); }
+.fee-half.stake { background:rgba(42,233,123,.08); border:1px solid rgba(42,233,123,.22); }
+.fee-pct { font-size:clamp(4rem,8vw,6rem); font-weight:900; letter-spacing:-.06em; line-height:1; margin-bottom:12px; }
+.burn .fee-pct { color:var(--pink); } .stake .fee-pct { color:var(--green-light); }
+.fee-half h3 { font-size:20px; font-weight:900; color:#fff; margin-bottom:12px; }
+.fee-half p { font-size:14px; color:rgba(255,255,255,.45); line-height:1.75; }
+.fee-pills { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-top:20px; }
+.fee-pill { font-size:11px; font-weight:700; font-family:var(--font-mono); padding:4px 12px; border-radius:999px; }
+.fee-pill.pink { background:rgba(251,11,140,.12); color:var(--pink); border:1px solid var(--pink-line); }
+.fee-pill.green { background:rgba(42,233,123,.12); color:var(--green-light); border:1px solid rgba(42,233,123,.25); }
+@media (max-width: 900px) { .fee-split { grid-template-columns:1fr; } }
 </style>
