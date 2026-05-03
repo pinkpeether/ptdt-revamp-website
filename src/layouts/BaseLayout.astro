@@ -5,6 +5,9 @@ export interface Props {
   ogImage?: string;
 }
 
+// ✅ Correct Astro CSS loading: relative import in frontmatter
+import "../styles/global.css";
+
 const {
   title,
   description = "PTDT is the decentralized settlement protocol for global ride-hailing on BNB Chain.",
@@ -41,7 +44,7 @@ const ogUrl     = new URL(ogImage, siteBase).href;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;0,900;1,900&family=IBM+Plex+Mono:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,900&family=IBM+Plex+Mono:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -49,8 +52,3 @@ const ogUrl     = new URL(ogImage, siteBase).href;
     <slot />
   </body>
 </html>
-
-<style is:global>
-  @import "/src/styles/tokens.css";
-  @import "/src/styles/global.css";
-</style>
