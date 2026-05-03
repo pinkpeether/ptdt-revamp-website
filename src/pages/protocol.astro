@@ -1,0 +1,73 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import SectionTag from "@components/ui/SectionTag.astro";
+---
+<BaseLayout title="Protocol" description="How the PTDT decentralized settlement protocol works on BNB Chain.">
+  <div class="page-hero container">
+    <SectionTag color="pink">Protocol</SectionTag>
+    <h1>Settlement Infrastructure<br/><em>for Ride-Hailing</em></h1>
+    <p class="page-lead">
+      PTDT is the settlement layer between ride-hailing demand and on-chain
+      payment routing. Any platform, any driver — settled transparently on BNB Chain.
+    </p>
+  </div>
+
+  <section class="section container">
+    <h2 class="section-h2">Protocol Architecture</h2>
+    <div class="proto-grid">
+      <div class="proto-card">
+        <div class="proto-n">01</div>
+        <h3>Demand Layer</h3>
+        <p>Ride-hailing platforms submit fare data via the PTDT Settlement API. REST-based, JSON, authenticated via API key.</p>
+      </div>
+      <div class="proto-card">
+        <div class="proto-n">02</div>
+        <h3>Routing Layer</h3>
+        <p>PTDT smart contracts validate the fare, deduct the protocol fee, and route payment to the driver wallet.</p>
+      </div>
+      <div class="proto-card">
+        <div class="proto-n">03</div>
+        <h3>Settlement Layer</h3>
+        <p>60% of the protocol fee is burned permanently. 40% is distributed to active stakers. A verifiable on-chain receipt is issued.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark container" style="border-radius:24px; padding:var(--space-16)">
+    <h2 class="section-h2" style="color:#fff">Protocol Fee Model</h2>
+    <div class="fee-row">
+      <div class="fee-block pink">
+        <div class="fee-big">60%</div>
+        <div>Permanently Burned</div>
+        <p>Deflationary supply reduction with every settlement.</p>
+      </div>
+      <div class="fee-block green">
+        <div class="fee-big">40%</div>
+        <div>To Stakers</div>
+        <p>Real yield from real settlement volume.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero { padding: clamp(60px,8vw,100px) 0 clamp(40px,5vw,60px); }
+  .page-hero h1 { font-size:clamp(2rem,5vw,4rem); font-weight:900; letter-spacing:-0.05em; margin:var(--space-4) 0; }
+  .page-hero h1 em { color:var(--pink); font-style:normal; }
+  .page-lead { font-size:1.15rem; color:var(--muted); max-width:600px; line-height:1.8; }
+  .proto-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:var(--space-8); }
+  .proto-card { padding:32px; border-radius:var(--radius-2xl); background:var(--mist); border:1px solid var(--line); }
+  .proto-n { font-size:11px; font-family:var(--font-mono); color:var(--muted-2); font-weight:800; margin-bottom:12px; letter-spacing:.1em; }
+  .proto-card h3 { font-size:18px; font-weight:900; color:var(--ink); margin-bottom:10px; letter-spacing:-0.03em; }
+  .proto-card p { font-size:14px; color:var(--muted); line-height:1.7; }
+  .fee-row { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:var(--space-8); }
+  .fee-block { padding:40px; border-radius:var(--radius-2xl); text-align:center; }
+  .fee-block.pink { background:rgba(251,11,140,0.1); border:1px solid var(--pink-line); }
+  .fee-block.green { background:rgba(42,233,123,0.1); border:1px solid rgba(42,233,123,0.25); }
+  .fee-big { font-size:clamp(3rem,6vw,5rem); font-weight:900; letter-spacing:-0.05em; margin-bottom:8px; }
+  .fee-block.pink .fee-big { color:var(--pink); }
+  .fee-block.green .fee-big { color:var(--green-light); }
+  .fee-block div:not(.fee-big) { font-size:16px; font-weight:800; color:#fff; margin-bottom:8px; }
+  .fee-block p { font-size:13px; color:rgba(255,255,255,0.45); line-height:1.7; }
+  @media (max-width:760px) { .proto-grid,.fee-row { grid-template-columns:1fr; } }
+</style>

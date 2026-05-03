@@ -1,0 +1,66 @@
+---
+import AppLayout from "@layouts/AppLayout.astro";
+import SectionTag from "@components/ui/SectionTag.astro";
+const exchanges = [
+  { name:"PancakeSwap",    type:"DEX",  chain:"BNB Chain", status:"live",   href:"https://pancakeswap.finance", logo:"🥞" },
+  { name:"PTDT Cockpit",   type:"dApp", chain:"BNB Chain", status:"live",   href:"https://dapp.ptdt.taxi",      logo:"🎛️" },
+  { name:"CoinGecko",      type:"Info", chain:"—",         status:"listed", href:"#",                           logo:"🦎" },
+  { name:"CEX Listings",   type:"CEX",  chain:"—",         status:"soon",   href:"#",                           logo:"🏛️" },
+];
+---
+<AppLayout title="Buy PTDT" description="Where to buy PTDT token — DEX listings and exchange information.">
+  <div class="buy-wrap">
+    <div class="buy-hero">
+      <SectionTag color="pink">Buy PTDT</SectionTag>
+      <h1>Get PTDT</h1>
+      <p class="buy-lead">PTDT is available on BNB Chain DEXes. Always verify the contract address before trading.</p>
+      <div class="buy-contract">
+        <span class="buy-c-label">PTDT Contract · BEP-20</span>
+        <code id="buy-ca">0x0000000000000000000000000000000000000000</code>
+        <button onclick="navigator.clipboard.writeText(document.getElementById('buy-ca').textContent ?? '')" style="color:rgba(255,255,255,.4);font-size:16px;" aria-label="Copy">⎘</button>
+      </div>
+    </div>
+    <div class="buy-grid">
+      {exchanges.map(ex => (
+        <a href={ex.href} class="buy-card" target={ex.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer">
+          <div class="buy-logo">{ex.logo}</div>
+          <div class="buy-name">{ex.name}</div>
+          <div class="buy-meta">
+            <span class="buy-type">{ex.type}</span>
+            <span class="buy-chain">{ex.chain}</span>
+          </div>
+          <span class={`buy-status ${ex.status}`}>
+            {ex.status === "live" ? "✓ Live" : ex.status === "listed" ? "Listed" : "Soon"}
+          </span>
+        </a>
+      ))}
+    </div>
+    <div class="buy-warning">
+      ⚠ Always verify the PTDT contract address before purchasing. Only buy from verified sources.
+      PTDT is a utility token for the settlement protocol — not financial advice.
+    </div>
+  </div>
+</AppLayout>
+
+<style>
+  .buy-wrap { max-width:800px; margin:0 auto; padding:40px 24px; }
+  .buy-hero { margin-bottom:40px; }
+  .buy-hero h1 { font-size:clamp(2rem,5vw,3.5rem); font-weight:900; color:#fff; letter-spacing:-0.05em; margin:var(--space-4) 0; }
+  .buy-lead { font-size:15px; color:rgba(255,255,255,.45); line-height:1.8; max-width:460px; margin-bottom:20px; }
+  .buy-contract { display:flex; align-items:center; gap:12px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1); border-radius:var(--radius-lg); padding:12px 16px; }
+  .buy-c-label { font-size:10px; font-weight:800; color:rgba(255,255,255,.3); text-transform:uppercase; letter-spacing:.08em; font-family:var(--font-mono); flex-shrink:0; }
+  .buy-contract code { font-family:var(--font-mono); font-size:11px; color:#2ae97b; flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .buy-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-bottom:24px; }
+  .buy-card { background:rgba(255,255,255,.05); border:1.5px solid rgba(255,255,255,.09); border-radius:20px; padding:28px; display:flex; flex-direction:column; gap:8px; transition:border-color 0.2s,background 0.2s,transform 0.2s; }
+  .buy-card:hover { border-color:rgba(251,11,140,.35); background:rgba(251,11,140,.05); transform:translateY(-3px); }
+  .buy-logo { font-size:32px; margin-bottom:4px; }
+  .buy-name { font-size:17px; font-weight:900; color:#fff; letter-spacing:-0.03em; }
+  .buy-meta { display:flex; gap:8px; }
+  .buy-type,.buy-chain { font-size:11px; font-weight:700; font-family:var(--font-mono); padding:3px 9px; border-radius:var(--radius-full); background:rgba(255,255,255,.08); color:rgba(255,255,255,.45); }
+  .buy-status { font-size:12px; font-weight:800; margin-top:4px; }
+  .buy-status.live { color:#2ae97b; }
+  .buy-status.listed { color:#f0b90b; }
+  .buy-status.soon { color:rgba(255,255,255,.3); }
+  .buy-warning { font-size:12px; color:rgba(255,255,255,.25); font-family:var(--font-mono); line-height:1.6; padding:14px; border-radius:var(--radius-lg); background:rgba(255,165,0,.06); border:1px solid rgba(255,165,0,.14); }
+  @media(max-width:480px){ .buy-grid{grid-template-columns:1fr;} }
+</style>

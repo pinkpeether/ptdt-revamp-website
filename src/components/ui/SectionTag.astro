@@ -1,0 +1,7 @@
+---
+export interface Props {
+  color?: "pink" | "green" | "purple" | "gray";
+}
+const { color = "pink" } = Astro.props;
+---
+<span class={`section-tag tag-${color}`}><slot /></span>

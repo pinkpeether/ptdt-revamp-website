@@ -1,0 +1,77 @@
+/* ============================================================
+   PTDT DESIGN TOKENS — Single source of truth
+   Mirrors tailwind.config.ts; used by non-Tailwind contexts
+   (inline SVG, canvas, framer-motion values, etc.)
+   ============================================================ */
+:root {
+  /* ── Colors ── */
+  --white:       #ffffff;
+  --paper:       #fbfafc;
+  --mist:        #f6f4f8;
+  --soft:        #f1eef5;
+  --ink:         #101018;
+  --ink-2:       #1b1723;
+  --ink-3:       #2d2840;
+  --muted:       #706a7d;
+  --muted-2:     #958da4;
+  --line:        rgba(16,16,24,0.09);
+  --line-2:      rgba(16,16,24,0.15);
+
+  --pink:        #fb0b8c;
+  --pink-2:      #e0087d;
+  --pink-soft:   #fff0f8;
+  --pink-line:   rgba(251,11,140,0.22);
+
+  --green:       #00a747;
+  --green-2:     #0e8f43;
+  --green-soft:  #edfff5;
+  --green-line:  rgba(0,167,71,0.22);
+  --green-light: #2ae97b;
+
+  --purple:      #8057d7;
+  --purple-2:    #b993ff;
+  --purple-soft: #f4efff;
+
+  --gold:        #f0b90b;
+  --gray-900:    #0f0f1a;
+
+  /* ── Typography ── */
+  --font-body: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* ── Type scale (fluid) ── */
+  --text-xs:   clamp(0.75rem,  0.7rem  + 0.25vw, 0.875rem);
+  --text-sm:   clamp(0.875rem, 0.8rem  + 0.35vw, 1rem);
+  --text-base: clamp(1rem,     0.95rem + 0.25vw, 1.125rem);
+  --text-lg:   clamp(1.125rem, 1rem    + 0.75vw, 1.5rem);
+  --text-xl:   clamp(1.5rem,   1.2rem  + 1.25vw, 2.25rem);
+  --text-2xl:  clamp(2rem,     1.2rem  + 2.5vw,  3.5rem);
+  --text-3xl:  clamp(2.5rem,   1rem    + 4vw,    5rem);
+
+  /* ── Spacing ── */
+  --space-1:  0.25rem;  --space-2:  0.5rem;
+  --space-3:  0.75rem;  --space-4:  1rem;
+  --space-5:  1.25rem;  --space-6:  1.5rem;
+  --space-8:  2rem;     --space-10: 2.5rem;
+  --space-12: 3rem;     --space-16: 4rem;
+  --space-20: 5rem;     --space-24: 6rem;
+
+  /* ── Radius ── */
+  --radius-sm:   0.375rem;
+  --radius-md:   0.5rem;
+  --radius-lg:   0.75rem;
+  --radius-xl:   1rem;
+  --radius-2xl:  1.5rem;
+  --radius-full: 9999px;
+
+  /* ── Shadows ── */
+  --shadow-sm: 0 1px 2px rgba(16,16,24,0.06);
+  --shadow-md: 0 4px 16px rgba(16,16,24,0.08);
+  --shadow-lg: 0 12px 40px rgba(16,16,24,0.10);
+  --shadow-xl: 0 24px 80px rgba(16,16,24,0.12);
+
+  /* ── Layout ── */
+  --max-w:  1240px;
+  --nav-h:  76px;
+  --ease:   cubic-bezier(0.16, 1, 0.3, 1);
+}

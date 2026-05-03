@@ -1,0 +1,80 @@
+---
+import AppLayout from "@layouts/AppLayout.astro";
+import StakePanel from "@components/islands/StakePanel";
+import { TIER_CONFIGS } from "@types/index";
+---
+
+<AppLayout title="Stake PTDT" description="Stake PTDT and earn protocol rewards — Bronze 12%, Silver 15%, Gold 18% APY on BNB Chain.">
+  <div class="stake-page">
+    <div class="stake-hero">
+      <div class="stake-hero-inner">
+        <div class="stake-hero-text">
+          <span class="stake-eyebrow">Staking Protocol · BNB Chain</span>
+          <h1 class="stake-h1">Stake PTDT.<br/>Earn Real Yield.</h1>
+          <p class="stake-lead">
+            40% of every protocol fee flows directly to stakers.
+            Real yield from real settlement volume — not inflation.
+          </p>
+          <div class="stake-tier-pills">
+            {TIER_CONFIGS.map(t => (
+              <span class="stake-tier-pill">
+                <span style={`color:${t.color}`}>{t.label}</span>
+                {t.apy}% APY
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <!-- Staking island -->
+        <div class="stake-panel-wrap">
+          <StakePanel client:load />
+        </div>
+      </div>
+    </div>
+  </div>
+</AppLayout>
+
+<style>
+  .stake-page { background: #0A0A0F; min-height: 100vh; }
+  .stake-hero { padding: clamp(40px, 6vw, 80px) 24px; }
+  .stake-hero-inner {
+    max-width: 1000px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 48px; align-items: start;
+  }
+  .stake-eyebrow {
+    display: inline-block;
+    font-size: 11px; font-weight: 800; letter-spacing: 0.08em;
+    text-transform: uppercase; color: rgba(255,255,255,0.35);
+    font-family: var(--font-mono);
+    margin-bottom: 16px;
+    padding: 6px 14px; border-radius: var(--radius-full);
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .stake-h1 {
+    font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 900;
+    color: #fff; letter-spacing: -0.05em; line-height: 1.05;
+    margin-bottom: 16px;
+  }
+  .stake-lead {
+    font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.75;
+    max-width: 380px; margin-bottom: 24px;
+  }
+  .stake-tier-pills { display: flex; gap: 10px; flex-wrap: wrap; }
+  .stake-tier-pill {
+    padding: 6px 14px; border-radius: var(--radius-full);
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+    font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.55);
+    font-family: var(--font-mono);
+    display: inline-flex; gap: 6px; align-items: center;
+  }
+  .stake-panel-wrap {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 24px; overflow: hidden;
+  }
+  @media (max-width: 760px) {
+    .stake-hero-inner { grid-template-columns: 1fr; }
+  }
+</style>

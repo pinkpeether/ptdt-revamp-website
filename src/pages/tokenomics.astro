@@ -1,0 +1,65 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import SectionTag from "@components/ui/SectionTag.astro";
+const supply = [
+  { label:"Total Hard Cap",    val:"100,000 PTDT",  color:"pink"   },
+  { label:"Circulating Supply",val:"~94,000 PTDT",  color:"green"  },
+  { label:"Total Burned",      val:"6,000+ PTDT",   color:"purple" },
+  { label:"Decimal Places",    val:"18",            color:"gray"   },
+];
+---
+<BaseLayout title="Tokenomics" description="PTDT token supply, burn model, and staking economics on BNB Chain.">
+  <div class="page-hero container">
+    <SectionTag color="pink">Tokenomics</SectionTag>
+    <h1>Token Design<br/><em>Built for Deflation</em></h1>
+    <p class="page-lead">
+      100K hard cap. Every protocol fee burns 60%. Supply decreases with every ride settled.
+    </p>
+  </div>
+
+  <section class="section container">
+    <div class="supply-grid">
+      {supply.map(s => (
+        <div class={`supply-card ${s.color}`}>
+          <div class="supply-val">{s.val}</div>
+          <div class="supply-label">{s.label}</div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="section container">
+    <h2 class="section-h2">Token Contract</h2>
+    <div class="contract-row">
+      <div class="contract-detail">
+        <div class="c-label">Token Name</div><div class="c-val">Peether PTDT</div>
+        <div class="c-label">Symbol</div>    <div class="c-val">PTDT</div>
+        <div class="c-label">Network</div>   <div class="c-val">BNB Smart Chain (BEP-20)</div>
+        <div class="c-label">Standard</div>  <div class="c-val">BEP-20</div>
+        <div class="c-label">Supply</div>    <div class="c-val">100,000 (Hard Cap)</div>
+        <div class="c-label">Audit</div>     <div class="c-val">9.2 / 10</div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero { padding:clamp(60px,8vw,100px) 0 clamp(40px,5vw,60px); }
+  .page-hero h1 { font-size:clamp(2rem,5vw,4rem); font-weight:900; letter-spacing:-0.05em; margin:var(--space-4) 0; }
+  .page-hero h1 em { color:var(--pink); font-style:normal; }
+  .page-lead { font-size:1.15rem; color:var(--muted); max-width:600px; line-height:1.8; }
+  .supply-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+  .supply-card { padding:32px 24px; border-radius:var(--radius-2xl); text-align:center; }
+  .supply-card.pink   { background:var(--pink-soft);   border:1px solid var(--pink-line);   }
+  .supply-card.green  { background:var(--green-soft);  border:1px solid var(--green-line);  }
+  .supply-card.purple { background:var(--purple-soft); border:1px solid rgba(128,87,215,.2); }
+  .supply-card.gray   { background:var(--mist);        border:1px solid var(--line);        }
+  .supply-val { font-size:1.6rem; font-weight:900; color:var(--ink); letter-spacing:-0.04em; margin-bottom:8px; }
+  .supply-label { font-size:12px; color:var(--muted); font-weight:700; }
+  .contract-row { margin-top:var(--space-8); }
+  .contract-detail { display:grid; grid-template-columns:180px 1fr; gap:12px 24px; max-width:600px; }
+  .c-label { font-size:12px; font-weight:800; color:var(--muted-2); text-transform:uppercase; letter-spacing:.06em; display:flex; align-items:center; }
+  .c-val { font-size:14px; font-weight:700; color:var(--ink); display:flex; align-items:center; font-family:var(--font-mono); }
+  @media(max-width:760px){ .supply-grid{grid-template-columns:1fr 1fr;} }
+  @media(max-width:480px){ .supply-grid{grid-template-columns:1fr;} }
+</style>

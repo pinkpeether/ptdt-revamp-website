@@ -1,0 +1,90 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import SectionTag from "@components/ui/SectionTag.astro";
+---
+<BaseLayout title="Legacy & Origin" description="The origin story of PTDT — Pink Taxi Group, women's safety, and the road to BNB Chain.">
+  <div class="page-hero container">
+    <SectionTag color="purple">Our Origin</SectionTag>
+    <h1>A Mission Built on<br/><em>Women's Safety.</em></h1>
+    <p class="page-lead">
+      Before the blockchain, before PTDT — there was a simple idea.
+      Safe, verified, dignified transport for women. That mission still lives in every
+      on-chain settlement.
+    </p>
+  </div>
+
+  <section class="section container">
+    <div class="legacy-timeline">
+      <div class="lt-item">
+        <div class="lt-year">2019</div>
+        <div class="lt-content">
+          <h3>Pink Taxi Group Founded</h3>
+          <p>Pink Taxi Group Ltd. registered in the UK (Company No. 11920005). A women-only ride-hailing service designed to address safety concerns in mobility for women.</p>
+        </div>
+      </div>
+      <div class="lt-item">
+        <div class="lt-year">2019</div>
+        <div class="lt-content">
+          <h3>John McAfee Joins as Chief Advisor</h3>
+          <p>Cybersecurity pioneer and crypto visionary John McAfee became Chief Advisor to the project, opening the door to blockchain-based settlement.</p>
+        </div>
+      </div>
+      <div class="lt-item">
+        <div class="lt-year">2022–23</div>
+        <div class="lt-content">
+          <h3>PTDT Protocol Designed</h3>
+          <p>The settlement protocol architecture was designed — moving the project from a ride-hailing app to decentralized infrastructure on BNB Chain.</p>
+        </div>
+      </div>
+      <div class="lt-item">
+        <div class="lt-year">2024</div>
+        <div class="lt-content">
+          <h3>Smart Contract Audit — 9.2/10</h3>
+          <p>Independent security audit completed. PTDT smart contracts scored 9.2 out of 10. No critical or high severity issues.</p>
+        </div>
+      </div>
+      <div class="lt-item">
+        <div class="lt-year">2025</div>
+        <div class="lt-content">
+          <h3>BNB Chain Mainnet Launch</h3>
+          <p>PTDT token goes live on BNB Smart Chain. Staking protocol activated. Settlement API v1 enters development.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark" style="border-radius:0">
+    <div class="container" style="text-align:center; max-width:640px">
+      <div style="font-size:56px; margin-bottom:16px">♀</div>
+      <h2 class="section-h2" style="color:#fff">
+        Infrastructure with a <em style="color:var(--pink)">Purpose</em>
+      </h2>
+      <p style="font-size:16px; color:rgba(255,255,255,.45); line-height:1.8; margin-top:var(--space-4)">
+        PTDT is not just DeFi infrastructure. It carries the original mission — that
+        mobility should be safe, fair, and accessible. Every settlement is a step toward that.
+      </p>
+      <a href="/" style="display:inline-block; margin-top:var(--space-8);" class="btn btn-primary">Explore the Protocol</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero { padding:clamp(60px,8vw,100px) 0 clamp(40px,5vw,60px); }
+  .page-hero h1 { font-size:clamp(2rem,5vw,4rem); font-weight:900; letter-spacing:-0.05em; margin:var(--space-4) 0; }
+  .page-hero h1 em { color:var(--purple); font-style:normal; }
+  .page-lead { font-size:1.15rem; color:var(--muted); max-width:600px; line-height:1.8; }
+  .legacy-timeline { display:flex; flex-direction:column; gap:0; position:relative; }
+  .legacy-timeline::before { content:""; position:absolute; left:96px; top:0; bottom:0; width:2px; background:var(--line); }
+  .lt-item { display:flex; gap:32px; align-items:flex-start; padding:0 0 40px; position:relative; }
+  .lt-year { font-size:13px; font-weight:900; font-family:var(--font-mono); color:var(--pink); width:80px; flex-shrink:0; padding-top:4px; text-align:right; }
+  .lt-content { flex:1; background:var(--mist); border-radius:var(--radius-xl); padding:24px 28px; border:1px solid var(--line); position:relative; }
+  .lt-content::before { content:""; position:absolute; left:-19px; top:16px; width:10px; height:10px; border-radius:50%; background:var(--pink); border:2px solid #fff; box-shadow:0 0 0 3px var(--pink-line); }
+  .lt-content h3 { font-size:16px; font-weight:900; color:var(--ink); margin-bottom:8px; letter-spacing:-0.02em; }
+  .lt-content p { font-size:14px; color:var(--muted); line-height:1.7; }
+  @media(max-width:580px){
+    .legacy-timeline::before{left:0; display:none;}
+    .lt-item { flex-direction:column; gap:8px; }
+    .lt-year { width:auto; text-align:left; }
+    .lt-content::before { display:none; }
+  }
+</style>

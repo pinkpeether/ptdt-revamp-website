@@ -1,0 +1,64 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import SectionTag from "@components/ui/SectionTag.astro";
+const surfaces = [
+  { href:"https://dapp.ptdt.taxi", icon:"🎛️", name:"Protocol Cockpit", sub:"The main dApp — full protocol dashboard, staking, and analytics.", badge:"Live", badgeColor:"green" },
+  { href:"/stake",       icon:"🔒", name:"Staking",          sub:"Stake PTDT. Earn real yield from protocol settlement fees.",   badge:"Live",    badgeColor:"green"  },
+  { href:"/dashboard",   icon:"📡", name:"On-Chain Explorer", sub:"Browse settlement transactions, burned supply, and staker rewards.", badge:"Beta", badgeColor:"amber" },
+  { href:"/buy",         icon:"💱", name:"Buy PTDT",          sub:"Where to buy PTDT — DEX listings and CEX coming soon.",       badge:"Live",    badgeColor:"green"  },
+  { href:"/developers",  icon:"⚙️", name:"Developer Hub",     sub:"REST API docs, SDK, webhooks, and integration guides.",        badge:"v1",      badgeColor:"purple" },
+  { href:"/downloads",   icon:"📥", name:"Downloads",         sub:"Whitepaper, audit report, brand kit, and technical specs.",    badge:"Free",    badgeColor:"gray"   },
+  { href:"/security",    icon:"🛡️", name:"Security & Audit",  sub:"Independent smart contract audit. Score: 9.2/10.",            badge:"9.2/10",  badgeColor:"green"  },
+  { href:"/tokenomics",  icon:"🪙", name:"Tokenomics",        sub:"100K hard cap. 60% burn. 40% stakers. Deflationary design.",  badge:"BEP-20",  badgeColor:"pink"   },
+  { href:"/legacy",      icon:"♥",  name:"Legacy & Origin",   sub:"The women-safety origin story behind PTDT.",                  badge:"Story",   badgeColor:"purple" },
+];
+---
+<BaseLayout title="Ecosystem" description="Explore all PTDT protocol surfaces — staking, explorer, developer hub, downloads, and more.">
+  <div class="page-hero container">
+    <SectionTag color="green">Ecosystem</SectionTag>
+    <h1>One Protocol.<br/><em>Many Surfaces.</em></h1>
+    <p class="page-lead">
+      Every surface in the PTDT ecosystem is built on the same settlement infrastructure.
+    </p>
+  </div>
+  <section class="section container">
+    <div class="eco-full-grid">
+      {surfaces.map(s => (
+        <a href={s.href} class="eco-full-card" target={s.href.startsWith("http") ? "_blank" : undefined} rel={s.href.startsWith("http") ? "noopener noreferrer" : undefined}>
+          <div class="eco-full-icon">{s.icon}</div>
+          <div class="eco-full-body">
+            <div class="eco-full-head">
+              <span class="eco-full-name">{s.name}</span>
+              <span class={`eco-badge ${s.badgeColor}`}>{s.badge}</span>
+            </div>
+            <p class="eco-full-sub">{s.sub}</p>
+          </div>
+          <span class="eco-arrow">→</span>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero { padding:clamp(60px,8vw,100px) 0 clamp(40px,5vw,60px); }
+  .page-hero h1 { font-size:clamp(2rem,5vw,4rem); font-weight:900; letter-spacing:-0.05em; margin:var(--space-4) 0; }
+  .page-hero h1 em { color:var(--green); font-style:normal; }
+  .page-lead { font-size:1.15rem; color:var(--muted); max-width:600px; line-height:1.8; }
+  .eco-full-grid { display:flex; flex-direction:column; gap:12px; }
+  .eco-full-card { display:flex; align-items:center; gap:20px; padding:20px 24px; border-radius:var(--radius-xl); background:var(--mist); border:1px solid var(--line); transition:border-color 0.2s, background 0.2s, transform 0.2s; }
+  .eco-full-card:hover { border-color:var(--pink-line); background:#fff; transform:translateX(4px); }
+  .eco-full-icon { width:52px; height:52px; border-radius:var(--radius-lg); background:var(--soft); display:grid; place-items:center; font-size:22px; flex-shrink:0; }
+  .eco-full-body { flex:1; }
+  .eco-full-head { display:flex; align-items:center; gap:10px; margin-bottom:4px; }
+  .eco-full-name { font-size:15px; font-weight:800; color:var(--ink); letter-spacing:-0.02em; }
+  .eco-badge { font-size:10px; font-weight:800; padding:3px 9px; border-radius:var(--radius-full); font-family:var(--font-mono); }
+  .eco-badge.green  { background:var(--green-soft); color:var(--green-2); border:1px solid var(--green-line); }
+  .eco-badge.pink   { background:var(--pink-soft);  color:var(--pink-2); border:1px solid var(--pink-line);  }
+  .eco-badge.purple { background:var(--purple-soft); color:var(--purple); border:1px solid rgba(128,87,215,.2); }
+  .eco-badge.amber  { background:rgba(240,185,11,.1); color:#a07a00; border:1px solid rgba(240,185,11,.2); }
+  .eco-badge.gray   { background:var(--mist); color:var(--muted); border:1px solid var(--line); }
+  .eco-full-sub { font-size:13px; color:var(--muted); line-height:1.6; }
+  .eco-arrow { color:var(--muted-2); font-size:18px; flex-shrink:0; transition:color 0.2s; }
+  .eco-full-card:hover .eco-arrow { color:var(--pink); }
+</style>

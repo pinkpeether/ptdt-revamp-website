@@ -1,0 +1,57 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import SectionTag from "@components/ui/SectionTag.astro";
+const items = [
+  { icon:"📄", name:"Whitepaper v2",          desc:"Full protocol whitepaper — architecture, tokenomics, and roadmap.",   badge:"PDF",   size:"~2.4 MB", href:"#" },
+  { icon:"🛡️", name:"Audit Report",            desc:"Independent smart contract audit — 9.2/10. Full findings report.",    badge:"PDF",   size:"~890 KB", href:"#" },
+  { icon:"🎨", name:"Brand Kit",               desc:"Official PTDT logos, colors, typography, and brand guidelines.",      badge:"ZIP",   size:"~12 MB",  href:"#" },
+  { icon:"📋", name:"Technical Specification", desc:"Smart contract ABI, token specs, and API schema reference.",          badge:"PDF",   size:"~1.1 MB", href:"#" },
+  { icon:"⚙️", name:"Settlement API Spec",      desc:"OpenAPI 3.0 specification for the PTDT REST Settlement API.",        badge:"YAML",  size:"~42 KB",  href:"#" },
+  { icon:"📦", name:"JavaScript SDK",           desc:"npm package for Node.js / browser PTDT protocol integrations.",     badge:"npm",   size:"—",        href:"#" },
+];
+---
+<BaseLayout title="Downloads" description="Download PTDT whitepaper, audit report, brand kit, API specs, and SDK.">
+  <div class="page-hero container">
+    <SectionTag color="pink">Downloads</SectionTag>
+    <h1>Everything<br/><em>You Need.</em></h1>
+    <p class="page-lead">
+      Whitepaper, audit report, brand kit, API spec, and SDK — all in one place.
+    </p>
+  </div>
+  <section class="section container">
+    <div class="dl-list">
+      {items.map(item => (
+        <a href={item.href} class="dl-card">
+          <div class="dl-icon">{item.icon}</div>
+          <div class="dl-body">
+            <div class="dl-head">
+              <span class="dl-name">{item.name}</span>
+              <span class="dl-badge">{item.badge}</span>
+            </div>
+            <p class="dl-desc">{item.desc}</p>
+            <span class="dl-size">{item.size}</span>
+          </div>
+          <span class="dl-arrow">↓</span>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero { padding:clamp(60px,8vw,100px) 0 clamp(40px,5vw,60px); }
+  .page-hero h1 { font-size:clamp(2rem,5vw,4rem); font-weight:900; letter-spacing:-0.05em; margin:var(--space-4) 0; }
+  .page-hero h1 em { color:var(--pink); font-style:normal; }
+  .page-lead { font-size:1.15rem; color:var(--muted); max-width:600px; line-height:1.8; }
+  .dl-list { display:flex; flex-direction:column; gap:12px; }
+  .dl-card { display:flex; align-items:center; gap:20px; padding:20px 24px; border-radius:var(--radius-xl); background:var(--mist); border:1px solid var(--line); transition:border-color 0.2s,background 0.2s,transform 0.2s; }
+  .dl-card:hover { border-color:var(--pink-line); background:#fff; transform:translateY(-2px); box-shadow:var(--shadow-md); }
+  .dl-icon { width:52px; height:52px; border-radius:var(--radius-lg); background:var(--soft); display:grid; place-items:center; font-size:22px; flex-shrink:0; }
+  .dl-body { flex:1; }
+  .dl-head { display:flex; align-items:center; gap:10px; margin-bottom:4px; }
+  .dl-name { font-size:15px; font-weight:800; color:var(--ink); }
+  .dl-badge { font-size:10px; font-weight:800; font-family:var(--font-mono); padding:3px 9px; border-radius:var(--radius-full); background:var(--pink-soft); color:var(--pink-2); border:1px solid var(--pink-line); }
+  .dl-desc { font-size:13px; color:var(--muted); line-height:1.6; margin-bottom:4px; }
+  .dl-size { font-size:11px; font-family:var(--font-mono); color:var(--muted-2); }
+  .dl-arrow { font-size:20px; color:var(--pink); flex-shrink:0; }
+</style>

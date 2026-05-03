@@ -1,0 +1,148 @@
+---
+const nav = [
+  { href:"/protocol",    label:"Protocol"    },
+  { href:"/tokenomics",  label:"Tokenomics"  },
+  { href:"/security",    label:"Security"    },
+  { href:"/ecosystem",   label:"Ecosystem"   },
+  { href:"/developers",  label:"Developers"  },
+  { href:"/legacy",      label:"Legacy"      },
+];
+const path = Astro.url.pathname;
+---
+
+<div class="nav-wrap" id="nav-wrap">
+  <div class="container">
+    <nav class="nav" aria-label="Main navigation">
+      <!-- Brand -->
+      <a href="/" class="brand" aria-label="Peether PTDT home">
+        <img src="/ptdt-main-logo.png" alt="Peether PTDT" class="brand-img" />
+      </a>
+
+      <!-- Links -->
+      <div class="nav-links" role="list">
+        {nav.map(({ href, label }) => (
+          <a
+            href={href}
+            role="listitem"
+            class={`nav-link${path.startsWith(href) ? " active" : ""}`}
+          >
+            {label}
+          </a>
+        ))}
+      </div>
+
+      <!-- Actions -->
+      <div class="nav-actions">
+        <button
+          class="btn btn-sm btn-muted"
+          id="nav-signin-btn"
+          aria-label="Sign in"
+          onclick="window.dispatchEvent(new CustomEvent('ptdt:open-auth', {detail:{mode:'signin'}}))"
+        >
+          Sign in
+        </button>
+        <a href="/stake" class="btn btn-sm btn-primary">
+          Stake PTDT
+        </a>
+        <button
+          class="menu-btn"
+          id="menu-btn"
+          aria-label="Open menu"
+          aria-expanded="false"
+        >☰</button>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<script>
+  // Sticky scroll compression
+  const wrap = document.getElementById("nav-wrap");
+  const onScroll = () => {
+    if (!wrap) return;
+    wrap.classList.toggle("is-scrolled", window.scrollY > 24);
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+</script>
+
+<style>
+  .nav-wrap {
+    position: sticky; top: 0; z-index: 50;
+    padding: 12px 0;
+    margin-bottom: calc(-1 * (var(--nav-h) + 24px));
+    transition: padding 0.28s var(--ease), background 0.28s var(--ease);
+  }
+  .nav-wrap.is-scrolled {
+    background: rgba(255,255,255,0.72);
+    backdrop-filter: blur(18px) saturate(150%);
+    box-shadow: 0 1px 0 rgba(16,16,24,0.05);
+    padding: 8px 0;
+    margin-bottom: calc(-1 * (var(--nav-h) + 16px));
+  }
+  .nav {
+    height: var(--nav-h);
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    padding: 0 12px 0 18px;
+    border: 1px solid rgba(16,16,24,0.08);
+    border-radius: var(--radius-full);
+    background: rgba(255,255,255,0.82);
+    box-shadow: 0 14px 42px rgba(16,16,24,0.07);
+    backdrop-filter: blur(22px) saturate(150%);
+  }
+  .brand { display:inline-flex; align-items:center; min-width:162px; }
+  .brand-img { width:138px; height:auto; max-height:50px; object-fit:contain; }
+  .nav-links {
+    display:flex; align-items:center; gap:4px; padding:6px;
+    border-radius:var(--radius-full);
+    background:rgba(246,244,248,0.75);
+    border:1px solid rgba(16,16,24,0.05);
+  }
+  .nav-link {
+    padding:10px 14px; border-radius:var(--radius-full);
+    color:var(--muted); font-size:14px; font-weight:700;
+    transition:background 0.2s var(--ease), color 0.2s var(--ease);
+    white-space:nowrap;
+  }
+  .nav-link:hover, .nav-link.active {
+    background:#fff; color:var(--ink);
+    box-shadow:0 6px 18px rgba(16,16,24,0.06);
+  }
+  .nav-link.active {
+    color:#fff;
+    background:linear-gradient(135deg,var(--pink),#ff4bad);
+    box-shadow:0 12px 26px rgba(251,11,140,0.24),inset 0 1px 0 rgba(255,255,255,0.22);
+  }
+  .nav-actions { display:flex; align-items:center; gap:8px; justify-content:flex-end; }
+  .btn {
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    min-height:44px; padding:0 20px; border-radius:var(--radius-full);
+    font-size:14px; font-weight:800; letter-spacing:-0.01em;
+    transition:transform 0.22s var(--ease), box-shadow 0.22s var(--ease);
+    white-space:nowrap;
+  }
+  .btn-sm { min-height:38px; padding:0 14px; font-size:13px; }
+  .btn-muted {
+    background:var(--mist); border:1px solid var(--line); color:var(--ink-3);
+  }
+  .btn-muted:hover { border-color:var(--pink-line); color:var(--pink); }
+  .btn-primary {
+    color:#fff;
+    background:linear-gradient(135deg,var(--pink),#ff4bad);
+    box-shadow:0 12px 26px rgba(251,11,140,0.25);
+  }
+  .btn-primary:hover {
+    background:linear-gradient(135deg,var(--pink-2),#f5329b);
+    box-shadow:0 18px 38px rgba(251,11,140,0.34);
+    transform:translateY(-2px);
+  }
+  .menu-btn { display:none; width:44px; height:44px; border-radius:50%; background:var(--ink); color:#fff; font-size:18px; }
+  @media (max-width:900px) {
+    .nav-links { display:none; }
+    .menu-btn { display:grid; place-items:center; }
+  }
+  @media (max-width:480px) {
+    .brand-img { width:110px; }
+    .nav { padding:0 8px; }
+  }
+</style>

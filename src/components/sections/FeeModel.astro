@@ -1,0 +1,56 @@
+---
+import SectionTag from "@components/ui/SectionTag.astro";
+---
+<section class="section section-dark fee-section" id="fee-model">
+  <div class="container">
+    <div style="text-align:center; margin-bottom: var(--space-12)">
+      <SectionTag color="pink">Protocol Fee Model</SectionTag>
+      <h2 class="section-h2" style="color:#fff; margin-top:var(--space-4)">
+        Every Fee Matters
+      </h2>
+      <p class="section-sub" style="margin:var(--space-3) auto 0;text-align:center">
+        PTDT's fee model is built for long-term deflation and staker rewards.
+      </p>
+    </div>
+
+    <div class="fee-split">
+      <div class="fee-half burn">
+        <div class="fee-pct">60%</div>
+        <h3 class="fee-title">Permanently Burned</h3>
+        <p class="fee-desc">
+          60% of every protocol fee is sent to the burn address — permanently
+          reducing PTDT supply with every settlement.
+        </p>
+        <div class="fee-pills" style="margin-top:20px">
+          <span class="fee-pill pink">Deflationary</span>
+          <span class="fee-pill pink">Auto-Burn</span>
+          <span class="fee-pill pink">On-Chain Verified</span>
+        </div>
+      </div>
+      <div class="fee-half stake">
+        <div class="fee-pct">40%</div>
+        <h3 class="fee-title">To Stakers</h3>
+        <p class="fee-desc">
+          40% flows to active stakers as real protocol yield. Bronze, Silver,
+          and Gold tiers earn 12%, 15%, and 18% APY respectively.
+        </p>
+        <div class="fee-pills" style="margin-top:20px">
+          <span class="fee-pill green">Real Yield</span>
+          <span class="fee-pill green">12–18% APY</span>
+          <span class="fee-pill green">Non-Inflationary</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .fee-section { background: var(--ink); }
+  .fee-pills { display:flex; flex-wrap:wrap; gap:8px; }
+  .fee-pill {
+    font-size:11px; font-weight:700; font-family:var(--font-mono);
+    padding:4px 12px; border-radius:var(--radius-full);
+  }
+  .fee-pill.pink  { background:rgba(251,11,140,0.12); color:var(--pink); border:1px solid var(--pink-line); }
+  .fee-pill.green { background:rgba(42,233,123,0.12); color:var(--green-light); border:1px solid rgba(42,233,123,0.25); }
+</style>

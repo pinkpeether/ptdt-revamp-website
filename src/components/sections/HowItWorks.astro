@@ -1,0 +1,79 @@
+---
+import SectionTag from "@components/ui/SectionTag.astro";
+const steps = [
+  {
+    n: "01", color: "pink",
+    title: "Demand",
+    desc: "A rider requests a trip. The platform submits fare details to the PTDT Settlement API.",
+    icon: "🚖",
+  },
+  {
+    n: "02", color: "purple",
+    title: "Settlement",
+    desc: "PTDT routes the fare on-chain via BNB Chain. Protocol fee is deducted and split: 60% burned, 40% to stakers.",
+    icon: "⛓️",
+  },
+  {
+    n: "03", color: "green",
+    title: "Reward",
+    desc: "Driver receives payment. Stakers earn real yield. PTDT supply decreases. Receipt is permanently on-chain.",
+    icon: "✅",
+  },
+];
+---
+<section class="section section-dark how-section" id="how-it-works">
+  <div class="container">
+    <div style="text-align:center; margin-bottom: var(--space-12)">
+      <SectionTag color="purple">How PTDT Works</SectionTag>
+      <h2 class="section-h2" style="color:#fff; margin-top:var(--space-4)">
+        From Demand to <em>Settlement</em>
+      </h2>
+      <p class="section-sub" style="margin:var(--space-3) auto 0; text-align:center">
+        Three steps. One protocol. Zero custodial risk.
+      </p>
+    </div>
+
+    <div class="how-grid">
+      {steps.map((s, i) => (
+        <div class={`how-card step-${s.color}`}>
+          <div class="how-step-n">{s.n}</div>
+          <div class="how-icon">{s.icon}</div>
+          <h3 class="how-title">{s.title}</h3>
+          <p class="how-desc">{s.desc}</p>
+          {i < steps.length - 1 && (
+            <div class="how-arrow">→</div>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .how-section { background: var(--ink); }
+  .how-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; position: relative; }
+  .how-card {
+    position: relative; border-radius: var(--radius-2xl); padding: 36px 28px;
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+    transition: transform 0.28s var(--ease);
+  }
+  .how-card:hover { transform: translateY(-5px); }
+  .step-pink  { border-top: 3px solid var(--pink); }
+  .step-purple{ border-top: 3px solid var(--purple); }
+  .step-green { border-top: 3px solid var(--green); }
+  .how-step-n {
+    font-size: 11px; font-family: var(--font-mono); font-weight: 800;
+    color: rgba(255,255,255,0.25); letter-spacing: 0.1em; margin-bottom: 16px;
+  }
+  .how-icon { font-size: 32px; margin-bottom: 16px; }
+  .how-title { font-size: 22px; font-weight: 900; color: #fff; letter-spacing: -0.03em; margin-bottom: 10px; }
+  .how-desc { font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.7; }
+  .how-arrow {
+    position: absolute; top: 50%; right: -18px; transform: translateY(-50%);
+    font-size: 22px; color: rgba(255,255,255,0.15); z-index: 1;
+  }
+  @media (max-width: 760px) {
+    .how-grid { grid-template-columns: 1fr; }
+    .how-arrow { display: none; }
+  }
+</style>

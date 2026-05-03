@@ -1,0 +1,95 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import SectionTag from "@components/ui/SectionTag.astro";
+import SettlementApiDrawer from "@components/islands/SettlementApiDrawer";
+const endpoints = [
+  { method:"POST", path:"/v1/settlement/initiate", label:"Initiate Settlement" },
+  { method:"GET",  path:"/v1/settlement/:id",      label:"Get Settlement"      },
+  { method:"GET",  path:"/v1/settlement/history",  label:"Settlement History"  },
+  { method:"POST", path:"/v1/settlement/webhook",  label:"Register Webhook"    },
+];
+---
+<BaseLayout title="Developers" description="PTDT Settlement API documentation — REST, JSON, BNB Chain. Integrate ride-hailing settlement in minutes.">
+  <div class="page-hero container">
+    <SectionTag color="purple">Developers</SectionTag>
+    <h1>Build on PTDT.<br/><em>Settlement API.</em></h1>
+    <p class="page-lead">
+      REST API · JSON · BNB Chain · API Key auth.
+      Integrate on-chain fare settlement into any ride-hailing platform in minutes.
+    </p>
+    <div class="dev-btns">
+      <button
+        class="btn btn-primary"
+        onclick="window.dispatchEvent(new CustomEvent('ptdt:open-settlement-api'))"
+      >
+        Open API Reference
+      </button>
+      <a href="/downloads" class="btn btn-ghost">Download SDK</a>
+    </div>
+  </div>
+
+  <!-- Base URL -->
+  <section class="section container">
+    <div class="base-url-bar">
+      <span class="base-badge">BASE URL</span>
+      <code>https://api.ptdt.taxi/v1</code>
+    </div>
+
+    <!-- Endpoint list -->
+    <div class="ep-list">
+      {endpoints.map(ep => (
+        <div class="ep-row-static">
+          <span class={`ep-method method-${ep.method.toLowerCase()}`}>{ep.method}</span>
+          <code class="ep-path">{ep.path}</code>
+          <span class="ep-label">{ep.label}</span>
+          <button
+            class="ep-open-btn"
+            onclick="window.dispatchEvent(new CustomEvent('ptdt:open-settlement-api'))"
+          >
+            View →
+          </button>
+        </div>
+      ))}
+    </div>
+
+    <!-- Auth box -->
+    <div class="auth-info">
+      <h3>Authentication</h3>
+      <p>All API requests require an <strong>X-PTDT-API-KEY</strong> header. Request access via the developer portal.</p>
+      <div class="code-sample">
+        <pre>curl -X POST https://api.ptdt.taxi/v1/settlement/initiate \
+  -H "Content-Type: application/json" \
+  -H "X-PTDT-API-KEY: your_api_key" \
+  -d '{"{"}"ride_id":"RD-xxx","fare_amount":"12.50","currency":"USDT"{"}"}'</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- Settlement API Drawer island -->
+  <SettlementApiDrawer client:load />
+</BaseLayout>
+
+<style>
+  .page-hero { padding:clamp(60px,8vw,100px) 0 clamp(40px,5vw,60px); }
+  .page-hero h1 { font-size:clamp(2rem,5vw,4rem); font-weight:900; letter-spacing:-0.05em; margin:var(--space-4) 0; }
+  .page-hero h1 em { color:var(--purple); font-style:normal; }
+  .page-lead { font-size:1.15rem; color:var(--muted); max-width:600px; line-height:1.8; margin-bottom:var(--space-6); }
+  .dev-btns { display:flex; gap:12px; flex-wrap:wrap; }
+  .base-url-bar { display:flex; align-items:center; gap:16px; padding:14px 20px; background:var(--ink); border-radius:var(--radius-lg); margin-bottom:24px; }
+  .base-badge { font-size:10px; font-weight:800; color:rgba(255,255,255,0.35); letter-spacing:.08em; text-transform:uppercase; font-family:var(--font-mono); flex-shrink:0; }
+  .base-url-bar code { font-family:var(--font-mono); font-size:13px; color:#2ae97b; }
+  .ep-list { display:flex; flex-direction:column; gap:8px; margin-bottom:32px; }
+  .ep-row-static { display:flex; align-items:center; gap:14px; padding:14px 18px; border-radius:var(--radius-lg); background:var(--mist); border:1px solid var(--line); }
+  .ep-method { font-size:11px; font-weight:900; font-family:var(--font-mono); width:42px; flex-shrink:0; }
+  .method-post { color:var(--pink); }
+  .method-get  { color:var(--green); }
+  .ep-path { font-size:13px; font-family:var(--font-mono); color:var(--ink-3); flex:1; }
+  .ep-label { font-size:13px; font-weight:700; color:var(--muted); }
+  .ep-open-btn { font-size:12px; font-weight:800; color:var(--pink); padding:6px 14px; border-radius:var(--radius-full); background:var(--pink-soft); border:1px solid var(--pink-line); flex-shrink:0; transition:background 0.2s; }
+  .ep-open-btn:hover { background:#ffd4eb; }
+  .auth-info { background:var(--soft); border-radius:var(--radius-2xl); padding:32px; border:1px solid var(--line); }
+  .auth-info h3 { font-size:18px; font-weight:900; color:var(--ink); margin-bottom:10px; }
+  .auth-info p { font-size:14px; color:var(--muted); line-height:1.7; margin-bottom:16px; }
+  .code-sample { background:var(--ink); border-radius:var(--radius-lg); overflow:hidden; }
+  .code-sample pre { padding:20px; font-size:12px; color:rgba(255,255,255,0.78); font-family:var(--font-mono); white-space:pre; overflow-x:auto; line-height:1.8; }
+</style>

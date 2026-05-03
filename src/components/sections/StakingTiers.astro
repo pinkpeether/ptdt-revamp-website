@@ -1,0 +1,57 @@
+---
+import SectionTag from "@components/ui/SectionTag.astro";
+const tiers = [
+  { id:"bronze", label:"Bronze", apy:12, minStake:10,  lockDays:30,
+    color:"#cd7f32", bullets:["Entry level staking","30-day lock period","Earn from settlement fees"] },
+  { id:"silver", label:"Silver", apy:15, minStake:100, lockDays:60,
+    color:"#94a3b8", bullets:["Mid-tier staking","60-day lock period","Priority queue access"] },
+  { id:"gold",   label:"Gold",   apy:18, minStake:500, lockDays:90,
+    color:"#fb0b8c", bullets:["Premium staking","90-day lock period","Highest protocol yield"] },
+];
+---
+<section class="section staking-section" id="staking">
+  <div class="container">
+    <div style="text-align:center; margin-bottom: var(--space-12)">
+      <SectionTag color="green">Staking Tiers</SectionTag>
+      <h2 class="section-h2" style="margin-top:var(--space-4)">
+        Stake PTDT.<br/><em>Earn Real Yield.</em>
+      </h2>
+      <p class="section-sub" style="margin:var(--space-3) auto 0;text-align:center">
+        40% of every protocol settlement fee flows to stakers. No inflation. No tricks.
+      </p>
+    </div>
+    <div class="tiers-grid">
+      {tiers.map(t => (
+        <div class={`tier-card ${t.id}`}>
+          <span class="tier-badge">{t.label}</span>
+          <div class="tier-apy" style={`color:${t.color}`}>
+            {t.apy}<span>%</span>
+          </div>
+          <div class="tier-min">Min. {t.minStake} PTDT</div>
+          <ul style="list-style:none;margin-bottom:20px;display:flex;flex-direction:column;gap:8px">
+            {t.bullets.map(b => (
+              <li style="font-size:13px;color:var(--muted);display:flex;align-items:center;gap:8px">
+                <span style={`color:${t.color};font-size:16px;font-weight:900`}>·</span>
+                {b}
+              </li>
+            ))}
+          </ul>
+          <div class="tier-lock">
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" width="12" height="12">
+              <rect x="2" y="6" width="10" height="7" rx="1.5"/>
+              <path d="M4.5 6V4.5a2.5 2.5 0 015 0V6"/>
+            </svg>
+            {t.lockDays}-day lock
+          </div>
+          <a href="/stake" class="btn btn-primary" style="display:block;text-align:center;margin-top:var(--space-6);width:100%">
+            Stake {t.label}
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .staking-section { background: var(--paper); }
+</style>

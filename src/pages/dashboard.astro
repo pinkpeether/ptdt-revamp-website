@@ -1,0 +1,48 @@
+---
+import AppLayout from "@layouts/AppLayout.astro";
+import WalletConnect from "@components/islands/WalletConnect";
+---
+<AppLayout title="Dashboard" description="PTDT on-chain settlement explorer and analytics dashboard.">
+  <div class="dash-wrap">
+    <div class="dash-header">
+      <h1>Protocol Dashboard</h1>
+      <p>On-chain settlement data, burned supply, and staker analytics.</p>
+    </div>
+
+    <!-- Stats bar -->
+    <div class="dash-stats">
+      <div class="ds-card"><div class="ds-val pink">100,000</div><div class="ds-label">Hard Cap (PTDT)</div></div>
+      <div class="ds-card"><div class="ds-val green">6,000+</div><div class="ds-label">Tokens Burned</div></div>
+      <div class="ds-card"><div class="ds-val purple">9.2/10</div><div class="ds-label">Audit Score</div></div>
+      <div class="ds-card"><div class="ds-val gold">18%</div><div class="ds-label">Max APY (Gold)</div></div>
+    </div>
+
+    <!-- Placeholder for cockpit content -->
+    <div class="dash-placeholder">
+      <div class="dash-icon">📡</div>
+      <h2>Live Settlement Explorer</h2>
+      <p>Connect your wallet to view your staking positions, settlement history, and real-time on-chain data.</p>
+      <WalletConnect client:load />
+    </div>
+  </div>
+</AppLayout>
+
+<style>
+  .dash-wrap { max-width:960px; margin:0 auto; padding:32px 24px; }
+  .dash-header { margin-bottom:32px; }
+  .dash-header h1 { font-size:clamp(1.8rem,4vw,2.8rem); font-weight:900; color:#fff; letter-spacing:-0.05em; }
+  .dash-header p { font-size:14px; color:rgba(255,255,255,.4); margin-top:6px; }
+  .dash-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:32px; }
+  .ds-card { background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.09); border-radius:16px; padding:24px; text-align:center; }
+  .ds-val { font-size:1.8rem; font-weight:900; letter-spacing:-0.04em; margin-bottom:6px; }
+  .ds-val.pink   { color:#fb0b8c; }
+  .ds-val.green  { color:#2ae97b; }
+  .ds-val.purple { color:#b993ff; }
+  .ds-val.gold   { color:#f0b90b; }
+  .ds-label { font-size:11px; color:rgba(255,255,255,.35); font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.06em; }
+  .dash-placeholder { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:24px; padding:64px 32px; text-align:center; display:flex; flex-direction:column; align-items:center; gap:12px; }
+  .dash-icon { font-size:48px; }
+  .dash-placeholder h2 { font-size:22px; font-weight:900; color:#fff; letter-spacing:-0.03em; }
+  .dash-placeholder p { font-size:14px; color:rgba(255,255,255,.4); max-width:380px; line-height:1.7; margin-bottom:8px; }
+  @media(max-width:640px){ .dash-stats{grid-template-columns:1fr 1fr;} }
+</style>

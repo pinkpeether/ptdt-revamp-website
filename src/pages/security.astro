@@ -1,0 +1,56 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import SectionTag from "@components/ui/SectionTag.astro";
+---
+<BaseLayout title="Security & Audit" description="PTDT smart contract audit — 9.2/10 score. Independent security review on BNB Chain.">
+  <div class="page-hero container">
+    <SectionTag color="green">Security</SectionTag>
+    <h1>Audited.<br/><em>9.2 out of 10.</em></h1>
+    <p class="page-lead">
+      PTDT smart contracts were independently audited before mainnet deployment.
+      Audit score: 9.2/10. Full report available below.
+    </p>
+  </div>
+
+  <section class="section container">
+    <div class="audit-card">
+      <div class="audit-score-wrap">
+        <div class="audit-score">9.2</div>
+        <div class="audit-out">/ 10</div>
+        <div class="audit-label">Smart Contract Audit Score</div>
+      </div>
+      <div class="audit-meta">
+        <div class="audit-row"><span>Network</span><span>BNB Smart Chain</span></div>
+        <div class="audit-row"><span>Contract Type</span><span>BEP-20 + Staking</span></div>
+        <div class="audit-row"><span>Audit Status</span><span class="tag-green">✓ Passed</span></div>
+        <div class="audit-row"><span>Critical Issues</span><span class="tag-green">None</span></div>
+        <div class="audit-row"><span>High Severity</span><span class="tag-green">None</span></div>
+        <div class="audit-row"><span>Medium Severity</span><span class="tag-amber">1 Resolved</span></div>
+        <div class="audit-row"><span>Low Severity</span><span>3 Acknowledged</span></div>
+      </div>
+    </div>
+    <div style="margin-top:24px; display:flex; gap:12px; flex-wrap:wrap;">
+      <a href="/downloads" class="btn btn-primary">Download Full Report</a>
+      <a href="/protocol" class="btn btn-ghost">View Protocol Docs</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero { padding:clamp(60px,8vw,100px) 0 clamp(40px,5vw,60px); }
+  .page-hero h1 { font-size:clamp(2rem,5vw,4rem); font-weight:900; letter-spacing:-0.05em; margin:var(--space-4) 0; }
+  .page-hero h1 em { color:var(--green); font-style:normal; }
+  .page-lead { font-size:1.15rem; color:var(--muted); max-width:600px; line-height:1.8; }
+  .audit-card { background:var(--mist); border:1px solid var(--line); border-radius:var(--radius-2xl); padding:40px; display:flex; gap:40px; align-items:flex-start; }
+  .audit-score-wrap { text-align:center; flex-shrink:0; }
+  .audit-score { font-size:6rem; font-weight:900; color:var(--green); letter-spacing:-0.06em; line-height:1; }
+  .audit-out { font-size:1.5rem; font-weight:700; color:var(--muted); margin-top:-8px; }
+  .audit-label { font-size:12px; font-weight:700; color:var(--muted); margin-top:8px; text-transform:uppercase; letter-spacing:.06em; }
+  .audit-meta { flex:1; }
+  .audit-row { display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid var(--line); font-size:14px; }
+  .audit-row span:first-child { color:var(--muted); font-weight:600; }
+  .audit-row span:last-child { color:var(--ink); font-weight:700; font-family:var(--font-mono); font-size:13px; }
+  .tag-green { color:var(--green-2) !important; }
+  .tag-amber { color:#a07a00 !important; }
+  @media(max-width:640px){ .audit-card{flex-direction:column; gap:24px; padding:24px;} .audit-score{font-size:4rem;} }
+</style>

@@ -1,0 +1,22 @@
+---
+const stats = [
+  { icon: "🪙", color: "pink",   val: "100K",    label: "Hard Cap Supply",  sub: "PTDT tokens total" },
+  { icon: "🔥", color: "green",  val: "6+",      label: "PTDT Burned",      sub: "Deflationary supply" },
+  { icon: "⭐", color: "purple", val: "9.2/10",  label: "Audit Score",      sub: "Smart contract audit" },
+  { icon: "🔒", color: "gold",   val: "3 Tiers", label: "Staking Active",   sub: "12%, 15%, 18% APY" },
+];
+---
+<div class="stats-bar">
+  <div class="stats-grid container">
+    {stats.map(s => (
+      <div class="stat-block">
+        <div class={`stat-icon ${s.color}`}>
+          <span style="font-size:18px">{s.icon}</span>
+        </div>
+        <div class={`stat-val ${s.color}`}>{s.val}</div>
+        <div class="stat-label">{s.label}</div>
+        <div style="font-size:11px;color:var(--muted-2);margin-top:2px;">{s.sub}</div>
+      </div>
+    ))}
+  </div>
+</div>
