@@ -1,18 +1,22 @@
 import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
-import sitemap from "@astrojs/sitemap";
+import { fileURLToPath, URL } from "node:url";
 
 export default defineConfig({
-  site: "https://ptdt.taxi",
   integrations: [
     react(),
     tailwind({ applyBaseStyles: false }),
-    sitemap(),
   ],
-  output: "static",
   vite: {
-    ssr: { noExternal: ["lucide-react"] },
-    optimizeDeps: { exclude: ["wagmi", "viem"] },
+    resolve: {
+      alias: {
+        "@layouts":    fileURLToPath(new URL("./src/layouts",    import.meta.url)),
+        "@components": fileURLToPath(new URL("./src/components", import.meta.url)),
+        "@styles":     fileURLToPath(new URL("./src/styles",     import.meta.url)),
+        "@lib":        fileURLToPath(new URL("./src/lib",        import.meta.url)),
+        "@types":      fileURLToPath(new URL("./src/types",      import.meta.url)),
+      },
+    },
   },
 });
